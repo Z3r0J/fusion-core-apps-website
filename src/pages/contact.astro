@@ -6,9 +6,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Contact Us — FusionCore Apps" 
   description="Get in touch with FusionCore Apps. We'd love to hear from you for support, partnerships, or business inquiries."
 >
-  <div class="contact-page">
+  <div class="contact-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <!-- Page Header -->
-    <div class="contact-page__header text-center mb-16">
+    <div class="text-center mb-16">
       <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
         Get In Touch
       </h1>
@@ -20,102 +20,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="grid gap-12 lg:grid-cols-3">
       <!-- Contact Information -->
       <div class="lg:col-span-1">
-        <div class="contact-page__info space-y-8">
+        <div class="space-y-8">
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
             Contact Information
           </h2>
           
           <!-- Email -->
-          <div class="contact-info-item">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Email</h3>
-                <a 
-                  href="mailto:jeanrey.ese@gmail.com" 
-                  class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors"
-                >
-                  jeanrey.ese@gmail.com
-                </a>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                  We'll respond within 24 hours
-                </p>
-              </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Email</h3>
+              <a 
+                href="mailto:jeanrey.ese@gmail.com" 
+                class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors"
+              >
+                jeanrey.ese@gmail.com
+              </a>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                We'll respond within 24 hours
+              </p>
             </div>
           </div>
           
           <!-- Support -->
-          <div class="contact-info-item">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Support</h3>
-                <p class="text-gray-600 dark:text-gray-400">
-                  For app-related issues and technical support
-                </p>
-                <a 
-                  href="mailto:jeanrey.ese@gmail.com?subject=App Support Request" 
-                  class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors text-sm"
-                >
-                  Get Help →
-                </a>
-              </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Support</h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                For app-related issues and technical support
+              </p>
+              <a 
+                href="mailto:jeanrey.ese@gmail.com?subject=App Support Request" 
+                class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors text-sm"
+              >
+                Get Help →
+              </a>
             </div>
           </div>
           
           <!-- Business -->
-          <div class="contact-info-item">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 002 2h-6a2 2 0 01-2-2V6m6 0H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Business Inquiries</h3>
-                <p class="text-gray-600 dark:text-gray-400">
-                  Partnerships, collaborations, and business opportunities
-                </p>
-                <a 
-                  href="mailto:jeanrey.ese@gmail.com?subject=Business Inquiry" 
-                  class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors text-sm"
-                >
-                  Let's Talk →
-                </a>
-              </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 002 2h-6a2 2 0 01-2-2V6m6 0H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2z" />
+              </svg>
             </div>
-          </div>
-          
-          <!-- Play Store -->
-          <div class="contact-info-item">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Google Play Store</h3>
-                <p class="text-gray-600 dark:text-gray-400">
-                  Find all our applications on the Play Store
-                </p>
-                <a 
-                  href="https://play.google.com/store/apps/developer?id=FusionCore+Apps" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors text-sm"
-                >
-                  Visit Store →
-                </a>
-              </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Business Inquiries</h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Partnerships, collaborations, and business opportunities
+              </p>
+              <a 
+                href="mailto:jeanrey.ese@gmail.com?subject=Business Inquiry" 
+                class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors text-sm"
+              >
+                Let's Talk →
+              </a>
             </div>
           </div>
         </div>
@@ -128,48 +97,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Send us a Message
           </h2>
           
+          <!-- Success/Error Messages -->
+          <div id="formMessages" class="hidden mb-6"></div>
+          
           <form id="contactForm" class="space-y-6">
-            <!-- Success/Error Messages -->
-            <div id="formMessages" class="hidden">
-              <!-- Success message will be injected here -->
-            </div>
-            
             <!-- Name and Email -->
             <div class="grid gap-4 sm:gap-6 sm:grid-cols-2">
-              <div class="form-group">
+              <div>
                 <label class="label" for="name">Full Name *</label>
                 <input 
                   type="text" 
                   id="name" 
                   name="name" 
-                  class="input w-full" 
+                  class="input" 
                   placeholder="John Doe" 
                   required 
-                  minlength="2"
-                  maxlength="100"
                 />
-                <div class="error-message hidden text-red-600 dark:text-red-400 text-sm mt-1"></div>
               </div>
               
-              <div class="form-group">
+              <div>
                 <label class="label" for="email">Email Address *</label>
                 <input 
                   type="email" 
                   id="email" 
                   name="email" 
-                  class="input w-full" 
+                  class="input" 
                   placeholder="john@example.com" 
                   required 
-                  maxlength="254"
                 />
-                <div class="error-message hidden text-red-600 dark:text-red-400 text-sm mt-1"></div>
               </div>
             </div>
             
             <!-- Subject -->
-            <div class="form-group">
+            <div>
               <label class="label" for="subject">Subject *</label>
-              <select id="subject" name="subject" class="input w-full" required>
+              <select id="subject" name="subject" class="input" required>
                 <option value="">Select a subject</option>
                 <option value="app-support">📱 App Support</option>
                 <option value="bug-report">🐛 Bug Report</option>
@@ -179,19 +141,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <option value="general">💬 General Question</option>
                 <option value="other">📝 Other</option>
               </select>
-              <div class="error-message hidden text-red-600 dark:text-red-400 text-sm mt-1"></div>
             </div>
             
             <!-- App (if applicable) -->
-            <div class="form-group">
+            <div>
               <label class="label" for="app">Related App (optional)</label>
               <input 
                 type="text" 
                 id="app" 
                 name="app" 
-                class="input w-full" 
+                class="input" 
                 placeholder="e.g., Bible TPT, Biblia TLA" 
-                maxlength="100"
               />
               <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 If your message is about a specific app, please let us know which one.
@@ -199,24 +159,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
             
             <!-- Message -->
-            <div class="form-group">
+            <div>
               <label class="label" for="message">Message *</label>
               <textarea 
                 id="message" 
                 name="message" 
                 rows="6" 
-                class="input w-full resize-y" 
+                class="input resize-y" 
                 placeholder="Tell us how we can help you..."
                 required
-                minlength="10"
-                maxlength="2000"
               ></textarea>
-              <div class="flex justify-between items-center mt-1">
-                <div class="error-message hidden text-red-600 dark:text-red-400 text-sm"></div>
-                <div class="text-xs text-gray-500 dark:text-gray-400">
-                  <span id="messageCount">0</span>/2000 characters
-                </div>
-              </div>
             </div>
             
             <!-- Privacy Notice -->
@@ -238,13 +190,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             
             <!-- Submit Button -->
             <div class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 sm:gap-4 pt-4">
-              <button type="reset" class="button button--secondary w-full sm:w-auto">
+              <button type="reset" class="button button--secondary">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
                 Clear Form
               </button>
-              <button type="submit" id="submitButton" class="button button--primary w-full sm:w-auto">
+              <button type="submit" id="submitButton" class="button button--primary">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
@@ -257,7 +209,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     
     <!-- FAQ Section -->
-    <section class="faq-section mt-24 pt-16 border-t border-gray-200 dark:border-gray-800">
+    <section class="mt-24 pt-16 border-t border-gray-200 dark:border-gray-800">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
           Frequently Asked Questions
@@ -268,7 +220,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
       
       <div class="grid gap-6 md:grid-cols-2">
-        <div class="faq-item card p-6">
+        <div class="card p-6">
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
             How do I download your apps?
           </h3>
@@ -279,7 +231,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
         
-        <div class="faq-item card p-6">
+        <div class="card p-6">
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
             Are your apps free?
           </h3>
@@ -289,7 +241,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
         
-        <div class="faq-item card p-6">
+        <div class="card p-6">
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
             How do I report a bug or issue?
           </h3>
@@ -300,7 +252,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
         
-        <div class="faq-item card p-6">
+        <div class="card p-6">
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
             Do you offer custom app development?
           </h3>
@@ -315,251 +267,95 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const contactForm = document.getElementById('contactForm');
-  const submitButton = document.getElementById('submitButton');
-  const formMessages = document.getElementById('formMessages');
-  const messageTextarea = document.getElementById('message');
-  const messageCount = document.getElementById('messageCount');
-  
-  // Character counter for message textarea
-  messageTextarea.addEventListener('input', function() {
-    const count = this.value.length;
-    messageCount.textContent = count;
+  // Contact Form Logic
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('contact-form');
+    var submitButton = form && form.querySelector('button[type="submit"]');
     
-    if (count > 2000) {
-      messageCount.style.color = 'rgb(239 68 68)'; // red-500
-    } else if (count > 1800) {
-      messageCount.style.color = 'rgb(245 158 11)'; // amber-500
-    } else {
-      messageCount.style.color = ''; // reset to default
-    }
-  });
-  
-  // Form validation helpers
-  function showError(input, message) {
-    const errorDiv = input.parentElement.querySelector('.error-message');
-    if (errorDiv) {
-      errorDiv.textContent = message;
-      errorDiv.classList.remove('hidden');
-    }
-    input.classList.add('border-red-500', 'focus:ring-red-500');
-    input.classList.remove('border-green-500', 'focus:ring-green-500');
-  }
-  
-  function showSuccess(input) {
-    const errorDiv = input.parentElement.querySelector('.error-message');
-    if (errorDiv) {
-      errorDiv.classList.add('hidden');
-    }
-    input.classList.add('border-green-500', 'focus:ring-green-500');
-    input.classList.remove('border-red-500', 'focus:ring-red-500');
-  }
-  
-  function clearValidation(input) {
-    const errorDiv = input.parentElement.querySelector('.error-message');
-    if (errorDiv) {
-      errorDiv.classList.add('hidden');
-    }
-    input.classList.remove('border-red-500', 'focus:ring-red-500', 'border-green-500', 'focus:ring-green-500');
-  }
-  
-  // Real-time validation
-  const inputs = ['name', 'email', 'subject', 'message'];
-  inputs.forEach(inputId => {
-    const input = document.getElementById(inputId);
-    if (!input) return;
-    
-    input.addEventListener('blur', function() {
-      validateField(this);
-    });
-    
-    input.addEventListener('input', function() {
-      if (this.classList.contains('border-red-500')) {
-        validateField(this);
+    // Form validation
+    function validateForm(formData) {
+      var errors = [];
+      
+      if (!formData.name || formData.name.trim().length < 2) {
+        errors.push('El nombre debe tener al menos 2 caracteres');
       }
-    });
-  });
-  
-  function validateField(input) {
-    const value = input.value.trim();
-    let isValid = true;
-    
-    switch (input.id) {
-      case 'name':
-        if (!value) {
-          showError(input, 'Name is required');
-          isValid = false;
-        } else if (value.length < 2) {
-          showError(input, 'Name must be at least 2 characters');
-          isValid = false;
-        } else if (value.length > 100) {
-          showError(input, 'Name must be less than 100 characters');
-          isValid = false;
-        } else {
-          showSuccess(input);
-        }
-        break;
-        
-      case 'email':
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!value) {
-          showError(input, 'Email is required');
-          isValid = false;
-        } else if (!emailRegex.test(value)) {
-          showError(input, 'Please enter a valid email address');
-          isValid = false;
-        } else if (value.length > 254) {
-          showError(input, 'Email must be less than 254 characters');
-          isValid = false;
-        } else {
-          showSuccess(input);
-        }
-        break;
-        
-      case 'subject':
-        if (!value) {
-          showError(input, 'Please select a subject');
-          isValid = false;
-        } else {
-          showSuccess(input);
-        }
-        break;
-        
-      case 'message':
-        if (!value) {
-          showError(input, 'Message is required');
-          isValid = false;
-        } else if (value.length < 10) {
-          showError(input, 'Message must be at least 10 characters');
-          isValid = false;
-        } else if (value.length > 2000) {
-          showError(input, 'Message must be less than 2000 characters');
-          isValid = false;
-        } else {
-          showSuccess(input);
-        }
-        break;
-    }
-    
-    return isValid;
-  }
-  
-  function showFormMessage(message, type = 'success') {
-    const messageClass = type === 'success' 
-      ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-800 dark:text-green-200'
-      : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200';
-    
-    const icon = type === 'success' 
-      ? '<svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'
-      : '<svg class="w-5 h-5 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.667-.833-2.464 0L4.383 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>';
-    
-    formMessages.innerHTML = `
-      <div class="border rounded-xl p-4 ${messageClass}">
-        <div class="flex items-start gap-3">
-          ${icon}
-          <div>
-            <p class="font-medium">${type === 'success' ? 'Message Sent Successfully!' : 'Error Sending Message'}</p>
-            <p class="text-sm mt-1">${message}</p>
-          </div>
-        </div>
-      </div>
-    `;
-    formMessages.classList.remove('hidden');
-    
-    // Scroll to message
-    formMessages.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-  
-  // Form submission
-  contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    // Clear any previous messages
-    formMessages.classList.add('hidden');
-    
-    // Validate all fields
-    let isFormValid = true;
-    inputs.forEach(inputId => {
-      const input = document.getElementById(inputId);
-      if (input && !validateField(input)) {
-        isFormValid = false;
+      
+      if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        errors.push('Por favor, ingresa un email válido');
       }
-    });
-    
-    if (!isFormValid) {
-      showFormMessage('Please fix the errors above and try again.', 'error');
-      return;
+      
+      if (!formData.message || formData.message.trim().length < 10) {
+        errors.push('El mensaje debe tener al menos 10 caracteres');
+      }
+      
+      return errors;
     }
     
-    // Prepare form data
-    const formData = new FormData(contactForm);
-    const contactData = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      subject: formData.get('subject'),
-      app: formData.get('app') || 'N/A',
-      message: formData.get('message'),
-      timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent
-    };
+    // Show notification
+    function showNotification(message, type) {
+      if (!type) type = 'info';
+      
+      var notification = document.createElement('div');
+      
+      var className = 'fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 max-w-sm ';
+      if (type === 'error') {
+        className += 'bg-red-500 text-white';
+      } else if (type === 'success') {
+        className += 'bg-green-500 text-white';
+      } else {
+        className += 'bg-blue-500 text-white';
+      }
+      
+      notification.className = className;
+      notification.textContent = message;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(function() {
+        notification.remove();
+      }, 5000);
+    }
     
-    // Show loading state
-    const originalContent = submitButton.innerHTML;
-    submitButton.innerHTML = `
-      <svg class="w-4 h-4 mr-2 animate-spin" fill="none" viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-      </svg>
-      Sending...
-    `;
-    submitButton.disabled = true;
-    
-    try {
-      // Simulate sending (in a real app, this would make an API call)
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log('Contact form submission:', contactData);
-      
-      // Show success message
-      showFormMessage(
-        'Thank you for your message! We\'ll get back to you within 24 hours at the email address you provided.',
-        'success'
-      );
-      
-      // Reset form
-      contactForm.reset();
-      messageCount.textContent = '0';
-      
-      // Clear all validation states
-      inputs.forEach(inputId => {
-        const input = document.getElementById(inputId);
-        if (input) clearValidation(input);
+    // Handle form submission
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Enviando...';
+        }
+        
+        var formData = {
+          name: (form.querySelector('[name="name"]') && form.querySelector('[name="name"]').value) || '',
+          email: (form.querySelector('[name="email"]') && form.querySelector('[name="email"]').value) || '',
+          subject: (form.querySelector('[name="subject"]') && form.querySelector('[name="subject"]').value) || '',
+          message: (form.querySelector('[name="message"]') && form.querySelector('[name="message"]').value) || ''
+        };
+        
+        var errors = validateForm(formData);
+        
+        if (errors.length > 0) {
+          showNotification(errors.join('. '), 'error');
+          
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Enviar Mensaje';
+          }
+          return;
+        }
+        
+        // Simulate form submission (replace with actual endpoint)
+        setTimeout(function() {
+          showNotification('¡Mensaje enviado correctamente! Te contactaremos pronto.', 'success');
+          form.reset();
+          
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Enviar Mensaje';
+          }
+        }, 1000);
       });
-      
-    } catch (error) {
-      console.error('Error sending message:', error);
-      showFormMessage(
-        'There was an error sending your message. Please try again or contact us directly at jeanrey.ese@gmail.com.',
-        'error'
-      );
-    } finally {
-      // Reset button
-      submitButton.innerHTML = originalContent;
-      submitButton.disabled = false;
     }
   });
-  
-  // Reset button handler
-  contactForm.addEventListener('reset', function() {
-    setTimeout(() => {
-      formMessages.classList.add('hidden');
-      messageCount.textContent = '0';
-      inputs.forEach(inputId => {
-        const input = document.getElementById(inputId);
-        if (input) clearValidation(input);
-      });
-    }, 0);
-  });
-});
 </script>

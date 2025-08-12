@@ -15,7 +15,7 @@ screenshots: ["/screens/tpt-1.jpg", "/screens/tpt-2.jpg"]
 
 ## Features
 
-- **Clean typography** and dark mode.  
-- **Daily verse notifications**.  
-- **Bookmarks & highlights**.  
+- **Clean typography** and dark mode.
+- **Daily verse notifications**.
+- **Bookmarks & highlights**.
 - **Fast search** across books and chapters.

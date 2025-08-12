@@ -15,9 +15,9 @@ screenshots: ["/screens/tla-1.jpg", "/screens/tla-2.jpg"]
 
 ## Características principales
 
-- **Audio Biblia** para escuchar sobre la marcha.  
-- **Modo offline**: lectura sin conexión.  
-- **Versículo diario** personalizable.  
+- **Audio Biblia** para escuchar sobre la marcha.
+- **Modo offline**: lectura sin conexión.
+- **Versículo diario** personalizable.
 - **Interfaz limpia** y accesible.
 
 ### Soporte y contacto
