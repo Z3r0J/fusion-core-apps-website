@@ -1,12 +1,56 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
+/* 1. Import Tailwind’s base styles */
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 2. Import your fonts (unchanged) */
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap"); */
 
+/* 3. ❗️NEW v4 way: declare your design tokens */
+@theme {
+  /* ---------- Colors ---------- */
+  --color-brand-50: #f0f9f1;
+  --color-brand-100: #dcf2df;
+  --color-brand-200: #bce4c2;
+  --color-brand-300: #8dcf9a;
+  --color-brand-400: #57b06b;
+  --color-brand-500: #3d6a45;   /* DEFAULT */
+  --color-brand-600: #2f5236;
+  --color-brand-700: #27422c;
+  --color-brand-800: #223527;
+  --color-brand-900: #1d2d22;
+  --color-brand-950: #0e1711;
 
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-gray-950: #030712;
 
+  /* ---------- Fonts ---------- */
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* ---------- Container max-widths ---------- */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1400px;
+
+  /* ---------- Animation keyframes ---------- */
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-out;
+  --animate-bounce-in: bounceIn 0.6s ease-out;
+  --animate-gradient: gradient 15s ease infinite;
+}
+
+/* 4. Optional: keep the old custom CSS unchanged */
 @layer base {
   :root {
     --fc-brand: #3d6a45;
@@ -16,26 +60,22 @@
 
   html {
     scroll-behavior: smooth;
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: var(--font-sans);
   }
 
   body {
     @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
-
   ::-webkit-scrollbar-track {
     @apply bg-gray-100 dark:bg-gray-800;
   }
-
   ::-webkit-scrollbar-thumb {
     @apply bg-gray-300 dark:bg-gray-600 rounded-full;
   }
-
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-gray-400 dark:bg-gray-500;
   }

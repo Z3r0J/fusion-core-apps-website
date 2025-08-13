@@ -11,7 +11,7 @@ build/
 .output/
 
 # Environment variables
-.env
+.env*
 .env.local
 .env.development.local
 .env.test.local
@@ -77,7 +77,6 @@ jspm_packages/
 .astro/
 
 # IDE and editor files
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -102,9 +101,10 @@ Thumbs.db
 
 # Package lock files (choose one based on your preference)
 # Uncomment the one you don't want to track:
-# package-lock.json
-# yarn.lock
-# pnpm-lock.yaml
+package-lock.json
+yarn.lock
+bun.lock
+bun.lockb
 
 # Local development
 .local/

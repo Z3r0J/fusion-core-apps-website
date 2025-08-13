@@ -6,9 +6,7 @@ const apps = await getCollection('apps');
 ---
 
 <BaseLayout 
-  title="Admin Panel — FusionCore Apps" 
-  description="Manage and publish your mobile applications"
-  noindex={true}
+  description="Manage and publish your mobile applications"     noindex={true}    title="Admin Panel — FusionCore Apps"
 >
   <div class="admin-panel">
     <!-- Header -->
@@ -24,13 +22,12 @@ const apps = await getCollection('apps');
     <!-- Quick Actions -->
     <div class="admin-panel__actions grid gap-6 md:grid-cols-3 mb-12">
       <button 
-        onclick="openPublishModal()"
-        class="button button--primary p-6 text-left justify-start"
+        class="button button--primary p-6 text-left justify-start"          onclick="openPublishModal()"
       >
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              <path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
             </svg>
           </div>
           <div>
@@ -40,11 +37,11 @@ const apps = await getCollection('apps');
         </div>
       </button>
       
-      <a href="/admin/apps" class="button button--secondary p-6 text-left justify-start">
+      <a class="button button--secondary p-6 text-left justify-start" href="/admin/apps">
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center">
             <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
             </svg>
           </div>
           <div>
@@ -54,11 +51,11 @@ const apps = await getCollection('apps');
         </div>
       </a>
       
-      <a href="/admin/analytics" class="button button--secondary p-6 text-left justify-start">
+      <a class="button button--secondary p-6 text-left justify-start" href="/admin/analytics">
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center">
             <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00-2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4" />
+              <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00-2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
             </svg>
           </div>
           <div>
@@ -76,11 +73,10 @@ const apps = await getCollection('apps');
           Published Apps ({apps.length})
         </h2>
         <button 
-          onclick="openPublishModal()"
-          class="button button--primary"
+          class="button button--primary"            onclick="openPublishModal()"
         >
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            <path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
           </svg>
           Add New App
         </button>
@@ -91,9 +87,7 @@ const apps = await getCollection('apps');
           {apps.map((app) => (
             <div class="card p-6 flex items-center gap-6">
               <img 
-                src={app.data.icon ?? '/placeholder-app.svg'} 
-                alt={`${app.data.title} icon`}
-                class="w-16 h-16 rounded-2xl shadow-sm"
+                alt={`${app.data.title} icon`}                   class="w-16 h-16 rounded-2xl shadow-sm"                  src={app.data.icon ?? '/placeholder-app.svg'}
               />
               
               <div class="flex-1">
@@ -115,31 +109,28 @@ const apps = await getCollection('apps');
               
               <div class="flex items-center gap-3">
                 <a 
-                  href={`/apps/${app.slug}`}
-                  class="button button--ghost"
+                  class="button button--ghost"                    href={`/apps/${app.slug}`}
                   target="_blank"
                 >
                   <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
                   </svg>
                   View
                 </a>
                 <button 
-                  onclick={`editApp('${app.slug}')`}
-                  class="button button--secondary"
+                  class="button button--secondary"                    onclick={`editApp('${app.slug}')`}
                 >
                   <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
                   </svg>
                   Edit
                 </button>
                 <button 
-                  onclick={`deleteApp('${app.slug}', '${app.data.title}')`}
-                  class="button button--danger"
+                  class="button button--danger"                    onclick={`deleteApp('${app.slug}', '${app.data.title}')`}
                 >
                   <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
                   </svg>
                   Delete
                 </button>
@@ -151,14 +142,13 @@ const apps = await getCollection('apps');
         <div class="text-center py-16">
           <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6">
             <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+              <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
             </svg>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No Apps Published</h3>
           <p class="text-gray-600 dark:text-gray-400 mb-6">Get started by publishing your first mobile application.</p>
           <button 
-            onclick="openPublishModal()"
-            class="button button--primary"
+            class="button button--primary"              onclick="openPublishModal()"
           >
             Publish Your First App
           </button>
@@ -168,33 +158,32 @@ const apps = await getCollection('apps');
   </div>
   
   <!-- Publish App Modal -->
-  <div id="publishModal" class="modal fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+  <div class="modal fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden" id="publishModal">
     <div class="modal__content bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-2xl mx-auto mt-8 max-h-[90vh] overflow-y-auto">
       <div class="modal__header p-6 border-b border-gray-200 dark:border-gray-800">
         <div class="flex items-center justify-between">
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Publish New App</h2>
           <button 
-            onclick="closePublishModal()"
-            class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"              onclick="closePublishModal()"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
             </svg>
           </button>
         </div>
       </div>
       
-      <form id="publishForm" class="modal__body p-6 space-y-6">
+      <form class="modal__body p-6 space-y-6" id="publishForm">
         <!-- App Basic Info -->
         <div class="grid gap-6 md:grid-cols-2">
           <div>
             <label class="label" for="appTitle">App Title *</label>
-            <input type="text" id="appTitle" name="title" class="input" placeholder="My Awesome App" required />
+            <input class="input" id="appTitle" name="title" placeholder="My Awesome App" required type="text" />
           </div>
           
           <div>
             <label class="label" for="appCategory">Category *</label>
-            <select id="appCategory" name="category" class="input" required>
+            <select class="input" id="appCategory" name="category" required>
               <option value="">Select category</option>
               <option value="Productivity">Productivity</option>
               <option value="Education">Education</option>
@@ -212,24 +201,24 @@ const apps = await getCollection('apps');
         
         <div>
           <label class="label" for="appTagline">Tagline *</label>
-          <input type="text" id="appTagline" name="tagline" class="input" placeholder="Short description of your app" required />
+          <input class="input" id="appTagline" name="tagline" placeholder="Short description of your app" required type="text" />
         </div>
         
         <div>
           <label class="label" for="appDescription">Description *</label>
-          <textarea id="appDescription" name="description" rows="4" class="input" placeholder="Detailed description of your app's features and benefits" required></textarea>
+          <textarea class="input" id="appDescription" name="description" placeholder="Detailed description of your app's features and benefits" required rows="4"></textarea>
         </div>
         
         <!-- App URLs and Links -->
         <div class="grid gap-6 md:grid-cols-2">
           <div>
             <label class="label" for="playStoreUrl">Google Play Store URL *</label>
-            <input type="url" id="playStoreUrl" name="playStoreUrl" class="input" placeholder="https://play.google.com/store/apps/details?id=..." required />
+            <input class="input" id="playStoreUrl" name="playStoreUrl" placeholder="https://play.google.com/store/apps/details?id=..." required type="url" />
           </div>
           
           <div>
             <label class="label" for="appStoreUrl">Apple App Store URL</label>
-            <input type="url" id="appStoreUrl" name="appStoreUrl" class="input" placeholder="https://apps.apple.com/app/..." />
+            <input class="input" id="appStoreUrl" name="appStoreUrl" placeholder="https://apps.apple.com/app/..." type="url" />
           </div>
         </div>
         
@@ -237,50 +226,50 @@ const apps = await getCollection('apps');
         <div class="grid gap-6 md:grid-cols-2">
           <div>
             <label class="label" for="appIcon">App Icon URL *</label>
-            <input type="url" id="appIcon" name="icon" class="input" placeholder="https://example.com/icon.png" required />
+            <input class="input" id="appIcon" name="icon" placeholder="https://example.com/icon.png" required type="url" />
           </div>
           
           <div>
             <label class="label" for="appPrice">Price</label>
-            <input type="text" id="appPrice" name="price" class="input" placeholder="Free" value="Free" />
+            <input class="input" id="appPrice" name="price" placeholder="Free" type="text" value="Free" />
           </div>
         </div>
         
         <div>
           <label class="label" for="appScreenshots">Screenshots URLs (comma separated)</label>
-          <textarea id="appScreenshots" name="screenshots" rows="3" class="input" placeholder="https://example.com/screenshot1.png, https://example.com/screenshot2.png"></textarea>
+          <textarea class="input" id="appScreenshots" name="screenshots" placeholder="https://example.com/screenshot1.png, https://example.com/screenshot2.png" rows="3"></textarea>
         </div>
         
         <!-- App Metrics -->
         <div class="grid gap-6 md:grid-cols-3">
           <div>
             <label class="label" for="appRating">Rating (1-5)</label>
-            <input type="number" id="appRating" name="rating" class="input" min="1" max="5" step="0.1" value="4.5" />
+            <input class="input" id="appRating" max="5" min="1" name="rating" step="0.1" type="number" value="4.5" />
           </div>
           
           <div>
             <label class="label" for="appDownloads">Downloads</label>
-            <input type="text" id="appDownloads" name="downloads" class="input" placeholder="1K+" value="1K+" />
+            <input class="input" id="appDownloads" name="downloads" placeholder="1K+" type="text" value="1K+" />
           </div>
           
           <div>
             <label class="label" for="appVersion">Version</label>
-            <input type="text" id="appVersion" name="version" class="input" placeholder="1.0.0" value="1.0.0" />
+            <input class="input" id="appVersion" name="version" placeholder="1.0.0" type="text" value="1.0.0" />
           </div>
         </div>
         
         <!-- App Features -->
         <div>
           <label class="label" for="appFeatures">Key Features (one per line)</label>
-          <textarea id="appFeatures" name="features" rows="5" class="input" placeholder="Feature 1&#10;Feature 2&#10;Feature 3"></textarea>
+          <textarea class="input" id="appFeatures" name="features" placeholder="Feature 1&#10;Feature 2&#10;Feature 3" rows="5"></textarea>
         </div>
         
         <!-- Submit Buttons -->
         <div class="flex items-center justify-end gap-4 pt-4 border-t border-gray-200 dark:border-gray-800">
-          <button type="button" onclick="closePublishModal()" class="button button--secondary">
+          <button class="button button--secondary" onclick="closePublishModal()" type="button">
             Cancel
           </button>
-          <button type="submit" class="button button--primary">
+          <button class="button button--primary" type="submit">
             Publish App
           </button>
         </div>

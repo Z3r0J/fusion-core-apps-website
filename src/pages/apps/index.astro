@@ -1,20 +1,24 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-import AppGrid from '../../components/AppGrid.tsx';
+import { getCollection } from "astro:content";
+import AppGrid from "../../components/AppGrid.tsx";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const entries = await getCollection('apps');
-const apps = entries.map(e => ({
-  title: e.data.title,
-  slug: e.slug,
-  icon: e.data.icon,
-  tagline: e.data.tagline,
-  category: e.data.category,
-  tags: e.data.tags,
-  playUrl: e.data.playUrl
+const entries = await getCollection("apps");
+const apps = entries.map((e) => ({
+	title: e.data.title,
+	slug: e.slug,
+	icon: e.data.icon,
+	tagline: e.data.tagline,
+	category: e.data.category,
+	tags: e.data.tags,
+	playUrl: e.data.playUrl,
 }));
 ---
-<BaseLayout title="Apps — FusionCore Apps" description="Browse our mobile apps and download them from Google Play.">
-  <h1 class="text-3xl font-bold mb-6">Apps</h1>
-  <AppGrid client:load apps={apps} />
+
+<BaseLayout
+	description="Browse our mobile apps and download them from Google Play."
+	title="Apps — FusionCore Apps"
+>
+	<h1 class="mb-6 text-3xl font-bold">Apps</h1>
+	<AppGrid apps={apps} client:load />
 </BaseLayout>

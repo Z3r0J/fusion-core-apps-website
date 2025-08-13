@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Search, Filter, Grid, List } from 'lucide-react';
+import { Filter, Grid, List, Search } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 interface App {
   slug: string;
@@ -80,22 +80,22 @@ export default function AppGrid({ apps, showFilters = true }: AppGridProps) {
   const AppCard = ({ app }: { app: App }) => {
     const rating = 4.5; // Default rating since it's not in the data structure
     const downloads = '1K+'; // Default downloads
-    const price = app.data.price || 'Free';
+    const price = app.data?.price || 'Free';
 
     if (viewMode === 'list') {
       return (
         <div className="app-grid__item--list card p-6 hover:scale-[1.02] transition-all duration-200">
           <a href={`/apps/${app.slug}`} className="flex items-center gap-6">
             <img
-              src={app.data.icon ?? '/placeholder-app.svg'}
-              alt={`${app.data.title} icon`}
+              src={app.data?.icon ?? '/placeholder-app.svg'}
+              alt={`${app.data?.title} icon`}
               className="w-16 h-16 rounded-2xl shadow-lg flex-shrink-0"
               loading="lazy"
             />
 
             <div className="flex-1 min-w-0">
               <h3 className="text-lg font-bold text-gray-900 dark:text-white truncate">
-                {app.data.title}
+                {app.data?.title}
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
                 {app.data.tagline}
@@ -148,18 +148,18 @@ export default function AppGrid({ apps, showFilters = true }: AppGridProps) {
           <div className="p-6 pb-4">
             <div className="flex items-start gap-4">
               <img
-                src={app.data.icon ?? '/placeholder-app.svg'}
-                alt={`${app.data.title} icon`}
+                src={app.data?.icon ?? '/placeholder-app.svg'}
+                alt={`${app.data?.title} icon`}
                 className="w-16 h-16 rounded-2xl shadow-lg group-hover:shadow-xl transition-shadow duration-300"
                 loading="lazy"
               />
 
               <div className="flex-1 min-w-0">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-200 truncate">
-                  {app.data.title}
+                  {app.data?.title}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
-                  {app.data.tagline}
+                  {app.data?.tagline}
                 </p>
 
                 <div className="flex items-center gap-4 mt-3">
@@ -191,14 +191,14 @@ export default function AppGrid({ apps, showFilters = true }: AppGridProps) {
 
           <div className="px-6 pb-4">
             <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3 leading-relaxed">
-              {app.data.description}
+              {app.data?.description}
             </p>
           </div>
 
           <div className="px-6 pb-6">
             <div className="flex items-center justify-between">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                {app.data.category}
+                {app.data?.category}
               </span>
 
               <div className="flex items-center text-brand-600 dark:text-brand-400 text-sm font-medium group-hover:text-brand-700 dark:group-hover:text-brand-300 transition-colors">

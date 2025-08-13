@@ -16,17 +16,17 @@ const title = `${app.data.title} — FusionCore Apps`;
 const description = app.data.description;
 const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
 ---
-<BaseLayout {title} {description} {canonical}>
+<BaseLayout {canonical} {description} {title}>
   <AppJsonLd app={app} />
 
   <article class="grid gap-8 lg:grid-cols-[auto,1fr]">
-    <img src={app.data.icon ?? '/placeholder-app.svg'} alt="" class="h-24 w-24 rounded-2xl" />
+    <img alt="" class="h-24 w-24 rounded-2xl" src={app.data.icon ?? '/placeholder-app.svg'} />
     <div>
       <h1 class="text-3xl font-bold">{app.data.title}</h1>
       <p class="mt-2 text-gray-700">{app.data.tagline}</p>
       <div class="mt-4 flex gap-3">
-        <a href={app.data.playUrl} rel="noopener sponsored" target="_blank" class="rounded-xl bg-brand px-5 py-3 text-white font-medium hover:bg-brand/90">Get it on Google Play</a>
-        <a href="/apps" class="rounded-xl border px-5 py-3 font-medium hover:bg-gray-50">Back to apps</a>
+        <a class="rounded-xl bg-brand px-5 py-3 text-white font-medium hover:bg-brand/90" href={app.data.playUrl} rel="noopener sponsored" target="_blank">Get it on Google Play</a>
+        <a class="rounded-xl border px-5 py-3 font-medium hover:bg-gray-50" href="/apps">Back to apps</a>
       </div>
     </div>
   </article>
@@ -42,7 +42,7 @@ const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
     <section class="mt-10">
       <h2 class="text-2xl font-semibold mb-4">Screenshots</h2>
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {app.data.screenshots.map((src) => <img src={src} alt="" loading="lazy" class="rounded-xl border" />)}
+        {app.data.screenshots.map((src) => <img alt="" class="rounded-xl border" loading="lazy" src={src} />)}
       </div>
     </section>
   ) : null}

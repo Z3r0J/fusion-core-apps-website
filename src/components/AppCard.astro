@@ -1,9 +1,9 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from 'astro:content';
 const { app, featured = false } = Astro.props as { 
   app: CollectionEntry<'apps'>;
   featured?: boolean;
-}
+};
 
 // Extract rating if available (default values since they're not in the frontmatter)
 const rating = 4.5; // Default rating
@@ -11,18 +11,15 @@ const downloads = '1K+'; // Default downloads
 const price = app.data.price || 'Free';
 ---
 
-<article class={`app-card card card--elevated group hover:scale-105 transition-all duration-300 ${featured ? 'app-card--featured' : ''}`}>
-  <a href={`/apps/${app.slug}`} class="app-card__link block">
+<article class:list={[`app-card card card--elevated group hover:scale-105 transition-all duration-300`,{"app-card--featured": featured}]}>
+  <a class="app-card__link block" href={`/apps/${app.slug}`}>
     <!-- App Icon & Badge -->
     <div class="app-card__header relative p-6 pb-4">
       <div class="flex items-start gap-4">
         <!-- App Icon -->
         <div class="app-card__icon-wrapper relative flex-shrink-0">
           <img 
-            src={app.data.icon ?? '/placeholder-app.svg'} 
-            alt={`${app.data.title} app icon`}
-            class="app-card__icon w-16 h-16 rounded-2xl shadow-lg group-hover:shadow-xl transition-shadow duration-300" 
-            loading="lazy" 
+            alt={`${app.data.title} app icon`}               class="app-card__icon w-16 h-16 rounded-2xl shadow-lg group-hover:shadow-xl transition-shadow duration-300"              loading="lazy"               src={app.data.icon ?? '/placeholder-app.svg'} 
           />
           {featured && (
             <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center shadow-lg">
@@ -48,7 +45,7 @@ const price = app.data.price || 'Free';
               <div class="flex items-center">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <svg 
-                    class={`w-3 h-3 ${i < Math.floor(rating) ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'}`}
+                    class:list={[`w-3 h-3`,{"text-yellow-400": i < Math.floor(rating), "text-gray-300 dark:text-gray-600": !(i < Math.floor(rating))}]}
                     fill="currentColor" 
                     viewBox="0 0 20 20"
                   >
@@ -67,11 +64,9 @@ const price = app.data.price || 'Free';
         
         <!-- Price Badge -->
         <div class="app-card__price">
-          <span class={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
-            price === 'Free' 
-              ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
-              : 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
-          }`}>
+          <span class:list={[`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium`,
+            {"bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400": price === 'Free', "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400": price !== 'Free'}
+          ]}>
             {price}
           </span>
         </div>
@@ -97,7 +92,7 @@ const price = app.data.price || 'Free';
         <div class="app-card__cta flex items-center text-brand-600 dark:text-brand-400 text-sm font-medium group-hover:text-brand-700 dark:group-hover:text-brand-300 transition-colors">
           <span>Download</span>
           <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
           </svg>
         </div>
       </div>
@@ -120,7 +115,5 @@ const price = app.data.price || 'Free';
     overflow: hidden;
   }
   
-  .app-card--featured {
-    @apply ring-2 ring-brand-500/20 dark:ring-brand-400/20;
-  }
+  
 </style>
