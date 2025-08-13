@@ -5,6 +5,40 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            "--tw-prose-body": theme("colors.gray.700"),
+            "--tw-prose-headings": theme("colors.gray.900"),
+            "--tw-prose-links": theme("colors.brand.600"),
+            "--tw-prose-bold": theme("colors.gray.900"),
+            "--tw-prose-bullets": theme("colors.brand.500"),
+            maxWidth: "100%",
+            a: { textDecoration: "none", fontWeight: "600" },
+            "a:hover": { color: theme("colors.brand.700") },
+            h2: { fontWeight: "700", marginTop: "1.6em", marginBottom: ".7em" },
+            h3: { fontWeight: "700", marginTop: "1.2em", marginBottom: ".5em" },
+            "ul>li::marker": { color: theme("colors.brand.500") },
+            code: {
+              backgroundColor: theme("colors.gray.100"),
+              padding: "0.2rem 0.35rem",
+              borderRadius: "0.375rem",
+            },
+            "pre code": { backgroundColor: "transparent", padding: 0 },
+            img: { borderRadius: "0.75rem" },
+          },
+        },
+        invert: {
+          css: {
+            "--tw-prose-body": theme("colors.gray.300"),
+            "--tw-prose-headings": theme("colors.white"),
+            "--tw-prose-links": theme("colors.brand.400"),
+            "--tw-prose-bold": theme("colors.white"),
+            "--tw-prose-bullets": theme("colors.brand.400"),
+            code: { backgroundColor: theme("colors.gray.800") },
+          },
+        },
+      }),
       colors: {
         brand: {
           50: "#f0f9f1",

@@ -7,11 +7,12 @@ export async function getStaticPaths() {
   const apps = await getCollection('apps');
   return apps.map((app) => ({
     params: { slug: app.slug },
-    props: { app }
+    props: { app },
   }));
 }
 
 const { app } = Astro.props;
+const { Content } = await app.render(); // ✅ compile MD to a component
 const title = `${app.data.title} — FusionCore Apps`;
 const description = app.data.description;
 const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
@@ -24,25 +25,50 @@ const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
     <div>
       <h1 class="text-3xl font-bold">{app.data.title}</h1>
       <p class="mt-2 text-gray-700">{app.data.tagline}</p>
-      <div class="mt-4 flex gap-3">
-        <a href={app.data.playUrl} rel="noopener sponsored" target="_blank" class="rounded-xl bg-brand px-5 py-3 text-white font-medium hover:bg-brand/90">Get it on Google Play</a>
-        <a href="/apps" class="rounded-xl border px-5 py-3 font-medium hover:bg-gray-50">Back to apps</a>
-      </div>
+<div class="mt-4 flex items-center gap-3">
+  <a
+    href={app.data.playUrl}
+    target="_blank"
+    rel="noopener nofollow sponsored"
+    class="inline-flex"
+    aria-label="Get it on Google Play"
+  >
+    <img
+      src="/GetItOnGooglePlay_Badge_Web_color_English.png"
+      alt="Get it on Google Play"
+      class="h-14 w-auto select-none"
+      width="270"                      
+      height="80"
+      decoding="async"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </a>
+
+  <a href="/apps" class="rounded-xl border px-5 py-3 font-medium hover:bg-gray-50">
+    Back to apps
+  </a>
+</div>
     </div>
   </article>
 
-  <section class="mt-10 grid gap-6">
-    <h2 class="text-2xl font-semibold">About this app</h2>
-    <div class="prose max-w-none">
-      {app.body}
+  <section class="mt-10">
+    <div class="card p-8">
+      <h2 class="text-2xl font-semibold mb-4">About this app</h2>
+      <div class="prose prose-lg max-w-none dark:prose-invert
+                  prose-a:text-brand-600 hover:prose-a:text-brand-700">
+        <Content />  <!-- ✅ styled Markdown -->
+      </div>
     </div>
   </section>
 
-  {app.data.screenshots.length ? (
+  {app.data.screenshots?.length ? (
     <section class="mt-10">
       <h2 class="text-2xl font-semibold mb-4">Screenshots</h2>
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {app.data.screenshots.map((src) => <img src={src} alt="" loading="lazy" class="rounded-xl border" />)}
+        {app.data.screenshots.map((src) => (
+          <img src={src} alt="" loading="lazy" class="rounded-xl border" />
+        ))}
       </div>
     </section>
   ) : null}
