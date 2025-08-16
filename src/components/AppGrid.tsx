@@ -314,7 +314,7 @@ export default function AppGrid({ apps, showFilters = true }: Props) {
 						}}
 						className="button button--primary"
 					>
-						Clear Filters
+						Clear filters
 					</button>
 				</div>
 			)}
