@@ -2,8 +2,10 @@
 import "@/styles/global.css";
 
 import ThemeToggle from "@/components/ThemeToggle.tsx";
+import GooglePlayLogo from "@/public/gplay-logo.svg";
 import Logo from "@/public/logo.svg";
 import { ClientRouter } from "astro:transitions";
+import { Menu } from "lucide-react";
 
 const {
 	title = "FusionCore Apps — Premium Mobile Applications",
@@ -158,13 +160,7 @@ const currentPath = Astro.url.pathname;
 						class="hover:text-brand-600 dark:hover:text-brand-400 focus:ring-brand-500 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-600 transition-all duration-200 hover:bg-gray-200 focus:ring-2 focus:outline-none md:hidden dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
 						id="mobile-menu-button"
 					>
-						<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path
-								d="M4 6h16M4 12h16M4 18h16"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"></path>
-						</svg>
+						<Menu className="h-5 w-5" stroke="currentColor" />
 					</button>
 				</div>
 			</nav>
@@ -290,11 +286,7 @@ const currentPath = Astro.url.pathname;
 								rel="noopener noreferrer"
 								target="_blank"
 							>
-								<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-									<path
-										d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"
-									></path>
-								</svg>
+								<GooglePlayLogo class="h-6 w-6" />
 							</a>
 						</div>
 					</div>

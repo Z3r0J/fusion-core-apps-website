@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import PlaceholderApp from "@/public/placeholder-app.svg";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import { ChartNoAxesCombined, Eye, Layers, Plus, SquarePen, Trash2, X } from "lucide-react";
 const apps = await getCollection("apps");
 ---
 
@@ -14,7 +15,7 @@ const apps = await getCollection("apps");
 	<div class="admin-panel">
 		<!-- Header -->
 		<div class="admin-panel__header mb-8 border-b border-gray-200 pb-8 dark:border-gray-800">
-			<h1 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Admin Panel</h1>
+			<h1 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Admin panel</h1>
 			<p class="text-gray-600 dark:text-gray-400">
 				Manage and publish your mobile applications to the store.
 			</p>
@@ -23,22 +24,16 @@ const apps = await getCollection("apps");
 		<!-- Quick Actions -->
 		<div class="admin-panel__actions mb-12 grid gap-6 md:grid-cols-3">
 			<button
-				aria-label="Publish New App"
+				aria-label="Publish new app"
 				class="button button--primary justify-start p-6 text-left"
-				onclick="openPublishModal()"
+				data-open-modal
 			>
 				<div class="flex items-center gap-4">
 					<div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20">
-						<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path
-								d="M12 4v16m8-8H4"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"></path>
-						</svg>
+						<Plus className="h-6 w-6" />
 					</div>
 					<div>
-						<h3 class="font-semibold">Publish New App</h3>
+						<h3 class="font-semibold">Publish new app</h3>
 						<p class="text-sm opacity-90">Add a new application to your store</p>
 					</div>
 				</div>
@@ -53,21 +48,10 @@ const apps = await getCollection("apps");
 					<div
 						class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800"
 					>
-						<svg
-							class="h-6 w-6 text-gray-600 dark:text-gray-400"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"></path>
-						</svg>
+						<Layers className="h-6 w-6 text-gray-600 dark:text-gray-400" />
 					</div>
 					<div>
-						<h3 class="font-semibold text-gray-900 dark:text-white">Manage Apps</h3>
+						<h3 class="font-semibold text-gray-900 dark:text-white">Manage apps</h3>
 						<p class="text-sm text-gray-600 dark:text-gray-400">Edit or remove existing apps</p>
 					</div>
 				</div>
@@ -82,18 +66,7 @@ const apps = await getCollection("apps");
 					<div
 						class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800"
 					>
-						<svg
-							class="h-6 w-6 text-gray-600 dark:text-gray-400"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00-2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"></path>
-						</svg>
+						<ChartNoAxesCombined className="h-6 w-6 text-gray-600 dark:text-gray-400" />
 					</div>
 					<div>
 						<h3 class="font-semibold text-gray-900 dark:text-white">Analytics</h3>
@@ -107,13 +80,10 @@ const apps = await getCollection("apps");
 		<div class="admin-panel__apps">
 			<div class="mb-6 flex items-center justify-between">
 				<h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-					Published Apps ({apps.length})
+					Published apps ({apps.length})
 				</h2>
-				<button class="button button--primary" onclick="openPublishModal()">
-					<svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-						></path>
-					</svg>
+				<button class="button button--primary" data-open-modal>
+					<Plus className="mr-2 h-5 w-5" />
 					Add new app
 				</button>
 			</div>
@@ -128,6 +98,7 @@ const apps = await getCollection("apps");
 										alt={app.data.title}
 										class="h-16 w-16 rounded-2xl shadow-sm"
 										height={64}
+										loading={"eager"}
 										src={app.data.icon}
 										width={64}
 									/>
@@ -152,45 +123,18 @@ const apps = await getCollection("apps");
 
 								<div class="flex items-center gap-3">
 									<a class="button button--ghost" href={`/apps/${app.slug}`} target="_blank">
-										<svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path
-												d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
-											/>
-											<path
-												d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
-											/>
-										</svg>
+										<Eye className="mr-2 h-4 w-4" />
 										View
 									</a>
 									<button class="button button--secondary" onclick={`editApp('${app.slug}')`}>
-										<svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path
-												d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
-											/>
-										</svg>
+										<SquarePen className="mr-2 h-4 w-4" />
 										Edit
 									</button>
 									<button
 										class="button button--danger"
 										onclick={`deleteApp('${app.slug}', '${app.data.title}')`}
 									>
-										<svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path
-												d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
-											/>
-										</svg>
+										<Trash2 className="mr-2 h-4 w-4" />
 										Delete
 									</button>
 								</div>
@@ -200,28 +144,16 @@ const apps = await getCollection("apps");
 				) : (
 					<div class="py-16 text-center">
 						<div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800">
-							<svg
-								class="h-12 w-12 text-gray-400"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-								/>
-							</svg>
+							<Layers className="h-12 w-12 text-gray-400" />
 						</div>
 						<h3 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
-							No Apps Published
+							No apps published
 						</h3>
 						<p class="mb-6 text-gray-600 dark:text-gray-400">
 							Get started by publishing your first mobile application.
 						</p>
-						<button class="button button--primary" onclick="openPublishModal()">
-							Publish Your First App
+						<button class="button button--primary" data-open-modal>
+							Publish your first app
 						</button>
 					</div>
 				)
@@ -230,25 +162,22 @@ const apps = await getCollection("apps");
 	</div>
 
 	<!-- Publish App Modal -->
-	<div class="modal fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm" id="publishModal">
+	<div
+		class="fixed inset-0 z-50 hidden items-start justify-center bg-black/50 p-8 backdrop-blur-sm"
+		id="publishModal"
+	>
 		<div
 			class="modal__content mx-auto mt-8 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl dark:bg-gray-900"
 		>
 			<div class="modal__header border-b border-gray-200 p-6 dark:border-gray-800">
 				<div class="flex items-center justify-between">
-					<h2 class="text-2xl font-bold text-gray-900 dark:text-white">Publish New App</h2>
+					<h2 class="text-2xl font-bold text-gray-900 dark:text-white">Publish new app</h2>
 					<button
 						aria-label="Close publish modal"
 						class="flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
-						onclick="closePublishModal()"
+						data-close-modal
 					>
-						<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path
-								d="M6 18L18 6M6 6l12 12"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"></path>
-						</svg>
+						<X className="h-5 w-5" />
 					</button>
 				</div>
 			</div>
@@ -257,7 +186,7 @@ const apps = await getCollection("apps");
 				<!-- App Basic Info -->
 				<div class="grid gap-6 md:grid-cols-2">
 					<div>
-						<label class="label" for="appTitle">App Title *</label>
+						<label class="label" for="appTitle">App title *</label>
 						<input
 							class="input"
 							id="appTitle"
@@ -430,98 +359,91 @@ Feature 3"
 				<div
 					class="flex items-center justify-end gap-4 border-t border-gray-200 pt-4 dark:border-gray-800"
 				>
-					<button class="button button--secondary" onclick="closePublishModal()" type="button">
-						Cancel
-					</button>
+					<button class="button button--secondary" data-close-modal type="button"> Cancel </button>
 					<button class="button button--primary" type="submit"> Publish App </button>
 				</div>
 			</form>
+
+			<script>
+				document.addEventListener("astro:page-load", async () => {
+					const modal = document.getElementById("publishModal") as HTMLDivElement | null;
+					const form = document.getElementById("publishForm") as HTMLFormElement | null;
+
+					if (!modal || !form) return; // safe here – inside a function
+
+					/* ---------- helpers ---------- */
+					function openPublishModal() {
+						modal?.classList.remove("hidden");
+						modal?.classList.add("flex");
+						document.body.style.overflow = "hidden";
+					}
+					function closePublishModal() {
+						modal?.classList.add("hidden");
+						modal?.classList.remove("flex");
+						document.body.style.overflow = "auto";
+						form?.reset();
+					}
+					/* ---------- listeners ---------- */
+					document.addEventListener("click", (e) => {
+						const target = e.target as HTMLElement;
+
+						if (target.closest("[data-close-modal]") || target === modal) {
+							closePublishModal();
+							return;
+						}
+						if (target.closest("[data-open-modal]")) {
+							openPublishModal();
+							return;
+						}
+					});
+
+					document.addEventListener("keydown", (e) => {
+						if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+							closePublishModal();
+						}
+					});
+					/* ---------- form logic ---------- */
+					form.addEventListener("submit", (e) => {
+						e.preventDefault();
+						const fd = new FormData(form);
+						const data: Record<string, any> = Object.fromEntries(fd);
+
+						if (data.features) {
+							data.features = (data.features as string)
+								.split("\n")
+								.map((f) => f.trim())
+								.filter(Boolean);
+						}
+						if (data.screenshots) {
+							data.screenshots = (data.screenshots as string)
+								.split(",")
+								.map((s) => s.trim())
+								.filter(Boolean);
+						}
+
+						console.info("App data to publish:", data);
+						alert("App would be published! Check the console for the payload.");
+						closePublishModal();
+					});
+				});
+			</script>
+
+			<style>
+				.modal__content {
+					animation: modalSlideIn 0.3s ease-out;
+				}
+
+				@keyframes modalSlideIn {
+					from {
+						opacity: 0;
+						transform: scale(0.95) translateY(-20px);
+					}
+					to {
+						opacity: 1;
+						transform: scale(1) translateY(0);
+					}
+				}
+			</style>
 		</div>
-	</div>
-</BaseLayout>
-
-<script>
-	// IIFE keeps everything out of global scope except what we explicitly expose
-	document.addEventListener("astro:page-load", async () => {
-		const modal = document.getElementById("publishModal") as HTMLDivElement | null;
-		const form = document.getElementById("publishForm") as HTMLFormElement | null;
-
-		if (!modal || !form) return; // safe here – inside afunction
-
-		/* ---------- helpers ---------- */
-		function openPublishModal() {
-			if (!modal || !form) return;
-			modal.classList.remove("hidden");
-			document.body.style.overflow = "hidden";
-		}
-		function closePublishModal() {
-			if (!modal || !form) return;
-			modal.classList.add("hidden");
-			document.body.style.overflow = "auto";
-			form.reset();
-		}
-
-		/* ---------- expose to inline handlers ---------- */
-		(window as any).openPublishModal = openPublishModal;
-		(window as any).closePublishModal = closePublishModal;
-
-		/* ---------- form logic ---------- */
-		form.addEventListener("submit", (e) => {
-			e.preventDefault();
-			const fd = new FormData(form);
-			const data: Record<string, any> = Object.fromEntries(fd);
-
-			if (data.features) {
-				data.features = (data.features as string)
-					.split("\n")
-					.map((f) => f.trim())
-					.filter(Boolean);
-			}
-			if (data.screenshots) {
-				data.screenshots = (data.screenshots as string)
-					.split(",")
-					.map((s) => s.trim())
-					.filter(Boolean);
-			}
-
-			console.info("App data to publish:", data);
-			alert("App would be published! Check the console for the payload.");
-			closePublishModal();
-		});
-
-		/* ---------- close on click-out / Esc ---------- */
-		modal.addEventListener("click", (e) => {
-			if (e.target === modal) closePublishModal();
-		});
-
-		document.addEventListener("keydown", (e) => {
-			if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-				closePublishModal();
-			}
-		});
-	});
-</script>
-
-<style>
-	.modal {
-		display: flex;
-		align-items: flex-start;
-		justify-content: center;
-		padding: 2rem;
-	}
-
-	.modal__content {
-		animation: modalSlideIn 0.3s ease-out;
-	}
-
-	@keyframes modalSlideIn {
-		from {
-			opacity: 0;
-			transform: scale(0.95) translateY(-20px);
-		}
-		to {
-			opacity: 1;
-			transform: scale(1) translateY(0);
-		}
-	}
-</style>
+	</div></BaseLayout
+>

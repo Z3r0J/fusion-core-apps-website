@@ -1,5 +1,14 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import {
+	ArrowRight,
+	BriefcaseBusiness,
+	CircleCheck,
+	Mail,
+	RefreshCcw,
+	Send,
+	Speech,
+} from "lucide-react";
 ---
 
 <BaseLayout
@@ -29,13 +38,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 						<div
 							class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600"
 						>
-							<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"></path>
-							</svg>
+							<Mail className="h-6 w-6 text-white" />
 						</div>
 						<div>
 							<h3 class="mb-1 font-semibold text-gray-900 dark:text-white">Email</h3>
@@ -56,13 +59,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 						<div
 							class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-green-600"
 						>
-							<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"></path>
-							</svg>
+							<Speech className="h-6 w-6 text-white" />
 						</div>
 						<div>
 							<h3 class="mb-1 font-semibold text-gray-900 dark:text-white">Support</h3>
@@ -70,10 +67,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 								For app-related issues and technical support
 							</p>
 							<a
-								class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 text-sm transition-colors"
+								class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 flex items-center text-sm transition-colors"
 								href="mailto:jeanrey.ese@gmail.com?subject=App Support Request"
 							>
-								Get help →
+								Get help <ArrowRight
+									className="ml-1 size-4 transition-transform group-hover:translate-x-1"
+								/>
 							</a>
 						</div>
 					</div>
@@ -83,13 +82,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 						<div
 							class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-600"
 						>
-							<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 002 2h-6a2 2 0 01-2-2V6m6 0H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2z"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"></path>
-							</svg>
+							<BriefcaseBusiness className="h-6 w-6 text-white" />
 						</div>
 						<div>
 							<h3 class="mb-1 font-semibold text-gray-900 dark:text-white">Business inquiries</h3>
@@ -97,10 +90,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 								Partnerships, collaborations, and business opportunities
 							</p>
 							<a
-								class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 text-sm transition-colors"
+								class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 flex items-center text-sm transition-colors"
 								href="mailto:jeanrey.ese@gmail.com?subject=Business Inquiry"
 							>
-								Let's talk →
+								Let's talk <ArrowRight
+									className="ml-1 size-4 transition-transform group-hover:translate-x-1"
+								/>
 							</a>
 						</div>
 					</div>
@@ -192,18 +187,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 							class="rounded-xl border border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50 p-4 dark:border-blue-800 dark:from-blue-900/20 dark:to-indigo-900/20"
 						>
 							<div class="flex items-start gap-3">
-								<svg
-									class="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600 dark:text-blue-400"
-									fill="none"
-									stroke="currentColor"
-									viewBox="0 0 24 24"
-								>
-									<path
-										d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"></path>
-								</svg>
+								<CircleCheck
+									className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600 dark:text-blue-400"
+								/>
 								<div class="text-sm text-blue-800 dark:text-blue-200">
 									<p class="mb-1 font-medium">Privacy & data protection</p>
 									<p>
@@ -222,23 +208,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 							class="flex flex-col-reverse items-stretch justify-end gap-3 pt-4 sm:flex-row sm:items-center sm:gap-4"
 						>
 							<button class="button button--secondary" type="reset">
-								<svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path
-										d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"></path>
-								</svg>
+								<RefreshCcw className="mr-2 h-4 w-4" />
 								Clear form
 							</button>
 							<button class="button button--primary" id="submitButton" type="submit">
-								<svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path
-										d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"></path>
-								</svg>
+								<Send className="mr-2 h-4 w-4" />
 								Send message
 							</button>
 						</div>
