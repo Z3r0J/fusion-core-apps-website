@@ -1,8 +1,9 @@
 ---
-import "../styles/global.css"; // <- IMPORTANTE
+import "@/styles/global.css";
 
+import ThemeToggle from "@/components/ThemeToggle.tsx";
+import Logo from "@/public/logo.svg";
 import { ClientRouter } from "astro:transitions";
-import ThemeToggle from "../components/ThemeToggle.tsx";
 
 const {
 	title = "FusionCore Apps — Premium Mobile Applications",
@@ -86,10 +87,11 @@ const currentPath = Astro.url.pathname;
 		<ClientRouter />
 	</head>
 
-	<body class:list={[`min-h-screen antialiased`,`${bodyClass}`]}>
+	<body class:list={[`min-h-screen antialiased`, `${bodyClass}`]}>
 		<!-- Skip to content link for accessibility -->
 		<a
-			class="button button--primary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"     href="#main"
+			class="button button--primary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
+			href="#main"
 		>
 			Skip to main content
 		</a>
@@ -99,16 +101,19 @@ const currentPath = Astro.url.pathname;
 			class="header sticky top-0 z-40 border-b border-gray-200/50 bg-white/80 backdrop-blur-lg dark:border-gray-800/50 dark:bg-gray-950/80"
 		>
 			<nav
-				aria-label="Main navigation"      class="header__nav container flex items-center justify-between py-4"      role="navigation"
+				aria-label="Main navigation"
+				class="header__nav mx-auto flex max-w-7xl items-center justify-between py-4"
+				role="navigation"
 			>
 				<!-- Logo -->
 				<a
-					class="header__logo hover:text-brand-600 dark:hover:text-brand-400 group flex items-center gap-3 text-xl font-bold text-gray-900 transition-colors dark:text-white"       href="/"
+					class="header__logo hover:text-brand-600 dark:hover:text-brand-400 group flex items-center gap-3 text-xl font-bold text-gray-900 transition-colors dark:text-white"
+					href="/"
 				>
 					<div
 						class="from-brand-500 to-brand-600 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg transition-all duration-200 group-hover:scale-105 group-hover:shadow-xl"
 					>
-						<img alt="FusionCore Apps" class="h-6 w-6 brightness-0 invert" src="/logo.svg" />
+						<Logo class="from-brand-500 to-brand-600 h-6 w-6" />
 					</div>
 					<span class="gradient-text">FusionCore</span>
 				</a>
@@ -117,7 +122,8 @@ const currentPath = Astro.url.pathname;
 				<ul class="header__nav-links hidden items-center gap-8 md:flex" role="menubar">
 					<li role="none">
 						<a
-							class:list={[`nav-link`,{"nav-link--active": currentPath.startsWith("/apps")}]}         href="/apps"
+							class:list={[`nav-link`, { "nav-link--active": currentPath.startsWith("/apps") }]}
+							href="/apps"
 							role="menuitem"
 						>
 							Apps
@@ -125,7 +131,8 @@ const currentPath = Astro.url.pathname;
 					</li>
 					<li role="none">
 						<a
-							class:list={[`nav-link`,{"nav-link--active": currentPath === "/privacy"}]}         href="/privacy"
+							class:list={[`nav-link`, { "nav-link--active": currentPath === "/privacy" }]}
+							href="/privacy"
 							role="menuitem"
 						>
 							Privacy
@@ -133,7 +140,8 @@ const currentPath = Astro.url.pathname;
 					</li>
 					<li role="none">
 						<a
-							class:list={[`nav-link`,{"nav-link--active": currentPath === "/contact"}]}         href="/contact"
+							class:list={[`nav-link`, { "nav-link--active": currentPath === "/contact" }]}
+							href="/contact"
 							role="menuitem"
 						>
 							Contact
@@ -141,7 +149,8 @@ const currentPath = Astro.url.pathname;
 					</li>
 					<li role="none">
 						<a
-							class:list={[`nav-link`,{"nav-link--active": currentPath.startsWith("/admin")}]}         href="/admin"
+							class:list={[`nav-link`, { "nav-link--active": currentPath.startsWith("/admin") }]}
+							href="/admin"
 							role="menuitem"
 						>
 							Admin
@@ -155,12 +164,16 @@ const currentPath = Astro.url.pathname;
 
 					<!-- Mobile menu button -->
 					<button
-						aria-label="Open mobile menu"        class="hover:text-brand-600 dark:hover:text-brand-400 focus:ring-brand-500 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-600 transition-all duration-200 hover:bg-gray-200 focus:ring-2 focus:outline-none md:hidden dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+						aria-label="Open mobile menu"
+						class="hover:text-brand-600 dark:hover:text-brand-400 focus:ring-brand-500 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-600 transition-all duration-200 hover:bg-gray-200 focus:ring-2 focus:outline-none md:hidden dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
 						id="mobile-menu-button"
 					>
 						<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path
-								d="M4 6h16M4 12h16M4 18h16"          stroke-linecap="round"          stroke-linejoin="round"          stroke-width="2"></path>
+								d="M4 6h16M4 12h16M4 18h16"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"></path>
 						</svg>
 					</button>
 				</div>
@@ -171,11 +184,18 @@ const currentPath = Astro.url.pathname;
 				class="header__mobile-menu hidden border-t border-gray-200 md:hidden dark:border-gray-800"
 				id="mobile-menu"
 			>
-				<nav aria-label="Mobile navigation" class="container py-4" role="navigation">
+				<nav aria-label="Mobile navigation" class="px-4 py-4" role="navigation">
 					<ul class="space-y-4" role="menubar">
 						<li role="none">
 							<a
-								class:list={[`block px-4 py-2 rounded-xl text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors`,{"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400": currentPath.startsWith("/apps")}]}          href="/apps"
+								class:list={[
+									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
+									{
+										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
+											currentPath.startsWith("/apps"),
+									},
+								]}
+								href="/apps"
 								role="menuitem"
 							>
 								Apps
@@ -183,7 +203,14 @@ const currentPath = Astro.url.pathname;
 						</li>
 						<li role="none">
 							<a
-								class:list={[`block px-4 py-2 rounded-xl text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors`,{"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400": currentPath === "/privacy"}]}          href="/privacy"
+								class:list={[
+									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
+									{
+										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
+											currentPath === "/privacy",
+									},
+								]}
+								href="/privacy"
 								role="menuitem"
 							>
 								Privacy
@@ -191,7 +218,14 @@ const currentPath = Astro.url.pathname;
 						</li>
 						<li role="none">
 							<a
-								class:list={[`block px-4 py-2 rounded-xl text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors`,{"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400": currentPath === "/contact"}]}          href="/contact"
+								class:list={[
+									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
+									{
+										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
+											currentPath === "/contact",
+									},
+								]}
+								href="/contact"
 								role="menuitem"
 							>
 								Contact
@@ -199,7 +233,14 @@ const currentPath = Astro.url.pathname;
 						</li>
 						<li role="none">
 							<a
-								class:list={[`block px-4 py-2 rounded-xl text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors`,{"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400": currentPath.startsWith("/admin")}]}          href="/admin"
+								class:list={[
+									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
+									{
+										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
+											currentPath.startsWith("/admin"),
+									},
+								]}
+								href="/admin"
 								role="menuitem"
 							>
 								Admin Panel
@@ -215,15 +256,15 @@ const currentPath = Astro.url.pathname;
 			{
 				showHero && (
 					<section class="hero gradient-bg py-24 sm:py-32">
-						<div class="container">
+						<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 							<slot name="hero" />
 						</div>
 					</section>
 				)
 			}
 
-			<div class:list={{"py-16 sm:py-24": showHero, "py-8 sm:py-12": !showHero}}>
-				<div class="container">
+			<div class:list={{ "py-16 sm:py-24": showHero, "py-8 sm:py-12": !showHero }}>
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 					<slot />
 				</div>
 			</div>
@@ -234,7 +275,7 @@ const currentPath = Astro.url.pathname;
 			class="footer border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900/50"
 			role="contentinfo"
 		>
-			<div class="container">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				<!-- Main footer content -->
 				<div class="footer__content grid gap-8 py-12 md:grid-cols-4">
 					<!-- Company info -->
@@ -243,7 +284,7 @@ const currentPath = Astro.url.pathname;
 							<div
 								class="from-brand-500 to-brand-600 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br"
 							>
-								<img alt="FusionCore Apps" class="h-5 w-5 brightness-0 invert" src="/logo.svg" />
+								<Logo class="from-brand-500 to-brand-600 h-5 w-5" />
 							</div>
 							<span class="text-lg font-bold text-gray-900 dark:text-white">FusionCore Apps</span>
 						</a>
@@ -253,8 +294,11 @@ const currentPath = Astro.url.pathname;
 						</p>
 						<div class="footer__social flex items-center gap-4">
 							<a
-								aria-label="Visit our Google Play Store"          class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-400 transition-colors"          href="https://play.google.com/store/apps/developer?id=FusionCore+Apps"
-								rel="noopener noreferrer"          target="_blank"
+								aria-label="Visit our Google Play Store"
+								class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-400 transition-colors"
+								href="https://play.google.com/store/apps/developer?id=FusionCore+Apps"
+								rel="noopener noreferrer"
+								target="_blank"
 							>
 								<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
 									<path
@@ -268,23 +312,26 @@ const currentPath = Astro.url.pathname;
 					<!-- Quick links -->
 					<div class="footer__section">
 						<h3 class="footer__title mb-4 font-semibold text-gray-900 dark:text-white">
-							Quick Links
+							Quick links
 						</h3>
 						<ul class="footer__links space-y-3">
 							<li>
 								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"           href="/apps"
-									>All Apps</a>
+									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
+									href="/apps">All apps</a
+								>
 							</li>
 							<li>
 								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"           href="/privacy"
-									>Privacy Policy</a>
+									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
+									href="/privacy">Privacy policy</a
+								>
 							</li>
 							<li>
 								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"           href="/contact"
-									>Contact Us</a>
+									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
+									href="/contact">Contact us</a
+								>
 							</li>
 						</ul>
 					</div>
@@ -295,18 +342,21 @@ const currentPath = Astro.url.pathname;
 						<ul class="footer__links space-y-3">
 							<li>
 								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"           href="/contact"
-									>Help Center</a>
+									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
+									href="/contact">Help center</a
+								>
 							</li>
 							<li>
 								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"           href="/contact"
-									>Report Bug</a>
+									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
+									href="/contact">Report bug</a
+								>
 							</li>
 							<li>
 								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"           href="/contact"
-									>Feature Request</a>
+									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
+									href="/contact">Feature request</a
+								>
 							</li>
 						</ul>
 					</div>
@@ -321,10 +371,12 @@ const currentPath = Astro.url.pathname;
 					</p>
 					<div class="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
 						<a
-							class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"         href="/privacy">Privacy</a
+							class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+							href="/privacy">Privacy</a
 						>
 						<a
-							class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"         href="/contact">Terms</a
+							class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+							href="/contact">Terms</a
 						>
 					</div>
 				</div>

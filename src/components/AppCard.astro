@@ -12,7 +12,7 @@ const price = app.data.price || 'Free';
 ---
 
 <article class:list={[`app-card card card--elevated group hover:scale-105 transition-all duration-300`,{"app-card--featured": featured}]}>
-  <a class="app-card__link block" href={`/apps/${app.slug}`}>
+  <a aria-label={`${app.data.title} app`} class="app-card__link block" href={`/apps/${app.slug}`}>
     <!-- App Icon & Badge -->
     <div class="app-card__header relative p-6 pb-4">
       <div class="flex items-start gap-4">

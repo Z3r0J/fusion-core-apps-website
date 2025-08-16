@@ -1,29 +1,28 @@
 ---
 import type { CollectionEntry } from "astro:content";
 const { app } = Astro.props as { app: CollectionEntry<"apps"> };
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "MobileApplication",
+	"name": app.data.title,
+	"operatingSystem": "Android",
+	"applicationCategory": app.data.category,
+	"description": app.data.description,
+	"offers": {
+		"@type": "Offer",
+		"price": app.data.price === "Free" ? "0" : app.data.price,
+		"priceCurrency": "USD",
+	},
+	"publisher": { "@type": "Organization", "name": "FusionCore Apps" },
+	"url": new URL(`/apps/${app.slug}`, Astro.site).href,
+	"image": app.data.icon ? new URL(app.data.icon, Astro.site).href : undefined,
+	"applicationStore": app.data.playUrl,
+};
 ---
 
-<script
-	set:html={JSON.stringify(
-		{
-			"@context": "https://schema.org",
-			"@type": "MobileApplication",
-			"name": app.data.title,
-			"operatingSystem": "Android",
-			"applicationCategory": app.data.category,
-			"description": app.data.description,
-			"offers": {
-				"@type": "Offer",
-				"price": app.data.price === "Free" ? "0" : app.data.price,
-				"priceCurrency": "USD",
-			},
-			"publisher": { "@type": "Organization", "name": "FusionCore Apps" },
-			"url": new URL(`/apps/${app.slug}`, Astro.site).href,
-			"image": app.data.icon ? new URL(app.data.icon, Astro.site).href : undefined,
-			"applicationStore": app.data.playUrl,
-		},
-		null,
-		2,
-	)}
-	type="application/ld+json"
-/>
+<script define:vars={{ structuredData }} is:inline>
+	(function (data) {
+		this.textContent = JSON.stringify(data);
+	})(structuredData);
+</script>

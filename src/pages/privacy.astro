@@ -1,46 +1,37 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getEntry } from "astro:content";
 
-const policy = await getEntry('legal', 'privacy');      // <-- your MD file
-const { Content } = await policy.render();              // compile MD to a component
+const policy = await getEntry("legal", "privacy"); // <-- your MD file
+if (!policy) throw new Error("Privacy policy not found");
+const { Content } = await policy.render(); // compile MD to a component
 
 const title = `${policy.data.title} — FusionCore Apps`;
-const description = 'Privacy policy for FusionCore Apps mobile applications and website.';
+const description = "Privacy policy for FusionCore Apps mobile applications and website.";
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const updated = policy.data.updatedAt;
 ---
-<BaseLayout {title} {description} {canonical}>
-  <!-- SEO: JSON-LD -->
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Privacy Policy",
-      "url": canonical,
-      "dateModified": updated
-    })}
-  </script>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Header -->
-    <header class="text-center mb-10">
-      <h1 class="text-4xl sm:text-5xl font-bold">Privacy Policy</h1>
-      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Last updated: {updated}</p>
-    </header>
+<BaseLayout {canonical} {description} {title}>
+	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+		<!-- Header -->
+		<header class="mb-10 text-center">
+			<h1 class="text-4xl font-bold sm:text-5xl">Privacy Policy</h1>
+			<p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Last updated: {updated}</p>
+		</header>
 
-    <!-- Content card with Typography styles -->
-    <div class="card p-8">
-      <article class="prose prose-lg max-w-none dark:prose-invert
-                      prose-a:text-brand-600 hover:prose-a:text-brand-700
-                      prose-strong:text-gray-900 dark:prose-strong:text-gray-100">
-        <Content />
-      </article>
-    </div>
+		<!-- Content card with Typography styles -->
+		<div class="card p-8">
+			<article
+				class="prose prose-lg dark:prose-invert prose-a:text-brand-600 hover:prose-a:text-brand-700 prose-strong:text-gray-900 dark:prose-strong:text-gray-100 max-w-none"
+			>
+				<Content />
+			</article>
+		</div>
 
-    <!-- Bottom CTA -->
-    <div class="text-center mt-12">
-      <a href="/contact" class="button button--primary">Contact Us</a>
-    </div>
-  </div>
+		<!-- Bottom CTA -->
+		<div class="mt-12 text-center">
+			<a class="button button--primary" href="/contact">Contact Us</a>
+		</div>
+	</div>
 </BaseLayout>

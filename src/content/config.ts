@@ -14,6 +14,7 @@ const apps = defineCollection({
     price: z.string().default('Free'),
     version: z.string().optional(),
     lastUpdated: z.string().optional(),
+	downloads: z.number().default(0),
     screenshots: z.array(z.string()).default([]),
   }),
 });
