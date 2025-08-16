@@ -29,7 +29,6 @@ const currentPath = Astro.url.pathname;
 		<meta content={noindex ? "noindex,nofollow" : "index,follow"} name="robots" />
 		<link href={canonical ?? new URL(Astro.url.pathname, Astro.site).href} rel="canonical" />
 
-		<!-- Open Graph / Facebook -->
 		<meta content="website" property="og:type" />
 		<meta content={new URL(Astro.url.pathname, Astro.site).href} property="og:url" />
 		<meta content={title} property="og:title" />
@@ -37,29 +36,21 @@ const currentPath = Astro.url.pathname;
 		<meta content={new URL(ogImage, Astro.site).href} property="og:image" />
 		<meta content="FusionCore Apps" property="og:site_name" />
 
-		<!-- Twitter -->
 		<meta content="summary_large_image" name="twitter:card" />
 		<meta content={new URL(Astro.url.pathname, Astro.site).href} name="twitter:url" />
 		<meta content={title} name="twitter:title" />
 		<meta content={description} name="twitter:description" />
 		<meta content={new URL(ogImage, Astro.site).href} name="twitter:image" />
 
-		<!-- Theme and appearance -->
 		<meta content="#3d6a45" name="theme-color" />
 		<meta content="light dark" name="color-scheme" />
 		<meta content="yes" name="apple-mobile-web-app-capable" />
 		<meta content="default" name="apple-mobile-web-app-status-bar-style" />
 
-		<!-- Favicon -->
 		<link href="/logo.svg" rel="icon" type="image/svg+xml" />
 		<link href="/logo.svg" rel="apple-touch-icon" />
 
-		<!-- Preconnect to external domains -->
-		<link href="https://fonts.googleapis.com" rel="preconnect" />
-		<link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
-
-		<!-- JSON-LD structured data -->
-		<script type="application/ld+json">
+		<script is:inline type="application/ld+json">
 			{
 				"@context": "https://schema.org",
 				"@type": "Organization",
@@ -72,7 +63,6 @@ const currentPath = Astro.url.pathname;
 			}
 		</script>
 
-		<!-- Theme initialization script (blocking to prevent FOUC) -->
 		<script is:inline>
 			(function () {
 				const stored = localStorage.getItem("theme");
