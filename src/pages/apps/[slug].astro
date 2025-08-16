@@ -22,7 +22,11 @@ const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
 	<AppJsonLd app={app} />
 
 	<article class="grid gap-8 lg:grid-cols-[auto,1fr]">
-		<img alt={app.data.title} class="h-24 w-24 rounded-2xl" src={app.data.icon ?? "/placeholder-app.svg"} />
+		<img
+			alt={app.data.title}
+			class="h-24 w-24 rounded-2xl"
+			src={app.data.icon ?? "/placeholder-app.svg"}
+		/>
 		<div>
 			<h1 class="text-3xl font-bold">{app.data.title}</h1>
 			<p class="mt-2 text-gray-700">{app.data.tagline}</p>
