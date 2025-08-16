@@ -150,7 +150,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 							<label class="label" for="subject">Subject *</label>
 							<select class="input" id="subject" name="subject" required>
 								<option value="">Select a subject</option>
-								<option value="app-support">📱 App Support</option>
+								<option value="app-support">📱 App support</option>
 								<option value="bug-report">🐛 Bug report</option>
 								<option value="feature-request">💡 Feature request</option>
 								<option value="business-inquiry">💼 Business inquiry</option>
@@ -307,7 +307,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 <script>
 	// Contact Form Logic
-	document.addEventListener("DOMContentLoaded", function () {
+	document.addEventListener("astro:page-load", async () => {
 		var form = document.getElementById("contact-form") as HTMLFormElement | null;
 		if (!form) return;
 

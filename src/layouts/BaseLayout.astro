@@ -375,7 +375,7 @@ const currentPath = Astro.url.pathname;
 
 		<!-- Mobile menu toggle script -->
 		<script is:inline>
-			document.addEventListener("DOMContentLoaded", function () {
+			document.addEventListener("astro:page-load", async () => {
 				const mobileMenuButton = document.getElementById("mobile-menu-button");
 				const mobileMenu = document.getElementById("mobile-menu");
 

@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import PlaceholderApp from "@/public/placeholder-app.svg";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-
 const apps = await getCollection("apps");
 ---
 
@@ -113,7 +114,7 @@ const apps = await getCollection("apps");
 						<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 						></path>
 					</svg>
-					Add New App
+					Add new app
 				</button>
 			</div>
 
@@ -122,11 +123,17 @@ const apps = await getCollection("apps");
 					<div class="grid gap-6">
 						{apps.map((app) => (
 							<div class="card flex items-center gap-6 p-6">
-								<img
-									alt={`${app.data.title} icon`}
-									class="h-16 w-16 rounded-2xl shadow-sm"
-									src={app.data.icon ?? "/placeholder-app.svg"}
-								/>
+								{app.data.icon ? (
+									<Image
+										alt={app.data.title}
+										class="h-16 w-16 rounded-2xl shadow-sm"
+										height={64}
+										src={app.data.icon}
+										width={64}
+									/>
+								) : (
+									<PlaceholderApp class="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900" />
+								)}
 
 								<div class="flex-1">
 									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
@@ -435,7 +442,7 @@ Feature 3"
 
 <script>
 	// IIFE keeps everything out of global scope except what we explicitly expose
-	(() => {
+	document.addEventListener("astro:page-load", async () => {
 		const modal = document.getElementById("publishModal") as HTMLDivElement | null;
 		const form = document.getElementById("publishForm") as HTMLFormElement | null;
 
@@ -492,7 +499,7 @@ Feature 3"
 				closePublishModal();
 			}
 		});
-	})();
+	});
 </script>
 
 <style>

@@ -1,6 +1,6 @@
+import PlaceholderApp from "@/public/placeholder-app.svg";
+import { Download, Filter, Grid, List, Search, Star } from "lucide-react";
 import React, { useMemo, useState } from "react";
-import { Search, Filter, Grid, List, Star, Download } from "lucide-react";
-
 export type App = {
 	slug: string;
 	title: string;
@@ -59,14 +59,18 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 				aria-labelledby={`app-${app.slug}`}
 			>
 				<a href={`/apps/${app.slug}`} className="flex w-full items-center gap-6">
-					<img
-						src={app.icon ?? "/placeholder-app.svg"}
-						alt={`${app.title} icon`}
-						className="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900"
-						loading="lazy"
-						width={64}
-						height={64}
-					/>
+					{app.icon ? (
+						<img
+							alt={`${app.title} icon`}
+							className="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900"
+							height={64}
+							loading="eager"
+							src={app.icon}
+							width={64}
+						/>
+					) : (
+						<PlaceholderApp class="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900" />
+					)}
 					<div className="min-w-0 flex-1">
 						<h3
 							id={`app-${app.slug}`}
@@ -112,14 +116,18 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 			<a href={`/apps/${app.slug}`} className="focus-ring block rounded-2xl">
 				<div className="p-6 pb-4">
 					<div className="flex items-start gap-4">
-						<img
-							src={app.icon ?? "/placeholder-app.svg"}
-							alt={`${app.title} icon`}
-							className="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900"
-							loading="lazy"
-							width={64}
-							height={64}
-						/>
+						{app.icon ? (
+							<img
+								alt={`${app.title} icon`}
+								className="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900"
+								height={64}
+								loading="eager"
+								src={app.icon}
+								width={64}
+							/>
+						) : (
+							<PlaceholderApp class="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900" />
+						)}
 						<div className="min-w-0 flex-1">
 							<h3
 								id={`app-${app.slug}`}

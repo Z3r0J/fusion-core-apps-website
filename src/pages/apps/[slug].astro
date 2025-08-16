@@ -1,8 +1,10 @@
 ---
 import AppJsonLd from "@/components/AppJsonLd.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import GetInGooglePlayBadge from "@/public/google-play-badge.svg";
+import PlaceholderApp from "@/public/placeholder-app.svg";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-
 export async function getStaticPaths() {
 	const apps = await getCollection("apps");
 	return apps.map((app) => ({
@@ -22,11 +24,20 @@ const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
 	<AppJsonLd app={app} />
 
 	<article class="grid gap-8 lg:grid-cols-[auto,1fr]">
-		<img
-			alt={app.data.title}
-			class="h-24 w-24 rounded-2xl"
-			src={app.data.icon ?? "/placeholder-app.svg"}
-		/>
+		{
+			app.data.icon ? (
+				<Image
+					alt={app.data.title}
+					class="h-24 w-24 rounded-2xl"
+					height={96}
+					loading={"eager"}
+					src={app.data.icon}
+					width={96}
+				/>
+			) : (
+				<PlaceholderApp class="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900" />
+			)
+		}
 		<div>
 			<h1 class="text-3xl font-bold">{app.data.title}</h1>
 			<p class="mt-2 text-gray-700">{app.data.tagline}</p>
@@ -38,16 +49,7 @@ const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
 					rel="noopener nofollow sponsored"
 					target="_blank"
 				>
-					<img
-						alt="Get it on Google Play"
-						class="h-14 w-auto select-none"
-						decoding="async"
-						fetchpriority="high"
-						height="80"
-						loading="eager"
-						src="/GetItOnGooglePlay_Badge_Web_color_English.png"
-						width="270"
-					/>
+					<GetInGooglePlayBadge class="w-42 select-none" />
 				</a>
 
 				<a class="rounded-xl border px-5 py-3 font-medium hover:bg-gray-50" href="/apps">
@@ -70,12 +72,19 @@ const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
 	</section>
 
 	{
-		app.data.screenshots?.length ? (
+		app.data.screenshots?.length > 0 ? (
 			<section class="mt-10">
 				<h2 class="mb-4 text-2xl font-semibold">Screenshots</h2>
 				<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					{app.data.screenshots.map((src) => (
-						<img alt={app.data.title} class="rounded-xl border" loading="lazy" src={src} />
+						<Image
+							alt={app.data.title}
+							class="rounded-xl border"
+							height={360}
+							loading="eager"
+							src={src}
+							width={640}
+						/>
 					))}
 				</div>
 			</section>
