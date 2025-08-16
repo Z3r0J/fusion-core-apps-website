@@ -89,24 +89,24 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 							</span>
 						</div>
 					</div>
-					<div className="flex items-center gap-3">
-						<span
-							className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold ${priceBadge}`}
-						>
-							{price}
-						</span>
-						<a
-							href={app.playUrl}
-							target="_blank"
-							rel="noopener noreferrer sponsored"
-							className="bg-brand-50 dark:bg-brand-900/20 text-brand-700 dark:text-brand-400 border-brand-200 dark:border-brand-700 hover:bg-brand-100 dark:hover:bg-brand-800 flex items-center gap-1 rounded-full border px-3 py-1 text-sm font-medium transition-colors"
-							aria-label={`Download ${app.title} on Google Play`}
-						>
-							<Download className="h-4 w-4" />
-							<span>Download</span>
-						</a>
-					</div>
 				</a>
+				<div className="flex items-center gap-3">
+					<span
+						className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold ${priceBadge}`}
+					>
+						{price}
+					</span>
+					<a
+						href={app.playUrl}
+						target="_blank"
+						rel="noopener noreferrer sponsored"
+						className="bg-brand-50 dark:bg-brand-900/20 text-brand-700 dark:text-brand-400 border-brand-200 dark:border-brand-700 hover:bg-brand-100 dark:hover:bg-brand-800 flex items-center gap-1 rounded-full border px-3 py-1 text-sm font-medium transition-colors"
+						aria-label={`Download ${app.title} on Google Play`}
+					>
+						<Download className="h-4 w-4" />
+						<span>Download</span>
+					</a>
+				</div>
 			</article>
 		);
 	}
