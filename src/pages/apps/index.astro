@@ -3,15 +3,20 @@ import { getCollection } from "astro:content";
 import AppGrid from "../../components/AppGrid.tsx";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const entries = await getCollection("apps");
-const apps = entries.map((e) => ({
-	title: e.data.title,
-	slug: e.slug,
-	icon: e.data.icon,
-	tagline: e.data.tagline,
-	category: e.data.category,
-	tags: e.data.tags,
-	playUrl: e.data.playUrl,
+const entries = await getCollection('apps');
+const apps = entries.map(({ slug, data }) => ({
+  slug,
+  title: data.title,
+  tagline: data.tagline,
+  description: data.description,
+  category: data.category,
+  icon: data.icon,
+  playUrl: data.playUrl,
+  price: data.price ?? 'Free',
+  tags: data.tags ?? [],
+  // optional: if you add these to frontmatter later
+  rating: 4.5,
+  downloadsLabel: '1K+',
 }));
 ---
 
