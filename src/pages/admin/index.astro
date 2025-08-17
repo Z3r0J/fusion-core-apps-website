@@ -1,378 +1,449 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-
-const apps = await getCollection('apps');
+import PlaceholderApp from "@/assets/placeholder-app.svg";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { ChartNoAxesCombined, Eye, Layers, Plus, SquarePen, Trash2, X } from "lucide-react";
+const apps = await getCollection("apps");
 ---
 
-<BaseLayout 
-  title="Admin Panel — FusionCore Apps" 
-  description="Manage and publish your mobile applications"
-  noindex={true}
+<BaseLayout
+	description="Manage and publish your mobile applications"
+	noindex={true}
+	title="Admin Panel — FusionCore Apps"
 >
-  <div class="admin-panel">
-    <!-- Header -->
-    <div class="admin-panel__header border-b border-gray-200 dark:border-gray-800 pb-8 mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-        Admin Panel
-      </h1>
-      <p class="text-gray-600 dark:text-gray-400">
-        Manage and publish your mobile applications to the store.
-      </p>
-    </div>
-    
-    <!-- Quick Actions -->
-    <div class="admin-panel__actions grid gap-6 md:grid-cols-3 mb-12">
-      <button 
-        onclick="openPublishModal()"
-        class="button button--primary p-6 text-left justify-start"
-      >
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="font-semibold">Publish New App</h3>
-            <p class="text-sm opacity-90">Add a new application to your store</p>
-          </div>
-        </div>
-      </button>
-      
-      <a href="/admin/apps" class="button button--secondary p-6 text-left justify-start">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-900 dark:text-white">Manage Apps</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Edit or remove existing apps</p>
-          </div>
-        </div>
-      </a>
-      
-      <a href="/admin/analytics" class="button button--secondary p-6 text-left justify-start">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00-2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-900 dark:text-white">Analytics</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">View download stats and metrics</p>
-          </div>
-        </div>
-      </a>
-    </div>
-    
-    <!-- Current Apps -->
-    <div class="admin-panel__apps">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-          Published Apps ({apps.length})
-        </h2>
-        <button 
-          onclick="openPublishModal()"
-          class="button button--primary"
-        >
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-          </svg>
-          Add New App
-        </button>
-      </div>
-      
-      {apps.length > 0 ? (
-        <div class="grid gap-6">
-          {apps.map((app) => (
-            <div class="card p-6 flex items-center gap-6">
-              <img 
-                src={app.data.icon ?? '/placeholder-app.svg'} 
-                alt={`${app.data.title} icon`}
-                class="w-16 h-16 rounded-2xl shadow-sm"
-              />
-              
-              <div class="flex-1">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                  {app.data.title}
-                </h3>
-                <p class="text-gray-600 dark:text-gray-400 mt-1">
-                  {app.data.tagline}
-                </p>
-                <div class="flex items-center gap-4 mt-3">
-                  <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                    {app.data.category}
-                  </span>
-                  <span class="text-sm text-gray-500 dark:text-gray-400">
-                    {app.data.downloads || '1K+'} downloads
-                  </span>
-                </div>
-              </div>
-              
-              <div class="flex items-center gap-3">
-                <a 
-                  href={`/apps/${app.slug}`}
-                  class="button button--ghost"
-                  target="_blank"
-                >
-                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                  View
-                </a>
-                <button 
-                  onclick={`editApp('${app.slug}')`}
-                  class="button button--secondary"
-                >
-                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                  Edit
-                </button>
-                <button 
-                  onclick={`deleteApp('${app.slug}', '${app.data.title}')`}
-                  class="button button--danger"
-                >
-                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                  </svg>
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div class="text-center py-16">
-          <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No Apps Published</h3>
-          <p class="text-gray-600 dark:text-gray-400 mb-6">Get started by publishing your first mobile application.</p>
-          <button 
-            onclick="openPublishModal()"
-            class="button button--primary"
-          >
-            Publish Your First App
-          </button>
-        </div>
-      )}
-    </div>
-  </div>
-  
-  <!-- Publish App Modal -->
-  <div id="publishModal" class="modal fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
-    <div class="modal__content bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-2xl mx-auto mt-8 max-h-[90vh] overflow-y-auto">
-      <div class="modal__header p-6 border-b border-gray-200 dark:border-gray-800">
-        <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Publish New App</h2>
-          <button 
-            onclick="closePublishModal()"
-            class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
-      
-      <form id="publishForm" class="modal__body p-6 space-y-6">
-        <!-- App Basic Info -->
-        <div class="grid gap-6 md:grid-cols-2">
-          <div>
-            <label class="label" for="appTitle">App Title *</label>
-            <input type="text" id="appTitle" name="title" class="input" placeholder="My Awesome App" required />
-          </div>
-          
-          <div>
-            <label class="label" for="appCategory">Category *</label>
-            <select id="appCategory" name="category" class="input" required>
-              <option value="">Select category</option>
-              <option value="Productivity">Productivity</option>
-              <option value="Education">Education</option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Lifestyle">Lifestyle</option>
-              <option value="Social">Social</option>
-              <option value="Games">Games</option>
-              <option value="Utilities">Utilities</option>
-              <option value="Business">Business</option>
-              <option value="Health & Fitness">Health & Fitness</option>
-              <option value="Photography">Photography</option>
-            </select>
-          </div>
-        </div>
-        
-        <div>
-          <label class="label" for="appTagline">Tagline *</label>
-          <input type="text" id="appTagline" name="tagline" class="input" placeholder="Short description of your app" required />
-        </div>
-        
-        <div>
-          <label class="label" for="appDescription">Description *</label>
-          <textarea id="appDescription" name="description" rows="4" class="input" placeholder="Detailed description of your app's features and benefits" required></textarea>
-        </div>
-        
-        <!-- App URLs and Links -->
-        <div class="grid gap-6 md:grid-cols-2">
-          <div>
-            <label class="label" for="playStoreUrl">Google Play Store URL *</label>
-            <input type="url" id="playStoreUrl" name="playStoreUrl" class="input" placeholder="https://play.google.com/store/apps/details?id=..." required />
-          </div>
-          
-          <div>
-            <label class="label" for="appStoreUrl">Apple App Store URL</label>
-            <input type="url" id="appStoreUrl" name="appStoreUrl" class="input" placeholder="https://apps.apple.com/app/..." />
-          </div>
-        </div>
-        
-        <!-- App Icon and Screenshots -->
-        <div class="grid gap-6 md:grid-cols-2">
-          <div>
-            <label class="label" for="appIcon">App Icon URL *</label>
-            <input type="url" id="appIcon" name="icon" class="input" placeholder="https://example.com/icon.png" required />
-          </div>
-          
-          <div>
-            <label class="label" for="appPrice">Price</label>
-            <input type="text" id="appPrice" name="price" class="input" placeholder="Free" value="Free" />
-          </div>
-        </div>
-        
-        <div>
-          <label class="label" for="appScreenshots">Screenshots URLs (comma separated)</label>
-          <textarea id="appScreenshots" name="screenshots" rows="3" class="input" placeholder="https://example.com/screenshot1.png, https://example.com/screenshot2.png"></textarea>
-        </div>
-        
-        <!-- App Metrics -->
-        <div class="grid gap-6 md:grid-cols-3">
-          <div>
-            <label class="label" for="appRating">Rating (1-5)</label>
-            <input type="number" id="appRating" name="rating" class="input" min="1" max="5" step="0.1" value="4.5" />
-          </div>
-          
-          <div>
-            <label class="label" for="appDownloads">Downloads</label>
-            <input type="text" id="appDownloads" name="downloads" class="input" placeholder="1K+" value="1K+" />
-          </div>
-          
-          <div>
-            <label class="label" for="appVersion">Version</label>
-            <input type="text" id="appVersion" name="version" class="input" placeholder="1.0.0" value="1.0.0" />
-          </div>
-        </div>
-        
-        <!-- App Features -->
-        <div>
-          <label class="label" for="appFeatures">Key Features (one per line)</label>
-          <textarea id="appFeatures" name="features" rows="5" class="input" placeholder="Feature 1&#10;Feature 2&#10;Feature 3"></textarea>
-        </div>
-        
-        <!-- Submit Buttons -->
-        <div class="flex items-center justify-end gap-4 pt-4 border-t border-gray-200 dark:border-gray-800">
-          <button type="button" onclick="closePublishModal()" class="button button--secondary">
-            Cancel
-          </button>
-          <button type="submit" class="button button--primary">
-            Publish App
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</BaseLayout>
+	<div class="admin-panel">
+		<!-- Header -->
+		<div class="admin-panel__header mb-8 border-b border-gray-200 pb-8 dark:border-gray-800">
+			<h1 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Admin panel</h1>
+			<p class="text-gray-600 dark:text-gray-400">
+				Manage and publish your mobile applications to the store.
+			</p>
+		</div>
 
-<script>
-  function openPublishModal() {
-    document.getElementById('publishModal').classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-  
-  function closePublishModal() {
-    document.getElementById('publishModal').classList.add('hidden');
-    document.body.style.overflow = 'auto';
-    document.getElementById('publishForm').reset();
-  }
-  
-  function editApp(slug) {
-    // In a real app, this would open an edit modal with the app data
-    alert(`Edit functionality for app: ${slug}\n\nThis would open an edit modal with the current app data.`);
-  }
-  
-  function deleteApp(slug, title) {
-    if (confirm(`Are you sure you want to delete "${title}"?\n\nThis action cannot be undone.`)) {
-      // In a real app, this would make an API call to delete the app
-      alert(`Delete functionality for app: ${slug}\n\nThis would remove the app from your store.`);
-    }
-  }
-  
-  // Handle form submission
-  document.getElementById('publishForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(e.target);
-    const appData = Object.fromEntries(formData);
-    
-    // Process features
-    if (appData.features) {
-      appData.features = appData.features.split('\n').filter(f => f.trim()).map(f => f.trim());
-    }
-    
-    // Process screenshots
-    if (appData.screenshots) {
-      appData.screenshots = appData.screenshots.split(',').map(s => s.trim()).filter(s => s);
-    }
-    
-    console.log('App data to publish:', appData);
-    
-    // In a real app, this would make an API call to create the app
-    alert('App would be published!\n\nCheck the console for the app data that would be sent to the server.');
-    
-    closePublishModal();
-  });
-  
-  // Close modal when clicking outside
-  document.getElementById('publishModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-      closePublishModal();
-    }
-  });
-  
-  // Close modal with Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !document.getElementById('publishModal').classList.contains('hidden')) {
-      closePublishModal();
-    }
-  });
-</script>
+		<!-- Quick Actions -->
+		<div class="admin-panel__actions mb-12 grid gap-6 md:grid-cols-3">
+			<button
+				aria-label="Publish new app"
+				class="button button--primary justify-start p-6 text-left"
+				data-open-modal
+			>
+				<div class="flex items-center gap-4">
+					<div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20">
+						<Plus className="h-6 w-6" />
+					</div>
+					<div>
+						<h3 class="font-semibold">Publish new app</h3>
+						<p class="text-sm opacity-90">Add a new application to your store</p>
+					</div>
+				</div>
+			</button>
 
-<style>
-  .modal {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 2rem;
-  }
-  
-  .modal__content {
-    animation: modalSlideIn 0.3s ease-out;
-  }
-  
-  @keyframes modalSlideIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95) translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-  }
-</style>
+			<a
+				aria-label="Manage Apps"
+				class="button button--secondary justify-start p-6 text-left"
+				href="/admin/apps"
+			>
+				<div class="flex items-center gap-4">
+					<div
+						class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800"
+					>
+						<Layers className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+					</div>
+					<div>
+						<h3 class="font-semibold text-gray-900 dark:text-white">Manage apps</h3>
+						<p class="text-sm text-gray-600 dark:text-gray-400">Edit or remove existing apps</p>
+					</div>
+				</div>
+			</a>
+
+			<a
+				aria-label="Analytics"
+				class="button button--secondary justify-start p-6 text-left"
+				href="/admin/analytics"
+			>
+				<div class="flex items-center gap-4">
+					<div
+						class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800"
+					>
+						<ChartNoAxesCombined className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+					</div>
+					<div>
+						<h3 class="font-semibold text-gray-900 dark:text-white">Analytics</h3>
+						<p class="text-sm text-gray-600 dark:text-gray-400">View download stats and metrics</p>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<!-- Current Apps -->
+		<div class="admin-panel__apps">
+			<div class="mb-6 flex items-center justify-between">
+				<h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+					Published apps ({apps.length})
+				</h2>
+				<button class="button button--primary" data-open-modal>
+					<Plus className="mr-2 h-5 w-5" />
+					Add new app
+				</button>
+			</div>
+
+			{
+				apps.length > 0 ? (
+					<div class="grid gap-6">
+						{apps.map((app) => (
+							<div class="card flex items-center gap-6 p-6">
+								{app.data.icon ? (
+									<Image
+										alt={app.data.title}
+										class="h-16 w-16 rounded-2xl shadow-sm"
+										height={64}
+										loading={"eager"}
+										src={app.data.icon}
+										width={64}
+									/>
+								) : (
+									<PlaceholderApp class="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900" />
+								)}
+
+								<div class="flex-1">
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+										{app.data.title}
+									</h3>
+									<p class="mt-1 text-gray-600 dark:text-gray-400">{app.data.tagline}</p>
+									<div class="mt-3 flex items-center gap-4">
+										<span class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+											{app.data.category}
+										</span>
+										<span class="text-sm text-gray-500 dark:text-gray-400">
+											{app.data.downloads || "1K+"} downloads
+										</span>
+									</div>
+								</div>
+
+								<div class="flex items-center gap-3">
+									<a class="button button--ghost" href={`/apps/${app.slug}`} target="_blank">
+										<Eye className="mr-2 h-4 w-4" />
+										View
+									</a>
+									<button class="button button--secondary" onclick={`editApp('${app.slug}')`}>
+										<SquarePen className="mr-2 h-4 w-4" />
+										Edit
+									</button>
+									<button
+										class="button button--danger"
+										onclick={`deleteApp('${app.slug}', '${app.data.title}')`}
+									>
+										<Trash2 className="mr-2 h-4 w-4" />
+										Delete
+									</button>
+								</div>
+							</div>
+						))}
+					</div>
+				) : (
+					<div class="py-16 text-center">
+						<div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800">
+							<Layers className="h-12 w-12 text-gray-400" />
+						</div>
+						<h3 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+							No apps published
+						</h3>
+						<p class="mb-6 text-gray-600 dark:text-gray-400">
+							Get started by publishing your first mobile application.
+						</p>
+						<button class="button button--primary" data-open-modal>
+							Publish your first app
+						</button>
+					</div>
+				)
+			}
+		</div>
+	</div>
+
+	<!-- Publish App Modal -->
+	<div
+		class="fixed inset-0 z-50 hidden items-start justify-center bg-black/50 p-8 backdrop-blur-sm"
+		id="publishModal"
+	>
+		<div
+			class="modal__content mx-auto mt-8 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl dark:bg-gray-900"
+		>
+			<div class="modal__header border-b border-gray-200 p-6 dark:border-gray-800">
+				<div class="flex items-center justify-between">
+					<h2 class="text-2xl font-bold text-gray-900 dark:text-white">Publish new app</h2>
+					<button
+						aria-label="Close publish modal"
+						class="flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+						data-close-modal
+					>
+						<X className="h-5 w-5" />
+					</button>
+				</div>
+			</div>
+
+			<form class="modal__body space-y-6 p-6" id="publishForm">
+				<!-- App Basic Info -->
+				<div class="grid gap-6 md:grid-cols-2">
+					<div>
+						<label class="label" for="appTitle">App title *</label>
+						<input
+							class="input"
+							id="appTitle"
+							name="title"
+							placeholder="My Awesome App"
+							required
+							type="text"
+						/>
+					</div>
+
+					<div>
+						<label class="label" for="appCategory">Category *</label>
+						<select class="input" id="appCategory" name="category" required>
+							<option value="">Select category</option>
+							<option value="Productivity">Productivity</option>
+							<option value="Education">Education</option>
+							<option value="Entertainment">Entertainment</option>
+							<option value="Lifestyle">Lifestyle</option>
+							<option value="Social">Social</option>
+							<option value="Games">Games</option>
+							<option value="Utilities">Utilities</option>
+							<option value="Business">Business</option>
+							<option value="Health & Fitness">Health & Fitness</option>
+							<option value="Photography">Photography</option>
+						</select>
+					</div>
+				</div>
+
+				<div>
+					<label class="label" for="appTagline">Tagline *</label>
+					<input
+						class="input"
+						id="appTagline"
+						name="tagline"
+						placeholder="Short description of your app"
+						required
+						type="text"
+					/>
+				</div>
+
+				<div>
+					<label class="label" for="appDescription">Description *</label>
+					<textarea
+						class="input"
+						id="appDescription"
+						name="description"
+						placeholder="Detailed description of your app's features and benefits"
+						required
+						rows="4"></textarea>
+				</div>
+
+				<!-- App URLs and Links -->
+				<div class="grid gap-6 md:grid-cols-2">
+					<div>
+						<label class="label" for="playStoreUrl">Google Play Store URL *</label>
+						<input
+							class="input"
+							id="playStoreUrl"
+							name="playStoreUrl"
+							placeholder="https://play.google.com/store/apps/details?id=..."
+							required
+							type="url"
+						/>
+					</div>
+
+					<div>
+						<label class="label" for="appStoreUrl">Apple App Store URL</label>
+						<input
+							class="input"
+							id="appStoreUrl"
+							name="appStoreUrl"
+							placeholder="https://apps.apple.com/app/..."
+							type="url"
+						/>
+					</div>
+				</div>
+
+				<!-- App Icon and Screenshots -->
+				<div class="grid gap-6 md:grid-cols-2">
+					<div>
+						<label class="label" for="appIcon">App Icon URL *</label>
+						<input
+							class="input"
+							id="appIcon"
+							name="icon"
+							placeholder="https://example.com/icon.png"
+							required
+							type="url"
+						/>
+					</div>
+
+					<div>
+						<label class="label" for="appPrice">Price</label>
+						<input
+							class="input"
+							id="appPrice"
+							name="price"
+							placeholder="Free"
+							type="text"
+							value="Free"
+						/>
+					</div>
+				</div>
+
+				<div>
+					<label class="label" for="appScreenshots">Screenshots URLs (comma separated)</label>
+					<textarea
+						class="input"
+						id="appScreenshots"
+						name="screenshots"
+						placeholder="https://example.com/screenshot1.png, https://example.com/screenshot2.png"
+						rows="3"></textarea>
+				</div>
+
+				<!-- App Metrics -->
+				<div class="grid gap-6 md:grid-cols-3">
+					<div>
+						<label class="label" for="appRating">Rating (1-5)</label>
+						<input
+							class="input"
+							id="appRating"
+							max="5"
+							min="1"
+							name="rating"
+							step="0.1"
+							type="number"
+							value="4.5"
+						/>
+					</div>
+
+					<div>
+						<label class="label" for="appDownloads">Downloads</label>
+						<input
+							class="input"
+							id="appDownloads"
+							name="downloads"
+							placeholder="1K+"
+							type="text"
+							value="1K+"
+						/>
+					</div>
+
+					<div>
+						<label class="label" for="appVersion">Version</label>
+						<input
+							class="input"
+							id="appVersion"
+							name="version"
+							placeholder="1.0.0"
+							type="text"
+							value="1.0.0"
+						/>
+					</div>
+				</div>
+
+				<!-- App Features -->
+				<div>
+					<label class="label" for="appFeatures">Key Features (one per line)</label>
+					<textarea
+						class="input"
+						id="appFeatures"
+						name="features"
+						placeholder="Feature 1
+Feature 2
+Feature 3"
+						rows="5"></textarea>
+				</div>
+
+				<!-- Submit Buttons -->
+				<div
+					class="flex items-center justify-end gap-4 border-t border-gray-200 pt-4 dark:border-gray-800"
+				>
+					<button class="button button--secondary" data-close-modal type="button"> Cancel </button>
+					<button class="button button--primary" type="submit"> Publish App </button>
+				</div>
+			</form>
+
+			<script>
+				document.addEventListener("astro:page-load", async () => {
+					const modal = document.getElementById("publishModal") as HTMLDivElement | null;
+					const form = document.getElementById("publishForm") as HTMLFormElement | null;
+
+					if (!modal || !form) return; // safe here – inside a function
+
+					/* ---------- helpers ---------- */
+					function openPublishModal() {
+						modal?.classList.remove("hidden");
+						modal?.classList.add("flex");
+						document.body.style.overflow = "hidden";
+					}
+					function closePublishModal() {
+						modal?.classList.add("hidden");
+						modal?.classList.remove("flex");
+						document.body.style.overflow = "auto";
+						form?.reset();
+					}
+					/* ---------- listeners ---------- */
+					document.addEventListener("click", (e) => {
+						const target = e.target as HTMLElement;
+
+						if (target.closest("[data-close-modal]") || target === modal) {
+							closePublishModal();
+							return;
+						}
+						if (target.closest("[data-open-modal]")) {
+							openPublishModal();
+							return;
+						}
+					});
+
+					document.addEventListener("keydown", (e) => {
+						if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+							closePublishModal();
+						}
+					});
+					/* ---------- form logic ---------- */
+					form.addEventListener("submit", (e) => {
+						e.preventDefault();
+						const fd = new FormData(form);
+						const data: Record<string, any> = Object.fromEntries(fd);
+
+						if (data.features) {
+							data.features = (data.features as string)
+								.split("\n")
+								.map((f) => f.trim())
+								.filter(Boolean);
+						}
+						if (data.screenshots) {
+							data.screenshots = (data.screenshots as string)
+								.split(",")
+								.map((s) => s.trim())
+								.filter(Boolean);
+						}
+
+						console.info("App data to publish:", data);
+						alert("App would be published! Check the console for the payload.");
+						closePublishModal();
+					});
+				});
+			</script>
+
+			<style>
+				.modal__content {
+					animation: modalSlideIn 0.3s ease-out;
+				}
+
+				@keyframes modalSlideIn {
+					from {
+						opacity: 0;
+						transform: scale(0.95) translateY(-20px);
+					}
+					to {
+						opacity: 1;
+						transform: scale(1) translateY(0);
+					}
+				}
+			</style>
+		</div>
+	</div></BaseLayout
+>

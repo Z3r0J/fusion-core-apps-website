@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FusionCore Apps logo">
+  <rect width="128" height="128" rx="24" fill="#3D6A45"/>
+  <path d="M28 64a36 36 0 1 1 36 36" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="64" cy="64" r="10" fill="#fff"/>
+</svg>

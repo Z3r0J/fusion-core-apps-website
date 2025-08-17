@@ -53,7 +53,6 @@ We do **not** sell or rent data.
 
 - **Ads & Delivery Providers**  
   To deliver ads and notifications:
-
   - **Google AdMob (Ads/Measurement)** – see:
     - [Google AdMob Program Policies](https://support.google.com/admob/answer/6128543)
     - [Google Privacy Policy](https://policies.google.com/privacy)

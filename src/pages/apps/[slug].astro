@@ -1,14 +1,16 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-import AppJsonLd from '../../components/AppJsonLd.astro';
-
+import GetInGooglePlayBadge from "@/assets/google-play-badge.svg";
+import PlaceholderApp from "@/assets/placeholder-app.svg";
+import AppJsonLd from "@/components/AppJsonLd.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 export async function getStaticPaths() {
-  const apps = await getCollection('apps');
-  return apps.map((app) => ({
-    params: { slug: app.slug },
-    props: { app },
-  }));
+	const apps = await getCollection("apps");
+	return apps.map((app) => ({
+		params: { slug: app.slug },
+		props: { app },
+	}));
 }
 
 const { app } = Astro.props;
@@ -17,59 +19,75 @@ const title = `${app.data.title} — FusionCore Apps`;
 const description = app.data.description;
 const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
 ---
-<BaseLayout {title} {description} {canonical}>
-  <AppJsonLd app={app} />
 
-  <article class="grid gap-8 lg:grid-cols-[auto,1fr]">
-    <img src={app.data.icon ?? '/placeholder-app.svg'} alt="" class="h-24 w-24 rounded-2xl" />
-    <div>
-      <h1 class="text-3xl font-bold">{app.data.title}</h1>
-      <p class="mt-2 text-gray-700">{app.data.tagline}</p>
-<div class="mt-4 flex items-center gap-3">
-  <a
-    href={app.data.playUrl}
-    target="_blank"
-    rel="noopener nofollow sponsored"
-    class="inline-flex"
-    aria-label="Get it on Google Play"
-  >
-    <img
-      src="/GetItOnGooglePlay_Badge_Web_color_English.png"
-      alt="Get it on Google Play"
-      class="h-14 w-auto select-none"
-      width="270"                      
-      height="80"
-      decoding="async"
-      loading="eager"
-      fetchpriority="high"
-    />
-  </a>
+<BaseLayout {canonical} {description} {title}>
+	<AppJsonLd app={app} />
 
-  <a href="/apps" class="rounded-xl border px-5 py-3 font-medium hover:bg-gray-50">
-    Back to apps
-  </a>
-</div>
-    </div>
-  </article>
+	<article class="grid gap-8 lg:grid-cols-[auto,1fr]">
+		{
+			app.data.icon ? (
+				<Image
+					alt={app.data.title}
+					class="h-24 w-24 rounded-2xl"
+					height={96}
+					loading={"eager"}
+					src={app.data.icon}
+					width={96}
+				/>
+			) : (
+				<PlaceholderApp class="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900" />
+			)
+		}
+		<div>
+			<h1 class="text-3xl font-bold">{app.data.title}</h1>
+			<p class="mt-2 text-gray-700">{app.data.tagline}</p>
+			<div class="mt-4 flex items-center gap-3">
+				<a
+					aria-label="Get it on Google Play"
+					class="inline-flex"
+					href={app.data.playUrl}
+					rel="noopener nofollow sponsored"
+					target="_blank"
+				>
+					<GetInGooglePlayBadge class="w-42 select-none" />
+				</a>
 
-  <section class="mt-10">
-    <div class="card p-8">
-      <h2 class="text-2xl font-semibold mb-4">About this app</h2>
-      <div class="prose prose-lg max-w-none dark:prose-invert
-                  prose-a:text-brand-600 hover:prose-a:text-brand-700">
-        <Content />  <!-- ✅ styled Markdown -->
-      </div>
-    </div>
-  </section>
+				<a class="rounded-xl border px-5 py-3 font-medium hover:bg-gray-50" href="/apps">
+					Back to apps
+				</a>
+			</div>
+		</div>
+	</article>
 
-  {app.data.screenshots?.length ? (
-    <section class="mt-10">
-      <h2 class="text-2xl font-semibold mb-4">Screenshots</h2>
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {app.data.screenshots.map((src) => (
-          <img src={src} alt="" loading="lazy" class="rounded-xl border" />
-        ))}
-      </div>
-    </section>
-  ) : null}
+	<section class="mt-10">
+		<div class="card p-8">
+			<h2 class="mb-4 text-2xl font-semibold">About this app</h2>
+			<div
+				class="prose prose-lg dark:prose-invert prose-a:text-brand-600 hover:prose-a:text-brand-700 max-w-none"
+			>
+				<Content />
+				<!-- ✅ styled Markdown -->
+			</div>
+		</div>
+	</section>
+
+	{
+		app.data.screenshots?.length > 0 ? (
+			<section class="mt-10">
+				<h2 class="mb-4 text-2xl font-semibold">Screenshots</h2>
+				<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{app.data.screenshots.map((src) => (
+						<Image
+							alt={app.data.title}
+							class="rounded-xl border"
+							height={360}
+							loading="eager"
+							src={src}
+							width={640}
+						/>
+					))}
+				</div>
+			</section>
+		) : null
+	}
 </BaseLayout>
