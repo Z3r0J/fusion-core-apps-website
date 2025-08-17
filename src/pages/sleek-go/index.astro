@@ -365,13 +365,12 @@ Feature 3"
 			</form>
 
 			<script>
-				document.addEventListener("astro:page-load", async () => {
-					const modal = document.getElementById("publishModal") as HTMLDivElement | null;
+				document.addEventListener("astro:page-load", () => {
+					const modal = document.getElementById("publishModal");
 					const form = document.getElementById("publishForm") as HTMLFormElement | null;
 
-					if (!modal || !form) return; // safe here – inside a function
+					if (!modal || !form) return;
 
-					/* ---------- helpers ---------- */
 					function openPublishModal() {
 						modal?.classList.remove("hidden");
 						modal?.classList.add("flex");
@@ -381,49 +380,84 @@ Feature 3"
 						modal?.classList.add("hidden");
 						modal?.classList.remove("flex");
 						document.body.style.overflow = "auto";
-						form?.reset();
+						(form as HTMLFormElement)?.reset();
 					}
-					/* ---------- listeners ---------- */
+
 					document.addEventListener("click", (e) => {
-						const target = e.target as HTMLElement;
-
-						if (target.closest("[data-close-modal]") || target === modal) {
-							closePublishModal();
-							return;
-						}
-						if (target.closest("[data-open-modal]")) {
-							openPublishModal();
-							return;
-						}
+						const t = e.target as Element;
+						if (t?.closest("[data-close-modal]") || t === modal) return closePublishModal();
+						if (t.closest("[data-open-modal]")) return openPublishModal();
 					});
-
 					document.addEventListener("keydown", (e) => {
-						if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-							closePublishModal();
-						}
+						if (e.key === "Escape" && !modal.classList.contains("hidden")) closePublishModal();
 					});
-					/* ---------- form logic ---------- */
-					form.addEventListener("submit", (e) => {
+
+					function parseListArea(value: FormDataEntryValue | null) {
+						return String(value || "")
+							.split("\n")
+							.map((s) => s.trim())
+							.filter(Boolean);
+					}
+					function parseCsv(value: FormDataEntryValue | null) {
+						return String(value || "")
+							.split(",")
+							.map((s) => s.trim())
+							.filter(Boolean);
+					}
+					function slugify(s: string) {
+						return s
+							.toLowerCase()
+							.normalize("NFD")
+							.replace(/[\u0300-\u036f]/g, "")
+							.replace(/[^a-z0-9]+/g, "-")
+							.replace(/(^-|-$)+/g, "");
+					}
+
+					form.addEventListener("submit", async (e) => {
 						e.preventDefault();
 						const fd = new FormData(form);
-						const data: Record<string, any> = Object.fromEntries(fd);
 
-						if (data.features) {
-							data.features = (data.features as string)
-								.split("\n")
-								.map((f) => f.trim())
-								.filter(Boolean);
-						}
-						if (data.screenshots) {
-							data.screenshots = (data.screenshots as string)
-								.split(",")
-								.map((s) => s.trim())
-								.filter(Boolean);
-						}
+						const payload = {
+							title: fd.get("title"),
+							tagline: fd.get("tagline"),
+							description: fd.get("description"),
+							playStoreUrl: fd.get("playStoreUrl"),
+							appStoreUrl: fd.get("appStoreUrl") || undefined,
+							category: fd.get("category"),
+							icon: fd.get("icon"),
+							price: fd.get("price") || "Free",
+							rating: fd.get("rating") || undefined,
+							downloads: fd.get("downloads") || undefined,
+							version: fd.get("version") || "1.0.0",
+							features: parseListArea(fd.get("features")),
+							screenshots: parseCsv(fd.get("screenshots")),
+							// opcionales:
+							locale: "en",
+							slug: slugify(String(fd.get("title") || "")),
+						};
 
-						console.info("App data to publish:", data);
-						alert("App would be published! Check the console for the payload.");
-						closePublishModal();
+						try {
+							const res = await fetch("/api/apps/create", {
+								method: "POST",
+								headers: {
+									"content-type": "application/json",
+									"x-api-key": "supersecret", // cámbialo y usa env en prod
+								},
+								body: JSON.stringify(payload),
+							});
+
+							const json = await res.json();
+							if (!res.ok) throw new Error(json.error ? JSON.stringify(json.error) : "Failed");
+
+							alert(`✅ App publicada: ${json.slug}`);
+							// refresca la lista (si esta página se sirve SSR, basta con recargar)
+							location.reload();
+						} catch (err) {
+							console.error(err);
+							alert("❌ No se pudo publicar el app. Revisa la consola.");
+						} finally {
+							closePublishModal();
+						}
 					});
 				});
 			</script>
