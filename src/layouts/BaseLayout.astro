@@ -1,9 +1,9 @@
 ---
 import "@/styles/global.css";
 
+import GooglePlayLogo from "@/assets/gplay-logo.svg";
+import Logo from "@/assets/logo.svg";
 import ThemeToggle from "@/components/ThemeToggle.tsx";
-import GooglePlayLogo from "@/public/gplay-logo.svg";
-import Logo from "@/public/logo.svg";
 import { ClientRouter } from "astro:transitions";
 import { Menu } from "lucide-react";
 
@@ -49,8 +49,8 @@ const currentPath = Astro.url.pathname;
 		<meta content="yes" name="apple-mobile-web-app-capable" />
 		<meta content="default" name="apple-mobile-web-app-status-bar-style" />
 
-		<link href="/logo.svg" rel="icon" type="image/svg+xml" />
-		<link href="/logo.svg" rel="apple-touch-icon" />
+		<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+		<link href="/favicon.svg" rel="apple-touch-icon" />
 
 		<script is:inline type="application/ld+json">
 			{

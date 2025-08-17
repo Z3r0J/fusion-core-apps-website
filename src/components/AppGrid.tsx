@@ -1,4 +1,4 @@
-import PlaceholderApp from "@/public/placeholder-app.svg";
+import PlaceholderApp from "@/assets/placeholder-app.svg";
 import { Download, Filter, Grid, List, Search, Star } from "lucide-react";
 import React, { useMemo, useState } from "react";
 export type App = {
