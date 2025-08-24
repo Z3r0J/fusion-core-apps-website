@@ -1,22 +1,48 @@
 import { defineCollection, z } from "astro:content";
 
-const apps = defineCollection({
-	type: "content",
-	schema: z.object({
-		title: z.string(),
-		tagline: z.string(),
-		description: z.string(),
-		icon: z.string().optional(),
-		playUrl: z.string().url(),
-		category: z.string().default("Tools"),
-		tags: z.array(z.string()).default([]),
-		locale: z.enum(["en", "es"]).default("en"),
-		price: z.string().default("Free"),
-		version: z.string().optional(),
-		lastUpdated: z.string().optional(),
-		downloads: z.number().default(0),
-		screenshots: z.array(z.string()).default([]),
-	}),
+const urlOrPath = z.string().refine(
+  (v) => v.startsWith("/") || /^https?:\/\//i.test(v),
+  { message: "Debe ser ruta absoluta del sitio (/img.png) o URL http(s)." }
+);
+
+export const apps = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    tagline: z.string(),
+    description: z.string(),
+
+    // Permite icono local o URL; opcional por si usas placeholder
+    icon: urlOrPath.optional(),
+
+    // Stores
+    playUrl: z.string().url(),
+    appStoreUrl: z.string().url().optional(),
+
+    category: z.string().default("Tools"),
+    tags: z.array(z.string()).default([]),
+
+    // i18n
+    locale: z.enum(["en", "es"]).default("en"),
+
+    price: z.string().default("Free"),
+    version: z.string().optional(),
+
+    // Guarda ISO yyyy-mm-dd; si te llega string, lo coercionamos y normalizamos
+    lastUpdated: z
+      .string()
+      .optional()
+      .transform((v) => v ?? new Date().toISOString().slice(0, 10)),
+
+    // En el UI muestras "1K+"; aquí mejor guardarlo como string flexible
+    downloads: z.union([z.string(), z.number()]).default(0).transform(String),
+
+    // 0–5 opcional (tu form ya lo tiene)
+    rating: z.number().min(0).max(5).optional(),
+
+    // Rutas absolutas del sitio o URLs
+    screenshots: z.array(urlOrPath).default([]),
+  }),
 });
 
 const legal = defineCollection({

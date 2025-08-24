@@ -7,7 +7,7 @@ import svgr from "vite-plugin-svgr";
 
 // TODO: replace with your real production domain (https://example.com)
 export default defineConfig({
-	site: "https://fusioncore.app",
+	site: "https://fusioncoreapps.com",
 	integrations: [react(), sitemap(), mdx()],
 	vite: {
 		plugins: [tailwindcss(), svgr()],
