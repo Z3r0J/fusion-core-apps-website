@@ -1,8 +1,8 @@
 import { defineCollection, z } from "astro:content";
 
 const urlOrPath = z.string().refine(
-  (v) => v.startsWith("/") || /^https?:\/\//i.test(v),
-  { message: "Debe ser ruta absoluta del sitio (/img.png) o URL http(s)." }
+  (v) => v.startsWith("/") || /^https?:\/\//i.test(v) || v === "",
+  { message: "Debe ser ruta absoluta del sitio (/img.png) o URL http(s). O dejar vacío." }
 );
 
 export const apps = defineCollection({
