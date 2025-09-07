@@ -6,17 +6,17 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-	--color-brand-50: #f0f4f9;
-	--color-brand-100: #d9e2f2;
-	--color-brand-200: #b3c9e4;
-	--color-brand-300: #7a9dcf;
-	--color-brand-400: #ff6b6b;
-	--color-brand-500: #ff8c42;
-	--color-brand-600: #ffaa00;
-	--color-brand-700: #a63d79;
-	--color-brand-800: #7a2e5e;
-	--color-brand-900: #4f1f3d;
-	--color-brand-950: #2a0f20;
+	--color-brand-50: #f0f9f1;
+	--color-brand-100: #dcf2df;
+	--color-brand-200: #bce4c2;
+	--color-brand-300: #8dcf9a;
+	--color-brand-400: #57b06b;
+	--color-brand-500: #3d6a45; /* DEFAULT */
+	--color-brand-600: #2f5236;
+	--color-brand-700: #27422c;
+	--color-brand-800: #223527;
+	--color-brand-900: #1d2d22;
+	--color-brand-950: #0e1711;
 
 	--color-gray-50: #f9fafb;
 	--color-gray-100: #f3f4f6;
@@ -31,17 +31,17 @@
 	--color-gray-950: #030712;
 }
 .dark {
-	--color-brand-50: #1d2d22;
-	--color-brand-100: #2f5236;
-	--color-brand-200: #3d6a45;
-	--color-brand-300: #57b06b;
-	--color-brand-400: #cc5555;
-	--color-brand-500: #cc7040;
-	--color-brand-600: #cc8800;
-	--color-brand-700: #802d5f;
-	--color-brand-800: #5c2246;
-	--color-brand-900: #3c1a2f;
-	--color-brand-950: #1f0e18;
+	--color-brand-50: #f0f9f1;
+	--color-brand-100: #dcf2df;
+	--color-brand-200: #bce4c2;
+	--color-brand-300: #8dcf9a;
+	--color-brand-400: #57b06b;
+	--color-brand-500: #3d6a45; /* DEFAULT */
+	--color-brand-600: #2f5236;
+	--color-brand-700: #27422c;
+	--color-brand-800: #223527;
+	--color-brand-900: #1d2d22;
+	--color-brand-950: #0e1711;
 
 	--color-gray-50: #f9fafb;
 	--color-gray-100: #f3f4f6;
