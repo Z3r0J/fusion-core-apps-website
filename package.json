@@ -22,7 +22,7 @@
   "dependencies": {
     "@astrojs/mdx": "4.3.4",
     "@astrojs/sitemap": "3.5.1",
-    "@astrojs/vercel": "^8.2.7",
+    "@astrojs/vercel": "8.2.7",
     "@headlessui/react": "2.2.7",
     "astro": "5.13.5",
     "clsx": "2.1.1",
