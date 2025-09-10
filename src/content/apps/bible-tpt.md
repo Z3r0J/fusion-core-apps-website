@@ -2,7 +2,7 @@
 title: "Bible TPT: Passion Translation"
 tagline: "An expressive, modern reading experience"
 description: "Read and meditate on the Passion Translation. Enjoy daily verses, bookmarks, and a distraction‑free reading mode."
-icon: "/placeholder-app.svg"
+icon: ""
 playUrl: "https://play.google.com/store/apps/details?id=com.fusioncoreapps.bible.tpt"
 category: "Books & Reference"
 tags: ["Bible", "English", "Daily Verse"]

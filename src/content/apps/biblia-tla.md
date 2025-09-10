@@ -2,7 +2,7 @@
 title: "Biblia TLA en Español Fácil"
 tagline: "Lectura fácil en español moderno"
 description: "Lleva la Palabra contigo con una lectura clara y comprensible. Incluye modo offline, audio, planes y versículos diarios."
-icon: "/placeholder-app.svg"
+icon: ""
 playUrl: "https://play.google.com/store/apps/details?id=com.fusioncoreapps.biblia.tla"
 category: "Books & Reference"
 tags: ["Bible", "Spanish", "Audio", "Offline"]
