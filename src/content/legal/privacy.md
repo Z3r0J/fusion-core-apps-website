@@ -10,8 +10,6 @@ updatedAt: "2025-08-12"
 Thank you for using apps developed by **FusionCore Apps** (“we”, “our”, “us”).  
 This Privacy Policy explains how we handle your information when you use our Bible-focused apps and this website. We are committed to protecting your privacy and being transparent about the data we collect.
 
----
-
 ## 1. Information We Collect
 
 - **Expo Push Token (Device/App Identifier)**  
@@ -36,8 +34,6 @@ If an app shows ads, third-party ad networks (e.g., **Google AdMob**) may collec
 
 We do **not** control what those networks collect directly; please review their policies (see Section 3).
 
----
-
 ## 2. How We Use Information
 
 - **Provide language-specific content** and remember your **appearance preferences**.
@@ -46,8 +42,6 @@ We do **not** control what those networks collect directly; please review their 
 - **Basic aggregated metrics** (e.g., ad impressions/clicks reported by the ad network) to improve app performance.
 
 We do **not** sell or rent data.
-
----
 
 ## 3. Sharing of Information
 
@@ -68,13 +62,9 @@ We do **not** sell or rent data.
 - **Legal Compliance**  
   We may disclose information if required to do so by law (e.g., subpoena, court order).
 
----
-
 ## 4. Data Security
 
 We apply reasonable administrative and technical safeguards to protect data in transit and at rest. Preferences like language/theme are stored locally on your device; access is governed by your device’s security settings.
-
----
 
 ## 5. Your Rights & Choices
 
@@ -84,19 +74,13 @@ We apply reasonable administrative and technical safeguards to protect data in t
 - **Uninstall**: Removing the app deletes locally stored preferences on your device.
 - **Data Deletion Request**: Email **jeanrey.ese@gmail.com** and we will remove push tokens we control associated with your device/app instance.
 
----
-
 ## 6. Children’s Privacy
 
 Our apps are suitable for a general audience and **do not knowingly collect data from children under 13**. If you believe a child has provided information, contact us and we will delete it.
 
----
-
 ## 7. Changes to This Policy
 
 We may update this policy from time to time. Material changes will be posted here with a new **Last Updated** date. Continued use of the app after changes constitutes acceptance of the revised terms.
-
----
 
 ## 8. Contact Us
 
