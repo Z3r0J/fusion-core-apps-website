@@ -3,7 +3,7 @@ title: "Biblia TLA en Español Fácil"
 tagline: "Biblia TLA (Lenguaje Actual) con audio, offline, versículos diarios y planes semanales."
 description: "Biblia TLA en Español Fácil te ayuda a leer y escuchar la Traducción en Lenguaje Actual con audio biblia, acceso 100% offline, versículos diarios y planes de lectura semanales. Personaliza tu experiencia con modo oscuro, ajuste de letra, resaltados y favoritos."
 icon: "https://play-lh.googleusercontent.com/T6UyUSvdmPXI7rfU2Jm0pAgyyjwiSpi_Yi_gF8x8bm7syY_KuJ3VJQxr9VAT_hETToE=w480-h960-rw"
-playUrl: "https://play.google.com/store/apps/details?id=com.fusioncoreapps.biblia.tla"
+playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.biblia.tla"
 category: "Lifestyle"
 tags: []
 locale: "en"

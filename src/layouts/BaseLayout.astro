@@ -8,7 +8,7 @@ import { Menu } from "lucide-react";
 const {
 	title = "FusionCore Apps — Premium Mobile Applications",
 	description = "Professional mobile app development studio delivering secure, innovative, and user-friendly applications for Android and iOS platforms. Transform your ideas into powerful digital experiences.",
-	ogImage = "/og-default.jpg",
+	ogImage = "/og-default.png",
 	canonical,
 	noindex = false,
 	bodyClass = "",
@@ -17,6 +17,12 @@ const {
 
 const year = new Date().getFullYear();
 const currentPath = Astro.url.pathname;
+
+// Handle ogImage: if it's already a full URL or data URI, use as-is; otherwise make it absolute
+const resolvedOgImage =
+	ogImage.startsWith("http://") || ogImage.startsWith("https://") || ogImage.startsWith("data:")
+		? ogImage
+		: new URL(ogImage, Astro.site).href;
 ---
 
 <!doctype html>
@@ -33,14 +39,14 @@ const currentPath = Astro.url.pathname;
 		<meta content={new URL(Astro.url.pathname, Astro.site).href} property="og:url" />
 		<meta content={title} property="og:title" />
 		<meta content={description} property="og:description" />
-		<meta content={new URL(ogImage, Astro.site).href} property="og:image" />
+		<meta content={resolvedOgImage} property="og:image" />
 		<meta content="FusionCore Apps" property="og:site_name" />
 
 		<meta content="summary_large_image" name="twitter:card" />
 		<meta content={new URL(Astro.url.pathname, Astro.site).href} name="twitter:url" />
 		<meta content={title} name="twitter:title" />
 		<meta content={description} name="twitter:description" />
-		<meta content={new URL(ogImage, Astro.site).href} name="twitter:image" />
+		<meta content={resolvedOgImage} name="twitter:image" />
 
 		<meta content="#ff5726" name="theme-color" />
 		<meta content="light dark" name="color-scheme" />

@@ -18,9 +18,10 @@ const { Content } = await app.render(); // ✅ compile MD to a component
 const title = `${app.data.title} — FusionCore Apps`;
 const description = app.data.description;
 const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
+const ogImage = app.data.icon || "/og-default.jpg";
 ---
 
-<BaseLayout {canonical} {description} {title}>
+<BaseLayout {canonical} {description} {ogImage} {title}>
 	<AppJsonLd app={app} />
 
 	<article class="grid gap-8 lg:grid-cols-[auto,1fr]">
