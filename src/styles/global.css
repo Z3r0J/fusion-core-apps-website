@@ -6,54 +6,84 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-	--color-brand-50: #f0f9f1;
-	--color-brand-100: #dcf2df;
-	--color-brand-200: #bce4c2;
-	--color-brand-300: #8dcf9a;
-	--color-brand-400: #57b06b;
-	--color-brand-500: #3d6a45; /* DEFAULT */
-	--color-brand-600: #2f5236;
-	--color-brand-700: #27422c;
-	--color-brand-800: #223527;
-	--color-brand-900: #1d2d22;
-	--color-brand-950: #0e1711;
+	/* Brand Scale: Electric Cyan (#2ECFFF) - Main ID */
+	--color-brand-50: #f0faff;
+	--color-brand-100: #e0f6ff;
+	--color-brand-200: #baeaff;
+	--color-brand-300: #7ddbff;
+	--color-brand-400: #2ecfff;
+	--color-brand-500: #06b6f0; /* Main Identity (slightly darker for text) */
+	--color-brand-600: #0091cc;
+	--color-brand-700: #0674a6;
+	--color-brand-800: #0a618a;
+	--color-brand-900: #0e5173;
+	--color-brand-950: #08344d;
 
-	--color-gray-50: #f9fafb;
-	--color-gray-100: #f3f4f6;
-	--color-gray-200: #e5e7eb;
-	--color-gray-300: #d1d5db;
-	--color-gray-400: #9ca3af;
-	--color-gray-500: #6b7280;
-	--color-gray-600: #4b5563;
-	--color-gray-700: #374151;
-	--color-gray-800: #1f2937;
-	--color-gray-900: #111827;
-	--color-gray-950: #030712;
+	/* Accent Scale: Fusion Orange (#FF8A2A) */
+	--color-accent-50: #fff8eb;
+	--color-accent-100: #ffecd1;
+	--color-accent-200: #ffd5a3;
+	--color-accent-300: #ffbd75;
+	--color-accent-400: #ffa547;
+	--color-accent-500: #ff8a2a; /* Main Accent */
+	--color-accent-600: #db681a;
+	--color-accent-700: #b84a0d;
+	--color-accent-800: #94380e;
+	--color-accent-900: #7a2f0e;
+	--color-accent-950: #451906;
+
+	/* Gray Scale: Cool Slate */
+	--color-gray-50: #f8fafc;
+	--color-gray-100: #f1f5f9;
+	--color-gray-200: #e2e8f0;
+	--color-gray-300: #cbd5e1;
+	--color-gray-400: #94a3b8;
+	--color-gray-500: #64748b;
+	--color-gray-600: #475569;
+	--color-gray-700: #334155;
+	--color-gray-800: #1e293b;
+	--color-gray-900: #0f172a;
+	--color-gray-950: #020617;
 }
 .dark {
-	--color-brand-50: #f0f9f1;
-	--color-brand-100: #dcf2df;
-	--color-brand-200: #bce4c2;
-	--color-brand-300: #8dcf9a;
-	--color-brand-400: #57b06b;
-	--color-brand-500: #3d6a45; /* DEFAULT */
-	--color-brand-600: #2f5236;
-	--color-brand-700: #27422c;
-	--color-brand-800: #223527;
-	--color-brand-900: #1d2d22;
-	--color-brand-950: #0e1711;
+	/* Brand Scale (Cyan) */
+	--color-brand-50: #f0faff;
+	--color-brand-100: #e0f6ff;
+	--color-brand-200: #baeaff;
+	--color-brand-300: #7ddbff;
+	--color-brand-400: #2ecfff;
+	--color-brand-500: #06b6f0;
+	--color-brand-600: #0091cc;
+	--color-brand-700: #0674a6;
+	--color-brand-800: #0a618a;
+	--color-brand-900: #0e5173;
+	--color-brand-950: #08344d;
 
-	--color-gray-50: #f9fafb;
-	--color-gray-100: #f3f4f6;
-	--color-gray-200: #e5e7eb;
-	--color-gray-300: #d1d5db;
-	--color-gray-400: #9ca3af;
-	--color-gray-500: #6b7280;
-	--color-gray-600: #4b5563;
-	--color-gray-700: #374151;
-	--color-gray-800: #1f2937;
-	--color-gray-900: #111827;
-	--color-gray-950: #030712;
+	/* Accent Scale (Orange) */
+	--color-accent-50: #fff8eb;
+	--color-accent-100: #ffecd1;
+	--color-accent-200: #ffd5a3;
+	--color-accent-300: #ffbd75;
+	--color-accent-400: #ffa547;
+	--color-accent-500: #ff8a2a;
+	--color-accent-600: #db681a;
+	--color-accent-700: #b84a0d;
+	--color-accent-800: #94380e;
+	--color-accent-900: #7a2f0e;
+	--color-accent-950: #451906;
+
+	/* Gray Scale (Deep Tech Blue Tints) */
+	--color-gray-50: #f5f9fc;
+	--color-gray-100: #eaf1f7;
+	--color-gray-200: #d4e1ed;
+	--color-gray-300: #b0c9df;
+	--color-gray-400: #86abd0;
+	--color-gray-500: #648eb8;
+	--color-gray-600: #4d729a;
+	--color-gray-700: #3e5c7d;
+	--color-gray-800: #324c68;
+	--color-gray-900: #1a2c42;
+	--color-gray-950: #0b1c2d; /* Deep Tech Blue Background */
 }
 
 @theme inline {
@@ -70,6 +100,18 @@
 	--color-brand-900: var(--color-brand-900);
 	--color-brand-950: var(--color-brand-950);
 
+	--color-accent-50: var(--color-accent-50);
+	--color-accent-100: var(--color-accent-100);
+	--color-accent-200: var(--color-accent-200);
+	--color-accent-300: var(--color-accent-300);
+	--color-accent-400: var(--color-accent-400);
+	--color-accent-500: var(--color-accent-500); /* DEFAULT */
+	--color-accent-600: var(--color-accent-600);
+	--color-accent-700: var(--color-accent-700);
+	--color-accent-800: var(--color-accent-800);
+	--color-accent-900: var(--color-accent-900);
+	--color-accent-950: var(--color-accent-950);
+
 	--color-gray-50: var(--color-gray-50);
 	--color-gray-100: var(--color-gray-100);
 	--color-gray-200: var(--color-gray-200);
@@ -81,6 +123,12 @@
 	--color-gray-800: var(--color-gray-800);
 	--color-gray-900: var(--color-gray-900);
 	--color-gray-950: var(--color-gray-950);
+
+	/* Define raw colors for specific branding needs */
+	--color-tech-blue: #0b1c2d;
+	--color-electric-cyan: #2ecfff;
+	--color-fusion-orange: #ff8a2a;
+	--color-gradient-red: #e8455b;
 
 	/* ---------- Fonts ---------- */
 	--font-sans: Inter, system-ui, sans-serif;
@@ -95,9 +143,9 @@
 
 @layer base {
 	:root {
-		--fc-brand: #3d6a45;
-		--fc-brand-light: #4f8257;
-		--fc-brand-dark: #2f5236;
+		--fc-brand: #2ecfff;
+		--fc-brand-light: #7fe9ff;
+		--fc-brand-dark: #0091cc;
 	}
 
 	html {
@@ -111,6 +159,17 @@
 
 	body {
 		@apply bg-white text-gray-900 transition-colors duration-300 dark:bg-gray-950 dark:text-gray-100;
+	}
+
+	/* Signature FusionCore Gradient */
+	.bg-fusion-gradient {
+		background: linear-gradient(135deg, #ff8a2a, #e8455b, #4fb3ff, #2ecfff);
+	}
+
+	.text-fusion-gradient {
+		background: linear-gradient(135deg, #ff8a2a, #e8455b, #4fb3ff, #2ecfff);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	.prose {
@@ -139,6 +198,25 @@
 		& h3 {
 			font-weight: 700;
 			margin-top: 1.2em;
+			margin-bottom: 0.5em;
+		}
+
+		& ul {
+			list-style-type: disc;
+			padding-left: 1.625em;
+			margin-top: 1.25em;
+			margin-bottom: 1.25em;
+		}
+
+		& ol {
+			list-style-type: decimal;
+			padding-left: 1.625em;
+			margin-top: 1.25em;
+			margin-bottom: 1.25em;
+		}
+
+		& li {
+			margin-top: 0.5em;
 			margin-bottom: 0.5em;
 		}
 
@@ -239,11 +317,12 @@
 	}
 
 	.gradient-text {
-		@apply from-brand-600 to-brand-400 bg-gradient-to-r bg-clip-text text-transparent;
+		@apply bg-clip-text text-transparent;
+		background-image: linear-gradient(135deg, #ff8a2a, #e8455b, #4fb3ff, #2ecfff);
 	}
 
 	.gradient-bg {
-		@apply from-brand-50 to-brand-100 dark:from-brand-950 bg-gradient-to-br dark:to-gray-950;
+		@apply from-brand-200 dark:from-brand-950 bg-gradient-to-br to-white dark:to-gray-950;
 	}
 
 	/* Navigation active state */

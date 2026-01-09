@@ -3,7 +3,8 @@ import PlaceholderApp from "@/assets/placeholder-app.svg";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import { ChartNoAxesCombined, Eye, Layers, Plus, SquarePen, Trash2, X } from "lucide-react";
+import { Eye, Layers, Plus, SquarePen, Trash2, X } from "lucide-react";
+
 const apps = await getCollection("apps");
 ---
 
@@ -12,7 +13,48 @@ const apps = await getCollection("apps");
 	noindex={true}
 	title="Admin Panel — FusionCore Apps"
 >
-	<div class="admin-panel">
+
+	<!-- PIN Authentication Screen -->
+	<div class="pin-auth-screen" id="pinAuthScreen">
+		<div class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
+			<div class="card mx-4 w-full max-w-md p-8 text-center">
+				<div class="mb-6 flex justify-center">
+					<div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+						</svg>
+					</div>
+				</div>
+				<h1 class="mb-2 text-2xl font-bold text-gray-900 dark:text-white">Admin Access</h1>
+				<p class="mb-6 text-gray-600 dark:text-gray-400">
+					Enter your PIN to access the admin panel
+				</p>
+				<form id="pinForm" class="space-y-4">
+					<div>
+						<input
+							type="password"
+							id="pinInput"
+							class="input text-center text-lg tracking-widest"
+							placeholder="••••"
+							maxlength="6"
+							autocomplete="off"
+							required
+						/>
+					</div>
+					<div id="pinError" class="hidden text-sm text-red-600 dark:text-red-400"></div>
+					<button type="submit" class="button button--primary w-full">
+						<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+						</svg>
+						Unlock Admin Panel
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Admin Panel Content (hidden by default) -->
+	<div class="admin-panel" id="adminContent" style="display: none;">
 		<!-- Header -->
 		<div class="admin-panel__header mb-8 border-b border-gray-200 pb-8 dark:border-gray-800">
 			<h1 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Admin panel</h1>
@@ -22,10 +64,10 @@ const apps = await getCollection("apps");
 		</div>
 
 		<!-- Quick Actions -->
-		<div class="admin-panel__actions mb-12 grid gap-6 md:grid-cols-3">
+		<div class="admin-panel__actions mb-12">
 			<button
 				aria-label="Publish new app"
-				class="button button--primary justify-start p-6 text-left"
+				class="button button--primary w-full justify-start p-6 text-left"
 				data-open-modal
 			>
 				<div class="flex items-center gap-4">
@@ -38,42 +80,6 @@ const apps = await getCollection("apps");
 					</div>
 				</div>
 			</button>
-
-			<a
-				aria-label="Manage Apps"
-				class="button button--secondary justify-start p-6 text-left"
-				href="/admin/apps"
-			>
-				<div class="flex items-center gap-4">
-					<div
-						class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800"
-					>
-						<Layers className="h-6 w-6 text-gray-600 dark:text-gray-400" />
-					</div>
-					<div>
-						<h3 class="font-semibold text-gray-900 dark:text-white">Manage apps</h3>
-						<p class="text-sm text-gray-600 dark:text-gray-400">Edit or remove existing apps</p>
-					</div>
-				</div>
-			</a>
-
-			<a
-				aria-label="Analytics"
-				class="button button--secondary justify-start p-6 text-left"
-				href="/admin/analytics"
-			>
-				<div class="flex items-center gap-4">
-					<div
-						class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800"
-					>
-						<ChartNoAxesCombined className="h-6 w-6 text-gray-600 dark:text-gray-400" />
-					</div>
-					<div>
-						<h3 class="font-semibold text-gray-900 dark:text-white">Analytics</h3>
-						<p class="text-sm text-gray-600 dark:text-gray-400">View download stats and metrics</p>
-					</div>
-				</div>
-			</a>
 		</div>
 
 		<!-- Current Apps -->
@@ -159,6 +165,10 @@ const apps = await getCollection("apps");
 				)
 			}
 		</div>
+	</div>
+
+	<!-- Toast Notification Container -->
+	<div id="toastContainer" class="fixed top-4 right-4 z-[9999] flex flex-col gap-3 pointer-events-none">
 	</div>
 
 	<!-- Publish App Modal -->
@@ -267,15 +277,21 @@ const apps = await getCollection("apps");
 				<!-- App Icon and Screenshots -->
 				<div class="grid gap-6 md:grid-cols-2">
 					<div>
-						<label class="label" for="appIcon">App Icon URL *</label>
+						<label class="label" for="appIcon">
+							App Icon *
+							<span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(URL o archivo)</span>
+						</label>
 						<input
-							class="input"
+							class="input mb-2"
 							id="appIcon"
 							name="icon"
-							placeholder="https://example.com/icon.png"
-							required
-							type="url"
+							placeholder="https://example.com/icon.png o sube un archivo abajo"
+							type="text"
 						/>
+						<input accept="image/*" class="text-sm" id="appIconFile" type="file" />
+						<p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+							📷 Sube un archivo para convertirlo a Base64 automáticamente
+						</p>
 					</div>
 
 					<div>
@@ -292,192 +308,667 @@ const apps = await getCollection("apps");
 				</div>
 
 				<div>
-					<label class="label" for="appScreenshots">Screenshots URLs (comma separated)</label>
+					<label class="label" for="appScreenshots">
+						Screenshots
+						<span class="ml-2 text-sm text-gray-500 dark:text-gray-400"> (URLs o archivos) </span>
+					</label>
 					<textarea
-						class="input"
+						class="input mb-2"
 						id="appScreenshots"
 						name="screenshots"
-						placeholder="https://example.com/screenshot1.png, https://example.com/screenshot2.png"
+						placeholder="https://example.com/screenshot1.png
+O deja vacío y sube archivos abajo"
 						rows="3"></textarea>
-				</div>
-
-				<!-- App Metrics -->
-				<div class="grid gap-6 md:grid-cols-3">
-					<div>
-						<label class="label" for="appRating">Rating (1-5)</label>
-						<input
-							class="input"
-							id="appRating"
-							max="5"
-							min="1"
-							name="rating"
-							step="0.1"
-							type="number"
-							value="4.5"
-						/>
+					<input accept="image/*" class="text-sm" id="screenshotFiles" multiple type="file" />
+					<div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+						💡 Los archivos se convertirán a Base64 y se agregarán a las URLs
 					</div>
 
-					<div>
-						<label class="label" for="appDownloads">Downloads</label>
-						<input
-							class="input"
-							id="appDownloads"
-							name="downloads"
-							placeholder="1K+"
-							type="text"
-							value="1K+"
-						/>
+					<!-- App Metrics -->
+					<div class="grid gap-6 md:grid-cols-3">
+						<div>
+							<label class="label" for="appRating">Rating (1-5)</label>
+							<input
+								class="input"
+								id="appRating"
+								max="5"
+								min="1"
+								name="rating"
+								step="0.1"
+								type="number"
+								value="4.5"
+							/>
+						</div>
+
+						<div>
+							<label class="label" for="appDownloads">Downloads</label>
+							<input
+								class="input"
+								id="appDownloads"
+								name="downloads"
+								placeholder="1K+"
+								type="text"
+								value="1K+"
+							/>
+						</div>
+
+						<div>
+							<label class="label" for="appVersion">Version</label>
+							<input
+								class="input"
+								id="appVersion"
+								name="version"
+								placeholder="1.0.0"
+								type="text"
+								value="1.0.0"
+							/>
+						</div>
 					</div>
 
+					<!-- App Features -->
 					<div>
-						<label class="label" for="appVersion">Version</label>
-						<input
-							class="input"
-							id="appVersion"
-							name="version"
-							placeholder="1.0.0"
-							type="text"
-							value="1.0.0"
-						/>
+						<label class="label" for="appMarkdown">
+							About App (Markdown) *
+							<span class="ml-2 text-sm text-gray-500 dark:text-gray-400">
+								Escribe en Markdown - soporta títulos, listas, negritas, etc.
+							</span>
+						</label>
+						<textarea
+							class="input font-mono text-sm"
+							id="appMarkdown"
+							name="markdown"
+							placeholder="## Features
+
+- Feature 1
+- Feature 2
+
+## Description
+
+Your app description here..."
+							required
+							rows="12"></textarea>
+						<p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+							💡 Tip: Usa ## para títulos, - para listas, **texto** para negrita
+						</p>
+					</div>
+
+					<!-- Submit Buttons -->
+					<div
+						class="flex items-center justify-end gap-4 border-t border-gray-200 pt-4 dark:border-gray-800"
+					>
+						<button class="button button--secondary" data-close-modal type="button">
+							Cancel
+						</button>
+						<button class="button button--primary" type="submit"> Publish App </button>
 					</div>
 				</div>
 
-				<!-- App Features -->
-				<div>
-					<label class="label" for="appFeatures">Key Features (one per line)</label>
-					<textarea
-						class="input"
-						id="appFeatures"
-						name="features"
-						placeholder="Feature 1
-Feature 2
-Feature 3"
-						rows="5"></textarea>
-				</div>
+				<script is:inline>
+					(function () {
+						console.log("🚀 Admin script loading...");
 
-				<!-- Submit Buttons -->
-				<div
-					class="flex items-center justify-end gap-4 border-t border-gray-200 pt-4 dark:border-gray-800"
-				>
-					<button class="button button--secondary" data-close-modal type="button"> Cancel </button>
-					<button class="button button--primary" type="submit"> Publish App </button>
-				</div>
-			</form>
+						// Toast notification system
+						function showToast(message, type = "success") {
+							const container = document.getElementById("toastContainer");
+							if (!container) return;
 
-			<script>
-				document.addEventListener("astro:page-load", () => {
-					const modal = document.getElementById("publishModal");
-					const form = document.getElementById("publishForm") as HTMLFormElement | null;
+							const id = "toast-" + Date.now();
+							const toast = document.createElement("div");
+							toast.id = id;
+							toast.className = "pointer-events-auto transform transition-all duration-300 ease-out translate-x-full opacity-0";
+						
+						const bgColor = type === "success" 
+							? "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800" 
+							: "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800";
+						
+						const iconColor = type === "success"
+							? "text-green-600 dark:text-green-400"
+							: "text-red-600 dark:text-red-400";
+						
+						const textColor = type === "success"
+							? "text-green-900 dark:text-green-100"
+							: "text-red-900 dark:text-red-100";
 
-					if (!modal || !form) return;
+						const icon = type === "success"
+							? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />'
+							: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />';
 
-					function openPublishModal() {
-						modal?.classList.remove("hidden");
-						modal?.classList.add("flex");
-						document.body.style.overflow = "hidden";
-					}
-					function closePublishModal() {
-						modal?.classList.add("hidden");
-						modal?.classList.remove("flex");
-						document.body.style.overflow = "auto";
-						(form as HTMLFormElement)?.reset();
-					}
+						toast.innerHTML = `
+							<div class="flex items-start gap-3 rounded-lg border ${bgColor} p-4 shadow-lg backdrop-blur-sm min-w-[320px] max-w-md">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0 ${iconColor}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									${icon}
+								</svg>
+								<div class="flex-1">
+									<p class="text-sm font-medium ${textColor}">${message}</p>
+								</div>
+								<button onclick="document.getElementById('${id}').remove()" class="flex-shrink-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+									</svg>
+								</button>
+							</div>
+						`;
 
-					document.addEventListener("click", (e) => {
-						const t = e.target as Element;
-						if (t?.closest("[data-close-modal]") || t === modal) return closePublishModal();
-						if (t.closest("[data-open-modal]")) return openPublishModal();
-					});
-					document.addEventListener("keydown", (e) => {
-						if (e.key === "Escape" && !modal.classList.contains("hidden")) closePublishModal();
-					});
+						container.appendChild(toast);
 
-					function parseListArea(value: FormDataEntryValue | null) {
-						return String(value || "")
-							.split("\n")
-							.map((s) => s.trim())
-							.filter(Boolean);
-					}
-					function parseCsv(value: FormDataEntryValue | null) {
-						return String(value || "")
-							.split(",")
-							.map((s) => s.trim())
-							.filter(Boolean);
-					}
-					function slugify(s: string) {
-						return s
-							.toLowerCase()
-							.normalize("NFD")
-							.replace(/[\u0300-\u036f]/g, "")
-							.replace(/[^a-z0-9]+/g, "-")
-							.replace(/(^-|-$)+/g, "");
+						// Trigger animation
+						setTimeout(() => {
+							toast.classList.remove("translate-x-full", "opacity-0");
+							toast.classList.add("translate-x-0", "opacity-100");
+						}, 10);
+
+						// Auto dismiss after 5 seconds
+						setTimeout(() => {
+							toast.classList.add("translate-x-full", "opacity-0");
+							setTimeout(() => toast.remove(), 300);
+						}, 5000);
 					}
 
-					form.addEventListener("submit", async (e) => {
-						e.preventDefault();
-						const fd = new FormData(form);
 
-						const payload = {
-							title: fd.get("title"),
-							tagline: fd.get("tagline"),
-							description: fd.get("description"),
-							playStoreUrl: fd.get("playStoreUrl"),
-							appStoreUrl: fd.get("appStoreUrl") || undefined,
-							category: fd.get("category"),
-							icon: fd.get("icon"),
-							price: fd.get("price") || "Free",
-							rating: fd.get("rating") || undefined,
-							downloads: fd.get("downloads") || undefined,
-							version: fd.get("version") || "1.0.0",
-							features: parseListArea(fd.get("features")),
-							screenshots: parseCsv(fd.get("screenshots")),
-							// opcionales:
-							locale: "en",
-							slug: slugify(String(fd.get("title") || "")),
-						};
 
-						try {
-							const res = await fetch("/api/apps/create", {
-								method: "POST",
-								headers: {
-									"content-type": "application/json",
-									"x-api-key": "supersecret", // cámbialo y usa env en prod
-								},
-								body: JSON.stringify(payload),
+
+
+						function initAdmin() {
+							const modal = document.getElementById("publishModal");
+							const form = document.getElementById("publishForm");
+
+							if (!modal || !form) {
+								console.error("❌ Modal or form not found!");
+								return;
+							}
+
+							console.log("✅ Admin page initialized, form found");
+
+							function openPublishModal() {
+								modal?.classList.remove("hidden");
+								modal?.classList.add("flex");
+								document.body.style.overflow = "hidden";
+							}
+							function closePublishModal() {
+								modal?.classList.add("hidden");
+								modal?.classList.remove("flex");
+								document.body.style.overflow = "auto";
+								if (form) form.reset();
+
+								// Reset edit mode
+								if (form) {
+									delete form.dataset.editSlug;
+								}
+
+								// Reset modal title and button
+								const modalTitle = document.querySelector(".modal__header h2");
+								if (modalTitle) modalTitle.textContent = "Publish new app";
+
+								const submitBtn = form?.querySelector('button[type="submit"]');
+								if (submitBtn) submitBtn.textContent = "Publish App";
+							}
+
+							// Modal event listeners
+							document.addEventListener("click", function (e) {
+								const t = e.target;
+								if (t?.closest("[data-close-modal]") || t === modal) return closePublishModal();
+								if (t.closest("[data-open-modal]")) return openPublishModal();
 							});
 
-							const json = await res.json();
-							if (!res.ok) throw new Error(json.error ? JSON.stringify(json.error) : "Failed");
+							document.addEventListener("keydown", function (e) {
+								if (e.key === "Escape" && !modal.classList.contains("hidden")) closePublishModal();
+							});
 
-							alert(`✅ App publicada: ${json.slug}`);
-							// refresca la lista (si esta página se sirve SSR, basta con recargar)
-							location.reload();
-						} catch (err) {
-							console.error(err);
-							alert("❌ No se pudo publicar el app. Revisa la consola.");
-						} finally {
-							closePublishModal();
-						}
+							// Image to Base64 conversion functions
+							function fileToBase64(file) {
+								return new Promise(function (resolve, reject) {
+									const reader = new FileReader();
+									reader.onload = function () {
+										resolve(reader.result);
+									};
+									reader.onerror = reject;
+									reader.readAsDataURL(file);
+								});
+							}
+
+							// Handle icon file upload
+							const iconFileInput = document.getElementById("appIconFile");
+							if (iconFileInput) {
+								iconFileInput.addEventListener("change", async function (e) {
+									const target = e.target;
+									const file = target.files?.[0];
+									if (!file) return;
+
+									try {
+										const base64 = await fileToBase64(file);
+										const iconInput = document.getElementById("appIcon");
+										iconInput.value = base64;
+										console.log("✅ Icon converted to Base64");
+									} catch (err) {
+										console.error("❌ Error converting icon:", err);
+										showToast("Error converting icon image", "error");
+									}
+								});
+							}
+
+							// Handle screenshot files upload
+							const screenshotFilesInput = document.getElementById("screenshotFiles");
+							if (screenshotFilesInput) {
+								screenshotFilesInput.addEventListener("change", async function (e) {
+									const target = e.target;
+									const files = Array.from(target.files || []);
+									if (files.length === 0) return;
+
+									try {
+										const base64Screenshots = await Promise.all(
+											files.map(function (file) {
+												return fileToBase64(file);
+											}),
+										);
+
+										const screenshotsTextarea = document.getElementById("appScreenshots");
+										const existingScreenshots = screenshotsTextarea.value.trim();
+
+										// Append Base64 images to existing URLs
+										const allScreenshots = existingScreenshots
+											? existingScreenshots + "\n" + base64Screenshots.join("\n")
+											: base64Screenshots.join("\n");
+
+										screenshotsTextarea.value = allScreenshots;
+										console.log(`✅ ${files.length} screenshot(s) converted to Base64`);
+									} catch (err) {
+										console.error("❌ Error converting screenshots:", err);
+										showToast("Error converting screenshots", "error");
+									}
+								});
+							}
+
+							function parseListArea(value) {
+								return String(value || "")
+									.split("\n")
+									.map(function (s) {
+										return s.trim();
+									})
+									.filter(Boolean);
+							}
+
+							function parseCsv(value) {
+								return String(value || "")
+									.split(",")
+									.map(function (s) {
+										return s.trim();
+									})
+									.filter(Boolean);
+							}
+
+							function parseScreenshots(value) {
+								const str = String(value || "").trim();
+								if (!str) return [];
+
+								// Si tiene saltos de línea, separar por líneas
+								if (str.includes("\n")) {
+									return str
+										.split("\n")
+										.map(function (s) {
+											return s.trim();
+										})
+										.filter(Boolean);
+								}
+
+								// Si no, separar por comas
+								return str
+									.split(",")
+									.map(function (s) {
+										return s.trim();
+									})
+									.filter(Boolean);
+							}
+
+							function slugify(s) {
+								return s
+									.toLowerCase()
+									.normalize("NFD")
+									.replace(/[\u0300-\u036f]/g, "")
+									.replace(/[^a-z0-9]+/g, "-")
+									.replace(/(^-|-$)+/g, "");
+							}
+
+							// Form submit handler - using named function to prevent duplicates
+							const handleFormSubmit = async function (e) {
+								e.preventDefault();
+								e.stopPropagation();
+
+								console.log("=== Form Submit Debug ===");
+								console.log("Event default prevented!");
+								console.log("Is Edit Mode:", !!form.dataset.editSlug);
+								console.log("Edit Slug:", form.dataset.editSlug);
+
+								const fd = new FormData(form);
+								const isEdit = !!form.dataset.editSlug;
+
+								const payload = {
+									title: fd.get("title"),
+									tagline: fd.get("tagline"),
+									description: fd.get("description"),
+									playStoreUrl: fd.get("playStoreUrl"),
+					category: fd.get("category"),
+					icon: fd.get("icon"),
+					price: fd.get("price") || "Free",
+					version: fd.get("version") || "1.0.0",
+					markdown: fd.get("markdown"),
+					screenshots: parseScreenshots(fd.get("screenshots")),
+					locale: "en",
+					slug: isEdit ? form.dataset.editSlug : slugify(String(fd.get("title") || "")),
+				};
+
+				// Only include optional fields if they have values
+				if (fd.get("appStoreUrl")) {
+					payload.appStoreUrl = fd.get("appStoreUrl");
+				}
+				if (fd.get("rating")) {
+					payload.rating = fd.get("rating");
+				}
+				if (fd.get("downloads")) {
+					payload.downloads = fd.get("downloads");
+				}
+
+				console.log("Payload:", payload);
+
+				try {
+					// Fetch API key from server (requires authentication)
+					const keyResponse = await fetch("/api/auth/get-api-key");
+					if (!keyResponse.ok) {
+						throw new Error("Failed to get API key. Session may have expired.");
+					}
+					const { apiKey } = await keyResponse.json();
+
+					const url = isEdit ? "/api/apps/update" : "/api/apps/create";
+					const method = isEdit ? "PUT" : "POST";
+
+					console.log("API Call:", method, url);
+
+					const res = await fetch(url, {
+						method,
+						headers: {
+							"content-type": "application/json",
+							"x-api-key": apiKey,
+						},
+						body: JSON.stringify(payload),
 					});
-				});
-			</script>
 
-			<style>
-				.modal__content {
-					animation: modalSlideIn 0.3s ease-out;
-				}
+					const json = await res.json();
+					console.log("Response:", res.status, json);
 
-				@keyframes modalSlideIn {
-					from {
-						opacity: 0;
-						transform: scale(0.95) translateY(-20px);
+					if (!res.ok) {
+						console.error("API Error:", json);
+						throw new Error(json.error ? JSON.stringify(json.error) : "Failed");
 					}
-					to {
-						opacity: 1;
-						transform: scale(1) translateY(0);
-					}
+
+					// Success - close modal and reload
+					closePublishModal();
+					showToast(`App ${isEdit ? "updated" : "published"} successfully: ${json.slug}`, "success");
+					location.reload();
+				} catch (err) {
+					console.error("Submit Error:", err);
+					showToast(`Failed to ${isEdit ? "update" : "publish"} app. Check console for details.`, "error");
+					// Keep modal open on error so user can fix
 				}
-			</style>
+			};
+
+							// Remove any existing listener and add new one
+							form.removeEventListener("submit", handleFormSubmit);
+							form.addEventListener("submit", handleFormSubmit);
+
+							console.log("✅ Form submit handler attached");
+						}
+
+						// Initialize on DOMContentLoaded
+						if (document.readyState === "loading") {
+							document.addEventListener("DOMContentLoaded", initAdmin);
+						} else {
+							initAdmin();
+						}
+
+						// Edit app function
+						window.editApp = async function (slug) {
+						try {
+							// Fetch API key from server
+							const keyResponse = await fetch("/api/auth/get-api-key");
+							if (!keyResponse.ok) {
+								throw new Error("Failed to get API key. Session may have expired.");
+							}
+							const { apiKey } = await keyResponse.json();
+
+							console.log("Edit app:", slug);
+
+							const res = await fetch(`/api/apps/${slug}?slug=${slug}`, {
+								headers: {
+										"x-api-key": apiKey,
+										"content-type": "application/json",
+									},
+								});
+
+								if (!res.ok) {
+									const errorData = await res.json().catch(() => ({ error: "Unknown error" }));
+									console.error("API Error:", res.status, errorData);
+									throw new Error(`Failed to load app data: ${res.status}`);
+								}
+
+								const app = await res.json();
+								// Debug: Ver todos los datos que llegan
+								console.log("App data received:", app);
+								// Populate form with existing data
+								const form = document.getElementById("publishForm");
+								if (!form) return;
+
+								form.querySelector('[name="title"]').value = app.title || "";
+								form.querySelector('[name="tagline"]').value = app.tagline || "";
+								form.querySelector('[name="description"]').value = app.description || "";
+								form.querySelector('[name="category"]').value = app.category || "";
+								form.querySelector('[name="playStoreUrl"]').value = app.playStoreUrl || "";
+								form.querySelector('[name="appStoreUrl"]').value = app.appStoreUrl || "";
+								form.querySelector('[name="icon"]').value = app.icon || "";
+								form.querySelector('[name="price"]').value = app.price || "Free";
+								form.querySelector('[name="rating"]').value = app.rating || "";
+								form.querySelector('[name="downloads"]').value = app.downloads || "";
+								form.querySelector('[name="version"]').value = app.version || "1.0.0";
+								form.querySelector('[name="markdown"]').value = app.markdown || "";
+
+								// Screenshots: formatear para mostrar una por línea (más fácil de editar)
+								const screenshotsValue = Array.isArray(app.screenshots)
+									? app.screenshots.join("\n")
+									: app.screenshots || "";
+								form.querySelector('[name="screenshots"]').value = screenshotsValue;
+
+								// Store slug for update
+								form.dataset.editSlug = slug;
+
+								// Change modal title
+								const modalTitle = document.querySelector(".modal__header h2");
+								if (modalTitle) modalTitle.textContent = "Edit App";
+
+								// Change button text
+								const submitBtn = form.querySelector('button[type="submit"]');
+								if (submitBtn) submitBtn.textContent = "Update App";
+
+								// Open modal
+								const modal = document.getElementById("publishModal");
+								modal?.classList.remove("hidden");
+								modal?.classList.add("flex");
+								document.body.style.overflow = "hidden";
+							} catch (err) {
+								console.error(err);
+							showToast("Failed to load app data", "error");
+						}
+					};
+					// Delete app 
+					// function						
+				
+					window.deleteApp = async function (slug, title) {
+							if (
+								!confirm(
+									`Are you sure you want to delete "${title}"? This action cannot be undone.`,
+								)
+							) {
+								return;
+							}
+
+							try {
+								// Fetch API key from server
+								const keyResponse = await fetch("/api/auth/get-api-key");
+								if (!keyResponse.ok) {
+									throw new Error("Failed to get API key. Session may have expired.");
+								}
+								const { apiKey } = await keyResponse.json();
+
+								const res = await fetch("/api/apps/delete", {
+									method: "DELETE",
+									headers: {
+										"content-type": "application/json",
+										"x-api-key": apiKey,
+									},
+									body: JSON.stringify({ slug }),
+								});
+
+								if (!res.ok) throw new Error("Failed to delete app");
+
+							showToast(`App "${title}" deleted successfully`, "success");
+							location.reload();
+							} catch (err) {
+								console.error(err);
+							showToast("Failed to delete app", "error");
+							}
+						};
+					})();
+				</script>
+
+				<style>
+					.modal__content {
+						animation: modalSlideIn 0.3s ease-out;
+					}
+
+					@keyframes modalSlideIn {
+						from {
+							opacity: 0;
+							transform: scale(0.95) translateY(-20px);
+						}
+						to {
+							opacity: 1;
+							transform: scale(1) translateY(0);
+						}
+					}
+				</style>
+			</form>
 		</div>
-	</div></BaseLayout
->
+	</div>
+
+	<script>
+		// PIN Authentication with server-side validation
+		document.addEventListener("DOMContentLoaded", async () => {
+			const pinAuthScreen = document.getElementById("pinAuthScreen");
+			const adminContent = document.getElementById("adminContent");
+			const pinForm = document.getElementById("pinForm");
+			const pinInput = document.getElementById("pinInput");
+			const pinError = document.getElementById("pinError");
+			const submitBtn = pinForm?.querySelector('button[type="submit"]');
+
+			// Check if already authenticated (server-side session)
+			try {
+				const sessionCheck = await fetch("/api/auth/check-session");
+				const { authenticated } = await sessionCheck.json();
+				
+				if (authenticated) {
+					showAdminPanel();
+					return;
+				}
+			} catch (error) {
+				console.error("Session check failed:", error);
+			}
+
+			pinInput?.focus();
+
+			// Handle PIN form submission
+			if (pinForm) {
+				pinForm.addEventListener("submit", async (e) => {
+					e.preventDefault();
+					const enteredPin = pinInput?.value.trim();
+
+					if (!enteredPin) return;
+
+					// Disable button during request
+					if (submitBtn) {
+						submitBtn.disabled = true;
+						submitBtn.textContent = "Validating...";
+					}
+
+					try {
+						const response = await fetch("/api/auth/validate-pin", {
+							method: "POST",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({ pin: enteredPin }),
+						});
+
+						const data = await response.json();
+
+						if (response.ok && data.success) {
+							showAdminPanel();
+						} else {
+							showError(data.error || "Invalid PIN");
+						}
+					} catch (error) {
+						console.error("PIN validation error:", error);
+						showError("Authentication failed. Please try again.");
+					} finally {
+						if (submitBtn) {
+							submitBtn.disabled = false;
+							submitBtn.innerHTML = `
+								<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+								</svg>
+								Unlock Admin Panel
+							`;
+						}
+					}
+				});
+			}
+
+			function showError(message) {
+				if (pinError) {
+					pinError.textContent = `❌ ${message}`;
+					pinError.classList.remove("hidden");
+				}
+				if (pinInput) {
+					pinInput.value = "";
+					pinInput.focus();
+					pinInput.style.animation = "shake 0.5s";
+					setTimeout(() => { pinInput.style.animation = ""; }, 500);
+				}
+			}
+
+			function showAdminPanel() {
+				if (pinAuthScreen) pinAuthScreen.style.display = "none";
+				if (adminContent) adminContent.style.display = "block";
+			}
+
+			// Add logout functionality
+			const logoutBtn = document.createElement("button");
+			logoutBtn.className = "button button--ghost absolute right-4 top-4";
+			logoutBtn.innerHTML = `
+				<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+				</svg>
+				Logout
+			`;
+			logoutBtn.onclick = async () => {
+				await fetch("/api/auth/logout", { method: "POST" });
+				location.reload();
+			};
+			adminContent?.appendChild(logoutBtn);
+
+			// Add shake animation CSS
+			const style = document.createElement("style");
+			style.textContent = `
+				@keyframes shake {
+					0%, 100% { transform: translateX(0); }
+					10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+					20%, 40%, 60%, 80% { transform: translateX(10px); }
+				}
+			`;
+			document.head.appendChild(style);
+		});
+	</script>

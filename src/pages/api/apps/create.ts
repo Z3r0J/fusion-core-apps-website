@@ -6,7 +6,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
 
-const API_KEY = process.env.API_KEY ?? "supersecret";
+const API_KEY = import.meta.env.API_KEY ?? "supersecret";
 
 const Payload = z.object({
 	// del form:
@@ -19,7 +19,7 @@ const Payload = z.object({
 	icon: z.string().min(1),
 	price: z.string().optional(),
 	screenshots: z.array(z.string()).default([]),
-	features: z.array(z.string()).default([]),
+	markdown: z.string().optional(),
 	rating: z.coerce.number().min(0).max(5).optional(),
 	downloads: z.string().optional(),
 	version: z.string().optional(),
@@ -32,9 +32,9 @@ function slugify(s: string) {
 	return s
 		.toLowerCase()
 		.normalize("NFD")
-		.replace(/[\u0300-\u036f]/g, "")
-		.replace(/[^a-z0-9]+/g, "-")
-		.replace(/(^-|-$)+/g, "");
+		.replaceAll(/[\u0300-\u036f]/g, "")
+		.replaceAll(/[^a-z0-9]+/g, "-")
+		.replaceAll(/(?:^-|-$)+/g, "");
 }
 
 function toFrontmatter(obj: Record<string, unknown>) {
@@ -64,7 +64,7 @@ export const POST: APIRoute = async ({ request }) => {
 
 	const parsed = Payload.safeParse(body);
 	if (!parsed.success) {
-		return new Response(JSON.stringify({ error: parsed.error.flatten() }), { status: 400 });
+		return new Response(JSON.stringify({ error: parsed.error.issues }), { status: 400 });
 	}
 
 	const data = parsed.data;
@@ -77,7 +77,7 @@ export const POST: APIRoute = async ({ request }) => {
 		description: data.description,
 		icon: data.icon,
 		playUrl: data.playStoreUrl, // <-- mapeo
-		appStoreUrl: data.appStoreUrl,
+		...(data.appStoreUrl && { appStoreUrl: data.appStoreUrl }),
 		category: data.category,
 		tags: [], // podrías derivar por categoría o dejar vacío
 		locale: data.locale ?? "en",
@@ -85,16 +85,14 @@ export const POST: APIRoute = async ({ request }) => {
 		version: data.version ?? "1.0.0",
 		lastUpdated: new Date().toISOString().slice(0, 10), // yyyy-mm-dd
 		screenshots: data.screenshots,
-		rating: data.rating,
-		downloads: data.downloads,
+		...(data.rating && { rating: data.rating }),
+		...(data.downloads && { downloads: data.downloads }),
 	};
 
 	const fm = toFrontmatter(front);
-	const featuresSection = data.features.length
-		? `## Features\n\n${data.features.map((f) => `- ${f}`).join("\n")}\n`
-		: "";
+	const markdownContent = data.markdown || "";
 
-	const md = `${fm}${featuresSection}`;
+	const md = `${fm}${markdownContent}`;
 
 	const dir = path.join(process.cwd(), "src", "content", "apps");
 	if (!existsSync(dir)) await mkdir(dir, { recursive: true });

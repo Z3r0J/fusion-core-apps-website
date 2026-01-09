@@ -281,97 +281,81 @@ import {
 
 <script>
 	// Contact Form Logic
-	document.addEventListener("astro:page-load", async () => {
-		var form = document.getElementById("contact-form") as HTMLFormElement | null;
+	document.addEventListener("DOMContentLoaded", () => {
+		const form = document.getElementById("contactForm");
 		if (!form) return;
 
-		var submitButton = form && form.querySelector('button[type="submit"]');
-
-		interface FormData {
-			name: string;
-			email: string;
-			message: string;
-		}
-		// Form validation
-		function validateForm(formData: FormData) {
-			var errors = [];
-
-			if (!formData.name || formData.name.trim().length < 2) {
-				errors.push("El nombre debe tener al menos 2 caracteres");
-			}
-
-			if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-				errors.push("Por favor, ingresa un email válido");
-			}
-
-			if (!formData.message || formData.message.trim().length < 10) {
-				errors.push("El mensaje debe tener al menos 10 caracteres");
-			}
-
-			return errors;
-		}
+		const submitButton = form.querySelector('button[type="submit"]');
+		const messagesDiv = document.getElementById("formMessages");
 
 		// Show notification
-		function showNotification(message: string, type: string) {
-			if (!type) type = "info";
+		function showMessage(message, type) {
+			if (!messagesDiv) return;
 
-			var notification = document.createElement("div");
+			messagesDiv.className = `mb-6 rounded-lg p-4 ${
+				type === "success"
+					? "bg-green-50 text-green-800 border border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800"
+					: "bg-red-50 text-red-800 border border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800"
+			}`;
+			messagesDiv.textContent = message;
+			messagesDiv.classList.remove("hidden");
 
-			var className = "fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 max-w-sm ";
-			if (type === "error") {
-				className += "bg-red-500 text-white";
-			} else if (type === "success") {
-				className += "bg-green-500 text-white";
-			} else {
-				className += "bg-blue-500 text-white";
-			}
-
-			notification.className = className;
-			notification.textContent = message;
-
-			document.body.appendChild(notification);
-
-			setTimeout(function () {
-				notification.remove();
+			setTimeout(() => {
+				messagesDiv.classList.add("hidden");
 			}, 5000);
 		}
+
 		// Handle form submission
-		form.addEventListener("submit", function (e) {
+		form.addEventListener("submit", async (e) => {
 			e.preventDefault();
 
 			if (submitButton) {
-				submitButton.setAttribute("disabled", "true");
-				submitButton.textContent = "Enviando...";
+				submitButton.disabled = true;
+				submitButton.innerHTML =
+					'<svg class="animate-spin h-5 w-5 mr-2 inline-block" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending...';
 			}
+
+			const nameInput = form.querySelector('[name="name"]');
+			const emailInput = form.querySelector('[name="email"]');
+			const subjectInput = form.querySelector('[name="subject"]');
+			const appInput = form.querySelector('[name="app"]');
+			const messageInput = form.querySelector('[name="message"]');
+
 			const formData = {
-				name: form?.querySelector<HTMLInputElement>('[name="name"]')?.value?.trim() ?? "",
-				email: form?.querySelector<HTMLInputElement>('[name="email"]')?.value?.trim() ?? "",
-				subject: form?.querySelector<HTMLInputElement>('[name="subject"]')?.value?.trim() ?? "",
-				message: form?.querySelector<HTMLTextAreaElement>('[name="message"]')?.value?.trim() ?? "",
+				name: nameInput ? nameInput.value.trim() : "",
+				email: emailInput ? emailInput.value.trim() : "",
+				subject: subjectInput ? subjectInput.value.trim() : "",
+				app: appInput ? appInput.value.trim() : "",
+				message: messageInput ? messageInput.value.trim() : "",
 			};
 
-			var errors = validateForm(formData);
+			try {
+				const response = await fetch("/api/contact", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(formData),
+				});
 
-			if (errors.length > 0) {
-				showNotification(errors.join(". "), "error");
+				const data = await response.json();
 
-				if (submitButton) {
-					submitButton.setAttribute("disabled", "false");
-					submitButton.textContent = "Enviar mensaje";
+				if (!response.ok) {
+					throw new Error(data.error || "Failed to send message");
 				}
-				return;
+
+				showMessage("✅ Message sent successfully! We'll get back to you soon.", "success");
+				form.reset();
+			} catch (error) {
+				console.error("Form submission error:", error);
+				showMessage("❌ Failed to send message. Please try again or email us directly.", "error");
+			} finally {
+				if (submitButton) {
+					submitButton.disabled = false;
+					submitButton.innerHTML =
+						'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4 inline-block"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> Send message';
+				}
 			}
-
-			// Simulate form submission (replace with actual endpoint)
-			setTimeout(function () {
-				showNotification("¡Mensaje enviado correctamente! Te contactaremos pronto.", "success");
-				form?.reset();
-
-				if (submitButton) {
-					submitButton.setAttribute("disabled", "false");
-					submitButton.textContent = "Enviar mensaje";
-				}
-			}, 1000);
 		});
 	});
 </script>

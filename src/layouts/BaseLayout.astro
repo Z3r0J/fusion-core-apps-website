@@ -2,9 +2,7 @@
 import "@/styles/global.css";
 
 import GooglePlayLogo from "@/assets/gplay-logo.svg";
-import Logo from "@/assets/logo.svg";
 import ThemeToggle from "@/components/ThemeToggle.tsx";
-import { ClientRouter } from "astro:transitions";
 import { Menu } from "lucide-react";
 
 const {
@@ -44,9 +42,9 @@ const currentPath = Astro.url.pathname;
 		<meta content={description} name="twitter:description" />
 		<meta content={new URL(ogImage, Astro.site).href} name="twitter:image" />
 
-		<meta content="#3d6a45" name="theme-color" />
+		<meta content="#ff5726" name="theme-color" />
 		<meta content="light dark" name="color-scheme" />
-		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="mobile-web-app-capable" />
 		<meta content="default" name="apple-mobile-web-app-status-bar-style" />
 
 		<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
@@ -58,8 +56,8 @@ const currentPath = Astro.url.pathname;
 				"@type": "Organization",
 				"name": "FusionCore Apps",
 				"description": "Professional mobile app development studio",
-				"url": "https://fusioncore.app",
-				"logo": "https://fusioncore.app/logo.svg",
+				"url": "https://fusioncoreapps.com",
+				"logo": "https://fusioncoreapps.com/logo.png",
 				"foundingDate": "2024",
 				"sameAs": ["https://play.google.com/store/apps/developer?id=FusionCore+Apps"]
 			}
@@ -76,10 +74,8 @@ const currentPath = Astro.url.pathname;
 				}
 			})();
 		</script>
-		<ClientRouter />
-	</head>
-
-	<body class:list={[`min-h-screen antialiased`, `${bodyClass}`]}>
+		<slot name="head" />
+	</head><body class:list={[`min-h-screen antialiased`, `${bodyClass}`]}>
 		<!-- Skip to content link for accessibility -->
 		<a
 			class="button button--primary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
@@ -94,7 +90,7 @@ const currentPath = Astro.url.pathname;
 		>
 			<nav
 				aria-label="Main navigation"
-				class="header__nav mx-auto flex max-w-7xl items-center justify-between py-4"
+				class="header__nav mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
 				role="navigation"
 			>
 				<!-- Logo -->
@@ -103,9 +99,9 @@ const currentPath = Astro.url.pathname;
 					href="/"
 				>
 					<div
-						class="from-brand-500 to-brand-600 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg transition-all duration-200 group-hover:scale-105 group-hover:shadow-xl"
+						class="flex h-14 w-14 items-center justify-center rounded-lg bg-gradient-to-br transition-all duration-200 group-hover:scale-105"
 					>
-						<Logo class="from-brand-500 to-brand-600 h-6 w-6" />
+						<img alt="FusionCore Apps Logo" class="h-12 w-12 object-contain" src="/logo.png" />
 					</div>
 					<span class="gradient-text">FusionCore Apps</span>
 				</a>
@@ -161,7 +157,7 @@ const currentPath = Astro.url.pathname;
 				class="header__mobile-menu hidden border-t border-gray-200 md:hidden dark:border-gray-800"
 				id="mobile-menu"
 			>
-				<nav aria-label="Mobile navigation" class="px-4 py-4" role="navigation">
+				<nav aria-label="Mobile navigation" class="px-4 py-4 sm:px-6" role="navigation">
 					<ul class="space-y-4" role="menubar">
 						<li role="none">
 							<a
@@ -208,21 +204,6 @@ const currentPath = Astro.url.pathname;
 								Contact
 							</a>
 						</li>
-						<li role="none">
-							<a
-								class:list={[
-									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
-									{
-										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
-											currentPath.startsWith("/admin"),
-									},
-								]}
-								href="/admin"
-								role="menuitem"
-							>
-								Admin Panel
-							</a>
-						</li>
 					</ul>
 				</nav>
 			</div>
@@ -259,9 +240,10 @@ const currentPath = Astro.url.pathname;
 					<div class="footer__section md:col-span-2">
 						<a class="footer__logo mb-4 flex items-center gap-3" href="/">
 							<div
-								class="from-brand-500 to-brand-600 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br"
+								class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br"
+								style="background: linear-gradient(to bottom right, #0e3f88, #1a5fcc);"
 							>
-								<Logo class="from-brand-500 to-brand-600 h-5 w-5" />
+								<img alt="FusionCore Apps Logo" class="h-8 w-8 object-contain" src="/logo.png" />
 							</div>
 							<span class="text-lg font-bold text-gray-900 dark:text-white">FusionCore Apps</span>
 						</a>
@@ -358,18 +340,34 @@ const currentPath = Astro.url.pathname;
 
 		<!-- Mobile menu toggle script -->
 		<script is:inline>
-			document.addEventListener("astro:page-load", async () => {
+			function setupMobileMenu() {
 				const mobileMenuButton = document.getElementById("mobile-menu-button");
 				const mobileMenu = document.getElementById("mobile-menu");
 
 				if (mobileMenuButton && mobileMenu) {
+					// Prevent adding multiple listeners if function is called multiple times
+					// (e.g. DOMContentLoaded and astro:page-load on initial load)
+					if (mobileMenuButton.dataset.hasListener) return;
+
 					mobileMenuButton.addEventListener("click", function () {
 						mobileMenu.classList.toggle("hidden");
 						const isExpanded = !mobileMenu.classList.contains("hidden");
 						mobileMenuButton.setAttribute("aria-expanded", isExpanded.toString());
 					});
+
+					mobileMenuButton.dataset.hasListener = "true";
 				}
-			});
+			}
+
+			// Run on initial load
+			if (document.readyState === "loading") {
+				document.addEventListener("DOMContentLoaded", setupMobileMenu);
+			} else {
+				setupMobileMenu();
+			}
+
+			// Support Astro View Transitions (if added in the future)
+			document.addEventListener("astro:page-load", setupMobileMenu);
 		</script>
 	</body>
 </html>
