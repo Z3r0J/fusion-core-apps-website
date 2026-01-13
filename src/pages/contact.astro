@@ -9,9 +9,12 @@ import {
 	Send,
 	Speech,
 } from "lucide-react";
+
+const canonical = new URL("/contact", Astro.site).href;
 ---
 
 <BaseLayout
+	{canonical}
 	description="Get in touch with FusionCore Apps. We'd love to hear from you for support, partnerships, or business inquiries."
 	title="Contact Us — FusionCore Apps"
 >

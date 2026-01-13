@@ -17,9 +17,11 @@ const apps = entries.map(({ slug, data }) => ({
 	rating: data.rating ?? 4.5,
 	downloadsLabel: data.downloads ?? "1K+",
 }));
+const canonical = new URL("/apps", Astro.site).href;
 ---
 
 <BaseLayout
+	{canonical}
 	description="Browse our mobile apps and download them from Google Play."
 	title="Apps — FusionCore Apps"
 >

@@ -17,9 +17,11 @@ import {
 
 const apps = await getCollection("apps");
 const featuredApps = apps.slice(0, 4); // Show only first 4 apps on homepage
+const canonical = new URL("/", Astro.site).href;
 ---
 
 <BaseLayout
+	{canonical}
 	description="Professional mobile app development studio delivering secure, innovative, and user-friendly applications for Android and iOS platforms. Transform your ideas into powerful digital experiences."
 	showHero={true}
 	title="FusionCore Apps — Premium Mobile Applications"
