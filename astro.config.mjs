@@ -9,11 +9,12 @@ import vercel from "@astrojs/vercel";
 
 // TODO: replace with your real production domain (https://example.com)
 export default defineConfig({
-  site: "https://fusioncoreapps.com",
-  integrations: [react(), sitemap(), mdx()],
+	site: "https://www.fusioncoreapps.com",
+	trailingSlash: "never",
+	integrations: [react(), sitemap(), mdx()],
 
-  vite: {
-      plugins: [tailwindcss(), svgr()],
+	vite: {
+		plugins: [tailwindcss(), svgr()],
 	},
-  adapter: vercel(),
+	adapter: vercel(),
 });
