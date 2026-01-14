@@ -11,7 +11,16 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
 	site: "https://www.fusioncoreapps.com",
 	trailingSlash: "never",
-	integrations: [react(), sitemap(), mdx()],
+	integrations: [
+		react(),
+		sitemap({
+			filter: (page) =>
+				page !== "https://www.fusioncoreapps.com/admin" &&
+				page !== "https://www.fusioncoreapps.com/404" &&
+				!page.includes("/admin/"),
+		}),
+		mdx(),
+	],
 
 	vite: {
 		plugins: [tailwindcss(), svgr()],
