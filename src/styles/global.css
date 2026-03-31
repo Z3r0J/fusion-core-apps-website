@@ -15,12 +15,18 @@
   src: url(‘/fonts/jetbrains-mono-variable.woff2’) format(‘woff2’);
 }
 
+@font-face {
+  font-family: ‘Space Grotesk’;
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(‘/fonts/space-grotesk-variable.woff2’) format(‘woff2’);
+}
+
 /* 1. Import Tailwind’s base styles */
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
-
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
 	/* Brand Scale: Electric Cyan (#2ECFFF) - Main ID */
@@ -150,6 +156,7 @@
 	/* ---------- Fonts ---------- */
 	--font-sans: Inter, system-ui, sans-serif;
 	--font-mono: "JetBrains Mono", monospace;
+	--font-display: 'Space Grotesk', Inter, system-ui, sans-serif;
 
 	/* ---------- Animation keyframes ---------- */
 	--animate-fade-in: fadeIn 0.5s ease-in-out;
@@ -170,6 +177,11 @@
 		font-family: var(--font-sans);
 	}
 
+	h1, h2, h3 {
+		font-family: var(--font-display);
+		letter-spacing: -0.03em;
+	}
+
 	:focus-visible {
 		outline: 2px solid var(--color-brand-500);
 		outline-offset: 3px;
@@ -182,7 +194,7 @@
 	}
 
 	.app-card--featured {
-		@apply ring-brand-500/20 dark:ring-brand-400/20 ring-2;
+		/* featured distinction via star badge + gradient border on hover */
 	}
 
 	body {
@@ -567,6 +579,17 @@
 	from {
 		opacity: 0;
 		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
 	}
 	to {
 		opacity: 1;

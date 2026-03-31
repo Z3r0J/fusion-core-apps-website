@@ -20,6 +20,8 @@ const title = `${app.data.title} — FusionCore Apps`;
 const description = app.data.description;
 const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
 const ogImage = app.data.icon || "/og-default.png";
+const allApps = await getCollection('apps');
+const otherApps = allApps.filter(a => a.slug !== app.slug);
 ---
 
 <BaseLayout {canonical} {description} {ogImage} {title} locale={app.data.locale || "en"}>
@@ -43,7 +45,7 @@ const ogImage = app.data.icon || "/og-default.png";
 		}
 		<div>
 			<h1 class="text-3xl font-bold">{app.data.title}</h1>
-			<p class="mt-2 text-gray-700">{app.data.tagline}</p>
+			<p class="mt-2 text-gray-700 dark:text-gray-300">{app.data.tagline}</p>
 			<div class="mt-4 flex items-center gap-3">
 				<a
 					aria-label="Get it on Google Play"
@@ -55,7 +57,7 @@ const ogImage = app.data.icon || "/og-default.png";
 					<GetInGooglePlayBadge class="w-42 select-none" />
 				</a>
 
-				<a class="rounded-xl border px-5 py-3 font-medium hover:bg-gray-50" href="/apps">
+				<a class="rounded-xl border px-5 py-3 font-medium hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800 dark:text-gray-200" href="/apps">
 					Back to apps
 				</a>
 			</div>
@@ -75,22 +77,48 @@ const ogImage = app.data.icon || "/og-default.png";
 	</section>
 
 	{
-		app.data.screenshots?.length > 0 ? (
-			<section class="mt-10">
-				<h2 class="mb-4 text-2xl font-semibold">Screenshots</h2>
-				<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{app.data.screenshots.map((src) => (
-						<Image
-							alt={app.data.title}
-							class="rounded-xl border"
-							height={360}
-							loading="eager"
-							src={src}
-							width={640}
-						/>
+		app.data.screenshots?.length > 0 && (
+			<section class="mt-12">
+				<h2 class="mb-6 text-2xl font-bold">Screenshots</h2>
+				<div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-700">
+					{app.data.screenshots.map((shot, i) => (
+						<div class="snap-center shrink-0 relative group cursor-zoom-in">
+							{/* Phone frame wrapper */}
+							<div class="w-[200px] h-[400px] rounded-[2rem] border-2 border-gray-700 dark:border-gray-600 overflow-hidden bg-gray-950 shadow-xl relative">
+								{/* Notch */}
+								<div class="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-4 bg-gray-950 rounded-full z-10"></div>
+								<img
+									src={shot}
+									alt={`${app.data.title} screenshot ${i + 1}`}
+									class="w-full h-full object-cover"
+									loading={i === 0 ? "eager" : "lazy"}
+								/>
+							</div>
+						</div>
 					))}
 				</div>
 			</section>
-		) : null
+		)
 	}
+
+	{otherApps.length > 0 && (
+		<section class="mt-16 pt-12 border-t border-gray-200 dark:border-gray-800">
+			<h2 class="mb-6 text-xl font-bold text-gray-900 dark:text-white">More from FusionCore</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				{otherApps.map(other => (
+					<a href={`/apps/${other.slug}`} class="flex items-center gap-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-4 hover:border-brand-500/50 transition-colors group">
+						{other.data.icon
+							? <img src={other.data.icon} alt={other.data.title} class="h-14 w-14 rounded-2xl object-cover" />
+							: <div class="h-14 w-14 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-500 text-xl font-bold">{other.data.title[0]}</div>
+						}
+						<div class="flex-1 min-w-0">
+							<p class="font-semibold text-gray-900 dark:text-white group-hover:text-brand-500 transition-colors">{other.data.title}</p>
+							<p class="text-sm text-gray-500 dark:text-gray-400 truncate">{other.data.tagline}</p>
+						</div>
+						<svg class="w-5 h-5 text-gray-400 group-hover:text-brand-500 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+					</a>
+				))}
+			</div>
+		</section>
+	)}
 </BaseLayout>

@@ -1,31 +1,33 @@
 ---
-title: "CartWise Grocery Shopping List"
-tagline: "Voice grocery shopping list with image sharing, reminders, and spending insights."
-description: "CartWise Grocery Shopping List is a smart grocery list app that lets you add items with voice-to-text, auto-organize your lists, and share your grocery list as an image with family—no account needed. Track spending by category with simple charts, set reminders for shopping day, and never forget items again."
+title: "CartWise: Shared Grocery List"
+tagline: "Grocery list with real-time price calculator, voice input, and instant sharing."
+description: "CartWise is a shared grocery list with a real-time price calculator, voice input, AI-generated lists, and WhatsApp sharing. 100+ downloads on Google Play."
 icon: "/images/apps/cartwise-grocery-shopping-list/icon.png"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.cartwise"
-category: "Productivity"
-tags: []
+category: "Shopping"
+tags: ["grocery list", "shared shopping list", "voice input", "price calculator", "android"]
 locale: "en"
 price: "Free"
-version: "1.0.0"
-lastUpdated: "2026-01-09"
-screenshots: ["/images/apps/cartwise-grocery-shopping-list/screenshot-0.webp", "/images/apps/cartwise-grocery-shopping-list/screenshot-1.webp", "/images/apps/cartwise-grocery-shopping-list/screenshot-2.webp"]
-rating: 5
-downloads: "50+"
+version: "1.0.5"
+lastUpdated: "2026-03-10"
+screenshots: ["/images/screenshots/cartwise-home.jpg", "/images/screenshots/cartwise-list.jpg", "/images/screenshots/cartwise-create.jpg", "/images/screenshots/cartwise-voice.jpg", "/images/screenshots/cartwise-ai.jpg", "/images/screenshots/cartwise-analytics.jpg"]
+downloads: "100+"
 ---
 ## Overview
-**CartWise Grocery Shopping List** is a smart **grocery shopping list app** built to help you plan groceries faster. Add items using **voice-to-text**, auto-organize lists by category, and share your list as a clean **image** so anyone can view it—no account required. Stay on budget with **spending insights** and simple charts, and use reminders so you never miss shopping day.
+**CartWise: Shared Grocery List** is a smart **grocery list app** with a built-in **price calculator** that adds up your cart in real time while you shop. Know your total before you reach the checkout. Add items using **voice-to-text**, let CartWise auto-organize by category, and share your list via WhatsApp instantly—no account required. Track your grocery budget with visual spending analytics and never miss a shopping day.
 
 ## Features
-- **Voice-to-text grocery lists**: tap and speak to add multiple items at once
-- **Share as image**: generate a beautiful grocery list image for family or roommates
-- **Spending insights**: track grocery spending by category with visual charts
-- **Organized lists**: auto-categorization, custom categories, icons, and colors
-- **Smart reminders**: alerts for weekly grocery runs and shopping trips
+- **Real-time price calculator** — know your cart total before checkout
+- **Voice-to-text input** — tap and speak to add multiple items at once
+- **AI-generated lists** — describe your occasion, CartWise builds the list
+- **Share via WhatsApp** — send your grocery list instantly with anyone
+- **Budget tracker** — monitor spending by category with visual charts
+- **Smart templates** — one-tap lists for Picnic, Home Office, Camping, Party, and more
+- **Organized lists** — auto-categorization, custom icons and colors
+- **Smart reminders** — alerts for grocery runs so you never forget
 
 ## Perfect for
-Weekly grocery shopping, family meal planning, busy households, roommates, and budget-conscious shoppers who want a faster way to build and share a grocery list.
+Weekly grocery shopping, family meal planning, budget-conscious shoppers, and households that want to know their total before they reach the checkout.
 
 ## Why CartWise?
-CartWise combines **voice input**, **easy sharing**, and **budget tracking** into one simple grocery list experience—so you can plan faster, spend smarter, and never forget items again.
+CartWise is the only grocery list app that **adds up your cart in real time** while you shop — so no more surprise totals at the register. Combine that with voice input, AI lists, WhatsApp sharing, and spending analytics, and you have the smartest grocery app available.

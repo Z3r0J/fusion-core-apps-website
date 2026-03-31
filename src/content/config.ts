@@ -42,6 +42,10 @@ export const apps = defineCollection({
 		// 0-5 optional (the form already has it)
 		rating: z.number().min(0).max(5).optional(),
 
+		// Beta / early access apps
+		beta: z.boolean().default(false),
+		betaGroupUrl: z.string().url().optional(),
+
 		// Absolute site paths or URLs
 		screenshots: z.array(urlOrPath).default([]),
 	}),

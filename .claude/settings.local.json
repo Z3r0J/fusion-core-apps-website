@@ -12,7 +12,29 @@
       "Bash(cd:*)",
       "Bash(npx tsc:*)",
       "Bash(npx astro:*)",
-      "Bash(node -e \"const { Trophy, User, Mail, MessageSquare, Smartphone, ChevronDown, CheckCircle, CircleAlert, Loader2, RefreshCcw, Send } = require\\(''lucide-react''\\); console.log\\(''All icons available:'', typeof Trophy === ''object''\\)\")"
+      "Bash(node -e \"const { Trophy, User, Mail, MessageSquare, Smartphone, ChevronDown, CheckCircle, CircleAlert, Loader2, RefreshCcw, Send } = require\\(''lucide-react''\\); console.log\\(''All icons available:'', typeof Trophy === ''object''\\)\")",
+      "Bash(node -e \"const { AnimatePresence, motion } = require\\(''framer-motion''\\); console.log\\(''framer-motion OK:'', typeof AnimatePresence === ''object'', typeof motion === ''object''\\)\")",
+      "Bash(pnpm add:*)",
+      "Bash(node -e \"console.log\\(require\\(''./node_modules/framer-motion/package.json''\\).version\\)\")",
+      "Bash(find /c/Users/yacal/source/repos/fusion-core-apps-website/src -name *.astro -o -name *.tsx -o -name *.css)",
+      "WebSearch",
+      "mcp__stitch__create_project",
+      "mcp__stitch__create_design_system",
+      "mcp__stitch__update_design_system",
+      "mcp__stitch__generate_screen_from_text",
+      "mcp__stitch__list_screens",
+      "mcp__stitch__get_screen",
+      "Read(//c/CartWise Screenshots/**)",
+      "Read(//c/Users/yacal/Downloads/Images/Screenshots/2026/**)",
+      "Bash(xxd -l 16 \"C:/Users/yacal/source/repos/fusion-core-apps-website/public/fonts/space-grotesk-variable.woff2\")",
+      "WebFetch(domain:play.google.com)",
+      "WebFetch(domain:chrome-stats.com)",
+      "WebFetch(domain:www.appbrain.com)",
+      "WebFetch(domain:apkpure.com)",
+      "WebFetch(domain:apkcombo.com)",
+      "Bash(node -e \"require\\(''''google-play-scraper''''\\)\")",
+      "WebFetch(domain:gplayapi.cashlessconsumer.in)",
+      "Bash(node scripts/fetch-play-store.mjs)"
     ]
   }
 }

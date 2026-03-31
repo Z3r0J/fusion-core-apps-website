@@ -8,23 +8,25 @@ const { app, featured = false } = Astro.props as {
 	featured?: boolean;
 };
 
-// Extract rating and downloads from app data, fallback to defaults if not available
-const rating = app.data.rating ?? 4.5;
-const downloads = app.data.downloads ?? "1K+";
+// Extract rating and downloads from app data
+const rating = app.data.rating ?? null;
+const downloads = app.data.downloads ?? null;
 const price = app.data.price || "Free";
 const version = app.data.version;
 const lastUpdated = app.data.lastUpdated;
 const category = app.data.category;
+const isBeta = app.data.beta ?? false;
+const betaGroupUrl = app.data.betaGroupUrl;
 
-// "Top Rated" badge logic: show if rating >= 4.5
-const isTopRated = rating >= 4.5;
+// "Top Rated" badge logic: only show if there's a real rating >= 4.5
+const isTopRated = rating !== null && rating >= 4.5;
 
 // Generate a unique ID for this card's modal
 const modalId = `download-modal-${app.slug}`;
 
-// Generate star display
-const fullStars = Math.floor(rating);
-const hasHalfStar = rating - fullStars >= 0.5;
+// Generate star display (only when rating exists)
+const fullStars = rating !== null ? Math.floor(rating) : 0;
+const hasHalfStar = rating !== null && rating - fullStars >= 0.5;
 ---
 
 <article
@@ -74,14 +76,17 @@ const hasHalfStar = rating - fullStars >= 0.5;
 								>
 									{app.data.title}
 								</h3>
-								{
-									isTopRated && (
-										<span class="inline-flex items-center gap-1 rounded-full bg-accent-500 px-2 py-0.5 text-[10px] font-bold whitespace-nowrap text-white shadow-sm">
-											<Trophy className="h-3 w-3" />
-											Top Rated
-										</span>
-									)
-								}
+								{isBeta && (
+									<span class="inline-flex items-center rounded-full bg-purple-500 px-2 py-0.5 text-[10px] font-bold whitespace-nowrap text-white shadow-sm">
+										Beta
+									</span>
+								)}
+								{!isBeta && isTopRated && (
+									<span class="inline-flex items-center gap-1 rounded-full bg-accent-500 px-2 py-0.5 text-[10px] font-bold whitespace-nowrap text-white shadow-sm">
+										<Trophy className="h-3 w-3" />
+										Top Rated
+									</span>
+								)}
 							</div>
 
 							<!-- Category pill -->
@@ -97,23 +102,26 @@ const hasHalfStar = rating - fullStars >= 0.5;
 
 							<!-- Rating Stars (visual) & Downloads -->
 							<div class="app-card__meta mt-3 flex items-center gap-4">
-								<div class="flex items-center gap-1">
-									<div class="flex items-center" aria-label={`Rating ${rating} out of 5`}>
-										{
-											Array.from({ length: 5 }).map((_, i) => (
-												<Star
-													className={`h-3.5 w-3.5 ${i < fullStars ? "fill-current text-yellow-400" : i === fullStars && hasHalfStar ? "fill-current text-yellow-300" : "text-gray-300 dark:text-gray-600"}`}
-													fill="currentColor"
-												/>
-											))
-										}
+								{rating !== null && (
+									<div class="flex items-center gap-1">
+										<div class="flex items-center" aria-label={`Rating ${rating} out of 5`}>
+											{
+												Array.from({ length: 5 }).map((_, i) => (
+													<Star
+														className={`h-3.5 w-3.5 ${i < fullStars ? "fill-current text-yellow-400" : i === fullStars && hasHalfStar ? "fill-current text-yellow-300" : "text-gray-300 dark:text-gray-600"}`}
+														fill="currentColor"
+													/>
+												))
+											}
+										</div>
+										<span class="ml-1 text-xs font-medium text-gray-500 dark:text-gray-400">{rating}</span>
 									</div>
-									<span class="ml-1 text-xs font-medium text-gray-500 dark:text-gray-400">{rating}</span>
-								</div>
-
-								<div class="text-xs text-gray-500 dark:text-gray-400">
-									{downloads}
-								</div>
+								)}
+								{downloads && (
+									<div class="text-xs text-gray-500 dark:text-gray-400">
+										{downloads}
+									</div>
+								)}
 							</div>
 						</div>
 
@@ -155,22 +163,48 @@ const hasHalfStar = rating - fullStars >= 0.5;
 				</div>
 			</a>
 
+			{app.data.screenshots && app.data.screenshots.length > 0 && (
+				<div class="mt-3 mx-5 overflow-hidden rounded-xl h-28 relative">
+					<img
+						src={app.data.screenshots[0]}
+						alt={`${app.data.title} preview`}
+						class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+						loading="lazy"
+					/>
+					{/* Subtle gradient fade at bottom */}
+					<div class="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-900 to-transparent"></div>
+				</div>
+			)}
+
 			<!-- Download CTA (outside the link) -->
 			<div class="app-card__footer-cta px-6 pb-6 pt-2">
-				<button
-					type="button"
-					data-modal-id={modalId}
-					class="download-btn flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-brand-600 hover:shadow-lg"
-				>
-					<!-- Google Play icon (inline SVG) -->
-					<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
-						<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.8"></path>
-						<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.6"></path>
-						<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"></path>
-						<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.6"></path>
-					</svg>
-					<span>Get on Google Play</span>
-				</button>
+				{isBeta ? (
+					<a
+						href={betaGroupUrl ?? app.data.playUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-accent-600 hover:shadow-lg"
+					>
+						<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+						</svg>
+						<span>Join Beta — It's Free</span>
+					</a>
+				) : (
+					<button
+						type="button"
+						data-modal-id={modalId}
+						class="download-btn flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-brand-600 hover:shadow-lg"
+					>
+						<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
+							<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.8"></path>
+							<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.6"></path>
+							<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"></path>
+							<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.6"></path>
+						</svg>
+						<span>Get on Google Play</span>
+					</button>
+				)}
 			</div>
 		</div>
 	</div>

@@ -1,21 +1,20 @@
 ---
-import AppCard from "@/components/AppCard.astro";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { PhoneMockup } from "@/components/PhoneMockup";
+import AppCard from "@/components/AppCard.astro";
+import { AppShowcase } from "@/components/AppShowcase";
 import { StatsCounter } from "@/components/StatsCounter";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import {
-	ArrowRight,
-	Heart,
-	Layers,
-	LockKeyhole,
-	RefreshCcw,
-	ShieldCheck,
-	Smartphone,
-	Speech,
-	Star,
-	Zap,
+ArrowRight,
+Heart,
+Layers,
+LockKeyhole,
+RefreshCcw,
+Smartphone,
+Speech,
+Star,
+Zap
 } from "lucide-react";
 
 const apps = await getCollection("apps");
@@ -25,8 +24,9 @@ const canonical = new URL("/", Astro.site).href;
 
 <BaseLayout
 	{canonical}
-	description="FusionCore Apps builds premium Android apps. Download Bible TPT, Biblia TLA en Español, and CartWise Grocery List — free apps for Bible reading, grocery shopping, and daily productivity."
+	description="FusionCore Apps builds free Android apps for Bible reading and grocery shopping. Download Bible TPT, Biblia TLA, and CartWise on Google Play."
 	showHero={true}
+	showFooterCta={false}
 	title="FusionCore Apps — Premium Mobile Applications"
 >
 	<!-- Hero Section -->
@@ -94,8 +94,8 @@ const canonical = new URL("/", Astro.site).href;
 				</div>
 
 				<!-- Right column: Phone mockup -->
-				<div class="hidden lg:flex lg:justify-center">
-					<PhoneMockup client:load />
+				<div class="hidden md:flex md:justify-center">
+					<AppShowcase client:load />
 				</div>
 			</div>
 		</div>
@@ -122,8 +122,8 @@ const canonical = new URL("/", Astro.site).href;
 						client:visible
 						stats={[
 							{ value: 3, suffix: "+", label: "Apps Published" },
-							{ value: 10, suffix: "K+", label: "Downloads" },
-							{ value: 4, suffix: ".8★", label: "Avg. Rating" },
+							{ value: 3.3, suffix: "K+", label: "Downloads" },
+							{ value: 4, suffix: ".5★", label: "Avg. Rating" },
 							{ value: 100, suffix: "%", label: "Free to Download" },
 						]}
 					/>
@@ -157,10 +157,10 @@ const canonical = new URL("/", Astro.site).href;
 								))}
 							</div>
 							<p class="mb-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-								"Finally a grocery list app that just works. No bloat, no ads, no account needed. I share my list with my wife and it syncs perfectly."
+								"Finally a grocery list app that just works. No bloat, no unnecessary complexity. I share my list with my wife and it works perfectly."
 							</p>
 							<div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-								<span class="font-medium text-gray-900 dark:text-gray-200">Maria S.</span>
+								<span class="font-medium text-gray-900 dark:text-gray-200">Mario S.</span>
 								<span>·</span>
 								<span>CartWise Grocery List</span>
 							</div>
@@ -361,7 +361,7 @@ const canonical = new URL("/", Astro.site).href;
 				>
 					<h2 class="mb-4 text-3xl font-bold sm:text-4xl">Ready to Experience Premium Apps?</h2>
 					<p class="text-brand-100 mx-auto mb-8 max-w-2xl text-xl">
-						Join thousands of users who trust FusionCore Apps for their mobile experience.
+						Free Android apps built to make everyday life simpler — Bible reading, grocery shopping, and more.
 					</p>
 					<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 						<a

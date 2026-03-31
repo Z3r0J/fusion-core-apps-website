@@ -1,34 +1,35 @@
 ---
 title: "Biblia TLA en Español Fácil"
-tagline: "Biblia TLA (Lenguaje Actual) con audio, offline, versículos diarios y planes semanales."
-description: "Biblia TLA en Español Fácil te ayuda a leer y escuchar la Traducción en Lenguaje Actual con audio biblia, acceso 100% offline, versículos diarios y planes de lectura semanales. Personaliza tu experiencia con modo oscuro, ajuste de letra, resaltados y favoritos."
-icon: "https://play-lh.googleusercontent.com/T6UyUSvdmPXI7rfU2Jm0pAgyyjwiSpi_Yi_gF8x8bm7syY_KuJ3VJQxr9VAT_hETToE=w480-h960-rw"
+tagline: "Lee y escucha la Biblia TLA con audio, planes semanales, versículos diarios y acceso offline."
+description: "Biblia TLA en Español Fácil: audio biblia integrado, acceso 100% offline, versículos diarios y planes de lectura. Más de 1.000 descargas en Google Play."
+icon: "/images/apps/biblia-tla/icon.webp"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.biblia.tla"
-category: "Lifestyle"
-tags: []
+category: "Books & Reference"
+tags: ["biblia español", "biblia tla", "audio biblia", "biblia offline", "lenguaje actual", "android"]
 locale: "es"
 price: "Free"
-version: "1.1.2"
-lastUpdated: "2026-01-09"
-screenshots: ["/images/apps/biblia-tla/screenshot-0.webp", "/images/apps/biblia-tla/screenshot-1.webp", "/images/apps/biblia-tla/screenshot-2.webp"]
+version: "1.1.4"
+lastUpdated: "2026-03-09"
+screenshots: ["/images/screenshots/biblia-tla-reading.jpg", "/images/screenshots/biblia-tla-audio.jpg", "/images/screenshots/biblia-tla-books.jpg", "/images/screenshots/biblia-tla-plans.jpg", "/images/screenshots/biblia-tla-plan-detail.jpg", "/images/screenshots/biblia-tla-splash.jpg"]
 rating: 4.6
 downloads: "1K+"
 ---
-## Overview
-**Biblia TLA en Español Fácil** es una app de Biblia en español basada en la **Traducción en Lenguaje Actual (TLA)**, pensada para quienes desean comprender la Palabra de Dios con un lenguaje claro, moderno y fácil de entender. Incluye **audio biblia**, **lectura offline**, **versículos diarios** y **planes de lectura semanales** para acompañarte en tu crecimiento espiritual en cualquier momento y lugar.
+## Descripción
+**Biblia TLA en Español Fácil** es una app de Biblia en español basada en la **Traducción en Lenguaje Actual (TLA)**, diseñada para acercarte a Dios con un lenguaje claro, moderno y accesible para todas las edades. Incluye **audio biblia integrado**, **lectura offline completa**, **versículos diarios** y **planes de lectura semanales** para acompañarte en tu crecimiento espiritual en cualquier momento y lugar. Más de **1.000 descargas** en Google Play.
 
-## Features
-- **Biblia TLA completa** (Traducción en Lenguaje Actual) en español fácil
-- **Audio Biblia** por libros y capítulos para escuchar donde quieras
-- **Acceso 100% offline** (lee sin conexión a internet)
-- **Versículos diarios personalizados** para inspirarte cada día
-- **Planes de lectura semanales descargables** para mantener constancia
-- **Búsqueda rápida** por palabras clave, libros y capítulos
-- **Resaltados y favoritos** para guardar y estudiar tus versículos
-- **Personalización de lectura**: modo oscuro/claro, tamaño de letra, fuente y temas
+## Características
+- **Biblia TLA completa** (Traducción en Lenguaje Actual) — lenguaje fácil y fiel al mensaje original
+- **Audio Biblia integrado** — escucha la Palabra mientras viajás, caminás o descansás
+- **Acceso 100% offline** — leé sin conexión a internet en cualquier lugar
+- **Versículos diarios personalizados** — inspiración diaria para compartir con familia y amigos
+- **Planes de lectura semanales** — guías descargables para mantener una rutina espiritual constante
+- **Resaltados y favoritos** — guardá y revisitá tus versículos más significativos
+- **Búsqueda rápida** — encontrá textos y palabras clave al instante
+- **Navegación intuitiva** — accedé a cualquier libro, capítulo y versículo en segundos
+- **Personalización de lectura** — modo oscuro/claro, tamaño de letra, fuentes y temas de color
 
 ## Ideal para
-Devocionales diarios, estudio bíblico, lectura fácil para todas las edades, y usuarios que buscan una **Biblia TLA con audio y offline** para usar en casa, trabajo o viajes.
+Devocionales diarios, estudio bíblico en español, lectura accesible para todas las edades, y usuarios que buscan una **Biblia TLA con audio y offline** para usar en casa, trabajo o viajes.
 
-## Por que elegir Biblia TLA en Español Fácil?
-La **Biblia TLA** destaca por su lenguaje accesible y actual. Con herramientas como **audio**, **versículos diarios**, **planes de lectura** y **modo offline**, esta app hace que sea más simple mantener una rutina espiritual constante y compartir inspiración con otros.
+## ¿Por qué elegir Biblia TLA en Español Fácil?
+La **Biblia TLA** destaca por su lenguaje accesible y actual. Con **audio integrado**, **versículos diarios**, **planes de lectura semanales** y **modo offline**, esta app simplifica mantener una rutina espiritual sólida y compartir la fe con otros.

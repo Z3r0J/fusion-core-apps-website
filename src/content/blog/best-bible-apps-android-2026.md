@@ -30,7 +30,7 @@ Before diving into specific apps, it helps to know what separates a good Bible a
 
 Bible TPT stands out for readers who want a modern, heart-level translation that captures the emotion and poetry of the original texts. The app offers a distraction-free reading experience with dark mode, offline support, and fast verse search. It is designed for people who want to connect with Scripture on a deeper, more personal level without the complexity of academic commentaries.
 
-What sets Bible TPT apart is its focus on simplicity. There are no ads, no social features competing for your attention, and no unnecessary complexity. You open the app, and you read. That is exactly what many users are looking for.
+What sets Bible TPT apart is its focus on simplicity. There are no social features competing for your attention and no unnecessary complexity. You open the app, and you read. That is exactly what many users are looking for.
 
 ### Biblia TLA (Traduccion en Lenguaje Actual)
 

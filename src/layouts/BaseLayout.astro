@@ -14,6 +14,7 @@ const {
 	bodyClass = "",
 	showHero = false,
 	locale = "en",
+	showFooterCta = true,
 } = Astro.props;
 
 const year = new Date().getFullYear();
@@ -88,6 +89,24 @@ const resolvedOgImage =
 			})();
 		</script>
 		<slot name="head" />
+
+		<!-- Firebase Analytics -->
+		{import.meta.env.PUBLIC_FIREBASE_MEASUREMENT_ID && (
+			<script type="module" define:vars={{
+				apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
+				authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
+				projectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID,
+				storageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET,
+				messagingSenderId: import.meta.env.PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+				appId: import.meta.env.PUBLIC_FIREBASE_APP_ID,
+				measurementId: import.meta.env.PUBLIC_FIREBASE_MEASUREMENT_ID,
+			}}>
+				import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+				import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+				const app = initializeApp({ apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId, measurementId });
+				getAnalytics(app);
+			</script>
+		)}
 	</head><body class:list={[`min-h-screen antialiased`, `${bodyClass}`]}>
 		<!-- Skip to content link for accessibility -->
 		<a
@@ -268,7 +287,7 @@ const resolvedOgImage =
 		<!-- Footer -->
 		<footer class="footer bg-gray-950 text-gray-300" role="contentinfo">
 			<!-- CTA Banner -->
-			<div class="bg-fusion-gradient">
+			{showFooterCta && <div class="bg-fusion-gradient">
 				<div
 					class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-12 text-center sm:px-6 lg:px-8"
 				>
@@ -283,7 +302,7 @@ const resolvedOgImage =
 						Browse Apps
 					</a>
 				</div>
-			</div>
+			</div>}
 
 			<!-- Main footer columns -->
 			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
