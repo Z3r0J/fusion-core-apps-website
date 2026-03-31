@@ -7,28 +7,28 @@ export const POST: APIRoute = async ({ request }) => {
 		const body = await request.json();
 		const { name, email, subject, app, message } = body;
 
-		// Validación básica
+		// Basic validation
 		if (!name || !email || !subject || !message) {
 			return new Response(
-				JSON.stringify({ error: "Todos los campos obligatorios deben ser completados" }),
+				JSON.stringify({ error: "All required fields must be filled in" }),
 				{ status: 400 },
 			);
 		}
 
-		// Email usando Resend API
+		// Email via Resend API
 		const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
 		const CONTACT_EMAIL_TO = import.meta.env.CONTACT_EMAIL_TO || "jeanrey.ese@gmail.com";
 
 		if (!RESEND_API_KEY) {
-			console.error("RESEND_API_KEY no está configurada");
-			// Fallback: log en consola
-			console.log("📧 Nuevo mensaje de contacto:");
+			console.error("RESEND_API_KEY is not configured");
+			// Fallback: log to console
+			console.log("📧 New contact message:");
 			console.log({ name, email, subject, app, message });
 
 			return new Response(
 				JSON.stringify({
 					success: true,
-					message: "Mensaje recibido (modo desarrollo)",
+					message: "Message received (development mode)",
 				}),
 				{ status: 200 },
 			);
@@ -207,7 +207,7 @@ ${message}
 				"Authorization": `Bearer ${RESEND_API_KEY}`,
 			},
 			body: JSON.stringify({
-				from: "FusionCore Apps <onboarding@resend.dev>", // Cambiar cuando tengas dominio verificado
+				from: "FusionCore Apps <onboarding@resend.dev>", // Change when you have a verified domain
 				to: [CONTACT_EMAIL_TO],
 				reply_to: email,
 				subject: emailSubject,
@@ -227,7 +227,7 @@ ${message}
 		return new Response(
 			JSON.stringify({
 				success: true,
-				message: "Mensaje enviado correctamente",
+				message: "Message sent successfully",
 			}),
 			{ status: 200, headers: { "Content-Type": "application/json" } },
 		);
@@ -235,7 +235,7 @@ ${message}
 		console.error("Contact form error:", error);
 		return new Response(
 			JSON.stringify({
-				error: "Error al enviar el mensaje. Por favor, intenta de nuevo.",
+				error: "Failed to send message. Please try again.",
 			}),
 			{ status: 500, headers: { "Content-Type": "application/json" } },
 		);

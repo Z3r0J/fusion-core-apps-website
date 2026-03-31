@@ -76,9 +76,9 @@ export function debounce<T extends (...args: any[]) => any>(
 	wait: number,
 ): (...args: Parameters<T>) => void {
 	let timeout: NodeJS.Timeout;
-	return (...args: Parameters<T>) => {
+	return function (this: unknown, ...args: Parameters<T>) {
 		clearTimeout(timeout);
-		timeout = setTimeout((...args) => func(...args), wait); // Removed 'this' and used rest parameters instead
+		timeout = setTimeout(() => func.apply(this, args), wait);
 	};
 }
 

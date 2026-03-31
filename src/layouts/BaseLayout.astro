@@ -48,10 +48,13 @@ const resolvedOgImage =
 		<meta content={description} name="twitter:description" />
 		<meta content={resolvedOgImage} name="twitter:image" />
 
-		<meta content="#ff5726" name="theme-color" />
+		<meta content="#2ECFFF" name="theme-color" media="(prefers-color-scheme: light)" />
+		<meta content="#0b1c2d" name="theme-color" media="(prefers-color-scheme: dark)" />
 		<meta content="light dark" name="color-scheme" />
 		<meta content="yes" name="mobile-web-app-capable" />
 		<meta content="default" name="apple-mobile-web-app-status-bar-style" />
+
+		<link rel="preload" href="/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
 
 		<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
 		<link href="/favicon.svg" rel="apple-touch-icon" />
@@ -337,7 +340,7 @@ const resolvedOgImage =
 						>
 						<a
 							class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-							href="/contact">Terms</a
+							href="/terms">Terms</a
 						>
 					</div>
 				</div>

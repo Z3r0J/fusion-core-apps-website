@@ -18,7 +18,7 @@ const { Content } = await app.render(); // ✅ compile MD to a component
 const title = `${app.data.title} — FusionCore Apps`;
 const description = app.data.description;
 const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
-const ogImage = app.data.icon || "/og-default.jpg";
+const ogImage = app.data.icon || "/og-default.png";
 ---
 
 <BaseLayout {canonical} {description} {ogImage} {title}>

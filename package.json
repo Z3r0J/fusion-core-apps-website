@@ -23,7 +23,6 @@
     "@astrojs/mdx": "4.3.4",
     "@astrojs/sitemap": "3.5.1",
     "@astrojs/vercel": "8.2.11",
-    "@headlessui/react": "2.2.7",
     "astro": "5.13.11",
     "clsx": "2.1.1",
     "framer-motion": "12.5.0",

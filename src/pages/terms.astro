@@ -1,0 +1,133 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const title = "Terms of Service — FusionCore Apps";
+const description = "Terms of service for FusionCore Apps mobile applications and website.";
+const canonical = new URL("/terms", Astro.site).href;
+---
+
+<BaseLayout {canonical} {description} {title}>
+	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+		<!-- Header -->
+		<header class="mb-10 text-center">
+			<h1 class="text-4xl font-bold sm:text-5xl">Terms of Service</h1>
+			<p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Last updated: March 2026</p>
+		</header>
+
+		<!-- Content card -->
+		<div class="card p-8">
+			<article class="privacy-policy__content">
+				<!-- Agreement to Terms -->
+				<section class="policy-section">
+					<h2>Agreement to Terms</h2>
+					<p>
+						By accessing or using any application or service provided by FusionCore Apps, you agree
+						to be bound by these Terms of Service. If you do not agree with any part of these terms,
+						you may not use our applications or services.
+					</p>
+				</section>
+
+				<!-- Use License -->
+				<section class="policy-section">
+					<h2>Use License</h2>
+					<p>
+						FusionCore Apps grants you a limited, non-exclusive, non-transferable, revocable license
+						to use our applications for personal, non-commercial purposes, subject to these terms.
+						Under this license you may not:
+					</p>
+					<ul>
+						<li>Modify, reverse engineer, or decompile the applications</li>
+						<li>Use the applications for any unlawful purpose</li>
+						<li>Transfer or sublicense the applications to another person or entity</li>
+						<li>Remove any copyright or proprietary notices from the applications</li>
+					</ul>
+					<p>
+						This license shall automatically terminate if you violate any of these restrictions and
+						may be terminated by FusionCore Apps at any time.
+					</p>
+				</section>
+
+				<!-- Disclaimer -->
+				<section class="policy-section">
+					<h2>Disclaimer</h2>
+					<p>
+						Our applications and services are provided "as is" without warranties of any kind, either
+						express or implied, including but not limited to implied warranties of merchantability,
+						fitness for a particular purpose, or non-infringement. FusionCore Apps does not warrant
+						that the applications will be uninterrupted, error-free, or free of viruses or other
+						harmful components.
+					</p>
+				</section>
+
+				<!-- Limitations -->
+				<section class="policy-section">
+					<h2>Limitations</h2>
+					<p>
+						In no event shall FusionCore Apps or its suppliers be liable for any damages (including,
+						without limitation, damages for loss of data or profit, or due to business interruption)
+						arising out of the use or inability to use our applications, even if FusionCore Apps has
+						been notified of the possibility of such damage.
+					</p>
+				</section>
+
+				<!-- Accuracy of Materials -->
+				<section class="policy-section">
+					<h2>Accuracy of Materials</h2>
+					<p>
+						The materials appearing in our applications and on our website could include technical,
+						typographical, or photographic errors. FusionCore Apps does not warrant that any of the
+						materials are accurate, complete, or current. We may make changes to the materials at any
+						time without notice.
+					</p>
+				</section>
+
+				<!-- Links -->
+				<section class="policy-section">
+					<h2>Links</h2>
+					<p>
+						Our applications may contain links to third-party websites or services that are not owned
+						or controlled by FusionCore Apps. We have no control over, and assume no responsibility
+						for, the content, privacy policies, or practices of any third-party websites or services.
+						You access third-party links at your own risk.
+					</p>
+				</section>
+
+				<!-- Modifications -->
+				<section class="policy-section">
+					<h2>Modifications</h2>
+					<p>
+						FusionCore Apps may revise these Terms of Service at any time without notice. By
+						continuing to use our applications after changes are posted, you agree to be bound by the
+						revised terms. We encourage you to review these terms periodically.
+					</p>
+				</section>
+
+				<!-- Governing Law -->
+				<section class="policy-section">
+					<h2>Governing Law</h2>
+					<p>
+						These terms and conditions are governed by and construed in accordance with applicable law
+						and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
+					</p>
+				</section>
+
+				<!-- Contact Us -->
+				<section class="policy-section">
+					<h2>Contact Us</h2>
+					<p>
+						If you have any questions about these Terms of Service, please contact us through our
+						<a
+							class="text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300 font-semibold"
+							href="/contact">contact page</a
+						>.
+					</p>
+				</section>
+			</article>
+		</div>
+
+		<!-- Bottom CTA -->
+		<div class="mt-12 text-center">
+			<a class="button button--primary" href="/contact">Contact us</a>
+		</div>
+	</div>
+</BaseLayout>
