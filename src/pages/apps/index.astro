@@ -1,5 +1,6 @@
 ---
 import AppGrid from "@/components/AppGrid.tsx";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -16,15 +17,18 @@ const apps = entries.map(({ slug, data }) => ({
 	tags: data.tags ?? [],
 	rating: data.rating ?? 4.5,
 	downloadsLabel: data.downloads ?? "1K+",
+	version: data.version,
+	lastUpdated: data.lastUpdated,
 }));
 const canonical = new URL("/apps", Astro.site).href;
 ---
 
 <BaseLayout
 	{canonical}
-	description="Browse our mobile apps and download them from Google Play."
+	description="Browse all FusionCore Apps: Bible TPT Passion Translation, Biblia TLA en Español Fácil, and CartWise Grocery Shopping List. Free Android apps on Google Play."
 	title="Apps — FusionCore Apps"
 >
-	<h1 class="mb-6 text-3xl font-bold">Apps</h1>
+	<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Apps", href: "/apps" }]} />
+	<h1 class="mb-6 text-3xl font-bold">Browse FusionCore Apps</h1>
 	<AppGrid apps={apps} client:load />
 </BaseLayout>

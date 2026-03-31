@@ -1,0 +1,27 @@
+---
+interface Props {
+	faqs: Array<{ question: string; answer: string }>;
+}
+
+const { faqs } = Astro.props;
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	"mainEntity": faqs.map((faq) => ({
+		"@type": "Question",
+		"name": faq.question,
+		"acceptedAnswer": {
+			"@type": "Answer",
+			"text": faq.answer,
+		},
+	})),
+};
+---
+
+<!-- eslint-disable astro/no-set-html-directive -->
+<script
+	is:inline
+	set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
+	type="application/ld+json"
+></script>

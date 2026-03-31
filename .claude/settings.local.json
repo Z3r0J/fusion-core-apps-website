@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm remove:*)",
+      "Bash(curl:*)",
+      "Bash(xxd C:/Users/yacal/source/repos/fusion-core-apps-website/public/fonts/inter-variable.woff2)",
+      "Bash(grep:*)",
+      "Bash(wc -c C:/Users/yacal/source/repos/fusion-core-apps-website/src/content/apps/*.md)",
+      "Bash(ls:*)",
+      "Bash(wc -w src/content/blog/*.md)",
+      "Bash(pnpm build:*)",
+      "Bash(cd:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx astro:*)",
+      "Bash(node -e \"const { Trophy, User, Mail, MessageSquare, Smartphone, ChevronDown, CheckCircle, CircleAlert, Loader2, RefreshCcw, Send } = require\\(''lucide-react''\\); console.log\\(''All icons available:'', typeof Trophy === ''object''\\)\")"
+    ]
+  }
+}

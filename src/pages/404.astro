@@ -1,14 +1,8 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import NotFound from "@/components/NotFound.tsx";
 ---
 
 <BaseLayout noindex={true} title="Page not found — FusionCore Apps">
-	<section class="space-y-4 py-16 text-center">
-		<h1 class="text-5xl font-extrabold">404</h1>
-		<p class="text-gray-600">Sorry, we couldn't find that page.</p>
-		<a
-			class="bg-brand hover:bg-brand/90 inline-block rounded-xl px-5 py-3 font-medium text-white"
-			href="/">Go home</a
-		>
-	</section>
+	<NotFound client:load />
 </BaseLayout>

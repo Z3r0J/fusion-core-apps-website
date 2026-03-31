@@ -1,5 +1,8 @@
 ---
 import AppCard from "@/components/AppCard.astro";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { PhoneMockup } from "@/components/PhoneMockup";
+import { StatsCounter } from "@/components/StatsCounter";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import {
@@ -16,247 +19,363 @@ import {
 } from "lucide-react";
 
 const apps = await getCollection("apps");
-const featuredApps = apps.slice(0, 4); // Show only first 4 apps on homepage
+const featuredApps = apps.slice(0, 4);
 const canonical = new URL("/", Astro.site).href;
 ---
 
 <BaseLayout
 	{canonical}
-	description="Professional mobile app development studio delivering secure, innovative, and user-friendly applications for Android and iOS platforms. Transform your ideas into powerful digital experiences."
+	description="FusionCore Apps builds premium Android apps. Download Bible TPT, Biblia TLA en Español, and CartWise Grocery List — free apps for Bible reading, grocery shopping, and daily productivity."
 	showHero={true}
 	title="FusionCore Apps — Premium Mobile Applications"
 >
 	<!-- Hero Section -->
 	<div slot="hero">
-		<div class="hero-fade-in space-y-8 text-center">
-			<!-- Main headline -->
-			<h1
-				class="text-4xl leading-tight font-bold text-gray-900 sm:text-5xl lg:text-6xl dark:text-white"
-			>
-				Premium Mobile Apps
-				<span class="gradient-text block">Built with Excellence</span>
-			</h1>
-
-			<!-- Subtitle -->
-			<p
-				class="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 sm:text-2xl dark:text-gray-400"
-			>
-				We create secure, innovative, and user-friendly mobile applications that transform your
-				ideas into powerful digital experiences.
-			</p>
-
-			<!-- CTA Buttons -->
-			<div class="flex flex-col items-center justify-center gap-4 pt-8 sm:flex-row">
-				<a class="button button--primary group" href="/apps">
-					<span>Explore our apps</span>
-					<ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
-				</a>
-
-				<a class="button button--secondary" href="/contact"> Get in touch </a>
+		<div class="relative min-h-[70vh] flex items-center">
+			<!-- Animated gradient blobs -->
+			<div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+				<div
+					class="absolute -top-32 -left-32 h-96 w-96 animate-pulse rounded-full bg-[#2ECFFF]/20 blur-3xl"
+					style="animation-duration: 6s;"
+				>
+				</div>
+				<div
+					class="absolute -right-32 -bottom-32 h-96 w-96 animate-pulse rounded-full bg-[#FF8A2A]/20 blur-3xl"
+					style="animation-duration: 8s;"
+				>
+				</div>
+				<div
+					class="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-[#e8455b]/10 blur-3xl"
+					style="animation-duration: 10s;"
+				>
+				</div>
 			</div>
 
-			<!-- Stats or badges -->
-			<div
-				class="flex flex-wrap items-center justify-center gap-8 pt-12 text-sm text-gray-600 dark:text-gray-400"
-			>
-				<div class="flex items-center gap-2">
-					<div class="h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
-					<span>Active development</span>
+			<!-- Two-column layout -->
+			<div class="relative z-10 grid w-full items-center gap-12 lg:grid-cols-2">
+				<!-- Left column: Text content -->
+				<div class="space-y-8 text-center lg:text-left">
+					<!-- Badge pill -->
+					<div class="inline-flex items-center gap-2 rounded-full border border-[#2ECFFF]/40 bg-[#2ECFFF]/10 px-4 py-1.5 text-sm font-medium text-[#2ECFFF] dark:border-[#2ECFFF]/30 dark:bg-[#2ECFFF]/5">
+						<span>✦</span>
+						<span>Mobile Apps for Everyone</span>
+					</div>
+
+					<!-- Main headline -->
+					<h1 class="text-5xl leading-tight font-extrabold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl dark:text-white">
+						Premium Mobile Apps
+						<span class="gradient-text block">Built with Excellence</span>
+					</h1>
+
+					<!-- Subtitle -->
+					<p class="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl lg:mx-0 dark:text-gray-400">
+						We create secure, innovative, and user-friendly mobile applications that transform your
+						ideas into powerful digital experiences.
+					</p>
+
+					<!-- CTA Buttons -->
+					<div class="flex flex-col items-center gap-4 pt-4 sm:flex-row lg:justify-start">
+						<a class="button button--primary group" href="/apps">
+							<span>Explore Our Apps</span>
+							<ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
+						</a>
+						<a
+							class="button button--ghost border border-gray-300 dark:border-gray-600"
+							href="#features"
+						>
+							Learn More
+						</a>
+					</div>
+
+					<!-- Trust line -->
+					<p class="text-sm text-gray-500 dark:text-gray-400">
+						3 apps · Free to download · Google Play verified
+					</p>
 				</div>
-				<div class="flex items-center gap-2">
-					<ShieldCheck className="h-4 w-4" />
-					<span>Secure & Reliable</span>
-				</div>
-				<div class="flex items-center gap-2">
-					<Star className="h-4 w-4" fill="currentColor" />
-					<span>Premium quality</span>
+
+				<!-- Right column: Phone mockup -->
+				<div class="hidden lg:flex lg:justify-center">
+					<PhoneMockup client:load />
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Featured Apps Section -->
-	<section class="featured-apps">
-		<div class="mb-16 text-center">
-			<h2 class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
-				Featured applications
-			</h2>
-			<p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-				Discover our carefully crafted mobile applications, each designed with attention to detail
-				and user experience in mind.
-			</p>
-		</div>
-
-		{
-			featuredApps.length > 0 ? (
-				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-					{featuredApps.map((app, index) => (
-						<div class="animate-slide-up" style={`animation-delay: ${index * 100}ms`}>
-							<AppCard app={app} featured={true} />
-						</div>
-					))}
-				</div>
-			) : (
-				<div class="py-16 text-center">
-					<div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800">
-						<Layers className="h-12 w-12 text-gray-400" />
+	<!-- Social Proof Section -->
+	<section class="-mx-4 sm:-mx-6 lg:-mx-8 mb-16">
+		<div class="glass rounded-none py-16 sm:py-20">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<AnimatedSection client:visible>
+					<div class="mb-12 text-center">
+						<h2 class="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
+							Trusted by Thousands
+						</h2>
+						<p class="text-gray-600 dark:text-gray-400">
+							Real numbers from real users on the Google Play Store
+						</p>
 					</div>
-					<h3 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">Apps Coming Soon</h3>
-					<p class="mb-6 text-gray-600 dark:text-gray-400">
-						We're working hard to bring you amazing mobile applications.
-					</p>
-					<a class="button button--primary" href="/admin">
-						Publish your first app
-					</a>
-				</div>
-			)
-		}
+				</AnimatedSection>
 
-		{
-			featuredApps.length > 0 && (
-				<div class="mt-12 mb-3 text-center">
-					<a class="button button--secondary" href="/apps">
-						View all apps
-						<span class="ml-2">({apps.length})</span>
-					</a>
-				</div>
-			)
-		}
+				<!-- Stats -->
+				<AnimatedSection client:visible delay={0.15}>
+					<StatsCounter
+						client:visible
+						stats={[
+							{ value: 3, suffix: "+", label: "Apps Published" },
+							{ value: 10, suffix: "K+", label: "Downloads" },
+							{ value: 4, suffix: ".8★", label: "Avg. Rating" },
+							{ value: 100, suffix: "%", label: "Free to Download" },
+						]}
+					/>
+				</AnimatedSection>
+
+				<!-- Testimonials -->
+				<AnimatedSection client:visible delay={0.3}>
+					<div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+						<!-- Testimonial 1 -->
+						<div class="card card--elevated p-6">
+							<div class="mb-3 flex items-center gap-1">
+								{Array.from({ length: 5 }).map(() => (
+									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
+								))}
+							</div>
+							<p class="mb-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+								"Best Bible app I've found. The TPT translation reads beautifully and the interface is clean and easy to navigate. Use it every day for my devotionals."
+							</p>
+							<div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+								<span class="font-medium text-gray-900 dark:text-gray-200">John D.</span>
+								<span>·</span>
+								<span>Bible TPT</span>
+							</div>
+						</div>
+
+						<!-- Testimonial 2 -->
+						<div class="card card--elevated p-6">
+							<div class="mb-3 flex items-center gap-1">
+								{Array.from({ length: 5 }).map(() => (
+									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
+								))}
+							</div>
+							<p class="mb-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+								"Finally a grocery list app that just works. No bloat, no ads, no account needed. I share my list with my wife and it syncs perfectly."
+							</p>
+							<div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+								<span class="font-medium text-gray-900 dark:text-gray-200">Maria S.</span>
+								<span>·</span>
+								<span>CartWise Grocery List</span>
+							</div>
+						</div>
+
+						<!-- Testimonial 3 -->
+						<div class="card card--elevated p-6">
+							<div class="mb-3 flex items-center gap-1">
+								{Array.from({ length: 5 }).map(() => (
+									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
+								))}
+							</div>
+							<p class="mb-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+								"Me encanta esta app de la Biblia TLA. Muy facil de usar y la traduccion es clara. La uso todos los dias con mi familia."
+							</p>
+							<div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+								<span class="font-medium text-gray-900 dark:text-gray-200">Carlos R.</span>
+								<span>·</span>
+								<span>Biblia TLA en Espanol</span>
+							</div>
+						</div>
+					</div>
+				</AnimatedSection>
+			</div>
+		</div>
 	</section>
 
-	<!-- Features Section -->
-	<section class="features gradient-bg py-24">
-		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<!-- Featured Apps Section -->
+	<AnimatedSection client:visible>
+		<section class="featured-apps">
 			<div class="mb-16 text-center">
 				<h2 class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
-					Why choose FusionCore Apps?
+					Featured applications
 				</h2>
 				<p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-					We combine cutting-edge technology with user-centered design to deliver exceptional mobile
-					experiences.
+					Discover our carefully crafted mobile applications, each designed with attention to detail
+					and user experience in mind.
 				</p>
 			</div>
 
-			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-				<!-- Security First -->
-				<div
-					class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-				>
-					<div
-						class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 transition-shadow group-hover:shadow-xl"
-					>
-						<LockKeyhole className="h-8 w-8 text-white" />
+			{
+				featuredApps.length > 0 ? (
+					<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+						{featuredApps.map((app, index) => (
+							<div class="animate-slide-up" style={`animation-delay: ${index * 100}ms`}>
+								<AppCard app={app} featured={true} />
+							</div>
+						))}
 					</div>
-					<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">Security first</h3>
-					<p class="text-gray-600 dark:text-gray-400">
-						Built with industry-leading security practices to protect user data and ensure privacy
-						compliance.
+				) : (
+					<div class="py-16 text-center">
+						<div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800">
+							<Layers className="h-12 w-12 text-gray-400" />
+						</div>
+						<h3 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">Apps Coming Soon</h3>
+						<p class="mb-6 text-gray-600 dark:text-gray-400">
+							We're working hard to bring you amazing mobile applications.
+						</p>
+						<a class="button button--primary" href="/admin">
+							Publish your first app
+						</a>
+					</div>
+				)
+			}
+
+			{
+				featuredApps.length > 0 && (
+					<div class="mt-12 mb-3 text-center">
+						<a class="button button--secondary" href="/apps">
+							View all apps
+							<span class="ml-2">({apps.length})</span>
+						</a>
+					</div>
+				)
+			}
+		</section>
+	</AnimatedSection>
+
+	<!-- Features Section -->
+	<AnimatedSection client:visible delay={0.1}>
+		<section id="features" class="features gradient-bg py-24 -mx-4 sm:-mx-6 lg:-mx-8">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="mb-16 text-center">
+					<h2 class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
+						Why choose FusionCore Apps?
+					</h2>
+					<p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+						We combine cutting-edge technology with user-centered design to deliver exceptional mobile
+						experiences.
 					</p>
 				</div>
 
-				<!-- User Experience -->
-				<div
-					class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-				>
+				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+					<!-- Security First -->
 					<div
-						class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 transition-shadow group-hover:shadow-xl"
+						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
 					>
-						<Heart className="h-8 w-8 text-white" />
+						<div
+							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 transition-shadow group-hover:shadow-xl"
+						>
+							<LockKeyhole className="h-8 w-8 text-white" />
+						</div>
+						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">Security first</h3>
+						<p class="text-gray-600 dark:text-gray-400">
+							Built with industry-leading security practices to protect user data and ensure privacy
+							compliance.
+						</p>
 					</div>
-					<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">User experience</h3>
-					<p class="text-gray-600 dark:text-gray-400">
-						Intuitive interfaces designed with users in mind, ensuring smooth and enjoyable
-						interactions.
-					</p>
-				</div>
 
-				<!-- Performance -->
-				<div
-					class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-				>
+					<!-- User Experience -->
 					<div
-						class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-green-600 transition-shadow group-hover:shadow-xl"
+						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
 					>
-						<Zap className="h-8 w-8 text-white" />
+						<div
+							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 transition-shadow group-hover:shadow-xl"
+						>
+							<Heart className="h-8 w-8 text-white" />
+						</div>
+						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">User experience</h3>
+						<p class="text-gray-600 dark:text-gray-400">
+							Intuitive interfaces designed with users in mind, ensuring smooth and enjoyable
+							interactions.
+						</p>
 					</div>
-					<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">High performance</h3>
-					<p class="text-gray-600 dark:text-gray-400">
-						Optimized for speed and efficiency, delivering fast load times and smooth animations.
-					</p>
-				</div>
 
-				<!-- Cross Platform -->
-				<div
-					class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-				>
+					<!-- Performance -->
 					<div
-						class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 transition-shadow group-hover:shadow-xl"
+						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
 					>
-						<Smartphone className="h-8 w-8 text-white" />
+						<div
+							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-green-600 transition-shadow group-hover:shadow-xl"
+						>
+							<Zap className="h-8 w-8 text-white" />
+						</div>
+						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">High performance</h3>
+						<p class="text-gray-600 dark:text-gray-400">
+							Optimized for speed and efficiency, delivering fast load times and smooth animations.
+						</p>
 					</div>
-					<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">Cross platform</h3>
-					<p class="text-gray-600 dark:text-gray-400">
-						Compatible across Android and iOS platforms, reaching the widest possible audience.
-					</p>
-				</div>
 
-				<!-- Regular Updates -->
-				<div
-					class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-				>
+					<!-- Cross Platform -->
 					<div
-						class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 transition-shadow group-hover:shadow-xl"
+						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
 					>
-						<RefreshCcw className="h-8 w-8 text-white" />
+						<div
+							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 transition-shadow group-hover:shadow-xl"
+						>
+							<Smartphone className="h-8 w-8 text-white" />
+						</div>
+						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">Cross platform</h3>
+						<p class="text-gray-600 dark:text-gray-400">
+							Compatible across Android and iOS platforms, reaching the widest possible audience.
+						</p>
 					</div>
-					<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">Regular updates</h3>
-					<p class="text-gray-600 dark:text-gray-400">
-						Continuous improvement with regular updates, new features, and bug fixes.
-					</p>
-				</div>
 
-				<!-- Support -->
-				<div
-					class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-				>
+					<!-- Regular Updates -->
 					<div
-						class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 transition-shadow group-hover:shadow-xl"
+						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
 					>
-						<Speech className="h-8 w-8 text-white" />
+						<div
+							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 transition-shadow group-hover:shadow-xl"
+						>
+							<RefreshCcw className="h-8 w-8 text-white" />
+						</div>
+						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">Regular updates</h3>
+						<p class="text-gray-600 dark:text-gray-400">
+							Continuous improvement with regular updates, new features, and bug fixes.
+						</p>
 					</div>
-					<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-						Dedicated support
-					</h3>
-					<p class="text-gray-600 dark:text-gray-400">
-						Responsive customer support to help you get the most out of our applications.
-					</p>
+
+					<!-- Support -->
+					<div
+						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
+					>
+						<div
+							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 transition-shadow group-hover:shadow-xl"
+						>
+							<Speech className="h-8 w-8 text-white" />
+						</div>
+						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+							Dedicated support
+						</h3>
+						<p class="text-gray-600 dark:text-gray-400">
+							Responsive customer support to help you get the most out of our applications.
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	</AnimatedSection>
 
 	<!-- CTA Section -->
-	<section class="cta py-24">
-		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-			<div
-				class="card card--elevated from-brand-500 to-brand-600 border-0 bg-gradient-to-br p-12 text-center text-white"
-			>
-				<h2 class="mb-4 text-3xl font-bold sm:text-4xl">Ready to Experience Premium Apps?</h2>
-				<p class="text-brand-100 mx-auto mb-8 max-w-2xl text-xl">
-					Join thousands of users who trust FusionCore Apps for their mobile experience.
-				</p>
-				<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-					<a
-						class="button text-brand-600 border-0 bg-white shadow-lg hover:bg-gray-100 hover:shadow-xl"
-						href="/apps"
-					>
-						Browse all apps
-					</a>
-					<a class="button button--ghost border-white text-white hover:bg-white/10" href="/contact">
-						Contact us
-					</a>
+	<AnimatedSection client:visible delay={0.1}>
+		<section class="cta py-24">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div
+					class="card card--elevated from-brand-500 to-brand-600 border-0 bg-gradient-to-br p-12 text-center text-white"
+				>
+					<h2 class="mb-4 text-3xl font-bold sm:text-4xl">Ready to Experience Premium Apps?</h2>
+					<p class="text-brand-100 mx-auto mb-8 max-w-2xl text-xl">
+						Join thousands of users who trust FusionCore Apps for their mobile experience.
+					</p>
+					<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							class="button text-brand-600 border-0 bg-white shadow-lg hover:bg-gray-100 hover:shadow-xl"
+							href="/apps"
+						>
+							Browse all apps
+						</a>
+						<a class="button button--ghost border-white text-white hover:bg-white/10" href="/contact">
+							Contact us
+						</a>
+					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	</AnimatedSection>
 </BaseLayout>

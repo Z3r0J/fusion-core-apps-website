@@ -2,6 +2,7 @@
 import GetInGooglePlayBadge from "@/assets/google-play-badge.svg";
 import PlaceholderApp from "@/assets/placeholder-app.svg";
 import AppJsonLd from "@/components/AppJsonLd.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
@@ -21,8 +22,9 @@ const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
 const ogImage = app.data.icon || "/og-default.png";
 ---
 
-<BaseLayout {canonical} {description} {ogImage} {title}>
+<BaseLayout {canonical} {description} {ogImage} {title} locale={app.data.locale || "en"}>
 	<AppJsonLd app={app} />
+	<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Apps", href: "/apps" }, { label: app.data.title, href: `/apps/${app.slug}` }]} />
 
 	<article class="grid gap-8 lg:grid-cols-[auto,1fr]">
 		{

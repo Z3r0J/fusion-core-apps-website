@@ -2,6 +2,11 @@
 import type { CollectionEntry } from "astro:content";
 const { app } = Astro.props as { app: CollectionEntry<"apps"> };
 
+const screenshots =
+	app.data.screenshots?.length > 0
+		? app.data.screenshots.map((s: string) => new URL(s, Astro.site).href)
+		: undefined;
+
 const structuredData = {
 	"@context": "https://schema.org",
 	"@type": "MobileApplication",
@@ -12,13 +17,24 @@ const structuredData = {
 	"url": new URL(`/apps/${app.slug}`, Astro.site).href,
 	"downloadUrl": app.data.playUrl,
 	"image": app.data.icon ? new URL(app.data.icon, Astro.site).href : undefined,
-	...(app.data.version ? { softwareVersion: app.data.version } : {}),
+	...(app.data.version ? { "softwareVersion": app.data.version } : {}),
+	...(screenshots ? { "screenshot": screenshots } : {}),
+	...(app.data.lastUpdated ? { "dateModified": app.data.lastUpdated } : {}),
+	...(app.data.locale ? { "inLanguage": app.data.locale } : {}),
+	"applicationSubCategory": app.data.category,
+	"contentRating": "Everyone",
+	"author": {
+		"@type": "Organization",
+		"name": "FusionCore Apps",
+		"url": "https://www.fusioncoreapps.com",
+	},
 	"offers": {
 		"@type": "Offer",
 		"price": app.data.price === "Free" ? "0" : app.data.price,
 		"priceCurrency": "USD",
 	},
 	"publisher": { "@type": "Organization", "name": "FusionCore Apps" },
+	...(app.data.rating ? { "aggregateRating": { "@type": "AggregateRating", "ratingValue": app.data.rating, "bestRating": 5, "worstRating": 0 } } : {}),
 };
 ---
 

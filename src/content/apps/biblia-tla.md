@@ -6,7 +6,7 @@ icon: "https://play-lh.googleusercontent.com/T6UyUSvdmPXI7rfU2Jm0pAgyyjwiSpi_Yi_
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.biblia.tla"
 category: "Lifestyle"
 tags: []
-locale: "en"
+locale: "es"
 price: "Free"
 version: "1.1.2"
 lastUpdated: "2026-01-09"

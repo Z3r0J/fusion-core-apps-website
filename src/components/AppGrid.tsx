@@ -1,6 +1,6 @@
 import { CardImage } from "@/components/CardImage";
-import { Download, Filter, Grid, List, Search, Star } from "lucide-react";
-import React, { useMemo, useState } from "react";
+import { Download, Filter, Grid, List, Search, Star, Trophy } from "lucide-react";
+import React, { useEffect, useMemo, useState } from "react";
 export type App = {
 	slug: string;
 	title: string;
@@ -14,6 +14,8 @@ export type App = {
 	tags?: string[];
 	rating?: number; // e.g., 4.6
 	downloadsLabel?: string; // e.g., "1K+"
+	version?: string;
+	lastUpdated?: string;
 };
 
 type Props = {
@@ -28,6 +30,31 @@ function useDebounced<T>(value: T, delay = 180) {
 		return () => clearTimeout(id);
 	}, [value, delay]);
 	return v;
+}
+
+// Skeleton Card for loading state
+function SkeletonCard() {
+	return (
+		<div className="rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800 animate-pulse">
+			<div className="flex gap-4 p-6">
+				<div className="h-[72px] w-[72px] flex-shrink-0 rounded-2xl bg-gray-200 dark:bg-gray-700" />
+				<div className="flex-1 space-y-2 pt-1">
+					<div className="h-4 w-3/4 rounded bg-gray-200 dark:bg-gray-700" />
+					<div className="h-3 w-1/3 rounded bg-gray-200 dark:bg-gray-700" />
+					<div className="h-3 w-1/2 rounded bg-gray-200 dark:bg-gray-700" />
+					<div className="h-3 w-2/3 rounded bg-gray-200 dark:bg-gray-700" />
+				</div>
+			</div>
+			<div className="px-6 pb-4">
+				<div className="h-3 w-full rounded bg-gray-200 dark:bg-gray-700" />
+				<div className="mt-2 h-3 w-5/6 rounded bg-gray-200 dark:bg-gray-700" />
+			</div>
+			<div className="px-6 pb-2">
+				<div className="h-2 w-1/3 rounded bg-gray-200 dark:bg-gray-700" />
+			</div>
+			<div className="h-10 mx-6 mb-6 mt-2 rounded-xl bg-gray-200 dark:bg-gray-700" />
+		</div>
+	);
 }
 
 // Download Modal Component
@@ -141,23 +168,36 @@ function DownloadModal({ app, onClose }: { app: App; onClose: () => void }) {
 
 const StarRow = ({ rating = 4.5 }: { rating?: number }) => {
 	const full = Math.floor(rating);
+	const hasHalf = rating - full >= 0.5;
 	return (
 		<div className="flex items-center gap-1" aria-label={`Rating ${rating} out of 5`}>
 			{Array.from({ length: 5 }).map((_, i) => (
 				<Star
 					key={i}
-					className={`h-3 w-3 ${i < full ? "fill-current text-yellow-400" : "text-gray-300 dark:text-gray-600"}`}
+					className={`h-3.5 w-3.5 ${i < full ? "fill-current text-yellow-400" : i === full && hasHalf ? "fill-current text-yellow-300" : "text-gray-300 dark:text-gray-600"}`}
 					aria-hidden="true"
 				/>
 			))}
-			<span className="ml-1 text-xs text-gray-500 dark:text-gray-400">{rating}</span>
+			<span className="ml-1 text-xs font-medium text-gray-500 dark:text-gray-400">{rating}</span>
 		</div>
 	);
 };
 
+// Google Play inline icon for buttons
+const GooglePlayIcon = () => (
+	<svg className="h-4 w-4" viewBox="0 0 24 24" fill="none">
+		<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.8" />
+		<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.6" />
+		<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor" />
+		<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.6" />
+	</svg>
+);
+
 const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "grid" | "list" }) {
 	const [showModal, setShowModal] = React.useState(false);
 	const price = app.price ?? "Free";
+	const rating = app.rating ?? 4.5;
+	const isTopRated = rating >= 4.5;
 	const priceBadge =
 		price === "Free"
 			? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-700"
@@ -195,44 +235,61 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 		return (
 			<>
 				<article
-					className="card card--elevated flex flex-col items-center gap-6 p-6 md:flex-row"
+					className="group rounded-2xl bg-gradient-to-br from-gray-200 via-gray-200 to-gray-200 p-[1px] transition-all duration-300 hover:from-[#ff8a2a] hover:via-[#e8455b] hover:to-[#2ecfff] dark:from-gray-700 dark:via-gray-700 dark:to-gray-700 hover:scale-[1.01]"
 					aria-labelledby={`app-${app.slug}`}
 				>
-					<a href={`/apps/${app.slug}`} className="flex w-full items-center gap-6">
-						<CardImage app={app} />
-						<div className="min-w-0 flex-1">
-							<h3
-								id={`app-${app.slug}`}
-								className="truncate text-lg font-bold text-gray-900 dark:text-white"
-							>
-								{app.title}
-							</h3>
-							<p className="mt-1 line-clamp-2 text-gray-600 dark:text-gray-400">{app.tagline}</p>
-							<div className="mt-3 flex items-center gap-4">
-								<StarRow rating={app.rating} />
-								<span className="text-xs text-gray-500 dark:text-gray-400">
-									{app.downloadsLabel ?? "—"}
-								</span>
-								<span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-100 px-2 py-1 text-xs font-semibold text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+					<div className="flex flex-col items-center gap-6 rounded-2xl bg-white p-6 shadow-lg transition-shadow duration-300 group-hover:shadow-xl dark:bg-gray-800 md:flex-row">
+						<a href={`/apps/${app.slug}`} className="flex w-full items-center gap-6">
+							<CardImage app={app} className="h-[72px] w-[72px]" />
+							<div className="min-w-0 flex-1">
+								<div className="flex items-center gap-2">
+									<h3
+										id={`app-${app.slug}`}
+										className="truncate text-lg font-bold text-gray-900 dark:text-white"
+									>
+										{app.title}
+									</h3>
+									{isTopRated && (
+										<span className="inline-flex items-center gap-1 rounded-full bg-accent-500 px-2 py-0.5 text-[10px] font-bold whitespace-nowrap text-white shadow-sm">
+											<Trophy className="h-3 w-3" />
+											Top Rated
+										</span>
+									)}
+								</div>
+								<span className="mt-1 inline-flex items-center rounded-full bg-brand-100 px-2 py-0.5 text-[11px] font-medium text-brand-700 dark:bg-brand-900/30 dark:text-brand-400">
 									{app.category}
 								</span>
+								<p className="mt-1 line-clamp-2 text-gray-600 dark:text-gray-400">{app.tagline}</p>
+								<div className="mt-3 flex items-center gap-4">
+									<StarRow rating={app.rating} />
+									<span className="text-xs text-gray-500 dark:text-gray-400">
+										{app.downloadsLabel ?? "\u2014"}
+									</span>
+								</div>
+								{(app.version || app.lastUpdated) && (
+									<div className="mt-1 flex items-center gap-2 text-[11px] text-gray-400 dark:text-gray-500">
+										{app.version && <span>v{app.version}</span>}
+										{app.version && app.lastUpdated && <span>&middot;</span>}
+										{app.lastUpdated && <span>Updated {app.lastUpdated}</span>}
+									</div>
+								)}
 							</div>
+						</a>
+						<div className="flex items-center gap-3">
+							<span
+								className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold ${priceBadge}`}
+							>
+								{price}
+							</span>
+							<button
+								onClick={handleDownloadClick}
+								className="bg-brand-500 hover:bg-brand-600 flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:shadow-lg"
+								aria-label={`Download ${app.title}`}
+							>
+								<GooglePlayIcon />
+								<span>Get on Google Play</span>
+							</button>
 						</div>
-					</a>
-					<div className="flex items-center gap-3">
-						<span
-							className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold ${priceBadge}`}
-						>
-							{price}
-						</span>
-						<button
-							onClick={handleDownloadClick}
-							className="bg-brand-50 dark:bg-brand-900/20 text-brand-700 dark:text-brand-400 border-brand-200 dark:border-brand-700 hover:bg-brand-100 dark:hover:bg-brand-800 flex items-center gap-1 rounded-full border px-3 py-1 text-sm font-medium transition-colors"
-							aria-label={`Download ${app.title}`}
-						>
-							<Download className="h-4 w-4" />
-							<span>Download</span>
-						</button>
 					</div>
 				</article>
 
@@ -243,60 +300,77 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 
 	return (
 		<>
-			<article className="card card--elevated group" aria-labelledby={`app-${app.slug}`}>
-				<a href={`/apps/${app.slug}`} className="focus-ring block rounded-2xl">
-					<div className="p-6 pb-4">
-						<div className="flex items-start gap-4">
-							<CardImage app={app} />
-							<div className="min-w-0 flex-1">
-								<h3
-									id={`app-${app.slug}`}
-									className="group-hover:text-brand-600 dark:group-hover:text-brand-400 truncate text-lg font-bold text-gray-900 transition-colors dark:text-white"
-								>
-									{app.title}
-								</h3>
-								<p className="mt-1 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
-									{app.tagline}
-								</p>
-								<div className="mt-3 flex items-center gap-4">
-									<StarRow rating={app.rating} />
-									<span className="text-xs text-gray-500 dark:text-gray-400">
-										{app.downloadsLabel ?? "—"}
+			<article
+				className="group rounded-2xl bg-gradient-to-br from-gray-200 via-gray-200 to-gray-200 p-[1px] transition-all duration-300 hover:from-[#ff8a2a] hover:via-[#e8455b] hover:to-[#2ecfff] dark:from-gray-700 dark:via-gray-700 dark:to-gray-700 hover:scale-[1.02]"
+				aria-labelledby={`app-${app.slug}`}
+			>
+				<div className="rounded-2xl bg-white shadow-lg transition-shadow duration-300 group-hover:shadow-xl dark:bg-gray-800">
+					<a href={`/apps/${app.slug}`} className="focus-ring block rounded-t-2xl">
+						<div className="p-6 pb-4">
+							<div className="flex items-start gap-4">
+								<CardImage app={app} className="h-[72px] w-[72px]" />
+								<div className="min-w-0 flex-1">
+									<div className="flex items-center gap-2">
+										<h3
+											id={`app-${app.slug}`}
+											className="group-hover:text-brand-600 dark:group-hover:text-brand-400 truncate text-lg font-bold text-gray-900 transition-colors dark:text-white"
+										>
+											{app.title}
+										</h3>
+										{isTopRated && (
+											<span className="inline-flex items-center gap-1 rounded-full bg-accent-500 px-2 py-0.5 text-[10px] font-bold whitespace-nowrap text-white shadow-sm">
+												<Trophy className="h-3 w-3" />
+												Top Rated
+											</span>
+										)}
+									</div>
+									{/* Category pill */}
+									<span className="mt-1 inline-flex items-center rounded-full bg-brand-100 px-2 py-0.5 text-[11px] font-medium text-brand-700 dark:bg-brand-900/30 dark:text-brand-400">
+										{app.category}
 									</span>
+									<p className="mt-1 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
+										{app.tagline}
+									</p>
+									<div className="mt-3 flex items-center gap-4">
+										<StarRow rating={app.rating} />
+										<span className="text-xs text-gray-500 dark:text-gray-400">
+											{app.downloadsLabel ?? "\u2014"}
+										</span>
+									</div>
 								</div>
+								<span
+									className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${priceBadge}`}
+								>
+									{price}
+								</span>
 							</div>
-							<span
-								className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${priceBadge}`}
-							>
-								{price}
-							</span>
 						</div>
-					</div>
 
-					<div className="px-6 pb-4">
-						<p className="line-clamp-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-							{app.description}
-						</p>
-					</div>
-
-					<div className="px-6 pb-6">
-						<div className="flex items-center justify-between">
-							<span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
-								{app.category}
-							</span>
+						<div className="px-6 pb-4">
+							<p className="line-clamp-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+								{app.description}
+							</p>
 						</div>
-					</div>
-				</a>
 
-				<div className="-mt-6 px-6 pb-6">
-					<div className="flex items-center justify-end">
+						{/* Version & Last Updated */}
+						<div className="px-6 pb-2">
+							<div className="flex items-center gap-2 text-[11px] text-gray-400 dark:text-gray-500">
+								{app.version && <span>v{app.version}</span>}
+								{app.version && app.lastUpdated && <span>&middot;</span>}
+								{app.lastUpdated && <span>Updated {app.lastUpdated}</span>}
+							</div>
+						</div>
+					</a>
+
+					{/* Prominent Download Button */}
+					<div className="px-6 pb-6 pt-2">
 						<button
 							onClick={handleDownloadClick}
-							className="bg-brand-50 dark:bg-brand-900/20 text-brand-700 dark:text-brand-400 border-brand-200 dark:border-brand-700 hover:bg-brand-100 dark:hover:bg-brand-800 inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm font-medium transition-colors"
+							className="bg-brand-500 hover:bg-brand-600 flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:shadow-lg"
 							aria-label={`Download ${app.title}`}
 						>
-							<Download className="h-4 w-4" />
-							Download
+							<GooglePlayIcon />
+							Get on Google Play
 						</button>
 					</div>
 				</div>
@@ -311,8 +385,14 @@ export default function AppGrid({ apps, showFilters = true }: Props) {
 	const [search, setSearch] = useState("");
 	const [category, setCategory] = useState("All");
 	const [mode, setMode] = useState<"grid" | "list">("grid");
+	const [isLoading, setIsLoading] = useState(true);
 
 	const debounced = useDebounced(search, 180);
+
+	// Skeleton loading on initial mount
+	useEffect(() => {
+		setIsLoading(false);
+	}, []);
 
 	const categories = useMemo(() => {
 		const set = new Set<string>(["All"]);
@@ -412,8 +492,19 @@ export default function AppGrid({ apps, showFilters = true }: Props) {
 				</div>
 			)}
 
-			{/* Content */}
-			{filtered.length ? (
+			{/* Skeleton Loading State */}
+			{isLoading ? (
+				<ul
+					role="list"
+					className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+				>
+					{Array.from({ length: 6 }).map((_, i) => (
+						<li key={i}>
+							<SkeletonCard />
+						</li>
+					))}
+				</ul>
+			) : filtered.length ? (
 				<ul
 					role="list"
 					className={`grid gap-6 ${mode === "grid" ? "md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"}`}
@@ -434,7 +525,7 @@ export default function AppGrid({ apps, showFilters = true }: Props) {
 					</h3>
 					<p className="mb-6 text-gray-600 dark:text-gray-400">
 						{debounced ? (
-							<>No apps match your search for “{debounced}”.</>
+							<>No apps match your search for &ldquo;{debounced}&rdquo;.</>
 						) : (
 							<>Try a different category or keyword.</>
 						)}

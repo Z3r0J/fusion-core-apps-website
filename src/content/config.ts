@@ -47,6 +47,20 @@ export const apps = defineCollection({
 	}),
 });
 
+const blog = defineCollection({
+	type: "content",
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		publishedAt: z.coerce.date(),
+		updatedAt: z.coerce.date().optional(),
+		author: z.string().default("FusionCore Apps"),
+		tags: z.array(z.string()).default([]),
+		image: z.string().optional(),
+		featured: z.boolean().default(false),
+	}),
+});
+
 const legal = defineCollection({
 	type: "content",
 	schema: z.object({
@@ -55,4 +69,4 @@ const legal = defineCollection({
 	}),
 });
 
-export const collections = { apps, legal };
+export const collections = { apps, blog, legal };

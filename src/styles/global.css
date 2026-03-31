@@ -170,6 +170,17 @@
 		font-family: var(--font-sans);
 	}
 
+	:focus-visible {
+		outline: 2px solid var(--color-brand-500);
+		outline-offset: 3px;
+		border-radius: 4px;
+	}
+
+	::selection {
+		background-color: var(--color-brand-200);
+		color: var(--color-brand-950);
+	}
+
 	.app-card--featured {
 		@apply ring-brand-500/20 dark:ring-brand-400/20 ring-2;
 	}
@@ -287,6 +298,15 @@
 	/* BEM Components */
 	.button {
 		@apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-medium transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none;
+		transform: translateY(0);
+	}
+
+	.button:hover {
+		transform: translateY(-1px);
+	}
+
+	.button:active {
+		transform: translateY(0) scale(0.98);
 	}
 
 	.button--primary {
@@ -306,7 +326,13 @@
 	}
 
 	.card {
-		@apply rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800;
+		@apply rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800;
+		transition: box-shadow 0.3s ease, transform 0.3s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
 	}
 
 	.card--elevated {
@@ -345,6 +371,23 @@
 	/* Navigation active state */
 	.nav-link {
 		@apply hover:text-brand-600 dark:hover:text-brand-400 relative px-3 py-2 text-gray-600 transition-colors duration-200 dark:text-gray-400;
+	}
+
+	.nav-link::after {
+		content: '';
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background: var(--color-brand-500);
+		transition: width 0.3s ease;
+		border-radius: 9999px;
+	}
+
+	.nav-link:hover::after,
+	.nav-link[aria-current="page"]::after {
+		width: 100%;
 	}
 
 	.nav-link--active {

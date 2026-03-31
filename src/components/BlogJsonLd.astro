@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+const { post, url } = Astro.props as { post: CollectionEntry<"blog">; url: string };
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"headline": post.data.title,
+	"description": post.data.description,
+	"datePublished": post.data.publishedAt.toISOString(),
+	"dateModified": (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
+	"author": {
+		"@type": "Organization",
+		"name": "FusionCore Apps",
+		"url": "https://www.fusioncoreapps.com",
+	},
+	"publisher": {
+		"@type": "Organization",
+		"name": "FusionCore Apps",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://www.fusioncoreapps.com/logo.png",
+		},
+	},
+	"url": url,
+	...(post.data.image ? { image: post.data.image } : {}),
+};
+---
+
+<!-- eslint-disable astro/no-set-html-directive -->
+<script
+	is:inline
+	set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
+	type="application/ld+json"
+></script>

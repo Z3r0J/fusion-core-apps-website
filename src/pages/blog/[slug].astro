@@ -1,0 +1,124 @@
+---
+import BlogJsonLd from "@/components/BlogJsonLd.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const title = `${post.data.title} — FusionCore Apps`;
+const description = post.data.description;
+const canonical = new URL(`/blog/${post.slug}`, Astro.site).href;
+const ogImage = post.data.image || "/og-default.png";
+
+const formattedDate = post.data.publishedAt.toLocaleDateString("en-US", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
+---
+
+<BaseLayout {canonical} {description} {ogImage} {title}>
+	<BlogJsonLd post={post} url={canonical} />
+
+	<!-- Breadcrumb -->
+	<nav aria-label="Breadcrumb" class="mb-8">
+		<ol class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+			<li>
+				<a
+					class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+					href="/"
+				>
+					Home
+				</a>
+			</li>
+			<li aria-hidden="true">/</li>
+			<li>
+				<a
+					class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+					href="/blog"
+				>
+					Blog
+				</a>
+			</li>
+			<li aria-hidden="true">/</li>
+			<li>
+				<span class="font-medium text-gray-900 dark:text-white">{post.data.title}</span>
+			</li>
+		</ol>
+	</nav>
+
+	<article class="mx-auto max-w-3xl">
+		<!-- Header -->
+		<header class="mb-8">
+			<!-- Tags -->
+			{
+				post.data.tags.length > 0 && (
+					<div class="mb-4 flex flex-wrap gap-2">
+						{post.data.tags.map((tag) => (
+							<span class="inline-flex items-center rounded-full bg-brand-100 px-2.5 py-0.5 text-xs font-medium text-brand-700 dark:bg-brand-900/30 dark:text-brand-400">
+								{tag}
+							</span>
+						))}
+					</div>
+				)
+			}
+
+			<h1 class="mb-4 text-3xl font-bold sm:text-4xl">{post.data.title}</h1>
+
+			<div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+				<span>{post.data.author}</span>
+				<span aria-hidden="true">&middot;</span>
+				<time datetime={post.data.publishedAt.toISOString()}>{formattedDate}</time>
+			</div>
+		</header>
+
+		<!-- Cover Image -->
+		{
+			post.data.image && (
+				<div class="mb-8 overflow-hidden rounded-2xl">
+					<img
+						alt={post.data.title}
+						class="h-auto w-full object-cover"
+						loading="eager"
+						src={post.data.image}
+					/>
+				</div>
+			)
+		}
+
+		<!-- Content -->
+		<div
+			class="prose prose-lg dark:prose-invert prose-a:text-brand-600 hover:prose-a:text-brand-700 max-w-none"
+		>
+			<Content />
+		</div>
+
+		<!-- Footer -->
+		<footer class="mt-12 border-t border-gray-200 pt-8 dark:border-gray-700">
+			<div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+				<div>
+					<span class="font-medium text-gray-900 dark:text-white">{post.data.author}</span>
+					<span aria-hidden="true">&middot;</span>
+					<time datetime={post.data.publishedAt.toISOString()}>{formattedDate}</time>
+				</div>
+			</div>
+
+			<div class="mt-8">
+				<a
+					class="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 font-medium transition-colors"
+					href="/blog"
+				>
+					&larr; Back to Blog
+				</a>
+			</div>
+		</footer>
+	</article>
+</BaseLayout>

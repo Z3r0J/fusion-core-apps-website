@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+
+# Block specific bots known for scraping without indexing value
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
 
 Sitemap: https://www.fusioncoreapps.com/sitemap-index.xml

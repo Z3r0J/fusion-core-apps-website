@@ -13,10 +13,12 @@ const {
 	noindex = false,
 	bodyClass = "",
 	showHero = false,
+	locale = "en",
 } = Astro.props;
 
 const year = new Date().getFullYear();
 const currentPath = Astro.url.pathname;
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 
 // Handle ogImage: if it's already a full URL or data URI, use as-is; otherwise make it absolute
 const resolvedOgImage =
@@ -26,14 +28,16 @@ const resolvedOgImage =
 ---
 
 <!doctype html>
-<html class="scroll-smooth" lang="en">
+<html class="scroll-smooth" lang={locale}>
 	<head>
 		<meta charset="utf-8" />
 		<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport" />
 		<title>{title}</title>
 		<meta content={description} name="description" />
 		<meta content={noindex ? "noindex,nofollow" : "index,follow"} name="robots" />
-		<link href={canonical ?? new URL(Astro.url.pathname, Astro.site).href} rel="canonical" />
+		<link href={canonicalUrl} rel="canonical" />
+		<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+		<link rel="alternate" hreflang={locale} href={canonicalUrl} />
 
 		<meta content="website" property="og:type" />
 		<meta content={new URL(Astro.url.pathname, Astro.site).href} property="og:url" />
@@ -128,6 +132,15 @@ const resolvedOgImage =
 					</li>
 					<li role="none">
 						<a
+							class:list={[`nav-link`, { "nav-link--active": currentPath.startsWith("/blog") }]}
+							href="/blog"
+							role="menuitem"
+						>
+							Blog
+						</a>
+					</li>
+					<li role="none">
+						<a
 							class:list={[`nav-link`, { "nav-link--active": currentPath === "/privacy" }]}
 							href="/privacy"
 							role="menuitem"
@@ -189,6 +202,21 @@ const resolvedOgImage =
 									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
 									{
 										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
+											currentPath.startsWith("/blog"),
+									},
+								]}
+								href="/blog"
+								role="menuitem"
+							>
+								Blog
+							</a>
+						</li>
+						<li role="none">
+							<a
+								class:list={[
+									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
+									{
+										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
 											currentPath === "/privacy",
 									},
 								]}
@@ -238,89 +266,183 @@ const resolvedOgImage =
 		</main>
 
 		<!-- Footer -->
-		<footer
-			class="footer border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900/50"
-			role="contentinfo"
-		>
+		<footer class="footer bg-gray-950 text-gray-300" role="contentinfo">
+			<!-- CTA Banner -->
+			<div class="bg-fusion-gradient">
+				<div
+					class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-12 text-center sm:px-6 lg:px-8"
+				>
+					<h2 class="text-2xl font-bold text-white sm:text-3xl">Ready to download?</h2>
+					<p class="max-w-xl text-lg text-white/90">
+						All our apps are free. Find your perfect app on Google Play.
+					</p>
+					<a
+						class="inline-flex items-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
+						href="/apps"
+					>
+						Browse Apps
+					</a>
+				</div>
+			</div>
+
+			<!-- Main footer columns -->
 			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<!-- Main footer content -->
-				<div class="footer__content grid gap-8 py-12 md:grid-cols-4">
-					<!-- Company info -->
-					<div class="footer__section md:col-span-2">
+				<div class="footer__content grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+					<!-- Column 1: Brand -->
+					<div class="footer__section">
 						<a class="footer__logo mb-4 flex items-center gap-3" href="/">
-							<div
-								class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br"
-								style="background: linear-gradient(to bottom right, #0e3f88, #1a5fcc);"
-							>
+							<div class="flex h-10 w-10 items-center justify-center rounded-lg">
 								<img alt="FusionCore Apps Logo" class="h-8 w-8 object-contain" src="/logo.png" />
 							</div>
-							<span class="text-lg font-bold text-gray-900 dark:text-white">FusionCore Apps</span>
+							<span class="text-lg font-bold text-white">FusionCore Apps</span>
 						</a>
-						<p class="footer__description mb-6 max-w-md text-gray-600 dark:text-gray-400">
-							Professional mobile app development studio delivering secure, innovative, and
-							user-friendly applications. Transform your ideas into powerful digital experiences.
+						<p class="mb-2 text-sm font-medium text-white">
+							Premium mobile apps built with excellence.
 						</p>
-						<div class="footer__social flex items-center gap-4">
-							<a
-								aria-label="Visit our Google Play Store"
-								class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-400 transition-colors"
-								href="https://play.google.com/store/apps/developer?id=FusionCore+Apps"
-								rel="noopener noreferrer"
-								target="_blank"
-							>
-								<GooglePlayLogo class="h-6 w-6" />
-							</a>
-						</div>
+						<p class="footer__description mb-6 max-w-xs text-sm text-gray-400">
+							We create free Android apps that are secure, performant, and delightful to use.
+						</p>
+						<a
+							aria-label="Get it on Google Play"
+							class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-4 py-2 text-sm text-gray-300 transition-colors hover:border-gray-500 hover:text-white"
+							href="https://play.google.com/store/apps/developer?id=FusionCore+Apps"
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							<GooglePlayLogo class="h-5 w-5" />
+							<span>Google Play</span>
+						</a>
 					</div>
 
-					<!-- Quick links -->
+					<!-- Column 2: Quick Links -->
 					<div class="footer__section">
-						<h3 class="footer__title mb-4 font-semibold text-gray-900 dark:text-white">
-							Quick links
+						<h3 class="footer__title mb-4 text-sm font-semibold tracking-wider text-white uppercase">
+							Quick Links
 						</h3>
 						<ul class="footer__links space-y-3">
 							<li>
-								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
-									href="/apps">All apps</a
+								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/">Home</a>
+							</li>
+							<li>
+								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/apps"
+									>Apps</a
 								>
 							</li>
 							<li>
-								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
-									href="/privacy">Privacy policy</a
+								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/blog"
+									>Blog</a
 								>
 							</li>
 							<li>
-								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
-									href="/contact">Contact us</a
+								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/contact"
+									>Contact</a
+								>
+							</li>
+							<li>
+								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/privacy"
+									>Privacy Policy</a
+								>
+							</li>
+							<li>
+								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/terms"
+									>Terms of Service</a
 								>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Support -->
+					<!-- Column 3: Our Apps -->
 					<div class="footer__section">
-						<h3 class="footer__title mb-4 font-semibold text-gray-900 dark:text-white">Support</h3>
+						<h3 class="footer__title mb-4 text-sm font-semibold tracking-wider text-white uppercase">
+							Our Apps
+						</h3>
 						<ul class="footer__links space-y-3">
 							<li>
 								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
-									href="/contact">Help center</a
+									class="text-sm text-gray-400 transition-colors hover:text-white"
+									href="/apps/bible-tpt">Bible TPT</a
 								>
 							</li>
 							<li>
 								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
-									href="/contact">Report bug</a
+									class="text-sm text-gray-400 transition-colors hover:text-white"
+									href="/apps/biblia-tla">Biblia TLA</a
 								>
 							</li>
 							<li>
 								<a
-									class="hover:text-brand-600 dark:hover:text-brand-400 text-gray-600 transition-colors dark:text-gray-400"
-									href="/contact">Feature request</a
+									class="text-sm text-gray-400 transition-colors hover:text-white"
+									href="/apps/cartwise-grocery-shopping-list">CartWise</a
 								>
+							</li>
+							<li>
+								<a
+									class="inline-flex items-center gap-1 text-sm font-medium text-brand-400 transition-colors hover:text-brand-300"
+									href="/apps"
+								>
+									View All Apps &rarr;
+								</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Column 4: Connect -->
+					<div class="footer__section">
+						<h3 class="footer__title mb-4 text-sm font-semibold tracking-wider text-white uppercase">
+							Connect
+						</h3>
+						<ul class="footer__links space-y-3">
+							<li>
+								<a
+									class="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
+									href="https://play.google.com/store/apps/developer?id=FusionCore+Apps"
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									<GooglePlayLogo class="h-4 w-4" />
+									<span>Google Play Store</span>
+								</a>
+							</li>
+							<li>
+								<a
+									class="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
+									href="mailto:jeanrey.ese@gmail.com"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-4 w-4"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<rect width="20" height="16" x="2" y="4" rx="2"></rect>
+										<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+									</svg>
+									<span>jeanrey.ese@gmail.com</span>
+								</a>
+							</li>
+							<li>
+								<a
+									class="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
+									href="https://github.com/Z3r0J"
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-4 w-4"
+										viewBox="0 0 24 24"
+										fill="currentColor"
+									>
+										<path
+											d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+										></path>
+									</svg>
+									<span>GitHub</span>
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -328,21 +450,17 @@ const resolvedOgImage =
 
 				<!-- Footer bottom -->
 				<div
-					class="footer__bottom flex flex-col items-center justify-between gap-4 border-t border-gray-200 py-6 sm:flex-row dark:border-gray-700"
+					class="footer__bottom flex flex-col items-center justify-between gap-4 border-t border-gray-800 py-6 sm:flex-row"
 				>
-					<p class="text-sm text-gray-600 dark:text-gray-400">
+					<p class="text-sm text-gray-500">
 						&copy; {year} FusionCore Apps. All rights reserved.
 					</p>
-					<div class="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
-						<a
-							class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-							href="/privacy">Privacy</a
-						>
-						<a
-							class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-							href="/terms">Terms</a
-						>
+					<div class="flex items-center gap-6 text-sm text-gray-500">
+						<a class="transition-colors hover:text-gray-300" href="/privacy">Privacy Policy</a>
+						<span class="text-gray-700">&middot;</span>
+						<a class="transition-colors hover:text-gray-300" href="/terms">Terms of Service</a>
 					</div>
+					<p class="text-sm text-gray-600">Built with care for Android users</p>
 				</div>
 			</div>
 		</footer>

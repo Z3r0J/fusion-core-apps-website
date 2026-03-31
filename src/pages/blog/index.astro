@@ -1,0 +1,68 @@
+---
+import BlogPostCard from "@/components/BlogPostCard.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+);
+const canonical = new URL("/blog", Astro.site).href;
+---
+
+<BaseLayout
+	{canonical}
+	description="Insights, guides, and tips from the FusionCore Apps team. Explore app reviews, productivity tips, and mobile development stories."
+	title="Blog — FusionCore Apps"
+>
+	<!-- Breadcrumb -->
+	<nav aria-label="Breadcrumb" class="mb-8">
+		<ol class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+			<li>
+				<a
+					class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+					href="/"
+				>
+					Home
+				</a>
+			</li>
+			<li aria-hidden="true">/</li>
+			<li>
+				<span class="font-medium text-gray-900 dark:text-white">Blog</span>
+			</li>
+		</ol>
+	</nav>
+
+	<h1 class="mb-6 text-3xl font-bold">FusionCore Blog</h1>
+
+	{
+		posts.length > 0 ? (
+			<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				{posts.map((post) => (
+					<BlogPostCard post={post} />
+				))}
+			</div>
+		) : (
+			<div class="py-16 text-center">
+				<div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
+					<svg
+						class="h-8 w-8 text-gray-400"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+						/>
+					</svg>
+				</div>
+				<h2 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">No posts yet</h2>
+				<p class="text-gray-600 dark:text-gray-400">
+					We are working on new content. Check back soon for insights, guides, and tips.
+				</p>
+			</div>
+		)
+	}
+</BaseLayout>

@@ -2,7 +2,7 @@
 import PlaceholderApp from "@/assets/placeholder-app.svg";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, Trophy } from "lucide-react";
 const { app, featured = false } = Astro.props as {
 	app: CollectionEntry<"apps">;
 	featured?: boolean;
@@ -12,132 +12,166 @@ const { app, featured = false } = Astro.props as {
 const rating = app.data.rating ?? 4.5;
 const downloads = app.data.downloads ?? "1K+";
 const price = app.data.price || "Free";
+const version = app.data.version;
+const lastUpdated = app.data.lastUpdated;
+const category = app.data.category;
+
+// "Top Rated" badge logic: show if rating >= 4.5
+const isTopRated = rating >= 4.5;
 
 // Generate a unique ID for this card's modal
 const modalId = `download-modal-${app.slug}`;
+
+// Generate star display
+const fullStars = Math.floor(rating);
+const hasHalfStar = rating - fullStars >= 0.5;
 ---
 
 <article
 	class:list={[
-		`app-card card card--elevated group transition-all duration-300 hover:scale-105`,
+		`app-card group relative transition-all duration-300 hover:scale-[1.02]`,
 		{ "app-card--featured": featured },
 	]}
 >
-	<a aria-label={`${app.data.title} app`} class="app-card__link block" href={`/apps/${app.slug}`}>
-		<!-- App Icon & Badge -->
-		<div class="app-card__header relative p-6 pb-4">
-			<div class="flex items-start gap-4">
-				<!-- App Icon -->
-				<div class="app-card__icon-wrapper relative flex-shrink-0">
-					{
-						app.data.icon ? (
-							<Image
-								alt={`${app.data.title} app icon`}
-								class="app-card__icon h-16 w-16 rounded-2xl shadow-lg transition-shadow duration-300 group-hover:shadow-xl"
-								height={64}
-								loading="lazy"
-								src={app.data.icon}
-								width={64}
-							/>
-						) : (
-							<PlaceholderApp class="app-card__icon h-16 w-16 rounded-2xl shadow-lg transition-shadow duration-300 group-hover:shadow-xl" />
-						)
-					}
+	<!-- Gradient border wrapper -->
+	<div class="app-card__border-wrapper rounded-2xl bg-gradient-to-br from-gray-200 via-gray-200 to-gray-200 p-[1px] transition-all duration-300 group-hover:from-[#ff8a2a] group-hover:via-[#e8455b] group-hover:to-[#2ecfff] dark:from-gray-700 dark:via-gray-700 dark:to-gray-700">
+		<div class="relative rounded-2xl bg-white shadow-lg transition-shadow duration-300 group-hover:shadow-xl dark:bg-gray-800">
+			<a aria-label={`${app.data.title} app`} class="app-card__link block rounded-t-2xl" href={`/apps/${app.slug}`}>
+				<!-- App Icon & Badge -->
+				<div class="app-card__header relative p-6 pb-4">
+					<div class="flex items-start gap-4">
+						<!-- App Icon -->
+						<div class="app-card__icon-wrapper relative flex-shrink-0">
+							{
+								app.data.icon ? (
+									<Image
+										alt={`${app.data.title} app icon`}
+										class="app-card__icon h-18 w-18 rounded-2xl shadow-lg ring-1 ring-gray-200 transition-shadow duration-300 group-hover:shadow-xl dark:ring-gray-700"
+										height={72}
+										loading="lazy"
+										src={app.data.icon}
+										width={72}
+									/>
+								) : (
+									<PlaceholderApp class="app-card__icon h-18 w-18 rounded-2xl shadow-lg ring-1 ring-gray-200 transition-shadow duration-300 group-hover:shadow-xl dark:ring-gray-700" />
+								)
+							}
 
-					{
-						featured && (
-							<div class="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 shadow-lg">
-								<Star className="h-3 w-3 text-white" fill="currentColor" />
-							</div>
-						)
-					}
-				</div>
-
-				<!-- App Info -->
-				<div class="app-card__info min-w-0 flex-1">
-					<h3
-						class="app-card__title group-hover:text-brand-600 dark:group-hover:text-brand-400 truncate text-lg font-bold text-gray-900 transition-colors duration-200 dark:text-white"
-					>
-						{app.data.title}
-					</h3>
-					<p class="app-card__tagline mt-1 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
-						{app.data.tagline}
-					</p>
-
-					<!-- Rating & Downloads -->
-					<div class="app-card__meta mt-3 flex items-center gap-4">
-						<div class="flex items-center gap-1">
-							<div class="flex items-center">
-								{
-									Array.from({ length: 5 }).map((_, i) => (
-										<Star
-											className={`h-3 w-3 ${i < Math.floor(rating) ? "text-yellow-400" : "text-gray-300 dark:text-gray-600"}`}
-											fill="currentColor"
-										/>
-									))
-								}
-							</div>
-							<span class="ml-1 text-xs text-gray-500 dark:text-gray-400">{rating}</span>
+							{
+								featured && (
+									<div class="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 shadow-lg">
+										<Star className="h-3 w-3 text-white" fill="currentColor" />
+									</div>
+								)
+							}
 						</div>
 
-						<div class="text-xs text-gray-500 dark:text-gray-400">
-							{downloads}
+						<!-- App Info -->
+						<div class="app-card__info min-w-0 flex-1">
+							<div class="flex items-center gap-2">
+								<h3
+									class="app-card__title group-hover:text-brand-600 dark:group-hover:text-brand-400 truncate text-lg font-bold text-gray-900 transition-colors duration-200 dark:text-white"
+								>
+									{app.data.title}
+								</h3>
+								{
+									isTopRated && (
+										<span class="inline-flex items-center gap-1 rounded-full bg-accent-500 px-2 py-0.5 text-[10px] font-bold whitespace-nowrap text-white shadow-sm">
+											<Trophy className="h-3 w-3" />
+											Top Rated
+										</span>
+									)
+								}
+							</div>
+
+							<!-- Category pill -->
+							<span
+								class="mt-1 inline-flex items-center rounded-full bg-brand-100 px-2 py-0.5 text-[11px] font-medium text-brand-700 dark:bg-brand-900/30 dark:text-brand-400"
+							>
+								{category}
+							</span>
+
+							<p class="app-card__tagline mt-1 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
+								{app.data.tagline}
+							</p>
+
+							<!-- Rating Stars (visual) & Downloads -->
+							<div class="app-card__meta mt-3 flex items-center gap-4">
+								<div class="flex items-center gap-1">
+									<div class="flex items-center" aria-label={`Rating ${rating} out of 5`}>
+										{
+											Array.from({ length: 5 }).map((_, i) => (
+												<Star
+													className={`h-3.5 w-3.5 ${i < fullStars ? "fill-current text-yellow-400" : i === fullStars && hasHalfStar ? "fill-current text-yellow-300" : "text-gray-300 dark:text-gray-600"}`}
+													fill="currentColor"
+												/>
+											))
+										}
+									</div>
+									<span class="ml-1 text-xs font-medium text-gray-500 dark:text-gray-400">{rating}</span>
+								</div>
+
+								<div class="text-xs text-gray-500 dark:text-gray-400">
+									{downloads}
+								</div>
+							</div>
+						</div>
+
+						<!-- Price Badge -->
+						<div class="app-card__price">
+							<span
+								class:list={[
+									`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium`,
+									{
+										"bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400":
+											price === "Free",
+										"bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400":
+											price !== "Free",
+									},
+								]}
+							>
+								{price}
+							</span>
 						</div>
 					</div>
 				</div>
 
-				<!-- Price Badge -->
-				<div class="app-card__price">
-					<span
-						class:list={[
-							`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium`,
-							{
-								"bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400":
-									price === "Free",
-								"bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400":
-									price !== "Free",
-							},
-						]}
+				<!-- App Description -->
+				<div class="app-card__body px-6 pb-4">
+					<p
+						class="app-card__description line-clamp-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
 					>
-						{price}
-					</span>
+						{app.data.description}
+					</p>
 				</div>
-			</div>
-		</div>
 
-		<!-- App Description -->
-		<div class="app-card__body px-6 pb-4">
-			<p
-				class="app-card__description line-clamp-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
-			>
-				{app.data.description}
-			</p>
-		</div>
+				<!-- Version & Last Updated -->
+				<div class="px-6 pb-2">
+					<div class="flex items-center gap-3 text-[11px] text-gray-400 dark:text-gray-500">
+						{version && <span>v{version}</span>}
+						{version && lastUpdated && <span>&middot;</span>}
+						{lastUpdated && <span>Updated {lastUpdated}</span>}
+					</div>
+				</div>
+			</a>
 
-		<!-- App Footer -->
-		<div class="app-card__footer px-6 pb-6">
-			<div class="flex items-center justify-between">
-				<!-- Category -->
-				<span
-					class="app-card__category inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+			<!-- Download CTA (outside the link) -->
+			<div class="app-card__footer-cta px-6 pb-6 pt-2">
+				<button
+					type="button"
+					data-modal-id={modalId}
+					class="download-btn flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-brand-600 hover:shadow-lg"
 				>
-					{app.data.category}
-				</span>
+					<!-- Google Play icon (inline SVG) -->
+					<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
+						<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.8"></path>
+						<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.6"></path>
+						<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"></path>
+						<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.6"></path>
+					</svg>
+					<span>Get on Google Play</span>
+				</button>
 			</div>
-		</div>
-	</a>
-
-	<!-- Download CTA (outside the link) -->
-	<div class="app-card__footer-cta -mt-6 px-6 pb-6">
-		<div class="flex items-center justify-end">
-			<button
-				type="button"
-				data-modal-id={modalId}
-				class="download-btn text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 flex items-center text-sm font-medium transition-colors"
-			>
-				<span>Download</span>
-				<ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-			</button>
 		</div>
 	</div>
 </article>
