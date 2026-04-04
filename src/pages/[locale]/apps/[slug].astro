@@ -251,7 +251,7 @@ const isBeta = app.data.beta ?? false;
 			</div>
 			<div class="grid gap-4 sm:grid-cols-2">
 				{otherApps.map((other) => (
-					<a href={`/${locale}/apps/${other.slug.replace(`${locale}/`, "")}`} class="group flex items-center gap-4 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-300 dark:hover:border-brand-700 bg-white dark:bg-gray-900/50 p-4 transition-all duration-200 hover:-translate-y-0.5">
+					<a href={`/${locale}/apps/${other.slug.replace(`${locale}/`, "")}`} class="group flex min-w-0 items-center gap-4 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-300 dark:hover:border-brand-700 bg-white dark:bg-gray-900/50 p-4 transition-all duration-200 hover:-translate-y-0.5">
 						{other.data.icon ? (
 							<img src={other.data.icon} alt={other.data.title} class="h-14 w-14 rounded-2xl object-cover shadow-md flex-shrink-0" loading="lazy" />
 						) : (
@@ -260,7 +260,7 @@ const isBeta = app.data.beta ?? false;
 							</div>
 						)}
 						<div class="flex-1 min-w-0">
-							<p class="font-bold text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">{other.data.title}</p>
+							<p class="font-bold text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors truncate">{other.data.title}</p>
 							<p class="text-sm text-gray-500 dark:text-gray-400 truncate mt-0.5">{other.data.tagline}</p>
 						</div>
 						<svg class="w-5 h-5 text-gray-300 dark:text-gray-600 group-hover:text-brand-500 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
