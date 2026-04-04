@@ -20,13 +20,13 @@ downloads: "1K+"
 
 ## Características
 - **Biblia TLA completa** (Traducción en Lenguaje Actual) — lenguaje fácil y fiel al mensaje original
-- **Audio Biblia integrado** — escucha la Palabra mientras viajás, caminás o descansás
-- **Acceso 100% offline** — leé sin conexión a internet en cualquier lugar
+- **Audio Biblia integrado** — escucha la Palabra mientras viajas, caminas o descansas
+- **Acceso 100% offline** — lee sin conexión a internet en cualquier lugar
 - **Versículos diarios personalizados** — inspiración diaria para compartir con familia y amigos
 - **Planes de lectura semanales** — guías descargables para mantener una rutina espiritual constante
-- **Resaltados y favoritos** — guardá y revisitá tus versículos más significativos
-- **Búsqueda rápida** — encontrá textos y palabras clave al instante
-- **Navegación intuitiva** — accedé a cualquier libro, capítulo y versículo en segundos
+- **Resaltados y favoritos** — guarda y revisita tus versículos más significativos
+- **Búsqueda rápida** — encuentra textos y palabras clave al instante
+- **Navegación intuitiva** — accede a cualquier libro, capítulo y versículo en segundos
 - **Personalización de lectura** — modo oscuro/claro, tamaño de letra, fuentes y temas de color
 
 ## Ideal para

@@ -31,3 +31,6 @@ downloads: "1K+"
 
 ## Ideal para
 Devocionais diários em espanhol, estudo bíblico para todas as idades e quem busca uma **Bíblia em espanhol com áudio e offline** para casa, trabalho ou viagens.
+
+## Por que escolher Biblia TLA?
+A **Tradução em Linguagem Atual (TLA)** destaca-se pelo espanhol acessível e moderno. Com **áudio integrado**, **versículos diários**, **planos de leitura semanais** e **modo offline**, este aplicativo simplifica a criação de uma rotina espiritual sólida e o compartilhamento da fé com outras pessoas.

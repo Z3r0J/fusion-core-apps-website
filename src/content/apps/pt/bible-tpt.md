@@ -16,7 +16,7 @@ ratingCount: 76
 downloads: "2K+"
 ---
 ## Descrição
-**Bible TPT: Passion Translation** é um aplicativo bíblico moderno criado para ajudá-lo a se mergulhar no amor de Deus através de **The Passion Translation (TPT)** — uma tradução expressiva que torna as Escrituras vívidas e pessoais. Com mais de **1.000 instalações no Google Play**, foi criado para o crescimento espiritual diário. Fique conectado à Palavra em qualquer lugar com **acesso offline**, **Bíblia em áudio**, **devocionais diários** e **planos de leitura gerados por IA**.
+**Bible TPT: Passion Translation** é um aplicativo bíblico moderno que leva você a mergulhar no amor de Deus por meio de **The Passion Translation (TPT)** — uma tradução expressiva que torna as Escrituras vívidas e pessoais. Com mais de **1.000 instalações no Google Play**, foi criado para o crescimento espiritual diário. Fique conectado à Palavra em qualquer lugar com **acesso offline**, **Bíblia em áudio**, **devocionais diários** e **planos de leitura gerados por IA**.
 
 ## Funcionalidades
 - **Bíblia TPT (The Passion Translation)** — linguagem expressiva que dá vida às Escrituras

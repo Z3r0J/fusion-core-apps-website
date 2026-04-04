@@ -16,7 +16,7 @@ beta: true
 betaGroupUrl: "https://groups.google.com/g/fusionapps-tester"
 ---
 ## Descripción
-**Claimly: Rastreador de Garantías y Recibos** es tu inventario personal de todo lo que tenés. Escanea recibos con la cámara, deja que la IA extraiga automáticamente el nombre del producto, tienda, fecha y precio, y luego rastrea garantías del comercio, del fabricante y extendidas — todo con temporizadores de cuenta regresiva para que nunca pierdas un plazo de reclamo.
+**Claimly: Rastreador de Garantías y Recibos** es tu inventario personal de todo lo que tienes. Escanea recibos con la cámara, deja que la IA extraiga automáticamente el nombre del producto, tienda, fecha y precio, y luego rastrea garantías del comercio, del fabricante y extendidas — todo con temporizadores de cuenta regresiva para que nunca pierdas un plazo de reclamo.
 
 Actualmente estamos en **acceso anticipado** — únete a la beta para ser uno de los primeros usuarios y ayudar a mejorar la app con tu feedback.
 
@@ -25,11 +25,11 @@ Actualmente estamos en **acceso anticipado** — únete a la beta para ser uno d
 2. **Descarga Claimly** desde Google Play después de unirte al grupo
 
 ## Características
-- **Escáner de recibos** — apuntá la cámara a cualquier recibo, la IA extrae todos los detalles automáticamente
+- **Escáner de recibos** — apunta la cámara a cualquier recibo, la IA extrae todos los detalles automáticamente
 - **Rastreo de garantías** — rastrea garantías del comercio, del fabricante y extendidas por producto
-- **Alertas de vencimiento** — recibí notificaciones antes de que venzan las garantías para reclamar a tiempo
-- **Panel de prioridades** — mirá de un vistazo qué está por vencer
-- **Inventario de productos** — organizá todo lo que tenés con fotos, recibos y documentos adjuntos
+- **Alertas de vencimiento** — recibe notificaciones antes de que venzan las garantías para reclamar a tiempo
+- **Panel de prioridades** — mira de un vistazo qué está por vencer
+- **Inventario de productos** — organiza todo lo que tienes con fotos, recibos y documentos adjuntos
 - **Múltiples tipos de garantía** — del comercio, del fabricante y extendidas por artículo
 - **Almacenamiento de adjuntos** — adjuntá PDFs, fotos y documentos a cada producto
 - **Organización por categorías** — Electrónica, Hogar, Electrodomésticos y más
