@@ -1,14 +1,4 @@
-import {
-	CheckCircle,
-	CircleAlert,
-	Loader2,
-	Mail,
-	MessageSquare,
-	RefreshCcw,
-	Send,
-	Smartphone,
-	User,
-} from "lucide-react";
+import { Loader2, Mail, MessageSquare, RefreshCcw, Send, Smartphone, User } from "lucide-react";
 import { useState } from "react";
 
 type FormState = "idle" | "loading" | "success" | "error";
@@ -50,9 +40,7 @@ export default function ContactForm() {
 
 			const data = await response.json();
 
-			if (!response.ok) {
-				throw new Error(data.error || "Failed to send message");
-			}
+			if (!response.ok) throw new Error(data.error || "Failed to send message");
 
 			setFormState("success");
 		} catch (err) {
@@ -71,29 +59,56 @@ export default function ContactForm() {
 		setErrorMessage("");
 	};
 
-	const handleSendAnother = () => {
-		handleReset();
-	};
-
 	if (formState === "success") {
 		return (
-			<div className="card p-8">
-				<div className="flex flex-col items-center justify-center py-12 text-center">
-					<div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
-						<CheckCircle className="h-10 w-10 text-green-600 dark:text-green-400" />
+			<div className="cf-card">
+				<div className="cf-success">
+					<div className="cf-success__icon">
+						<svg
+							fill="none"
+							height="28"
+							stroke="rgba(46,207,255,0.8)"
+							strokeWidth="2"
+							viewBox="0 0 24 24"
+							width="28"
+						>
+							<path
+								d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							/>
+						</svg>
 					</div>
-					<h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+					<h3
+						style={{
+							fontFamily: "var(--font-display)",
+							fontSize: "clamp(1.4rem, 3vw, 1.75rem)",
+							fontWeight: 900,
+							letterSpacing: "-0.035em",
+							lineHeight: 1.1,
+							marginBottom: 10,
+						}}
+						className="text-gray-900 dark:text-white"
+					>
 						Message sent!
 					</h3>
-					<p className="mb-8 max-w-md text-gray-600 dark:text-gray-400">
+					<p
+						style={{ fontSize: 14.5, lineHeight: 1.7, maxWidth: 340, marginBottom: 28 }}
+						className="text-gray-500 dark:text-[rgba(255,255,255,0.40)]"
+					>
 						Thank you for reaching out. We will get back to you within 24 hours.
 					</p>
 					<button
 						type="button"
-						onClick={handleSendAnother}
-						className="button button--secondary"
+						onClick={handleReset}
+						className="inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition-all duration-200 hover:opacity-80"
+						style={{
+							borderColor: "rgba(46,207,255,0.22)",
+							color: "var(--color-brand-600)",
+							background: "rgba(46,207,255,0.06)",
+						}}
 					>
-						<RefreshCcw className="mr-2 h-4 w-4" />
+						<RefreshCcw className="h-3.5 w-3.5" />
 						Send another message
 					</button>
 				</div>
@@ -102,34 +117,59 @@ export default function ContactForm() {
 	}
 
 	return (
-		<div className="card p-8">
-			<h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+		<div className="cf-card">
+			<h2
+				style={{
+					fontFamily: "var(--font-display)",
+					fontSize: "clamp(1.25rem, 2.5vw, 1.5rem)",
+					fontWeight: 800,
+					letterSpacing: "-0.035em",
+					marginBottom: 24,
+				}}
+				className="text-gray-900 dark:text-white"
+			>
 				Send us a message
 			</h2>
 
-			{/* Error message */}
+			{/* Error */}
 			{formState === "error" && errorMessage && (
-				<div className="mb-6 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-900/20">
-					<CircleAlert className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-600 dark:text-red-400" />
-					<p className="text-sm text-red-800 dark:text-red-400">{errorMessage}</p>
+				<div className="cf-error">
+					<svg
+						className="mt-0.5 flex-shrink-0"
+						fill="none"
+						height="16"
+						stroke="rgb(239,68,68)"
+						strokeWidth="2"
+						viewBox="0 0 24 24"
+						width="16"
+					>
+						<path
+							d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</svg>
+					<p style={{ fontSize: 13.5 }} className="text-red-700 dark:text-red-400">
+						{errorMessage}
+					</p>
 				</div>
 			)}
 
-			<form className="space-y-6" onSubmit={handleSubmit}>
-				{/* Name and Email */}
-				<div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+			<form className="space-y-5" onSubmit={handleSubmit}>
+				{/* Name + Email */}
+				<div className="grid gap-4 sm:grid-cols-2">
 					<div>
-						<label className="label" htmlFor="contact-name">
+						<label className="cf-label" htmlFor="contact-name">
 							Full name *
 						</label>
-						<div className="relative">
-							<User className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400" />
+						<div className="cf-input-wrap">
+							<User className="cf-input-icon h-4 w-4" />
 							<input
 								autoComplete="name"
-								className="input pl-10"
+								className="cf-input"
 								id="contact-name"
 								name="name"
-								placeholder="John Doe"
+								placeholder="Jean Reyes"
 								required
 								type="text"
 								value={formData.name}
@@ -139,17 +179,17 @@ export default function ContactForm() {
 					</div>
 
 					<div>
-						<label className="label" htmlFor="contact-email">
+						<label className="cf-label" htmlFor="contact-email">
 							Email address *
 						</label>
-						<div className="relative">
-							<Mail className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400" />
+						<div className="cf-input-wrap">
+							<Mail className="cf-input-icon h-4 w-4" />
 							<input
 								autoComplete="email"
-								className="input pl-10"
+								className="cf-input"
 								id="contact-email"
 								name="email"
-								placeholder="john@example.com"
+								placeholder="you@example.com"
 								required
 								type="email"
 								value={formData.email}
@@ -161,13 +201,13 @@ export default function ContactForm() {
 
 				{/* Subject */}
 				<div>
-					<label className="label" htmlFor="contact-subject">
+					<label className="cf-label" htmlFor="contact-subject">
 						Subject *
 					</label>
-					<div className="relative">
-						<MessageSquare className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400" />
+					<div className="cf-input-wrap">
+						<MessageSquare className="cf-input-icon h-4 w-4" />
 						<select
-							className="input pl-10"
+							className="cf-input"
 							id="contact-subject"
 							name="subject"
 							required
@@ -186,38 +226,39 @@ export default function ContactForm() {
 					</div>
 				</div>
 
-				{/* App (if applicable) */}
+				{/* App */}
 				<div>
-					<label className="label" htmlFor="contact-app">
-						Related app (optional)
+					<label className="cf-label" htmlFor="contact-app">
+						Related app{" "}
+						<span style={{ textTransform: "none", fontWeight: 500, opacity: 0.6 }}>
+							(optional)
+						</span>
 					</label>
-					<div className="relative">
-						<Smartphone className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400" />
+					<div className="cf-input-wrap">
+						<Smartphone className="cf-input-icon h-4 w-4" />
 						<input
-							className="input pl-10"
+							className="cf-input"
 							id="contact-app"
 							name="app"
-							placeholder="e.g., Bible TPT, Biblia TLA"
+							placeholder="e.g., Bible TPT, Biblia TLA, Claimly"
 							type="text"
 							value={formData.app}
 							onChange={handleChange}
 						/>
 					</div>
-					<p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-						If your message is about a specific app, please let us know which one.
-					</p>
+					<p className="cf-hint">Let us know which app this is about.</p>
 				</div>
 
 				{/* Message */}
 				<div>
-					<label className="label" htmlFor="contact-message">
+					<label className="cf-label" htmlFor="contact-message">
 						Message *
 					</label>
 					<textarea
-						className="input resize-y"
+						className="cf-input"
 						id="contact-message"
 						name="message"
-						placeholder="Tell us how we can help you..."
+						placeholder="Tell us how we can help…"
 						required
 						rows={6}
 						value={formData.message}
@@ -225,44 +266,63 @@ export default function ContactForm() {
 					/>
 				</div>
 
-				{/* Privacy Notice */}
-				<div className="rounded-xl border border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50 p-4 dark:border-blue-800 dark:from-blue-900/20 dark:to-indigo-900/20">
-					<div className="flex items-start gap-3">
-						<CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600 dark:text-blue-400" />
-						<div className="text-sm text-blue-800 dark:text-blue-200">
-							<p className="mb-1 font-medium">Privacy &amp; data protection</p>
-							<p>
-								By submitting this form, you agree to our{" "}
-								<a className="font-medium underline hover:no-underline" href="/privacy">
-									Privacy policy
-								</a>
-								. We will only use your information to respond to your inquiry and will never share
-								it with third parties.
-							</p>
-						</div>
-					</div>
+				{/* Privacy notice */}
+				<div className="cf-privacy">
+					<svg
+						className="mt-0.5 flex-shrink-0"
+						fill="none"
+						height="14"
+						stroke="rgba(46,207,255,0.70)"
+						strokeWidth="2"
+						viewBox="0 0 24 24"
+						width="14"
+					>
+						<path
+							d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</svg>
+					<p style={{ fontSize: 12.5, lineHeight: 1.65 }} className="text-gray-600 dark:text-[rgba(255,255,255,0.42)]">
+						<span className="font-semibold text-gray-800 dark:text-[rgba(255,255,255,0.70)]">
+							Privacy protected.{" "}
+						</span>
+						We only use your info to respond to your inquiry. See our{" "}
+						<a
+							className="font-semibold underline underline-offset-2 hover:no-underline"
+							href="/privacy"
+							style={{ color: "var(--color-brand-600)" }}
+						>
+							Privacy Policy
+						</a>
+						.
+					</p>
 				</div>
 
-				{/* Submit Button */}
-				<div className="flex flex-col-reverse items-stretch justify-end gap-3 pt-4 sm:flex-row sm:items-center sm:gap-4">
+				{/* Actions */}
+				<div className="flex flex-col-reverse items-stretch justify-end gap-3 pt-2 sm:flex-row sm:items-center">
 					<button
-						className="button button--secondary"
+						className="inline-flex items-center justify-center gap-2 rounded-xl border px-5 py-2.5 text-sm font-semibold transition-all duration-200 disabled:opacity-40"
+						disabled={formState === "loading"}
+						style={{
+							borderColor: "rgba(0,0,0,0.10)",
+							color: "var(--color-gray-600)",
+						}}
 						type="button"
 						onClick={handleReset}
-						disabled={formState === "loading"}
 					>
-						<RefreshCcw className="mr-2 h-4 w-4" />
-						Clear form
+						<RefreshCcw className="h-3.5 w-3.5" />
+						Clear
 					</button>
 					<button
-						className="button button--primary"
-						type="submit"
+						className="button button--primary px-7"
 						disabled={formState === "loading"}
+						type="submit"
 					>
 						{formState === "loading" ? (
 							<>
 								<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-								Sending...
+								Sending…
 							</>
 						) : (
 							<>

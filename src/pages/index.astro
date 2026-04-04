@@ -2,24 +2,28 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import AppCard from "@/components/AppCard.astro";
 import { AppShowcase } from "@/components/AppShowcase";
-import { StatsCounter } from "@/components/StatsCounter";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import {
-ArrowRight,
-Heart,
-Layers,
-LockKeyhole,
-RefreshCcw,
-Smartphone,
-Speech,
-Star,
-Zap
-} from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 
 const apps = await getCollection("apps");
 const featuredApps = apps.slice(0, 4);
+
+const blogPosts = await getCollection("blog");
+const latestPosts = blogPosts
+	.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+	.slice(0, 3);
+
 const canonical = new URL("/", Astro.site).href;
+
+const features = [
+	{ num: "01", title: "Security first", desc: "Built with industry-leading practices. Your data never leaves your device unnecessarily." },
+	{ num: "02", title: "User experience", desc: "Intuitive interfaces designed around real usage patterns — not feature checklists." },
+	{ num: "03", title: "High performance", desc: "Optimized from the ground up. Fast load times, smooth animations, no lag." },
+	{ num: "04", title: "Android-native", desc: "Built specifically for Android. Follows Material Design, feels at home on your device." },
+	{ num: "05", title: "Regular updates", desc: "Continuously improved based on user feedback. Always getting better." },
+	{ num: "06", title: "Dedicated support", desc: "Real people behind the apps. We respond, we fix, we listen." },
+];
 ---
 
 <BaseLayout
@@ -29,157 +33,237 @@ const canonical = new URL("/", Astro.site).href;
 	showFooterCta={false}
 	title="FusionCore Apps — Premium Mobile Applications"
 >
-	<!-- Hero Section -->
+	<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
 	<div slot="hero">
-		<div class="relative min-h-[70vh] flex items-center">
-			<!-- Animated gradient blobs -->
+		<div class="relative min-h-[88vh] flex items-center py-20 sm:py-28">
+
+			<!-- CSS Dot Grid Background -->
+			<div class="hero-dot-grid absolute inset-0 -left-8 -right-8 sm:-left-12 sm:-right-12 lg:-left-16 lg:-right-16" aria-hidden="true"></div>
+
+			<!-- Glow accents: visible in light, subtle in dark -->
 			<div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-				<div
-					class="absolute -top-32 -left-32 h-96 w-96 animate-pulse rounded-full bg-[#2ECFFF]/20 blur-3xl"
-					style="animation-duration: 6s;"
-				>
-				</div>
-				<div
-					class="absolute -right-32 -bottom-32 h-96 w-96 animate-pulse rounded-full bg-[#FF8A2A]/20 blur-3xl"
-					style="animation-duration: 8s;"
-				>
-				</div>
-				<div
-					class="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-[#e8455b]/10 blur-3xl"
-					style="animation-duration: 10s;"
-				>
-				</div>
+				<div class="absolute -top-24 right-0 w-[40vw] h-[50vh] rounded-full bg-brand-400/20 dark:bg-brand-400/8 blur-[80px]"></div>
+				<div class="absolute bottom-0 -left-8 w-[30vw] h-[40vh] rounded-full bg-accent-400/15 dark:bg-accent-400/5 blur-[80px]"></div>
 			</div>
 
+			<!-- Single fade — from-white in light, dark:from-gray-950 in dark -->
+			<div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-gray-950 to-transparent" aria-hidden="true"></div>
+
 			<!-- Two-column layout -->
-			<div class="relative z-10 grid w-full items-center gap-12 lg:grid-cols-2">
-				<!-- Left column: Text content -->
-				<div class="space-y-8 text-center lg:text-left">
-					<!-- Badge pill -->
-					<div class="inline-flex items-center gap-2 rounded-full border border-[#2ECFFF]/40 bg-[#2ECFFF]/10 px-4 py-1.5 text-sm font-medium text-[#2ECFFF] dark:border-[#2ECFFF]/30 dark:bg-[#2ECFFF]/5">
-						<span>✦</span>
-						<span>Mobile Apps for Everyone</span>
+			<div class="relative z-10 grid w-full items-center gap-16 lg:grid-cols-[1fr_auto]">
+
+				<!-- Left: Text Content -->
+				<div class="space-y-8 max-w-2xl">
+					<!-- Overline label -->
+					<div class="section-label">
+						<span class="section-label__dot"></span>
+						<span>Free Android Apps · Google Play Verified</span>
 					</div>
 
-					<!-- Main headline -->
-					<h1 class="text-5xl leading-tight font-extrabold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl dark:text-white">
-						Premium Mobile Apps
-						<span class="gradient-text block">Built with Excellence</span>
+					<!-- Headline -->
+					<h1 class="text-[clamp(2.8rem,6.5vw,5rem)] leading-[0.92] tracking-[-0.04em] font-extrabold text-gray-900 dark:text-white">
+						Apps built for<br/>
+						<span class="gradient-text">real people.</span>
 					</h1>
 
 					<!-- Subtitle -->
-					<p class="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl lg:mx-0 dark:text-gray-400">
-						We create secure, innovative, and user-friendly mobile applications that transform your
-						ideas into powerful digital experiences.
+					<p class="text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-lg">
+						Bible reading, grocery lists, and everyday tools — crafted with care and free to download on Google Play.
 					</p>
 
-					<!-- CTA Buttons -->
-					<div class="flex flex-col items-center gap-4 pt-4 sm:flex-row lg:justify-start">
-						<a class="button button--primary group" href="/apps">
-							<span>Explore Our Apps</span>
-							<ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
-						</a>
-						<a
-							class="button button--ghost border border-gray-300 dark:border-gray-600"
-							href="#features"
-						>
-							Learn More
-						</a>
+					<!-- Inline editorial stats -->
+					<div class="flex items-center gap-6 sm:gap-8 py-5 border-y border-gray-200 dark:border-gray-800">
+						<div>
+							<div class="editorial-num text-gray-900 dark:text-white">3.3K+</div>
+							<div class="text-xs text-gray-500 dark:text-gray-500 mt-1 font-medium tracking-wide uppercase">Downloads</div>
+						</div>
+						<div class="w-px h-10 bg-gray-200 dark:bg-gray-800 flex-shrink-0"></div>
+						<div>
+							<div class="editorial-num text-gray-900 dark:text-white">4.5★</div>
+							<div class="text-xs text-gray-500 dark:text-gray-500 mt-1 font-medium tracking-wide uppercase">Avg. Rating</div>
+						</div>
+						<div class="w-px h-10 bg-gray-200 dark:bg-gray-800 flex-shrink-0"></div>
+						<div>
+							<div class="editorial-num text-gray-900 dark:text-white">100%</div>
+							<div class="text-xs text-gray-500 dark:text-gray-500 mt-1 font-medium tracking-wide uppercase">Free</div>
+						</div>
 					</div>
 
-					<!-- Trust line -->
-					<p class="text-sm text-gray-500 dark:text-gray-400">
-						3 apps · Free to download · Google Play verified
-					</p>
+					<!-- CTAs -->
+					<div class="flex flex-col sm:flex-row items-start gap-4 pt-2">
+						<a class="button button--download group gap-2 px-7 py-3.5 text-base" href="/apps">
+							<svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+								<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.85"></path>
+								<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"></path>
+								<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"></path>
+								<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"></path>
+							</svg>
+							<span>Browse Apps</span>
+							<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+						</a>
+						<a class="button button--ghost border border-gray-300 dark:border-gray-700 px-7 py-3.5 text-base" href="#features">
+							Why FusionCore?
+						</a>
+					</div>
 				</div>
 
-				<!-- Right column: Phone mockup -->
-				<div class="hidden md:flex md:justify-center">
+				<!-- Right: App Showcase (hidden on mobile) -->
+				<div class="hidden lg:flex items-center" style="animation: float 7s ease-in-out infinite;">
 					<AppShowcase client:load />
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Social Proof Section -->
-	<section class="-mx-4 sm:-mx-6 lg:-mx-8 mb-16">
-		<div class="glass rounded-none py-16 sm:py-20">
-			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<!-- ─── FEATURED APPS ─────────────────────────────────────────────────────── -->
+	<AnimatedSection client:visible>
+		<section class="featured-apps mt-4 mb-24">
+			<div class="mb-12 flex items-end justify-between">
+				<div>
+					<div class="section-label mb-3">
+						<span class="section-label__dot"></span>
+						<span>Our Apps</span>
+					</div>
+					<h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+						Crafted for everyday life
+					</h2>
+				</div>
+				{
+					featuredApps.length > 0 && (
+						<a class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-brand-500 hover:text-brand-600 dark:text-brand-400 dark:hover:text-brand-300 transition-colors" href="/apps">
+							View all <span>({apps.length})</span>
+							<ArrowRight className="h-3.5 w-3.5" />
+						</a>
+					)
+				}
+			</div>
+
+			{
+				featuredApps.length > 0 ? (
+					<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+						{featuredApps.map((app, index) => (
+							<div class="animate-slide-up" style={`animation-delay: ${index * 80}ms`}>
+								<AppCard app={app} featured={true} />
+							</div>
+						))}
+					</div>
+				) : (
+					<div class="py-16 text-center">
+						<p class="text-gray-500 dark:text-gray-400">Apps coming soon.</p>
+					</div>
+				)
+			}
+
+			{
+				featuredApps.length > 0 && (
+					<div class="mt-8 text-center sm:hidden">
+						<a class="button button--secondary" href="/apps">
+							View all apps
+							<span class="ml-1 text-gray-400">({apps.length})</span>
+						</a>
+					</div>
+				)
+			}
+		</section>
+	</AnimatedSection>
+
+	<!-- ─── SOCIAL PROOF / STATS ─────────────────────────────────────────────── -->
+	<section class="-mx-4 sm:-mx-6 lg:-mx-8 mb-0">
+		<div class="relative overflow-hidden" style="background: linear-gradient(135deg, #0b1c2d 0%, #0e2a42 50%, #0b1c2d 100%);">
+			<!-- Subtle dot grid on dark bg -->
+			<div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle, rgba(46,207,255,0.2) 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+			<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+
+				<!-- Stats row -->
 				<AnimatedSection client:visible>
-					<div class="mb-12 text-center">
-						<h2 class="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
-							Trusted by Thousands
-						</h2>
-						<p class="text-gray-600 dark:text-gray-400">
-							Real numbers from real users on the Google Play Store
-						</p>
+					<div class="grid grid-cols-2 gap-8 sm:grid-cols-4 mb-20">
+						<div class="text-center">
+							<div class="font-display font-extrabold text-white tracking-tight" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.04em; font-family: 'Urbanist', 'Space Grotesk', system-ui;">3.3K+</div>
+							<div class="mt-2 text-xs font-semibold tracking-widest uppercase text-gray-400">Downloads</div>
+						</div>
+						<div class="text-center">
+							<div class="font-display font-extrabold text-white tracking-tight" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.04em; font-family: 'Urbanist', 'Space Grotesk', system-ui;">4.5★</div>
+							<div class="mt-2 text-xs font-semibold tracking-widest uppercase text-gray-400">Avg. Rating</div>
+						</div>
+						<div class="text-center">
+							<div class="font-display font-extrabold text-white tracking-tight" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.04em; font-family: 'Urbanist', 'Space Grotesk', system-ui;">3</div>
+							<div class="mt-2 text-xs font-semibold tracking-widest uppercase text-gray-400">Apps Published</div>
+						</div>
+						<div class="text-center">
+							<div class="font-display font-extrabold" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.04em; font-family: 'Urbanist', 'Space Grotesk', system-ui; background: linear-gradient(135deg, #ff8a2a, #2ecfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Free</div>
+							<div class="mt-2 text-xs font-semibold tracking-widest uppercase text-gray-400">To Download</div>
+						</div>
 					</div>
 				</AnimatedSection>
 
-				<!-- Stats -->
-				<AnimatedSection client:visible delay={0.15}>
-					<StatsCounter
-						client:visible
-						stats={[
-							{ value: 3, suffix: "+", label: "Apps Published" },
-							{ value: 3.3, suffix: "K+", label: "Downloads" },
-							{ value: 4, suffix: ".5★", label: "Avg. Rating" },
-							{ value: 100, suffix: "%", label: "Free to Download" },
-						]}
-					/>
-				</AnimatedSection>
-
 				<!-- Testimonials -->
-				<AnimatedSection client:visible delay={0.3}>
-					<div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				<AnimatedSection client:visible delay={0.2}>
+					<div class="mb-10">
+						<div class="section-label text-brand-400 mb-4">
+							<span class="section-label__dot" style="background-color: var(--color-brand-400);"></span>
+							<span>What users say</span>
+						</div>
+						<h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+							Trusted by thousands of users
+						</h2>
+					</div>
+
+					<div class="grid gap-5 sm:grid-cols-3">
 						<!-- Testimonial 1 -->
-						<div class="card card--elevated p-6">
-							<div class="mb-3 flex items-center gap-1">
+						<div class="rounded-2xl border border-white/8 bg-white/5 p-6 backdrop-blur-sm">
+							<div class="mb-3 flex gap-0.5">
 								{Array.from({ length: 5 }).map(() => (
 									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
 								))}
 							</div>
-							<p class="mb-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-								"Best Bible app I've found. The TPT translation reads beautifully and the interface is clean and easy to navigate. Use it every day for my devotionals."
+							<p class="mb-5 text-sm leading-relaxed text-gray-300">
+								"Best Bible app I've found. The TPT translation reads beautifully and the interface is clean and easy to navigate. Use it every day."
 							</p>
-							<div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-								<span class="font-medium text-gray-900 dark:text-gray-200">John D.</span>
-								<span>·</span>
-								<span>Bible TPT</span>
+							<div class="flex items-center gap-3 pt-4 border-t border-white/8">
+								<div class="h-8 w-8 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">JD</div>
+								<div>
+									<div class="text-sm font-semibold text-white">John D.</div>
+									<div class="text-xs text-gray-500">Bible TPT</div>
+								</div>
 							</div>
 						</div>
 
 						<!-- Testimonial 2 -->
-						<div class="card card--elevated p-6">
-							<div class="mb-3 flex items-center gap-1">
+						<div class="rounded-2xl border border-white/8 bg-white/5 p-6 backdrop-blur-sm">
+							<div class="mb-3 flex gap-0.5">
 								{Array.from({ length: 5 }).map(() => (
 									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
 								))}
 							</div>
-							<p class="mb-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-								"Finally a grocery list app that just works. No bloat, no unnecessary complexity. I share my list with my wife and it works perfectly."
+							<p class="mb-5 text-sm leading-relaxed text-gray-300">
+								"Finally a grocery list app that just works. No bloat, no complexity. I share my list with my wife and it works perfectly every time."
 							</p>
-							<div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-								<span class="font-medium text-gray-900 dark:text-gray-200">Mario S.</span>
-								<span>·</span>
-								<span>CartWise Grocery List</span>
+							<div class="flex items-center gap-3 pt-4 border-t border-white/8">
+								<div class="h-8 w-8 rounded-full bg-gradient-to-br from-accent-400 to-accent-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">MS</div>
+								<div>
+									<div class="text-sm font-semibold text-white">Mario S.</div>
+									<div class="text-xs text-gray-500">CartWise Grocery List</div>
+								</div>
 							</div>
 						</div>
 
 						<!-- Testimonial 3 -->
-						<div class="card card--elevated p-6">
-							<div class="mb-3 flex items-center gap-1">
+						<div class="rounded-2xl border border-white/8 bg-white/5 p-6 backdrop-blur-sm">
+							<div class="mb-3 flex gap-0.5">
 								{Array.from({ length: 5 }).map(() => (
 									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
 								))}
 							</div>
-							<p class="mb-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-								"Me encanta esta app de la Biblia TLA. Muy facil de usar y la traduccion es clara. La uso todos los dias con mi familia."
+							<p class="mb-5 text-sm leading-relaxed text-gray-300">
+								"Me encanta esta app de la Biblia TLA. Muy fácil de usar y la traducción es clara. La uso todos los días con mi familia."
 							</p>
-							<div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-								<span class="font-medium text-gray-900 dark:text-gray-200">Carlos R.</span>
-								<span>·</span>
-								<span>Biblia TLA en Espanol</span>
+							<div class="flex items-center gap-3 pt-4 border-t border-white/8">
+								<div class="h-8 w-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">CR</div>
+								<div>
+									<div class="text-sm font-semibold text-white">Carlos R.</div>
+									<div class="text-xs text-gray-500">Biblia TLA en Español</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -188,191 +272,131 @@ const canonical = new URL("/", Astro.site).href;
 		</div>
 	</section>
 
-	<!-- Featured Apps Section -->
-	<AnimatedSection client:visible>
-		<section class="featured-apps">
-			<div class="mb-16 text-center">
-				<h2 class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
-					Featured applications
-				</h2>
-				<p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-					Discover our carefully crafted mobile applications, each designed with attention to detail
-					and user experience in mind.
-				</p>
-			</div>
-
-			{
-				featuredApps.length > 0 ? (
-					<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-						{featuredApps.map((app, index) => (
-							<div class="animate-slide-up" style={`animation-delay: ${index * 100}ms`}>
-								<AppCard app={app} featured={true} />
-							</div>
-						))}
-					</div>
-				) : (
-					<div class="py-16 text-center">
-						<div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800">
-							<Layers className="h-12 w-12 text-gray-400" />
-						</div>
-						<h3 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">Apps Coming Soon</h3>
-						<p class="mb-6 text-gray-600 dark:text-gray-400">
-							We're working hard to bring you amazing mobile applications.
-						</p>
-						<a class="button button--primary" href="/admin">
-							Publish your first app
-						</a>
-					</div>
-				)
-			}
-
-			{
-				featuredApps.length > 0 && (
-					<div class="mt-12 mb-3 text-center">
-						<a class="button button--secondary" href="/apps">
-							View all apps
-							<span class="ml-2">({apps.length})</span>
-						</a>
-					</div>
-				)
-			}
-		</section>
-	</AnimatedSection>
-
-	<!-- Features Section -->
+	<!-- ─── FEATURES ─────────────────────────────────────────────────────────── -->
 	<AnimatedSection client:visible delay={0.1}>
-		<section id="features" class="features gradient-bg py-24 -mx-4 sm:-mx-6 lg:-mx-8">
+		<section id="features" class="-mx-4 sm:-mx-6 lg:-mx-8 bg-gray-50 dark:bg-transparent py-24">
 			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div class="mb-16 text-center">
-					<h2 class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
-						Why choose FusionCore Apps?
+			<div class="mb-14">
+				<div class="section-label mb-3">
+					<span class="section-label__dot"></span>
+					<span>Why FusionCore</span>
+				</div>
+				<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+					<h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight max-w-md">
+						Built different,<br/>on purpose.
 					</h2>
-					<p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-						We combine cutting-edge technology with user-centered design to deliver exceptional mobile
-						experiences.
+					<p class="text-gray-500 dark:text-gray-400 max-w-xs text-sm leading-relaxed">
+						Every decision — from architecture to animation — is made with the end user in mind.
 					</p>
 				</div>
+			</div>
 
-				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-					<!-- Security First -->
-					<div
-						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-					>
-						<div
-							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 transition-shadow group-hover:shadow-xl"
-						>
-							<LockKeyhole className="h-8 w-8 text-white" />
+			<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+				{features.map((f) => (
+					<div class="feature-item">
+						<span class="feature-num">{f.num}</span>
+						<div>
+							<h3 class="font-bold text-gray-900 dark:text-white mb-1.5 text-base">{f.title}</h3>
+							<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{f.desc}</p>
 						</div>
-						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">Security first</h3>
-						<p class="text-gray-600 dark:text-gray-400">
-							Built with industry-leading security practices to protect user data and ensure privacy
-							compliance.
-						</p>
 					</div>
-
-					<!-- User Experience -->
-					<div
-						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-					>
-						<div
-							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 transition-shadow group-hover:shadow-xl"
-						>
-							<Heart className="h-8 w-8 text-white" />
-						</div>
-						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">User experience</h3>
-						<p class="text-gray-600 dark:text-gray-400">
-							Intuitive interfaces designed with users in mind, ensuring smooth and enjoyable
-							interactions.
-						</p>
-					</div>
-
-					<!-- Performance -->
-					<div
-						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-					>
-						<div
-							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-green-600 transition-shadow group-hover:shadow-xl"
-						>
-							<Zap className="h-8 w-8 text-white" />
-						</div>
-						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">High performance</h3>
-						<p class="text-gray-600 dark:text-gray-400">
-							Optimized for speed and efficiency, delivering fast load times and smooth animations.
-						</p>
-					</div>
-
-					<!-- Cross Platform -->
-					<div
-						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-					>
-						<div
-							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 transition-shadow group-hover:shadow-xl"
-						>
-							<Smartphone className="h-8 w-8 text-white" />
-						</div>
-						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">Cross platform</h3>
-						<p class="text-gray-600 dark:text-gray-400">
-							Compatible across Android and iOS platforms, reaching the widest possible audience.
-						</p>
-					</div>
-
-					<!-- Regular Updates -->
-					<div
-						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-					>
-						<div
-							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 transition-shadow group-hover:shadow-xl"
-						>
-							<RefreshCcw className="h-8 w-8 text-white" />
-						</div>
-						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">Regular updates</h3>
-						<p class="text-gray-600 dark:text-gray-400">
-							Continuous improvement with regular updates, new features, and bug fixes.
-						</p>
-					</div>
-
-					<!-- Support -->
-					<div
-						class="card card--elevated group p-8 text-center transition-transform duration-300 hover:scale-105"
-					>
-						<div
-							class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 transition-shadow group-hover:shadow-xl"
-						>
-							<Speech className="h-8 w-8 text-white" />
-						</div>
-						<h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-							Dedicated support
-						</h3>
-						<p class="text-gray-600 dark:text-gray-400">
-							Responsive customer support to help you get the most out of our applications.
-						</p>
-					</div>
-				</div>
+				))}
+			</div>
 			</div>
 		</section>
 	</AnimatedSection>
 
-	<!-- CTA Section -->
+	<!-- ─── BLOG TEASER ────────────────────────────────────────────────────── -->
+	{latestPosts.length > 0 && (
+		<AnimatedSection client:visible delay={0.1}>
+			<section class="pb-24">
+				<div class="mb-12 flex items-end justify-between">
+					<div>
+						<div class="section-label mb-3">
+							<span class="section-label__dot"></span>
+							<span>From the blog</span>
+						</div>
+						<h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+							Guides & insights
+						</h2>
+					</div>
+					<a class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-brand-500 hover:text-brand-600 dark:text-brand-400 dark:hover:text-brand-300 transition-colors" href="/blog">
+						All posts
+						<ArrowRight className="h-3.5 w-3.5" />
+					</a>
+				</div>
+
+				<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+					{latestPosts.map((post, i) => (
+						<a href={`/blog/${post.slug}`} class="blog-teaser-card no-underline" style={`animation-delay: ${i * 80}ms`}>
+							<div class="flex-1 space-y-3">
+								{post.data.tags && post.data.tags.length > 0 && (
+									<span class="inline-block rounded-full bg-brand-50 dark:bg-brand-950/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+										{post.data.tags[0]}
+									</span>
+								)}
+								<h3 class="font-bold text-gray-900 dark:text-white text-base leading-snug group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+									{post.data.title}
+								</h3>
+								<p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">
+									{post.data.description}
+								</p>
+							</div>
+							<div class="flex items-center justify-between mt-5 pt-4 border-t border-gray-100 dark:border-gray-700">
+								<time class="text-xs text-gray-400 dark:text-gray-500 font-medium">
+									{post.data.publishedAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+								</time>
+								<span class="inline-flex items-center gap-1 text-xs font-semibold text-brand-500 dark:text-brand-400">
+									Read
+									<ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+								</span>
+							</div>
+						</a>
+					))}
+				</div>
+
+				<div class="mt-8 text-center sm:hidden">
+					<a class="button button--secondary" href="/blog">All posts</a>
+				</div>
+			</section>
+		</AnimatedSection>
+	)}
+
+	<!-- ─── CTA ──────────────────────────────────────────────────────────────── -->
 	<AnimatedSection client:visible delay={0.1}>
-		<section class="cta py-24">
-			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div
-					class="card card--elevated from-brand-500 to-brand-600 border-0 bg-gradient-to-br p-12 text-center text-white"
-				>
-					<h2 class="mb-4 text-3xl font-bold sm:text-4xl">Ready to Experience Premium Apps?</h2>
-					<p class="text-brand-100 mx-auto mb-8 max-w-2xl text-xl">
-						Free Android apps built to make everyday life simpler — Bible reading, grocery shopping, and more.
-					</p>
-					<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-						<a
-							class="button text-brand-600 border-0 bg-white shadow-lg hover:bg-gray-100 hover:shadow-xl"
-							href="/apps"
-						>
-							Browse all apps
-						</a>
-						<a class="button button--ghost border-white text-white hover:bg-white/10" href="/contact">
-							Contact us
-						</a>
+		<section class="-mx-4 sm:-mx-6 lg:-mx-8 mb-0">
+			<div class="relative overflow-hidden" style="background: linear-gradient(135deg, #ff8a2a 0%, #e8455b 40%, #0b1c2d 100%);">
+				<!-- Decorative large text in background -->
+				<div aria-hidden="true" class="absolute inset-0 flex items-center justify-end overflow-hidden select-none pointer-events-none">
+					<span class="text-white/5 font-extrabold pr-8" style="font-size: clamp(6rem, 18vw, 14rem); line-height: 1; letter-spacing: -0.05em; font-family: 'Urbanist', system-ui;">FREE</span>
+				</div>
+
+				<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+					<div class="max-w-xl">
+						<div class="section-label text-white/60 mb-5">
+							<span class="inline-block h-1.5 w-1.5 rounded-full bg-white/60 mr-2"></span>
+							<span>Ready to download?</span>
+						</div>
+						<h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-5" style="line-height: 0.95;">
+							Premium apps.<br/>Free to start.
+						</h2>
+						<p class="text-lg text-white/75 mb-8 max-w-md leading-relaxed">
+							Every app is free to download on Google Play. Some unlock additional features through an optional subscription — but the core experience is always free.
+						</p>
+						<div class="flex flex-col sm:flex-row items-start gap-4">
+							<a class="button bg-white text-gray-900 hover:bg-gray-100 shadow-xl hover:shadow-2xl gap-2 px-7 py-3.5 text-base font-bold" href="/apps">
+								<svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+									<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#2ecfff" opacity="0.9"></path>
+									<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#ffc107" opacity="0.9"></path>
+									<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="#ff3e00"></path>
+									<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="#00e081" opacity="0.9"></path>
+								</svg>
+								Browse All Apps
+							</a>
+							<a class="button border-2 border-white/30 text-white hover:bg-white/10 px-7 py-3.5 text-base" href="/contact">
+								Contact us
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -3,7 +3,6 @@ import "@/styles/global.css";
 
 import GooglePlayLogo from "@/assets/gplay-logo.svg";
 import ThemeToggle from "@/components/ThemeToggle.tsx";
-import { Menu } from "lucide-react";
 
 const {
 	title = "FusionCore Apps — Premium Mobile Applications",
@@ -40,8 +39,8 @@ const resolvedOgImage =
 		<meta content={description} name="description" />
 		<meta content={noindex ? "noindex,nofollow" : "index,follow"} name="robots" />
 		<link href={canonicalUrl} rel="canonical" />
-		<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
-		<link rel="alternate" hreflang={locale} href={canonicalUrl} />
+		<link href={canonicalUrl} hreflang="x-default" rel="alternate" />
+		<link href={canonicalUrl} hreflang={locale} rel="alternate" />
 
 		<meta content="website" property="og:type" />
 		<meta content={new URL(Astro.url.pathname, Astro.site).href} property="og:url" />
@@ -63,6 +62,8 @@ const resolvedOgImage =
 		<meta content="default" name="apple-mobile-web-app-status-bar-style" />
 
 		<link rel="preload" href="/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preconnect" href="https://fonts.bunny.net" />
+		<link href="https://fonts.bunny.net/css?family=urbanist:400,500,600,700,800,900|dm-sans:300,400,500,600&display=swap" rel="stylesheet" />
 
 		<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
 		<link href="/favicon.svg" rel="apple-touch-icon" />
@@ -76,7 +77,7 @@ const resolvedOgImage =
 				"url": "https://www.fusioncoreapps.com",
 				"logo": "https://www.fusioncoreapps.com/logo.png",
 				"foundingDate": "2024",
-				"sameAs": ["https://play.google.com/store/apps/developer?id=FusionCore+Apps"]
+				"sameAs": ["https://play.google.com/store/apps/dev?id=5173536626513659112"]
 			}
 		</script>
 
@@ -119,160 +120,191 @@ const resolvedOgImage =
 			Skip to main content
 		</a>
 
-		<!-- Header -->
-		<header
-			class="header sticky top-0 z-40 border-b border-gray-200/50 bg-white/80 backdrop-blur-lg dark:border-gray-800/50 dark:bg-gray-950/80"
-		>
-			<nav
-				aria-label="Main navigation"
-				class="header__nav mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
-				role="navigation"
-			>
-				<!-- Logo -->
-				<a
-					class="header__logo hover:text-brand-600 dark:hover:text-brand-400 group flex items-center gap-3 text-xl font-bold text-gray-900 transition-colors dark:text-white"
-					href="/"
+		<!-- ── Header: Morphing Glass Pill ── -->
+		<header id="site-header" class="header sticky top-0 z-40 w-full">
+			<div class="px-4 py-3 sm:px-5">
+				<div
+					id="header-pill"
+					class="header__pill mx-auto flex max-w-7xl items-center justify-between"
 				>
-					<div
-						class="flex h-14 w-14 items-center justify-center rounded-lg bg-gradient-to-br transition-all duration-200 group-hover:scale-105"
-					>
-						<img alt="FusionCore Apps Logo" class="h-12 w-12 object-contain" src="/logo.png" />
-					</div>
-					<span class="gradient-text">FusionCore Apps</span>
-				</a>
+					<!-- Logo -->
+					<a href="/" class="header__logo group flex min-w-0 flex-shrink-0 items-center gap-2.5">
+						<img
+							src="/logo.png"
+							alt="FusionCore Apps"
+							class="h-9 w-9 flex-shrink-0 rounded-xl object-contain transition-transform duration-300 group-hover:scale-105"
+						/>
+						<span
+							class="header__wordmark gradient-text overflow-hidden whitespace-nowrap font-bold"
+							style="font-family: var(--font-display); letter-spacing: -0.025em; font-size: 15px;"
+						>FusionCore Apps</span>
+					</a>
 
-				<!-- Desktop Navigation -->
-				<ul class="header__nav-links hidden items-center gap-8 md:flex" role="menubar">
-					<li role="none">
-						<a
-							class:list={[`nav-link`, { "nav-link--active": currentPath.startsWith("/apps") }]}
-							href="/apps"
-							role="menuitem"
-						>
-							Apps
-						</a>
-					</li>
-					<li role="none">
-						<a
-							class:list={[`nav-link`, { "nav-link--active": currentPath.startsWith("/blog") }]}
-							href="/blog"
-							role="menuitem"
-						>
-							Blog
-						</a>
-					</li>
-					<li role="none">
-						<a
-							class:list={[`nav-link`, { "nav-link--active": currentPath === "/privacy" }]}
-							href="/privacy"
-							role="menuitem"
-						>
-							Privacy
-						</a>
-					</li>
-					<li role="none">
-						<a
-							class:list={[`nav-link`, { "nav-link--active": currentPath === "/contact" }]}
-							href="/contact"
-							role="menuitem"
-						>
-							Contact
-						</a>
-					</li>
-				</ul>
-
-				<!-- Theme Toggle & Mobile Menu -->
-				<div class="header__actions flex items-center gap-3">
-					<ThemeToggle client:load />
-
-					<!-- Mobile menu button -->
-					<button
-						aria-label="Open mobile menu"
-						class="hover:text-brand-600 dark:hover:text-brand-400 focus:ring-brand-500 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-600 transition-all duration-200 hover:bg-gray-200 focus:ring-2 focus:outline-none md:hidden dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
-						id="mobile-menu-button"
-					>
-						<Menu className="h-5 w-5" stroke="currentColor" />
-					</button>
-				</div>
-			</nav>
-
-			<!-- Mobile Navigation Menu -->
-			<div
-				class="header__mobile-menu hidden border-t border-gray-200 md:hidden dark:border-gray-800"
-				id="mobile-menu"
-			>
-				<nav aria-label="Mobile navigation" class="px-4 py-4 sm:px-6" role="navigation">
-					<ul class="space-y-4" role="menubar">
+					<!-- Desktop links -->
+					<ul class="hidden items-center gap-0.5 md:flex" role="menubar">
 						<li role="none">
 							<a
-								class:list={[
-									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
-									{
-										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
-											currentPath.startsWith("/apps"),
-									},
-								]}
+								class:list={["nav-pill-link", { "nav-pill-link--active": currentPath.startsWith("/apps") }]}
 								href="/apps"
 								role="menuitem"
-							>
-								Apps
-							</a>
+							>Apps</a>
 						</li>
 						<li role="none">
 							<a
-								class:list={[
-									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
-									{
-										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
-											currentPath.startsWith("/blog"),
-									},
-								]}
+								class:list={["nav-pill-link", { "nav-pill-link--active": currentPath.startsWith("/blog") }]}
 								href="/blog"
 								role="menuitem"
-							>
-								Blog
-							</a>
+							>Blog</a>
 						</li>
 						<li role="none">
 							<a
-								class:list={[
-									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
-									{
-										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
-											currentPath === "/privacy",
-									},
-								]}
+								class:list={["nav-pill-link", { "nav-pill-link--active": currentPath === "/privacy" }]}
 								href="/privacy"
 								role="menuitem"
-							>
-								Privacy
-							</a>
+							>Privacy</a>
 						</li>
 						<li role="none">
 							<a
-								class:list={[
-									`block rounded-xl px-4 py-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`,
-									{
-										"bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400":
-											currentPath === "/contact",
-									},
-								]}
+								class:list={["nav-pill-link", { "nav-pill-link--active": currentPath === "/contact" }]}
 								href="/contact"
 								role="menuitem"
+							>Contact</a>
+						</li>
+					</ul>
+
+					<!-- Actions -->
+					<div class="flex flex-shrink-0 items-center gap-2">
+						<ThemeToggle client:load />
+
+						<!-- Desktop CTA -->
+						<a href="/apps" class="nav-cta hidden items-center gap-1.5 md:inline-flex">
+							Browse Apps
+							<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M9 18l6-6-6-6"/>
+							</svg>
+						</a>
+
+						<!-- Animated hamburger for mobile -->
+						<button
+							id="menu-btn"
+							class="menu-btn flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gray-100 text-gray-600 transition-colors duration-200 hover:bg-gray-200 focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:outline-none dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 md:hidden"
+							aria-label="Open navigation menu"
+							aria-expanded="false"
+							aria-controls="mobile-overlay"
+						>
+							<span class="flex h-5 w-5 flex-col items-center justify-center gap-[5.5px]">
+								<span class="menu-btn__bar w-5"></span>
+								<span class="menu-btn__bar w-[14px] self-start"></span>
+								<span class="menu-btn__bar w-5"></span>
+							</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- ── Mobile Fullscreen Overlay ── -->
+		<div
+			id="mobile-overlay"
+			class="mobile-overlay fixed inset-0 z-50 flex flex-col md:hidden"
+			aria-hidden="true"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Navigation menu"
+		>
+			<!-- Top bar -->
+			<div class="flex flex-shrink-0 items-center justify-between px-6 py-4">
+				<a href="/" class="flex items-center gap-2.5" id="overlay-logo">
+					<img src="/logo.png" alt="FusionCore Apps" class="h-8 w-8 flex-shrink-0 rounded-lg object-contain" />
+					<span class="gradient-text font-bold" style="font-family: var(--font-display); font-size: 15px; letter-spacing: -0.02em;">
+						FusionCore Apps
+					</span>
+				</a>
+				<button
+					id="close-overlay"
+					class="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-600 transition-colors duration-200 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+					aria-label="Close navigation menu"
+				>
+					<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M18 6L6 18M6 6l12 12"/>
+					</svg>
+				</button>
+			</div>
+
+			<!-- Nav links — large editorial type -->
+			<div class="flex flex-1 flex-col justify-center px-8 -mt-6">
+				<nav aria-label="Mobile navigation links">
+					<ul class="divide-y divide-gray-200/70 dark:divide-white/5">
+						<li class="mobile-link-item">
+							<a
+								class:list={["mobile-nav-link", { "mobile-nav-link--active": currentPath.startsWith("/apps") }]}
+								href="/apps"
+								id="mobile-link-apps"
 							>
-								Contact
+								<span>Apps</span>
+								<svg class="h-6 w-6 flex-shrink-0 opacity-30 transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+							</a>
+						</li>
+						<li class="mobile-link-item">
+							<a
+								class:list={["mobile-nav-link", { "mobile-nav-link--active": currentPath.startsWith("/blog") }]}
+								href="/blog"
+								id="mobile-link-blog"
+							>
+								<span>Blog</span>
+								<svg class="h-6 w-6 flex-shrink-0 opacity-30 transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+							</a>
+						</li>
+						<li class="mobile-link-item">
+							<a
+								class:list={["mobile-nav-link", { "mobile-nav-link--active": currentPath === "/privacy" }]}
+								href="/privacy"
+								id="mobile-link-privacy"
+							>
+								<span>Privacy</span>
+								<svg class="h-6 w-6 flex-shrink-0 opacity-30 transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+							</a>
+						</li>
+						<li class="mobile-link-item">
+							<a
+								class:list={["mobile-nav-link", { "mobile-nav-link--active": currentPath === "/contact" }]}
+								href="/contact"
+								id="mobile-link-contact"
+							>
+								<span>Contact</span>
+								<svg class="h-6 w-6 flex-shrink-0 opacity-30 transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
 							</a>
 						</li>
 					</ul>
 				</nav>
+
+				<!-- Subtle stat row -->
+				<p class="mt-8 text-xs font-medium tracking-widest uppercase text-gray-400 dark:text-gray-600">
+					Free Android apps &nbsp;·&nbsp; 3 apps &nbsp;·&nbsp; 3.3K+ downloads
+				</p>
 			</div>
-		</header>
+
+			<!-- Bottom CTA -->
+			<div class="mobile-overlay__footer flex-shrink-0 px-8 pb-12 pt-6">
+				<a
+					href="/apps"
+					id="mobile-cta"
+					class="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-bold text-white shadow-lg"
+					style="background: linear-gradient(135deg, #ff8a2a 0%, #e8455b 100%);"
+				>
+					Browse All Apps
+					<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M9 18l6-6-6-6"/>
+					</svg>
+				</a>
+			</div>
+		</div>
 
 		<!-- Main Content -->
 		<main class="main flex-1" id="main" role="main">
 			{
 				showHero && (
-					<section class="hero gradient-bg py-24 sm:py-32">
+					<section class="hero relative overflow-hidden">
 						<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 							<slot name="hero" />
 						</div>
@@ -287,236 +319,273 @@ const resolvedOgImage =
 			</div>
 		</main>
 
-		<!-- Footer -->
-		<footer class="footer bg-gray-950 text-gray-300" role="contentinfo">
-			<!-- CTA Banner -->
-			{showFooterCta && <div class="bg-fusion-gradient">
-				<div
-					class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-12 text-center sm:px-6 lg:px-8"
-				>
-					<h2 class="text-2xl font-bold text-white sm:text-3xl">Ready to download?</h2>
-					<p class="max-w-xl text-lg text-white/90">
-						All our apps are free. Find your perfect app on Google Play.
-					</p>
-					<a
-						class="inline-flex items-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
-						href="/apps"
-					>
-						Browse Apps
-					</a>
-				</div>
-			</div>}
+		<!-- ── Footer ── -->
+		<footer role="contentinfo">
 
-			<!-- Main footer columns -->
-			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div class="footer__content grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
-					<!-- Column 1: Brand -->
-					<div class="footer__section">
-						<a class="footer__logo mb-4 flex items-center gap-3" href="/">
-							<div class="flex h-10 w-10 items-center justify-center rounded-lg">
-								<img alt="FusionCore Apps Logo" class="h-8 w-8 object-contain" src="/logo.png" />
-							</div>
-							<span class="text-lg font-bold text-white">FusionCore Apps</span>
-						</a>
-						<p class="mb-2 text-sm font-medium text-white">
-							Premium mobile apps built with excellence.
-						</p>
-						<p class="footer__description mb-6 max-w-xs text-sm text-gray-400">
-							We create free Android apps that are secure, performant, and delightful to use.
+			<!-- Top gradient line (always visible) -->
+			<div class="h-px w-full" style="background: linear-gradient(90deg, transparent 0%, #ff8a2a 25%, #e8455b 50%, #2ecfff 75%, transparent 100%);"></div>
+
+			<!-- CTA Island — always dark, creates contrast anchor -->
+			{showFooterCta && (
+				<div class="relative overflow-hidden" style="background: #080f1a;">
+					<!-- Ambient glow accents -->
+					<div aria-hidden="true" class="pointer-events-none absolute inset-0">
+						<div class="absolute -top-24 right-1/4 h-64 w-64 rounded-full blur-[80px]" style="background: rgba(255,138,42,0.18);"></div>
+						<div class="absolute -bottom-16 left-1/4 h-56 w-56 rounded-full blur-[80px]" style="background: rgba(46,207,255,0.14);"></div>
+					</div>
+					<!-- Dot grid texture -->
+					<div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-20" style="background-image: radial-gradient(circle, rgba(46,207,255,0.2) 1px, transparent 1px); background-size: 28px 28px;"></div>
+
+					<div class="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-20 text-center sm:px-6 lg:px-8">
+						<div class="section-label" style="color: rgba(255,255,255,0.45);">
+							<span class="inline-block h-1.5 w-1.5 rounded-full mr-2" style="background: rgba(255,255,255,0.4);"></span>
+							Available on Google Play
+						</div>
+						<h2 style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 900; letter-spacing: -0.04em; line-height: 0.95; color: #fff;">
+							Premium apps.<br/>Free to start.
+						</h2>
+						<p class="max-w-md text-base leading-relaxed" style="color: rgba(255,255,255,0.55);">
+							Every app is free to download on Google Play. Some unlock additional features through an optional subscription — but the core experience is always free.
 						</p>
 						<a
-							aria-label="Get it on Google Play"
-							class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-4 py-2 text-sm text-gray-300 transition-colors hover:border-gray-500 hover:text-white"
-							href="https://play.google.com/store/apps/developer?id=FusionCore+Apps"
-							rel="noopener noreferrer"
-							target="_blank"
+							href="/apps"
+							class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-gray-900 shadow-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
 						>
-							<GooglePlayLogo class="h-5 w-5" />
-							<span>Google Play</span>
+							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
+								<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#2ecfff" opacity="0.9"/>
+								<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#ffc107" opacity="0.9"/>
+								<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="#ff3e00"/>
+								<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="#00e081" opacity="0.9"/>
+							</svg>
+							Browse All Apps
 						</a>
 					</div>
+				</div>
+			)}
 
-					<!-- Column 2: Quick Links -->
-					<div class="footer__section">
-						<h3 class="footer__title mb-4 text-sm font-semibold tracking-wider text-white uppercase">
-							Quick Links
-						</h3>
-						<ul class="footer__links space-y-3">
-							<li>
-								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/">Home</a>
-							</li>
-							<li>
-								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/apps"
-									>Apps</a
-								>
-							</li>
-							<li>
-								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/blog"
-									>Blog</a
-								>
-							</li>
-							<li>
-								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/contact"
-									>Contact</a
-								>
-							</li>
-							<li>
-								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/privacy"
-									>Privacy Policy</a
-								>
-							</li>
-							<li>
-								<a class="text-sm text-gray-400 transition-colors hover:text-white" href="/terms"
-									>Terms of Service</a
-								>
-							</li>
-						</ul>
+			<!-- Main footer body (light/dark responsive) -->
+			<div class="footer-body">
+				<!-- Subtle top separator -->
+				<div class="h-px w-full bg-gray-200 dark:bg-gray-800/60"></div>
+
+				<div class="relative mx-auto max-w-7xl px-4 pb-0 pt-14 sm:px-6 lg:px-8">
+					<div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[2.2fr_1fr_1fr_1.3fr]">
+
+						<!-- Column 1: Brand -->
+						<div class="space-y-6">
+							<a href="/" class="inline-flex items-center gap-3 group">
+								<img
+									src="/logo.png"
+									alt="FusionCore Apps"
+									class="h-10 w-10 rounded-xl object-contain transition-transform duration-300 group-hover:scale-105"
+								/>
+								<span class="font-bold text-gray-900 dark:text-white" style="font-family: var(--font-display); font-size: 16px; letter-spacing: -0.025em;">
+									FusionCore Apps
+								</span>
+							</a>
+
+							<p class="max-w-[240px] text-sm leading-relaxed text-gray-500 dark:text-gray-500">
+								Free Android apps crafted with care — for Bible reading, shopping, and everyday life.
+							</p>
+
+							<!-- Mini stat strip -->
+							<div class="flex items-center gap-4">
+								<div>
+									<div class="text-base font-bold text-gray-900 dark:text-white" style="font-family: var(--font-display); letter-spacing: -0.03em;">3.3K+</div>
+									<div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600">Downloads</div>
+								</div>
+								<div class="h-7 w-px bg-gray-200 dark:bg-gray-800"></div>
+								<div>
+									<div class="text-base font-bold text-gray-900 dark:text-white" style="font-family: var(--font-display); letter-spacing: -0.03em;">4.5★</div>
+									<div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600">Rating</div>
+								</div>
+								<div class="h-7 w-px bg-gray-200 dark:bg-gray-800"></div>
+								<div>
+									<div class="text-base font-bold text-gray-900 dark:text-white" style="font-family: var(--font-display); letter-spacing: -0.03em;">Free</div>
+									<div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600">Always</div>
+								</div>
+							</div>
+
+							<!-- Google Play badge -->
+							<a
+								href="https://play.google.com/store/apps/dev?id=5173536626513659112"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Get it on Google Play"
+								class="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-all duration-200 hover:border-gray-400 hover:text-gray-900 dark:border-gray-800 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:text-white"
+							>
+								<GooglePlayLogo class="h-4 w-4" />
+								<span>Google Play</span>
+							</a>
+						</div>
+
+						<!-- Column 2: Navigation -->
+						<div>
+							<h3 class="footer__col-title">Navigation</h3>
+							<ul class="space-y-0.5">
+								<li><a class="footer__link" href="/">Home</a></li>
+								<li><a class="footer__link" href="/apps">Apps</a></li>
+								<li><a class="footer__link" href="/blog">Blog</a></li>
+								<li><a class="footer__link" href="/contact">Contact</a></li>
+								<li><a class="footer__link" href="/privacy">Privacy</a></li>
+								<li><a class="footer__link" href="/terms">Terms</a></li>
+							</ul>
+						</div>
+
+						<!-- Column 3: Our Apps -->
+						<div>
+							<h3 class="footer__col-title">Our Apps</h3>
+							<ul class="space-y-0.5">
+								<li><a class="footer__link" href="/apps/bible-tpt">Bible TPT</a></li>
+								<li><a class="footer__link" href="/apps/biblia-tla">Biblia TLA</a></li>
+								<li><a class="footer__link" href="/apps/cartwise-grocery-shopping-list">CartWise</a></li>
+								<li>
+									<a class="footer__link" href="/apps/claimly-receipt-tracker">
+										Claimly
+										<span class="ml-1 inline-flex items-center rounded-full px-1.5 py-0.5 text-[10px] font-bold" style="background: rgba(234,88,12,0.10); color: #ea580c;">Beta</span>
+									</a>
+								</li>
+								<li class="pt-2">
+									<a class="footer__link footer__link--accent" href="/apps">
+										View All &rarr;
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<!-- Column 4: Connect -->
+						<div>
+							<h3 class="footer__col-title">Get in Touch</h3>
+							<ul class="space-y-1">
+								<li>
+									<a
+										class="footer__link"
+										href="https://play.google.com/store/apps/dev?id=5173536626513659112"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<GooglePlayLogo class="h-3.5 w-3.5 flex-shrink-0 opacity-60" />
+										<span>Google Play Store</span>
+									</a>
+								</li>
+								<li>
+									<a class="footer__link" href="mailto:jeanrey.ese@gmail.com">
+										<svg class="h-3.5 w-3.5 flex-shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+											<rect width="20" height="16" x="2" y="4" rx="2"/>
+											<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+										</svg>
+										<span>jeanrey.ese@gmail.com</span>
+									</a>
+								</li>
+								<li>
+									<a
+										class="footer__link"
+										href="https://github.com/Z3r0J"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<svg class="h-3.5 w-3.5 flex-shrink-0 opacity-60" viewBox="0 0 24 24" fill="currentColor">
+											<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+										</svg>
+										<span>GitHub / Z3r0J</span>
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
 
-					<!-- Column 3: Our Apps -->
-					<div class="footer__section">
-						<h3 class="footer__title mb-4 text-sm font-semibold tracking-wider text-white uppercase">
-							Our Apps
-						</h3>
-						<ul class="footer__links space-y-3">
-							<li>
-								<a
-									class="text-sm text-gray-400 transition-colors hover:text-white"
-									href="/apps/bible-tpt">Bible TPT</a
-								>
-							</li>
-							<li>
-								<a
-									class="text-sm text-gray-400 transition-colors hover:text-white"
-									href="/apps/biblia-tla">Biblia TLA</a
-								>
-							</li>
-							<li>
-								<a
-									class="text-sm text-gray-400 transition-colors hover:text-white"
-									href="/apps/cartwise-grocery-shopping-list">CartWise</a
-								>
-							</li>
-							<li>
-								<a
-									class="inline-flex items-center gap-1 text-sm font-medium text-brand-400 transition-colors hover:text-brand-300"
-									href="/apps"
-								>
-									View All Apps &rarr;
-								</a>
-							</li>
-						</ul>
-					</div>
-
-					<!-- Column 4: Connect -->
-					<div class="footer__section">
-						<h3 class="footer__title mb-4 text-sm font-semibold tracking-wider text-white uppercase">
-							Connect
-						</h3>
-						<ul class="footer__links space-y-3">
-							<li>
-								<a
-									class="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
-									href="https://play.google.com/store/apps/developer?id=FusionCore+Apps"
-									rel="noopener noreferrer"
-									target="_blank"
-								>
-									<GooglePlayLogo class="h-4 w-4" />
-									<span>Google Play Store</span>
-								</a>
-							</li>
-							<li>
-								<a
-									class="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
-									href="mailto:jeanrey.ese@gmail.com"
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-4 w-4"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="2"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-									>
-										<rect width="20" height="16" x="2" y="4" rx="2"></rect>
-										<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-									</svg>
-									<span>jeanrey.ese@gmail.com</span>
-								</a>
-							</li>
-							<li>
-								<a
-									class="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
-									href="https://github.com/Z3r0J"
-									rel="noopener noreferrer"
-									target="_blank"
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-4 w-4"
-										viewBox="0 0 24 24"
-										fill="currentColor"
-									>
-										<path
-											d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
-										></path>
-									</svg>
-									<span>GitHub</span>
-								</a>
-							</li>
-						</ul>
+					<!-- Bottom bar -->
+					<div class="relative z-10 mt-14 flex flex-col items-center justify-between gap-3 border-t border-gray-200 py-6 dark:border-gray-800/60 sm:flex-row">
+						<p class="text-sm text-gray-400 dark:text-gray-600">
+							&copy; {year} FusionCore Apps. All rights reserved.
+						</p>
+						<div class="flex items-center gap-5 text-sm">
+							<a class="text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-600 dark:hover:text-gray-400" href="/privacy">Privacy Policy</a>
+							<span class="text-gray-200 dark:text-gray-800">&middot;</span>
+							<a class="text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-600 dark:hover:text-gray-400" href="/terms">Terms of Service</a>
+						</div>
+						<p class="text-sm text-gray-400 dark:text-gray-600">
+							Built for Android
+						</p>
 					</div>
 				</div>
 
-				<!-- Footer bottom -->
-				<div
-					class="footer__bottom flex flex-col items-center justify-between gap-4 border-t border-gray-800 py-6 sm:flex-row"
-				>
-					<p class="text-sm text-gray-500">
-						&copy; {year} FusionCore Apps. All rights reserved.
-					</p>
-					<div class="flex items-center gap-6 text-sm text-gray-500">
-						<a class="transition-colors hover:text-gray-300" href="/privacy">Privacy Policy</a>
-						<span class="text-gray-700">&middot;</span>
-						<a class="transition-colors hover:text-gray-300" href="/terms">Terms of Service</a>
-					</div>
-					<p class="text-sm text-gray-600">Built with care for Android users</p>
+				<!-- Background watermark -->
+				<div class="footer__watermark" aria-hidden="true">
+					<span>FusionCore Apps</span>
 				</div>
 			</div>
 		</footer>
 
-		<!-- Mobile menu toggle script -->
+		<!-- Navigation scripts -->
 		<script is:inline>
-			function setupMobileMenu() {
-				const mobileMenuButton = document.getElementById("mobile-menu-button");
-				const mobileMenu = document.getElementById("mobile-menu");
+			function setupNav() {
+				const header   = document.getElementById("site-header");
+				const menuBtn  = document.getElementById("menu-btn");
+				const overlay  = document.getElementById("mobile-overlay");
+				const closeBtn = document.getElementById("close-overlay");
 
-				if (mobileMenuButton && mobileMenu) {
-					// Prevent adding multiple listeners if function is called multiple times
-					// (e.g. DOMContentLoaded and astro:page-load on initial load)
-					if (mobileMenuButton.dataset.hasListener) return;
+				if (!header || !menuBtn || !overlay || !closeBtn) return;
+				if (menuBtn.dataset.navReady) return; // prevent double-bind
+				menuBtn.dataset.navReady = "true";
 
-					mobileMenuButton.addEventListener("click", function () {
-						mobileMenu.classList.toggle("hidden");
-						const isExpanded = !mobileMenu.classList.contains("hidden");
-						mobileMenuButton.setAttribute("aria-expanded", isExpanded.toString());
-					});
-
-					mobileMenuButton.dataset.hasListener = "true";
+				// ── Scroll: morph pill ──
+				let ticking = false;
+				function onScroll() {
+					if (!ticking) {
+						requestAnimationFrame(function () {
+							if (window.scrollY > 24) {
+								header.dataset.scrolled = "";
+							} else {
+								delete header.dataset.scrolled;
+							}
+							ticking = false;
+						});
+						ticking = true;
+					}
 				}
+				window.addEventListener("scroll", onScroll, { passive: true });
+				onScroll(); // run immediately on page load
+
+				// ── Mobile overlay ──
+				function openMenu() {
+					overlay.classList.add("is-open");
+					overlay.setAttribute("aria-hidden", "false");
+					menuBtn.setAttribute("aria-expanded", "true");
+					document.body.style.overflow = "hidden";
+				}
+
+				function closeMenu() {
+					overlay.classList.remove("is-open");
+					overlay.setAttribute("aria-hidden", "true");
+					menuBtn.setAttribute("aria-expanded", "false");
+					document.body.style.overflow = "";
+				}
+
+				menuBtn.addEventListener("click", function () {
+					overlay.classList.contains("is-open") ? closeMenu() : openMenu();
+				});
+
+				closeBtn.addEventListener("click", closeMenu);
+
+				// Close on overlay link clicks
+				overlay.querySelectorAll("a").forEach(function (link) {
+					link.addEventListener("click", closeMenu);
+				});
+
+				// Close on Escape
+				document.addEventListener("keydown", function (e) {
+					if (e.key === "Escape" && overlay.classList.contains("is-open")) closeMenu();
+				});
 			}
 
-			// Run on initial load
 			if (document.readyState === "loading") {
-				document.addEventListener("DOMContentLoaded", setupMobileMenu);
+				document.addEventListener("DOMContentLoaded", setupNav);
 			} else {
-				setupMobileMenu();
+				setupNav();
 			}
 
-			// Support Astro View Transitions (if added in the future)
-			document.addEventListener("astro:page-load", setupMobileMenu);
+			document.addEventListener("astro:page-load", setupNav);
 		</script>
 	</body>
 </html>

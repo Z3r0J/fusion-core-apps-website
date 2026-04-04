@@ -23,25 +23,24 @@ export default function FaqAccordion({ faqs }: Props) {
 			{faqs.map((faq, index) => {
 				const isOpen = openIndex === index;
 				return (
-					<div
-						key={index}
-						className="overflow-hidden rounded-2xl border border-gray-200 bg-white transition-shadow duration-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
-					>
+					<div key={index} className={`faq-item${isOpen ? " faq-item--open" : ""}`}>
 						<button
+							aria-expanded={isOpen}
+							className="faq-btn"
 							type="button"
 							onClick={() => toggle(index)}
-							className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/50"
-							aria-expanded={isOpen}
 						>
-							<span className="text-lg font-semibold text-gray-900 dark:text-white">
-								{faq.question}
-							</span>
+							<span className="faq-question">{faq.question}</span>
 							<motion.span
 								animate={{ rotate: isOpen ? 180 : 0 }}
-								transition={{ duration: 0.2, ease: "easeInOut" }}
 								className="flex-shrink-0"
+								transition={{ duration: 0.22, ease: "easeInOut" }}
+								style={{ color: isOpen ? "var(--color-brand-500)" : undefined }}
 							>
-								<ChevronDown className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+								<ChevronDown
+									className="h-5 w-5 text-gray-400 dark:text-[rgba(255,255,255,0.25)]"
+									style={{ color: isOpen ? "var(--color-brand-500)" : undefined }}
+								/>
 							</motion.span>
 						</button>
 
@@ -49,17 +48,14 @@ export default function FaqAccordion({ faqs }: Props) {
 							{isOpen && (
 								<motion.div
 									key="content"
-									initial={{ height: 0, opacity: 0 }}
 									animate={{ height: "auto", opacity: 1 }}
 									exit={{ height: 0, opacity: 0 }}
-									transition={{ duration: 0.25, ease: "easeInOut" }}
+									initial={{ height: 0, opacity: 0 }}
+									transition={{ duration: 0.24, ease: "easeInOut" }}
 									className="overflow-hidden"
 								>
-									<div className="border-t border-gray-200 px-6 py-5 dark:border-gray-700">
-										<p className="leading-relaxed text-gray-600 dark:text-gray-400">
-											{faq.answer}
-										</p>
-									</div>
+									<div className="faq-divider" />
+									<p className="faq-answer">{faq.answer}</p>
 								</motion.div>
 							)}
 						</AnimatePresence>

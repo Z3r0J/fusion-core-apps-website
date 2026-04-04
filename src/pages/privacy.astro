@@ -1,39 +1,32 @@
 ---
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import LegalLayout from "@/components/LegalLayout.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getEntry } from "astro:content";
 
-const policy = await getEntry("legal", "privacy"); // <-- your MD file
+const policy = await getEntry("legal", "privacy");
 if (!policy) throw new Error("Privacy policy not found");
-const { Content } = await policy.render(); // compile MD to a component
+const { Content } = await policy.render();
 
 const title = `${policy.data.title} — FusionCore Apps`;
 const description = "Privacy policy for FusionCore Apps mobile applications and website.";
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const updated = policy.data.updatedAt;
 ---
 
 <BaseLayout {canonical} {description} {title}>
-	<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy Policy", href: "/privacy" }]} />
-	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-		<!-- Header -->
-		<header class="mb-10 text-center">
-			<h1 class="text-4xl font-bold sm:text-5xl">Privacy policy</h1>
-			<p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Last updated: {updated}</p>
-		</header>
+	<Breadcrumbs
+		items={[
+			{ label: "Home", href: "/" },
+			{ label: "Privacy Policy", href: "/privacy" },
+		]}
+	/>
 
-		<!-- Content card with Typography styles -->
-		<div class="card p-8">
-			<article
-				class="prose prose-lg dark:prose-invert prose-a:text-brand-600 hover:prose-a:text-brand-700 prose-strong:text-gray-900 dark:prose-strong:text-gray-100 max-w-none"
-			>
-				<Content />
-			</article>
-		</div>
-
-		<!-- Bottom CTA -->
-		<div class="mt-12 text-center">
-			<a class="button button--primary" href="/contact">Contact us</a>
-		</div>
-	</div>
+	<LegalLayout
+		eyebrow="Legal"
+		icon="shield"
+		title="Privacy Policy"
+		updatedAt={policy.data.updatedAt}
+	>
+		<Content />
+	</LegalLayout>
 </BaseLayout>

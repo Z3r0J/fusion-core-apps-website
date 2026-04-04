@@ -1,0 +1,157 @@
+---
+interface Props {
+	title: string;
+	eyebrow: string;
+	updatedAt?: string;
+	icon: "shield" | "document";
+}
+
+const { title, eyebrow, updatedAt, icon } = Astro.props;
+
+const formattedDate = updatedAt
+	? new Date(updatedAt + "T00:00:00").toLocaleDateString("en-US", {
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+	  })
+	: null;
+---
+
+<div>
+	{/* ── Hero ── */}
+	<header class="legal-hero">
+		<div class="legal-hero__icon-wrap">
+			{
+				icon === "shield" ? (
+					<svg
+						aria-hidden="true"
+						fill="none"
+						height="26"
+						stroke="rgba(46,207,255,0.75)"
+						stroke-width="1.6"
+						viewBox="0 0 24 24"
+						width="26"
+					>
+						<path
+							d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				) : (
+					<svg
+						aria-hidden="true"
+						fill="none"
+						height="26"
+						stroke="rgba(46,207,255,0.75)"
+						stroke-width="1.6"
+						viewBox="0 0 24 24"
+						width="26"
+					>
+						<path
+							d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				)
+			}
+		</div>
+
+		<p class="legal-hero__eyebrow">{eyebrow}</p>
+		<h1 class="legal-hero__title">{title}</h1>
+
+		{
+			formattedDate && (
+				<div class="legal-hero__badge">
+					<svg aria-hidden="true" fill="none" height="12" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="12">
+						<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+					Last updated {formattedDate}
+				</div>
+			)
+		}
+	</header>
+
+	{/* ── Two-column body ── */}
+	<div class="legal-body">
+		{/* Sidebar TOC */}
+		<aside aria-label="Document sections" class="legal-toc">
+			<p class="legal-toc__label">Contents</p>
+			<nav id="legal-toc-nav"></nav>
+		</aside>
+
+		{/* Content */}
+		<div class="legal-content" id="legal-content">
+			<slot />
+		</div>
+	</div>
+
+	{/* ── Bottom CTA ── */}
+	<div class="legal-cta">
+		<p class="legal-cta__text">
+			<strong>Questions about this policy?</strong><br />
+			We're happy to explain anything in plain language.
+		</p>
+		<a
+			class="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
+			href="/contact"
+			style="background: linear-gradient(135deg, #2ECFFF 0%, #0091cc 100%); box-shadow: 0 4px 16px rgba(46,207,255,0.30);"
+		>
+			Contact us
+			<svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="14">
+				<path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+			</svg>
+		</a>
+	</div>
+</div>
+
+<script>
+	// Build TOC from h2 headings and activate on scroll
+	const content = document.getElementById("legal-content");
+	const tocNav = document.getElementById("legal-toc-nav");
+
+	if (content && tocNav) {
+		const headings = Array.from(content.querySelectorAll("h2"));
+		const links: HTMLAnchorElement[] = [];
+
+		headings.forEach((h, i) => {
+			if (!h.id) h.id = `section-${i + 1}`;
+
+			const a = document.createElement("a");
+			a.href = `#${h.id}`;
+			a.className = "legal-toc__link";
+			// Strip leading "1. " numbering for cleaner TOC label
+			a.textContent = h.textContent?.replace(/^\d+\.\s*/, "") ?? "";
+			tocNav.appendChild(a);
+			links.push(a);
+		});
+
+		// Highlight active section via IntersectionObserver
+		let activeIndex = -1;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const idx = headings.indexOf(entry.target as HTMLHeadingElement);
+						if (idx !== -1 && idx !== activeIndex) {
+							links[activeIndex]?.classList.remove("is-active");
+							links[idx]?.classList.add("is-active");
+							activeIndex = idx;
+						}
+					}
+				});
+			},
+			{ rootMargin: "-8% 0% -72% 0%", threshold: 0 },
+		);
+
+		headings.forEach((h) => observer.observe(h));
+
+		// Activate first link on page load
+		if (links.length > 0) {
+			links[0].classList.add("is-active");
+			activeIndex = 0;
+		}
+	}
+</script>

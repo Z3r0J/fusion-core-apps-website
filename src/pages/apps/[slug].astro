@@ -6,6 +6,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+
 export async function getStaticPaths() {
 	const apps = await getCollection("apps");
 	return apps.map((app) => ({
@@ -15,107 +16,370 @@ export async function getStaticPaths() {
 }
 
 const { app } = Astro.props;
-const { Content } = await app.render(); // ✅ compile MD to a component
+const { Content } = await app.render();
 const title = `${app.data.title} — FusionCore Apps`;
 const description = app.data.description;
 const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
 const ogImage = app.data.icon || "/og-default.png";
-const allApps = await getCollection('apps');
-const otherApps = allApps.filter(a => a.slug !== app.slug);
+const allApps = await getCollection("apps");
+const otherApps = allApps.filter((a) => a.slug !== app.slug);
+
+const rating = app.data.rating ?? null;
+const fullStars = rating !== null ? Math.floor(rating) : 0;
+const hasHalfStar = rating !== null && rating - fullStars >= 0.5;
+const price = app.data.price || "Free";
+const isBeta = app.data.beta ?? false;
 ---
 
-<BaseLayout {canonical} {description} {ogImage} {title} locale={app.data.locale || "en"}>
+<BaseLayout {canonical} {description} {ogImage} {title} locale={app.data.locale || "en"} showFooterCta={false}>
 	<AppJsonLd app={app} />
-	<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Apps", href: "/apps" }, { label: app.data.title, href: `/apps/${app.slug}` }]} />
 
-	<article class="grid gap-8 lg:grid-cols-[auto,1fr]">
-		{
-			app.data.icon ? (
-				<Image
-					alt={app.data.title}
-					class="h-24 w-24 rounded-2xl"
-					height={96}
-					loading={"eager"}
-					src={app.data.icon}
-					width={96}
-				/>
-			) : (
-				<PlaceholderApp class="h-16 w-16 rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-900" />
-			)
-		}
-		<div>
-			<h1 class="text-3xl font-bold">{app.data.title}</h1>
-			<p class="mt-2 text-gray-700 dark:text-gray-300">{app.data.tagline}</p>
-			<div class="mt-4 flex items-center gap-3">
-				<a
-					aria-label="Get it on Google Play"
-					class="inline-flex"
-					href={app.data.playUrl}
-					rel="noopener nofollow sponsored"
-					target="_blank"
-				>
-					<GetInGooglePlayBadge class="w-42 select-none" />
-				</a>
-
-				<a class="rounded-xl border px-5 py-3 font-medium hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800 dark:text-gray-200" href="/apps">
-					Back to apps
-				</a>
-			</div>
-		</div>
-	</article>
-
-	<section class="mt-10">
-		<div class="card p-8">
-			<h2 class="mb-4 text-2xl font-semibold">About this app</h2>
+	<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
+	<div class="-mx-4 sm:-mx-6 lg:-mx-8 mb-12">
+		<div class="app-detail-hero relative overflow-hidden">
+			<!-- Dot grid: subtle in light, visible in dark -->
 			<div
-				class="prose prose-lg dark:prose-invert prose-a:text-brand-600 hover:prose-a:text-brand-700 max-w-none"
-			>
-				<Content />
-				<!-- ✅ styled Markdown -->
+				class="absolute inset-0 opacity-40 dark:opacity-25"
+				style="background-image: radial-gradient(circle, rgba(46,207,255,0.2) 1.5px, transparent 1.5px); background-size: 28px 28px;"
+				aria-hidden="true"
+			></div>
+			<!-- Cyan glow — subtle in light, stronger in dark -->
+			<div
+				class="absolute -top-32 -right-32 h-96 w-96 rounded-full blur-[100px] opacity-20 dark:opacity-30"
+				style="background: radial-gradient(circle, rgba(46,207,255,0.6), transparent 70%);"
+				aria-hidden="true"
+			></div>
+			<!-- Orange glow -->
+			<div
+				class="absolute -bottom-16 -left-16 h-64 w-64 rounded-full blur-[80px] opacity-10 dark:opacity-20"
+				style="background: radial-gradient(circle, rgba(255,138,42,0.8), transparent 70%);"
+				aria-hidden="true"
+			></div>
+
+			<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-14 pt-8">
+				<!-- Breadcrumb -->
+				<nav aria-label="Breadcrumb">
+					<ol class="flex items-center gap-2 text-sm">
+						<li><a href="/" class="text-gray-400 hover:text-gray-700 dark:text-white/50 dark:hover:text-white transition-colors">Home</a></li>
+						<li class="text-gray-300 dark:text-white/25">›</li>
+						<li><a href="/apps" class="text-gray-400 hover:text-gray-700 dark:text-white/50 dark:hover:text-white transition-colors">Apps</a></li>
+						<li class="text-gray-300 dark:text-white/25">›</li>
+						<li class="text-gray-600 dark:text-white/80 font-medium truncate max-w-[200px]">{app.data.title}</li>
+					</ol>
+				</nav>
+
+				<!-- App identity row -->
+				<div class="mt-8 flex flex-col gap-8 sm:flex-row sm:items-start">
+					<!-- App Icon -->
+					<div class="shrink-0">
+						{app.data.icon ? (
+							<Image
+								alt={app.data.title}
+								class="h-28 w-28 rounded-[1.75rem] shadow-2xl ring-1 ring-black/8 dark:ring-white/10"
+								height={112}
+								loading="eager"
+								src={app.data.icon}
+								width={112}
+							/>
+						) : (
+							<PlaceholderApp class="h-28 w-28 rounded-[1.75rem] shadow-2xl ring-1 ring-black/8 dark:ring-white/10" />
+						)}
+					</div>
+
+					<!-- App info -->
+					<div class="flex-1 min-w-0">
+						<!-- Category + Beta badges -->
+						<div class="flex items-center gap-2 mb-3">
+							<span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-brand-100 text-brand-700 border border-brand-200 dark:bg-brand-400/15 dark:text-brand-300 dark:border-brand-400/20">
+								{app.data.category}
+							</span>
+							{isBeta && (
+								<span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider bg-accent-100 text-accent-700 border border-accent-200 dark:bg-accent-500/20 dark:text-accent-300 dark:border-accent-500/30">
+									Beta
+								</span>
+							)}
+						</div>
+
+						<h1
+							class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900 dark:text-white"
+							style="letter-spacing: -0.03em;"
+						>
+							{app.data.title}
+						</h1>
+						<p class="mt-2 text-lg text-gray-500 dark:text-white/65 max-w-xl leading-relaxed">
+							{app.data.tagline}
+						</p>
+
+						<!-- Stats row -->
+						<div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+							{rating !== null && (
+								<div class="flex items-center gap-1.5">
+									<div class="flex items-center gap-0.5">
+										{Array.from({ length: 5 }).map((_, i) => (
+											<svg
+												class={`h-4 w-4 ${i < fullStars ? "text-yellow-400" : i === fullStars && hasHalfStar ? "text-yellow-300" : "text-gray-300 dark:text-white/20"}`}
+												fill="currentColor"
+												viewBox="0 0 20 20"
+												aria-hidden="true"
+											>
+												<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+											</svg>
+										))}
+									</div>
+									<span class="text-sm font-semibold text-gray-800 dark:text-white">{rating.toFixed(1)}</span>
+									{app.data.ratingCount && (
+										<span class="text-sm text-gray-400 dark:text-white/40">({app.data.ratingCount.toLocaleString()})</span>
+									)}
+								</div>
+							)}
+
+							{app.data.downloads && (
+								<>
+									<span class="text-gray-300 dark:text-white/20">·</span>
+									<span class="text-sm text-gray-500 dark:text-white/65 font-medium">{app.data.downloads} downloads</span>
+								</>
+							)}
+
+							<span class="text-gray-300 dark:text-white/20">·</span>
+							<span class={`text-sm font-semibold ${price === "Free" ? "text-green-600 dark:text-green-400" : "text-gray-800 dark:text-white"}`}>
+								{price}
+							</span>
+
+							{app.data.version && (
+								<>
+									<span class="text-gray-300 dark:text-white/20">·</span>
+									<span class="text-sm text-gray-400 dark:text-white/40">v{app.data.version}</span>
+								</>
+							)}
+						</div>
+
+						<!-- CTAs -->
+						<div class="mt-7 flex flex-wrap items-center gap-4">
+							{isBeta ? (
+								<a
+									href={app.data.betaGroupUrl ?? app.data.playUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.03]"
+									style="background: linear-gradient(135deg, #ff8a2a, #db681a);"
+								>
+									<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+									</svg>
+									Join Beta — Free
+								</a>
+							) : (
+								<a
+									href={app.data.playUrl}
+									target="_blank"
+									rel="noopener nofollow sponsored"
+									aria-label="Get it on Google Play"
+								>
+									<GetInGooglePlayBadge class="h-14 w-auto select-none" />
+								</a>
+							)}
+							<a
+								class="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 shadow-sm transition-all hover:bg-gray-50 dark:border-white/20 dark:bg-white/10 dark:text-white/80 dark:hover:bg-white/15 dark:hover:text-white"
+								href="/apps"
+							>
+								← All Apps
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 
-	{
-		app.data.screenshots?.length > 0 && (
-			<section class="mt-12">
-				<h2 class="mb-6 text-2xl font-bold">Screenshots</h2>
-				<div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-700">
-					{app.data.screenshots.map((shot, i) => (
-						<div class="snap-center shrink-0 relative group cursor-zoom-in">
-							{/* Phone frame wrapper */}
-							<div class="w-[200px] h-[400px] rounded-[2rem] border-2 border-gray-700 dark:border-gray-600 overflow-hidden bg-gray-950 shadow-xl relative">
-								{/* Notch */}
-								<div class="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-4 bg-gray-950 rounded-full z-10"></div>
-								<img
-									src={shot}
-									alt={`${app.data.title} screenshot ${i + 1}`}
-									class="w-full h-full object-cover"
-									loading={i === 0 ? "eager" : "lazy"}
-								/>
-							</div>
-						</div>
-					))}
+	<!-- ─── SCREENSHOTS ───────────────────────────────────────────────────────── -->
+	{app.data.screenshots && app.data.screenshots.length > 0 && (
+		<section class="mb-14">
+			<div class="flex items-center justify-between mb-6">
+				<div class="section-label">
+					<span class="section-label__dot"></span>
+					<span>Screenshots</span>
 				</div>
-			</section>
-		)
-	}
+				<span class="text-xs text-gray-400 dark:text-gray-500">{app.data.screenshots.length} screens</span>
+			</div>
 
+			<div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory" style="scrollbar-width: thin; scrollbar-color: rgba(46,207,255,0.3) transparent;">
+				{app.data.screenshots.map((shot, i) => (
+					<div class="snap-center shrink-0 group">
+						<!-- Phone frame -->
+						<div
+							class="relative overflow-hidden shadow-2xl transition-transform duration-300 group-hover:-translate-y-2"
+							style="width: 180px; height: 360px; border-radius: 1.75rem; border: 2px solid rgba(255,255,255,0.08); background: #0b1c2d;"
+						>
+							<!-- Notch -->
+							<div class="absolute top-2.5 left-1/2 -translate-x-1/2 h-4 w-14 rounded-full z-10" style="background: #0b1c2d;"></div>
+							<img
+								src={shot}
+								alt={`${app.data.title} screenshot ${i + 1}`}
+								class="w-full h-full object-cover"
+								loading={i === 0 ? "eager" : "lazy"}
+							/>
+							<!-- Shine overlay -->
+							<div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);"></div>
+						</div>
+						<p class="mt-2 text-center text-xs text-gray-400 dark:text-gray-600 tabular-nums">{i + 1}/{app.data.screenshots.length}</p>
+					</div>
+				))}
+			</div>
+		</section>
+	)}
+
+	<!-- ─── CONTENT + SIDEBAR ────────────────────────────────────────────────── -->
+	<div class="grid gap-8 lg:grid-cols-[1fr_300px]">
+
+		<!-- Main content -->
+		<div>
+			<div class="section-label mb-5">
+				<span class="section-label__dot"></span>
+				<span>About this app</span>
+			</div>
+			<div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/60 p-8">
+				<div class="prose prose-gray dark:prose-invert max-w-none prose-headings:font-extrabold prose-headings:tracking-tight prose-a:text-brand-600 hover:prose-a:text-brand-700 dark:prose-a:text-brand-400">
+					<Content />
+				</div>
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div class="space-y-5">
+
+			<!-- App Details card -->
+			<div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/60 p-6">
+				<h3 class="mb-5 text-sm font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">App Details</h3>
+				<dl class="space-y-4">
+					{app.data.category && (
+						<div class="flex items-center justify-between">
+							<dt class="text-sm text-gray-500 dark:text-gray-400">Category</dt>
+							<dd class="text-sm font-semibold text-gray-900 dark:text-white">{app.data.category}</dd>
+						</div>
+					)}
+					<div class="flex items-center justify-between">
+						<dt class="text-sm text-gray-500 dark:text-gray-400">Price</dt>
+						<dd class={`text-sm font-bold ${price === "Free" ? "text-green-600 dark:text-green-400" : "text-gray-900 dark:text-white"}`}>{price}</dd>
+					</div>
+					{app.data.version && (
+						<div class="flex items-center justify-between">
+							<dt class="text-sm text-gray-500 dark:text-gray-400">Version</dt>
+							<dd class="text-sm font-semibold text-gray-900 dark:text-white">v{app.data.version}</dd>
+						</div>
+					)}
+					{app.data.lastUpdated && (
+						<div class="flex items-center justify-between">
+							<dt class="text-sm text-gray-500 dark:text-gray-400">Last updated</dt>
+							<dd class="text-sm font-semibold text-gray-900 dark:text-white">{app.data.lastUpdated}</dd>
+						</div>
+					)}
+					{app.data.downloads && (
+						<div class="flex items-center justify-between">
+							<dt class="text-sm text-gray-500 dark:text-gray-400">Downloads</dt>
+							<dd class="text-sm font-bold text-brand-600 dark:text-brand-400">{app.data.downloads}</dd>
+						</div>
+					)}
+					{rating !== null && (
+						<div class="flex items-center justify-between">
+							<dt class="text-sm text-gray-500 dark:text-gray-400">Rating</dt>
+							<dd class="flex items-center gap-1.5">
+								<svg class="h-4 w-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+								</svg>
+								<span class="text-sm font-bold text-gray-900 dark:text-white">{rating.toFixed(1)}</span>
+								{app.data.ratingCount && <span class="text-xs text-gray-400">/ {app.data.ratingCount}</span>}
+							</dd>
+						</div>
+					)}
+					{app.data.tags && app.data.tags.length > 0 && (
+						<div>
+							<dt class="text-sm text-gray-500 dark:text-gray-400 mb-2">Tags</dt>
+							<dd class="flex flex-wrap gap-1.5">
+								{app.data.tags.slice(0, 5).map((tag) => (
+									<span class="inline-block rounded-full bg-gray-100 dark:bg-gray-800 px-2.5 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-400">
+										{tag}
+									</span>
+								))}
+							</dd>
+						</div>
+					)}
+				</dl>
+			</div>
+
+			<!-- Download CTA card -->
+			<div class="app-cta-card relative overflow-hidden rounded-2xl p-6">
+				<!-- Glow — only meaningful in dark -->
+				<div class="absolute -top-8 -right-8 h-24 w-24 rounded-full blur-2xl opacity-0 dark:opacity-40" style="background: rgba(46,207,255,0.5);" aria-hidden="true"></div>
+				<div class="relative">
+					<p class="text-xs font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-2">Free Download</p>
+					<p class="text-base font-bold text-gray-900 dark:text-white mb-4">Get {app.data.title} on your Android device.</p>
+					{isBeta ? (
+						<a
+							href={app.data.betaGroupUrl ?? app.data.playUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all hover:scale-[1.02]"
+							style="background: linear-gradient(135deg, #ff8a2a, #db681a);"
+						>
+							Join Beta — Free
+						</a>
+					) : (
+						<a
+							href={app.data.playUrl}
+							target="_blank"
+							rel="noopener nofollow sponsored"
+							class="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all hover:scale-[1.02]"
+							style="background: linear-gradient(135deg, #2ecfff, #0091cc);"
+						>
+							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
+								<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.9"></path>
+								<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"></path>
+								<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"></path>
+								<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"></path>
+							</svg>
+							Get on Google Play
+						</a>
+					)}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ─── MORE APPS ─────────────────────────────────────────────────────────── -->
 	{otherApps.length > 0 && (
 		<section class="mt-16 pt-12 border-t border-gray-200 dark:border-gray-800">
-			<h2 class="mb-6 text-xl font-bold text-gray-900 dark:text-white">More from FusionCore</h2>
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-				{otherApps.map(other => (
-					<a href={`/apps/${other.slug}`} class="flex items-center gap-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-4 hover:border-brand-500/50 transition-colors group">
-						{other.data.icon
-							? <img src={other.data.icon} alt={other.data.title} class="h-14 w-14 rounded-2xl object-cover" />
-							: <div class="h-14 w-14 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-500 text-xl font-bold">{other.data.title[0]}</div>
-						}
+			<div class="section-label mb-5">
+				<span class="section-label__dot"></span>
+				<span>More from FusionCore</span>
+			</div>
+			<div class="grid gap-4 sm:grid-cols-2">
+				{otherApps.map((other) => (
+					<a
+						href={`/apps/${other.slug}`}
+						class="group flex items-center gap-4 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-300 dark:hover:border-brand-700 bg-white dark:bg-gray-900/50 p-4 transition-all duration-200 hover:-translate-y-0.5"
+					>
+						{other.data.icon ? (
+							<img
+								src={other.data.icon}
+								alt={other.data.title}
+								class="h-14 w-14 rounded-2xl object-cover shadow-md flex-shrink-0"
+								loading="lazy"
+							/>
+						) : (
+							<div class="h-14 w-14 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-500 text-xl font-bold flex-shrink-0">
+								{other.data.title[0]}
+							</div>
+						)}
 						<div class="flex-1 min-w-0">
-							<p class="font-semibold text-gray-900 dark:text-white group-hover:text-brand-500 transition-colors">{other.data.title}</p>
-							<p class="text-sm text-gray-500 dark:text-gray-400 truncate">{other.data.tagline}</p>
+							<p class="font-bold text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+								{other.data.title}
+							</p>
+							<p class="text-sm text-gray-500 dark:text-gray-400 truncate mt-0.5">{other.data.tagline}</p>
+							<span class="mt-1.5 inline-block text-xs font-semibold text-green-600 dark:text-green-400">Free</span>
 						</div>
-						<svg class="w-5 h-5 text-gray-400 group-hover:text-brand-500 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+						<svg class="w-5 h-5 text-gray-300 dark:text-gray-600 group-hover:text-brand-500 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+						</svg>
 					</a>
 				))}
 			</div>

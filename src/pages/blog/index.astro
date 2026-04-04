@@ -3,9 +3,14 @@ import BlogPostCard from "@/components/BlogPostCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
+const allPosts = (await getCollection("blog")).sort(
 	(a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
 );
+
+// Most recent featured post becomes the hero; rest go in the grid
+const heroPost = allPosts.find((p) => p.data.featured) ?? allPosts[0];
+const gridPosts = heroPost ? allPosts.filter((p) => p.slug !== heroPost.slug) : allPosts;
+
 const canonical = new URL("/blog", Astro.site).href;
 ---
 
@@ -14,41 +19,59 @@ const canonical = new URL("/blog", Astro.site).href;
 	description="Insights, guides, and tips from the FusionCore Apps team. Explore app reviews, productivity tips, and mobile development stories."
 	title="App Tips, Bible Guides & Productivity Blog — FusionCore"
 >
-	<!-- Breadcrumb -->
-	<nav aria-label="Breadcrumb" class="mb-8">
-		<ol class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-			<li>
-				<a
-					class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-					href="/"
-				>
-					Home
-				</a>
-			</li>
-			<li aria-hidden="true">/</li>
-			<li>
-				<span class="font-medium text-gray-900 dark:text-white">Blog</span>
-			</li>
-		</ol>
-	</nav>
-
-	<h1 class="mb-6 text-3xl font-bold">FusionCore Blog</h1>
+	{/* ── Editorial header ── */}
+	<header class="blog-index-header">
+		<p class="blog-index-header__eyebrow">The FusionCore Journal</p>
+		<div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+			<h1
+				style="font-family:var(--font-display);font-size:clamp(2.4rem,6vw,3.75rem);font-weight:900;letter-spacing:-0.045em;line-height:1;color:var(--color-gray-900);"
+				class="dark:!text-white"
+			>
+				Blog
+			</h1>
+			<p style="font-size:15px;color:var(--color-gray-500);max-width:380px;" class="dark:!text-[rgba(255,255,255,0.38)] sm:text-right">
+				Insights, guides &amp; stories from the FusionCore team.
+			</p>
+		</div>
+	</header>
 
 	{
-		posts.length > 0 ? (
-			<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-				{posts.map((post) => (
-					<BlogPostCard post={post} />
-				))}
+		allPosts.length > 0 ? (
+			<div class="space-y-10">
+				{/* ── Hero featured card ── */}
+				{heroPost && (
+					<BlogPostCard post={heroPost} featured={true} index={0} />
+				)}
+
+				{/* ── Grid ── */}
+				{gridPosts.length > 0 && (
+					<div>
+						<p
+							class="mb-6"
+							style="font-size:11px;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;color:var(--color-gray-400);"
+						>
+							Latest Posts
+						</p>
+						<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+							{gridPosts.map((post, i) => (
+								<BlogPostCard post={post} index={i + 1} />
+							))}
+						</div>
+					</div>
+				)}
 			</div>
 		) : (
-			<div class="py-16 text-center">
-				<div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
+			<div class="py-24 text-center">
+				<div
+					class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl border"
+					style="background:rgba(46,207,255,0.05);border-color:rgba(46,207,255,0.12);"
+				>
 					<svg
-						class="h-8 w-8 text-gray-400"
+						aria-hidden="true"
+						class="h-10 w-10"
 						fill="none"
-						stroke="currentColor"
-						stroke-width="1.5"
+						stroke="rgba(46,207,255,0.5)"
+						stroke-width="1.2"
 						viewBox="0 0 24 24"
 					>
 						<path
@@ -58,9 +81,14 @@ const canonical = new URL("/blog", Astro.site).href;
 						/>
 					</svg>
 				</div>
-				<h2 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">No posts yet</h2>
-				<p class="text-gray-600 dark:text-gray-400">
-					We are working on new content. Check back soon for insights, guides, and tips.
+				<h2
+					style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:-0.03em;"
+					class="mb-2 text-gray-900 dark:text-white"
+				>
+					No posts yet
+				</h2>
+				<p style="font-size:15px;" class="text-gray-500 dark:text-[rgba(255,255,255,0.38)]">
+					Working on new content. Check back soon.
 				</p>
 			</div>
 		)
