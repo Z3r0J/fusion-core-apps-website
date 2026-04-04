@@ -11,7 +11,8 @@ price: "Free"
 version: "1.1.4"
 lastUpdated: "2026-03-09"
 screenshots: ["/images/screenshots/biblia-tla-reading.jpg", "/images/screenshots/biblia-tla-audio.jpg", "/images/screenshots/biblia-tla-books.jpg", "/images/screenshots/biblia-tla-plans.jpg", "/images/screenshots/biblia-tla-plan-detail.jpg", "/images/screenshots/biblia-tla-splash.jpg"]
-rating: 4.6
+rating: 4.584
+ratingCount: 77
 downloads: "1K+"
 ---
 ## Descripción

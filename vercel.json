@@ -1,4 +1,72 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "from"
+        }
+      ],
+      "destination": "/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_source"
+        }
+      ],
+      "destination": "/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_medium"
+        }
+      ],
+      "destination": "/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_campaign"
+        }
+      ],
+      "destination": "/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_term"
+        }
+      ],
+      "destination": "/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_content"
+        }
+      ],
+      "destination": "/:path*",
+      "permanent": false
+    }
+  ]
 }

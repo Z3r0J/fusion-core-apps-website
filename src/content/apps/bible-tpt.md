@@ -11,7 +11,8 @@ price: "Free"
 version: "1.3.1"
 lastUpdated: "2026-03-29"
 screenshots: ["/images/screenshots/bible-tpt-reading.jpg", "/images/screenshots/bible-tpt-audio.jpg", "/images/screenshots/bible-tpt-verse.jpg"]
-rating: 4.5
+rating: 4.474
+ratingCount: 76
 downloads: "2K+"
 ---
 ## Overview

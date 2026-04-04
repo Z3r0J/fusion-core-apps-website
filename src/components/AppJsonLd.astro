@@ -34,7 +34,15 @@ const structuredData = {
 		"priceCurrency": "USD",
 	},
 	"publisher": { "@type": "Organization", "name": "FusionCore Apps" },
-	...(app.data.rating ? { "aggregateRating": { "@type": "AggregateRating", "ratingValue": app.data.rating, "bestRating": 5, "worstRating": 0 } } : {}),
+	...(app.data.rating && app.data.ratingCount ? {
+		"aggregateRating": {
+			"@type": "AggregateRating",
+			"ratingValue": app.data.rating,
+			"ratingCount": app.data.ratingCount,
+			"bestRating": 5,
+			"worstRating": 1,
+		}
+	} : {}),
 };
 ---
 

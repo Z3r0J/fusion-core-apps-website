@@ -19,6 +19,9 @@ const {
 
 const year = new Date().getFullYear();
 const currentPath = Astro.url.pathname;
+// IMPORTANT: Use Astro.url.pathname (not Astro.url) — pathname strips query params.
+// Using Astro.url.href would bake ?utm_source=... or ?from=AppAgg.com into the canonical,
+// creating duplicate-content variants that confuse Googlebot. Never change this to Astro.url.
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 
 // Handle ogImage: if it's already a full URL or data URI, use as-is; otherwise make it absolute

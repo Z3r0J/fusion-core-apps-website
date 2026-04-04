@@ -41,6 +41,7 @@ export const apps = defineCollection({
 
 		// 0-5 optional (the form already has it)
 		rating: z.number().min(0).max(5).optional(),
+		ratingCount: z.number().int().optional(),
 
 		// Beta / early access apps
 		beta: z.boolean().default(false),

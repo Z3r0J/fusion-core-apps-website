@@ -3,6 +3,9 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
+# Disallow all URLs with query parameters (UTM, referral trackers, etc.)
+# Prevents crawl budget waste on parameterized variants like ?from=AppAgg.com or ?utm_source=...
+Disallow: /*?*
 
 # Block specific bots known for scraping without indexing value
 User-agent: GPTBot
