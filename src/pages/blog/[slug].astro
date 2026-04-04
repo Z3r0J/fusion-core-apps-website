@@ -4,19 +4,20 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-	const posts = await getCollection("blog");
+	const posts = await getCollection("blog", ({ slug }) => slug.startsWith("en/"));
 	return posts.map((post) => ({
-		params: { slug: post.slug },
+		params: { slug: post.slug.replace("en/", "") },
 		props: { post },
 	}));
 }
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const postSlug = post.slug.replace("en/", "");
 
 const title = `${post.data.title} | FusionCore`;
 const description = post.data.description;
-const canonical = new URL(`/blog/${post.slug}`, Astro.site).href;
+const canonical = new URL(`/blog/${postSlug}`, Astro.site).href;
 const ogImage = post.data.image || "/og-default.png";
 
 const formattedDate = post.data.publishedAt.toLocaleDateString("en-US", {
@@ -26,7 +27,7 @@ const formattedDate = post.data.publishedAt.toLocaleDateString("en-US", {
 });
 ---
 
-<BaseLayout {canonical} {description} {ogImage} {title} ogType="article" locale={post.data.tags?.includes("español") || post.data.tags?.includes("biblia") ? "es" : "en"}>
+<BaseLayout {canonical} {description} {ogImage} {title} ogType="article" locale="en">
 	<BlogJsonLd post={post} url={canonical} />
 
 	<article class="mx-auto max-w-3xl">

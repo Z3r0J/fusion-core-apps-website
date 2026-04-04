@@ -1,0 +1,272 @@
+---
+import GetInGooglePlayBadge from "@/assets/google-play-badge.svg";
+import PlaceholderApp from "@/assets/placeholder-app.svg";
+import AppJsonLd from "@/components/AppJsonLd.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations, type Locale } from "@/i18n/utils";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const allApps = await getCollection("apps");
+	const locales: Locale[] = ["es", "pt"];
+	return locales.flatMap((locale) => {
+		const localeApps = allApps.filter(({ slug }) => slug.startsWith(`${locale}/`));
+		return localeApps.map((app) => ({
+			params: { locale, slug: app.slug.replace(`${locale}/`, "") },
+			props: { app, locale },
+		}));
+	});
+}
+
+const { app, locale } = Astro.props as { app: Awaited<ReturnType<typeof getCollection<"apps">>>[number]; locale: Locale };
+const t = useTranslations(locale);
+const { Content } = await app.render();
+const appSlug = app.slug.replace(`${locale}/`, "");
+
+const title = `${app.data.title} — FusionCore Apps`;
+const description = app.data.description;
+const canonical = new URL(`/${locale}/apps/${appSlug}`, Astro.site).href;
+const ogImage = app.data.icon || "/og-default.png";
+const allApps = await getCollection("apps", ({ slug }) => slug.startsWith(`${locale}/`));
+const otherApps = allApps.filter((a) => a.slug !== app.slug);
+
+const rating = app.data.rating ?? null;
+const fullStars = rating !== null ? Math.floor(rating) : 0;
+const hasHalfStar = rating !== null && rating - fullStars >= 0.5;
+const price = app.data.price || t("app.free") || "Free";
+const isBeta = app.data.beta ?? false;
+---
+
+<BaseLayout {canonical} {description} {ogImage} {title} locale={locale} showFooterCta={false}>
+	<AppJsonLd app={app} />
+
+	<div class="-mx-4 sm:-mx-6 lg:-mx-8 mb-12">
+		<div class="app-detail-hero relative overflow-hidden">
+			<div class="absolute inset-0 opacity-40 dark:opacity-25" style="background-image: radial-gradient(circle, rgba(46,207,255,0.2) 1.5px, transparent 1.5px); background-size: 28px 28px;" aria-hidden="true"></div>
+			<div class="absolute -top-32 -right-32 h-96 w-96 rounded-full blur-[100px] opacity-20 dark:opacity-30" style="background: radial-gradient(circle, rgba(46,207,255,0.6), transparent 70%);" aria-hidden="true"></div>
+			<div class="absolute -bottom-16 -left-16 h-64 w-64 rounded-full blur-[80px] opacity-10 dark:opacity-20" style="background: radial-gradient(circle, rgba(255,138,42,0.8), transparent 70%);" aria-hidden="true"></div>
+
+			<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-14 pt-8">
+				<Breadcrumbs items={[
+					{ label: t("breadcrumbs.home"), href: `/${locale}` },
+					{ label: t("breadcrumbs.apps"), href: `/${locale}/apps` },
+					{ label: app.data.title, href: `/${locale}/apps/${appSlug}` },
+				]} />
+
+				<div class="mt-8 flex flex-col gap-8 sm:flex-row sm:items-start">
+					<div class="shrink-0">
+						{app.data.icon ? (
+							<Image alt={app.data.title} class="h-28 w-28 rounded-[1.75rem] shadow-2xl ring-1 ring-black/8 dark:ring-white/10" height={112} loading="eager" src={app.data.icon} width={112} />
+						) : (
+							<PlaceholderApp class="h-28 w-28 rounded-[1.75rem] shadow-2xl ring-1 ring-black/8 dark:ring-white/10" />
+						)}
+					</div>
+
+					<div class="flex-1 min-w-0">
+						<div class="flex items-center gap-2 mb-3">
+							<span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-brand-100 text-brand-700 border border-brand-200 dark:bg-brand-400/15 dark:text-brand-300 dark:border-brand-400/20">
+								{app.data.category}
+							</span>
+							{isBeta && (
+								<span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider bg-accent-100 text-accent-700 border border-accent-200 dark:bg-accent-500/20 dark:text-accent-300 dark:border-accent-500/30">
+									Beta
+								</span>
+							)}
+						</div>
+
+						<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900 dark:text-white" style="letter-spacing: -0.03em;">
+							{app.data.title}
+						</h1>
+						<p class="mt-2 text-lg text-gray-500 dark:text-white/65 max-w-xl leading-relaxed">{app.data.tagline}</p>
+
+						<div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+							{rating !== null && (
+								<div class="flex items-center gap-1.5">
+									<div class="flex items-center gap-0.5">
+										{Array.from({ length: 5 }).map((_, i) => (
+											<svg class={`h-4 w-4 ${i < fullStars ? "text-yellow-400" : i === fullStars && hasHalfStar ? "text-yellow-300" : "text-gray-300 dark:text-white/20"}`} fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+												<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+											</svg>
+										))}
+									</div>
+									<span class="text-sm font-semibold text-gray-800 dark:text-white">{rating.toFixed(1)}</span>
+									{app.data.ratingCount && <span class="text-sm text-gray-400 dark:text-white/40">({app.data.ratingCount.toLocaleString()})</span>}
+								</div>
+							)}
+							{app.data.downloads && (
+								<>
+									<span class="text-gray-300 dark:text-white/20">·</span>
+									<span class="text-sm text-gray-500 dark:text-white/65 font-medium">{app.data.downloads} {t("app.downloadsLabel")}</span>
+								</>
+							)}
+							<span class="text-gray-300 dark:text-white/20">·</span>
+							<span class={`text-sm font-semibold ${price === "Free" || price === "Gratis" || price === "Grátis" ? "text-green-600 dark:text-green-400" : "text-gray-800 dark:text-white"}`}>
+								{price}
+							</span>
+							{app.data.version && (
+								<>
+									<span class="text-gray-300 dark:text-white/20">·</span>
+									<span class="text-sm text-gray-400 dark:text-white/40">v{app.data.version}</span>
+								</>
+							)}
+						</div>
+
+						<div class="mt-7 flex flex-wrap items-center gap-4">
+							{isBeta ? (
+								<a href={app.data.betaGroupUrl ?? app.data.playUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.03]" style="background: linear-gradient(135deg, #ff8a2a, #db681a);">
+									{t("app.joinBeta")}
+								</a>
+							) : (
+								<a href={app.data.playUrl} target="_blank" rel="noopener nofollow sponsored" aria-label="Get it on Google Play">
+									<GetInGooglePlayBadge class="h-14 w-auto select-none" />
+								</a>
+							)}
+							<a class="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 shadow-sm transition-all hover:bg-gray-50 dark:border-white/20 dark:bg-white/10 dark:text-white/80 dark:hover:bg-white/15 dark:hover:text-white" href={`/${locale}/apps`}>
+								{t("app.allApps")}
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{app.data.screenshots && app.data.screenshots.length > 0 && (
+		<section class="mb-14">
+			<div class="flex items-center justify-between mb-6">
+				<div class="section-label">
+					<span class="section-label__dot"></span>
+					<span>{t("app.screenshots")}</span>
+				</div>
+				<span class="text-xs text-gray-400 dark:text-gray-500">{app.data.screenshots.length} {t("app.screens")}</span>
+			</div>
+			<div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory" style="scrollbar-width: thin; scrollbar-color: rgba(46,207,255,0.3) transparent;">
+				{app.data.screenshots.map((shot, i) => (
+					<div class="snap-center shrink-0 group">
+						<div class="relative overflow-hidden shadow-2xl transition-transform duration-300 group-hover:-translate-y-2" style="width: 180px; height: 360px; border-radius: 1.75rem; border: 2px solid rgba(255,255,255,0.08); background: #0b1c2d;">
+							<div class="absolute top-2.5 left-1/2 -translate-x-1/2 h-4 w-14 rounded-full z-10" style="background: #0b1c2d;"></div>
+							<img src={shot} alt={`${app.data.title} screenshot ${i + 1}`} class="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
+						</div>
+						<p class="mt-2 text-center text-xs text-gray-400 dark:text-gray-600 tabular-nums">{i + 1}/{app.data.screenshots.length}</p>
+					</div>
+				))}
+			</div>
+		</section>
+	)}
+
+	<div class="grid gap-8 lg:grid-cols-[1fr_300px]">
+		<div>
+			<div class="section-label mb-5">
+				<span class="section-label__dot"></span>
+				<span>{t("app.about")}</span>
+			</div>
+			<div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/60 p-8">
+				<div class="prose prose-gray dark:prose-invert max-w-none prose-headings:font-extrabold prose-headings:tracking-tight prose-a:text-brand-600 hover:prose-a:text-brand-700 dark:prose-a:text-brand-400">
+					<Content />
+				</div>
+			</div>
+		</div>
+
+		<div class="space-y-5">
+			<div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/60 p-6">
+				<h3 class="mb-5 text-sm font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">{t("app.details")}</h3>
+				<dl class="space-y-4">
+					{app.data.category && (
+						<div class="flex items-center justify-between">
+							<dt class="text-sm text-gray-500 dark:text-gray-400">{t("app.category")}</dt>
+							<dd class="text-sm font-semibold text-gray-900 dark:text-white">{app.data.category}</dd>
+						</div>
+					)}
+					<div class="flex items-center justify-between">
+						<dt class="text-sm text-gray-500 dark:text-gray-400">{t("app.price")}</dt>
+						<dd class={`text-sm font-bold ${price === "Free" || price === "Gratis" || price === "Grátis" ? "text-green-600 dark:text-green-400" : "text-gray-900 dark:text-white"}`}>{price}</dd>
+					</div>
+					{app.data.version && (
+						<div class="flex items-center justify-between">
+							<dt class="text-sm text-gray-500 dark:text-gray-400">{t("app.version")}</dt>
+							<dd class="text-sm font-semibold text-gray-900 dark:text-white">v{app.data.version}</dd>
+						</div>
+					)}
+					{app.data.lastUpdated && (
+						<div class="flex items-center justify-between">
+							<dt class="text-sm text-gray-500 dark:text-gray-400">{t("app.lastUpdated")}</dt>
+							<dd class="text-sm font-semibold text-gray-900 dark:text-white">{app.data.lastUpdated}</dd>
+						</div>
+					)}
+					{app.data.downloads && (
+						<div class="flex items-center justify-between">
+							<dt class="text-sm text-gray-500 dark:text-gray-400">{t("app.downloads")}</dt>
+							<dd class="text-sm font-bold text-brand-600 dark:text-brand-400">{app.data.downloads}</dd>
+						</div>
+					)}
+					{rating !== null && (
+						<div class="flex items-center justify-between">
+							<dt class="text-sm text-gray-500 dark:text-gray-400">{t("app.rating")}</dt>
+							<dd class="flex items-center gap-1.5">
+								<svg class="h-4 w-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+								<span class="text-sm font-bold text-gray-900 dark:text-white">{rating.toFixed(1)}</span>
+								{app.data.ratingCount && <span class="text-xs text-gray-400">/ {app.data.ratingCount}</span>}
+							</dd>
+						</div>
+					)}
+					{app.data.tags && app.data.tags.length > 0 && (
+						<div>
+							<dt class="text-sm text-gray-500 dark:text-gray-400 mb-2">{t("app.tags")}</dt>
+							<dd class="flex flex-wrap gap-1.5">
+								{app.data.tags.slice(0, 5).map((tag) => (
+									<span class="inline-block rounded-full bg-gray-100 dark:bg-gray-800 px-2.5 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-400">{tag}</span>
+								))}
+							</dd>
+						</div>
+					)}
+				</dl>
+			</div>
+
+			<div class="app-cta-card relative overflow-hidden rounded-2xl p-6">
+				<div class="absolute -top-8 -right-8 h-24 w-24 rounded-full blur-2xl opacity-0 dark:opacity-40" style="background: rgba(46,207,255,0.5);" aria-hidden="true"></div>
+				<div class="relative">
+					<p class="text-xs font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-2">{t("app.freeDownload")}</p>
+					<p class="text-base font-bold text-gray-900 dark:text-white mb-4">{app.data.title}</p>
+					{isBeta ? (
+						<a href={app.data.betaGroupUrl ?? app.data.playUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #ff8a2a, #db681a);">
+							{t("app.joinBeta")}
+						</a>
+					) : (
+						<a href={app.data.playUrl} target="_blank" rel="noopener nofollow sponsored" class="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #2ecfff, #0091cc);">
+							{t("app.getOnGooglePlay")}
+						</a>
+					)}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{otherApps.length > 0 && (
+		<section class="mt-16 pt-12 border-t border-gray-200 dark:border-gray-800">
+			<div class="section-label mb-5">
+				<span class="section-label__dot"></span>
+				<span>{t("app.moreFrom")}</span>
+			</div>
+			<div class="grid gap-4 sm:grid-cols-2">
+				{otherApps.map((other) => (
+					<a href={`/${locale}/apps/${other.slug.replace(`${locale}/`, "")}`} class="group flex items-center gap-4 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-300 dark:hover:border-brand-700 bg-white dark:bg-gray-900/50 p-4 transition-all duration-200 hover:-translate-y-0.5">
+						{other.data.icon ? (
+							<img src={other.data.icon} alt={other.data.title} class="h-14 w-14 rounded-2xl object-cover shadow-md flex-shrink-0" loading="lazy" />
+						) : (
+							<div class="h-14 w-14 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-500 text-xl font-bold flex-shrink-0">
+								{other.data.title[0]}
+							</div>
+						)}
+						<div class="flex-1 min-w-0">
+							<p class="font-bold text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">{other.data.title}</p>
+							<p class="text-sm text-gray-500 dark:text-gray-400 truncate mt-0.5">{other.data.tagline}</p>
+						</div>
+						<svg class="w-5 h-5 text-gray-300 dark:text-gray-600 group-hover:text-brand-500 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+					</a>
+				))}
+			</div>
+		</section>
+	)}
+</BaseLayout>

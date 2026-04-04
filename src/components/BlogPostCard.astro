@@ -5,9 +5,13 @@ interface Props {
 	post: CollectionEntry<"blog">;
 	featured?: boolean;
 	index?: number;
+	href?: string;
 }
 
-const { post, featured = false, index = 0 } = Astro.props;
+const { post, featured = false, index = 0, href: hrefProp } = Astro.props;
+const postSlug = post.slug.replace(/^(en|es|pt)\//, "");
+const postLocale = post.slug.match(/^(es|pt)\//)?.[1];
+const href = hrefProp ?? (postLocale ? `/${postLocale}/blog/${postSlug}` : `/blog/${postSlug}`);
 
 const formattedDate = post.data.publishedAt.toLocaleDateString("en-US", {
 	year: "numeric",
@@ -21,7 +25,7 @@ const delay = `${index * 75}ms`;
 {
 	featured ? (
 		<article class="blog-card blog-card--featured" style={`animation-delay:${delay}`}>
-			<a class="contents" href={`/blog/${post.slug}`}>
+			<a class="contents" href={href}>
 				{/* ── Image side ── */}
 				<div class="blog-card__image" style="min-height:260px;">
 					{post.data.image ? (
@@ -79,7 +83,7 @@ const delay = `${index * 75}ms`;
 		</article>
 	) : (
 		<article class="blog-card flex flex-col" style={`animation-delay:${delay}`}>
-			<a class="flex flex-col flex-1" href={`/blog/${post.slug}`}>
+			<a class="flex flex-col flex-1" href={href}>
 				{/* ── Image stage ── */}
 				<div class="blog-card__image" style="height:188px;flex-shrink:0;">
 					{post.data.image ? (

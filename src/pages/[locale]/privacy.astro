@@ -1,0 +1,32 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import LegalLayout from "@/components/LegalLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations, type Locale } from "@/i18n/utils";
+import { getEntry } from "astro:content";
+
+export function getStaticPaths() {
+	return [{ params: { locale: "es" } }, { params: { locale: "pt" } }];
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const t = useTranslations(locale);
+
+const policy = await getEntry("legal", "privacy");
+if (!policy) throw new Error("Privacy policy not found");
+const { Content } = await policy.render();
+
+const title = `${t("breadcrumbs.privacy")} — FusionCore Apps`;
+const description = "Privacy policy for FusionCore Apps mobile applications and website.";
+const canonical = new URL(`/${locale}/privacy`, Astro.site).href;
+---
+
+<BaseLayout {canonical} {description} {title} locale={locale}>
+	<Breadcrumbs items={[
+		{ label: t("breadcrumbs.home"), href: `/${locale}` },
+		{ label: t("breadcrumbs.privacy"), href: `/${locale}/privacy` },
+	]} />
+	<LegalLayout eyebrow="Legal" icon="shield" title={t("breadcrumbs.privacy")} updatedAt={policy.data.updatedAt}>
+		<Content />
+	</LegalLayout>
+</BaseLayout>

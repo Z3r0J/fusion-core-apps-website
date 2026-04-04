@@ -25,7 +25,7 @@ export const apps = defineCollection({
 		tags: z.array(z.string()).default([]),
 
 		// i18n
-		locale: z.enum(["en", "es"]).default("en"),
+		locale: z.enum(["en", "es", "pt"]).default("en"),
 
 		price: z.string().default("Free"),
 		version: z.string().optional(),

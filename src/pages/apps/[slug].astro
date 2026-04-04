@@ -8,20 +8,21 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-	const apps = await getCollection("apps");
+	const apps = await getCollection("apps", ({ slug }) => slug.startsWith("en/"));
 	return apps.map((app) => ({
-		params: { slug: app.slug },
+		params: { slug: app.slug.replace("en/", "") },
 		props: { app },
 	}));
 }
 
 const { app } = Astro.props;
 const { Content } = await app.render();
+const appSlug = app.slug.replace("en/", "");
 const title = `${app.data.title} — FusionCore Apps`;
 const description = app.data.description;
-const canonical = new URL(`/apps/${app.slug}`, Astro.site).href;
+const canonical = new URL(`/apps/${appSlug}`, Astro.site).href;
 const ogImage = app.data.icon || "/og-default.png";
-const allApps = await getCollection("apps");
+const allApps = await getCollection("apps", ({ slug }) => slug.startsWith("en/"));
 const otherApps = allApps.filter((a) => a.slug !== app.slug);
 
 const rating = app.data.rating ?? null;
@@ -62,7 +63,7 @@ const isBeta = app.data.beta ?? false;
 					items={[
 						{ label: "Home", href: "/" },
 						{ label: "Apps", href: "/apps" },
-						{ label: app.data.title, href: `/apps/${app.slug}` },
+						{ label: app.data.title, href: `/apps/${appSlug}` },
 					]}
 				/>
 
@@ -353,7 +354,7 @@ const isBeta = app.data.beta ?? false;
 			<div class="grid gap-4 sm:grid-cols-2">
 				{otherApps.map((other) => (
 					<a
-						href={`/apps/${other.slug}`}
+						href={`/apps/${other.slug.replace("en/", "")}`}
 						class="group flex items-center gap-4 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-300 dark:hover:border-brand-700 bg-white dark:bg-gray-900/50 p-4 transition-all duration-200 hover:-translate-y-0.5"
 					>
 						{other.data.icon ? (

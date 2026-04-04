@@ -3,7 +3,133 @@ import { useState } from "react";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
-export default function ContactForm() {
+type Locale = "en" | "es" | "pt";
+
+const cfI18n: Record<Locale, {
+	formTitle: string;
+	nameLabel: string;
+	emailLabel: string;
+	subjectLabel: string;
+	subjectPlaceholder: string;
+	subjects: Array<{ value: string; label: string }>;
+	appLabel: string;
+	appOptional: string;
+	appHint: string;
+	messageLabel: string;
+	messagePlaceholder: string;
+	privacyStrong: string;
+	privacyBody: string;
+	privacyLink: string;
+	clearBtn: string;
+	sendBtn: string;
+	sendingBtn: string;
+	successTitle: string;
+	successBody: string;
+	sendAnotherBtn: string;
+	errorFallback: string;
+}> = {
+	en: {
+		formTitle: "Send us a message",
+		nameLabel: "Full name",
+		emailLabel: "Email address",
+		subjectLabel: "Subject",
+		subjectPlaceholder: "Select a subject",
+		subjects: [
+			{ value: "app-support", label: "App support" },
+			{ value: "bug-report", label: "Bug report" },
+			{ value: "feature-request", label: "Feature request" },
+			{ value: "business-inquiry", label: "Business inquiry" },
+			{ value: "partnership", label: "Partnership" },
+			{ value: "general", label: "General question" },
+			{ value: "other", label: "Other" },
+		],
+		appLabel: "Related app",
+		appOptional: "(optional)",
+		appHint: "Let us know which app this is about.",
+		messageLabel: "Message",
+		messagePlaceholder: "Tell us how we can help…",
+		privacyStrong: "Privacy protected.",
+		privacyBody: "We only use your info to respond to your inquiry. See our",
+		privacyLink: "Privacy Policy",
+		clearBtn: "Clear",
+		sendBtn: "Send message",
+		sendingBtn: "Sending…",
+		successTitle: "Message sent!",
+		successBody: "Thank you for reaching out. We will get back to you within 24 hours.",
+		sendAnotherBtn: "Send another message",
+		errorFallback: "Failed to send message. Please try again or email us directly.",
+	},
+	es: {
+		formTitle: "Envíanos un mensaje",
+		nameLabel: "Nombre completo",
+		emailLabel: "Correo electrónico",
+		subjectLabel: "Asunto",
+		subjectPlaceholder: "Selecciona un asunto",
+		subjects: [
+			{ value: "app-support", label: "Soporte de app" },
+			{ value: "bug-report", label: "Reporte de error" },
+			{ value: "feature-request", label: "Solicitud de función" },
+			{ value: "business-inquiry", label: "Consulta de negocios" },
+			{ value: "partnership", label: "Alianza" },
+			{ value: "general", label: "Pregunta general" },
+			{ value: "other", label: "Otro" },
+		],
+		appLabel: "App relacionada",
+		appOptional: "(opcional)",
+		appHint: "Cuéntanos sobre qué app es.",
+		messageLabel: "Mensaje",
+		messagePlaceholder: "Cuéntanos cómo podemos ayudarte…",
+		privacyStrong: "Privacidad protegida.",
+		privacyBody: "Solo usamos tu información para responder tu consulta. Lee nuestra",
+		privacyLink: "Política de Privacidad",
+		clearBtn: "Limpiar",
+		sendBtn: "Enviar mensaje",
+		sendingBtn: "Enviando…",
+		successTitle: "¡Mensaje enviado!",
+		successBody: "Gracias por escribirnos. Te responderemos en un plazo de 24 horas.",
+		sendAnotherBtn: "Enviar otro mensaje",
+		errorFallback: "Error al enviar el mensaje. Intenta de nuevo o escríbenos directamente.",
+	},
+	pt: {
+		formTitle: "Envie-nos uma mensagem",
+		nameLabel: "Nome completo",
+		emailLabel: "E-mail",
+		subjectLabel: "Assunto",
+		subjectPlaceholder: "Selecione um assunto",
+		subjects: [
+			{ value: "app-support", label: "Suporte de app" },
+			{ value: "bug-report", label: "Relatório de bug" },
+			{ value: "feature-request", label: "Solicitação de recurso" },
+			{ value: "business-inquiry", label: "Consulta comercial" },
+			{ value: "partnership", label: "Parceria" },
+			{ value: "general", label: "Pergunta geral" },
+			{ value: "other", label: "Outro" },
+		],
+		appLabel: "App relacionado",
+		appOptional: "(opcional)",
+		appHint: "Nos diga sobre qual app é.",
+		messageLabel: "Mensagem",
+		messagePlaceholder: "Conte-nos como podemos ajudar…",
+		privacyStrong: "Privacidade protegida.",
+		privacyBody: "Usamos suas informações apenas para responder sua consulta. Veja nossa",
+		privacyLink: "Política de Privacidade",
+		clearBtn: "Limpar",
+		sendBtn: "Enviar mensagem",
+		sendingBtn: "Enviando…",
+		successTitle: "Mensagem enviada!",
+		successBody: "Obrigado por entrar em contato. Responderemos em até 24 horas.",
+		sendAnotherBtn: "Enviar outra mensagem",
+		errorFallback: "Erro ao enviar mensagem. Tente novamente ou nos escreva diretamente.",
+	},
+};
+
+type Props = {
+	locale?: Locale;
+	privacyHref?: string;
+};
+
+export default function ContactForm({ locale = "en", privacyHref = "/privacy" }: Props) {
+	const i18n = cfI18n[locale];
 	const [formState, setFormState] = useState<FormState>("idle");
 	const [errorMessage, setErrorMessage] = useState("");
 	const [formData, setFormData] = useState({
@@ -46,9 +172,7 @@ export default function ContactForm() {
 		} catch (err) {
 			setFormState("error");
 			setErrorMessage(
-				err instanceof Error
-					? err.message
-					: "Failed to send message. Please try again or email us directly.",
+				err instanceof Error ? err.message : i18n.errorFallback,
 			);
 		}
 	};
@@ -90,13 +214,13 @@ export default function ContactForm() {
 						}}
 						className="text-gray-900 dark:text-white"
 					>
-						Message sent!
+						{i18n.successTitle}
 					</h3>
 					<p
 						style={{ fontSize: 14.5, lineHeight: 1.7, maxWidth: 340, marginBottom: 28 }}
 						className="text-gray-500 dark:text-[rgba(255,255,255,0.40)]"
 					>
-						Thank you for reaching out. We will get back to you within 24 hours.
+						{i18n.successBody}
 					</p>
 					<button
 						type="button"
@@ -109,7 +233,7 @@ export default function ContactForm() {
 						}}
 					>
 						<RefreshCcw className="h-3.5 w-3.5" />
-						Send another message
+						{i18n.sendAnotherBtn}
 					</button>
 				</div>
 			</div>
@@ -128,7 +252,7 @@ export default function ContactForm() {
 				}}
 				className="text-gray-900 dark:text-white"
 			>
-				Send us a message
+				{i18n.formTitle}
 			</h2>
 
 			{/* Error */}
@@ -160,7 +284,7 @@ export default function ContactForm() {
 				<div className="grid gap-4 sm:grid-cols-2">
 					<div>
 						<label className="cf-label" htmlFor="contact-name">
-							Full name *
+							{i18n.nameLabel} *
 						</label>
 						<div className="cf-input-wrap">
 							<User className="cf-input-icon h-4 w-4" />
@@ -180,7 +304,7 @@ export default function ContactForm() {
 
 					<div>
 						<label className="cf-label" htmlFor="contact-email">
-							Email address *
+							{i18n.emailLabel} *
 						</label>
 						<div className="cf-input-wrap">
 							<Mail className="cf-input-icon h-4 w-4" />
@@ -202,7 +326,7 @@ export default function ContactForm() {
 				{/* Subject */}
 				<div>
 					<label className="cf-label" htmlFor="contact-subject">
-						Subject *
+						{i18n.subjectLabel} *
 					</label>
 					<div className="cf-input-wrap">
 						<MessageSquare className="cf-input-icon h-4 w-4" />
@@ -214,14 +338,10 @@ export default function ContactForm() {
 							value={formData.subject}
 							onChange={handleChange}
 						>
-							<option value="">Select a subject</option>
-							<option value="app-support">App support</option>
-							<option value="bug-report">Bug report</option>
-							<option value="feature-request">Feature request</option>
-							<option value="business-inquiry">Business inquiry</option>
-							<option value="partnership">Partnership</option>
-							<option value="general">General question</option>
-							<option value="other">Other</option>
+							<option value="">{i18n.subjectPlaceholder}</option>
+							{i18n.subjects.map((s) => (
+								<option key={s.value} value={s.value}>{s.label}</option>
+							))}
 						</select>
 					</div>
 				</div>
@@ -229,9 +349,9 @@ export default function ContactForm() {
 				{/* App */}
 				<div>
 					<label className="cf-label" htmlFor="contact-app">
-						Related app{" "}
+						{i18n.appLabel}{" "}
 						<span style={{ textTransform: "none", fontWeight: 500, opacity: 0.6 }}>
-							(optional)
+							{i18n.appOptional}
 						</span>
 					</label>
 					<div className="cf-input-wrap">
@@ -246,19 +366,19 @@ export default function ContactForm() {
 							onChange={handleChange}
 						/>
 					</div>
-					<p className="cf-hint">Let us know which app this is about.</p>
+					<p className="cf-hint">{i18n.appHint}</p>
 				</div>
 
 				{/* Message */}
 				<div>
 					<label className="cf-label" htmlFor="contact-message">
-						Message *
+						{i18n.messageLabel} *
 					</label>
 					<textarea
 						className="cf-input"
 						id="contact-message"
 						name="message"
-						placeholder="Tell us how we can help…"
+						placeholder={i18n.messagePlaceholder}
 						required
 						rows={6}
 						value={formData.message}
@@ -285,15 +405,15 @@ export default function ContactForm() {
 					</svg>
 					<p style={{ fontSize: 12.5, lineHeight: 1.65 }} className="text-gray-600 dark:text-[rgba(255,255,255,0.42)]">
 						<span className="font-semibold text-gray-800 dark:text-[rgba(255,255,255,0.70)]">
-							Privacy protected.{" "}
+							{i18n.privacyStrong}{" "}
 						</span>
-						We only use your info to respond to your inquiry. See our{" "}
+						{i18n.privacyBody}{" "}
 						<a
 							className="font-semibold underline underline-offset-2 hover:no-underline"
-							href="/privacy"
+							href={privacyHref}
 							style={{ color: "var(--color-brand-600)" }}
 						>
-							Privacy Policy
+							{i18n.privacyLink}
 						</a>
 						.
 					</p>
@@ -312,7 +432,7 @@ export default function ContactForm() {
 						onClick={handleReset}
 					>
 						<RefreshCcw className="h-3.5 w-3.5" />
-						Clear
+						{i18n.clearBtn}
 					</button>
 					<button
 						className="button button--primary px-7"
@@ -322,12 +442,12 @@ export default function ContactForm() {
 						{formState === "loading" ? (
 							<>
 								<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-								Sending…
+								{i18n.sendingBtn}
 							</>
 						) : (
 							<>
 								<Send className="mr-2 h-4 w-4" />
-								Send message
+								{i18n.sendBtn}
 							</>
 						)}
 					</button>

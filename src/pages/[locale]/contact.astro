@@ -1,0 +1,124 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import ContactForm from "@/components/ContactForm.tsx";
+import FaqAccordion from "@/components/FaqAccordion.tsx";
+import FaqJsonLd from "@/components/FaqJsonLd.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations, type Locale } from "@/i18n/utils";
+
+export function getStaticPaths() {
+	return [{ params: { locale: "es" } }, { params: { locale: "pt" } }];
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const t = useTranslations(locale);
+
+const canonical = new URL(`/${locale}/contact`, Astro.site).href;
+
+const faqs =
+	locale === "es"
+		? [
+				{ question: "¿Cómo descargo sus apps?", answer: "Todas nuestras apps están disponibles en Google Play Store. Visita nuestra página de apps y haz clic en cualquier app para ir a la Play Store." },
+				{ question: "¿Las apps son gratuitas?", answer: "La mayoría de nuestras apps son gratuitas. Algunas ofrecen funciones premium mediante compras dentro de la app. Consulta la página de cada app para más información sobre precios." },
+				{ question: "¿Cómo reporto un error?", answer: "Usa el formulario de contacto con \"Reporte de Error\" como asunto, o deja una reseña en la Play Store. Monitoreamos y respondemos activamente a todo el feedback." },
+				{ question: "¿Ofrecen desarrollo de apps personalizado?", answer: "¡Sí! Ofrecemos servicios de desarrollo móvil personalizado. Contáctanos con \"Consulta de Negocios\" como asunto para hablar sobre tu proyecto." },
+			]
+		: [
+				{ question: "Como faço o download dos aplicativos?", answer: "Todos os nossos apps estão disponíveis na Google Play Store. Acesse nossa página de apps e clique em qualquer app para ir à Play Store." },
+				{ question: "Os apps são gratuitos?", answer: "A maioria dos nossos apps é gratuita. Alguns oferecem recursos premium por compras no app. Confira a página de cada app para informações de preço." },
+				{ question: "Como reporto um erro?", answer: "Use o formulário de contato com \"Relatório de Bug\" no assunto, ou deixe uma avaliação na Play Store. Monitoramos e respondemos ativamente a todos os feedbacks." },
+				{ question: "Oferecem desenvolvimento personalizado?", answer: "Sim! Oferecemos serviços de desenvolvimento mobile personalizado. Entre em contato com \"Consulta Comercial\" no assunto para falar sobre seu projeto." },
+			];
+---
+
+<BaseLayout
+	{canonical}
+	description={t("contact.subtitle")}
+	title={`${t("contact.title")} — FusionCore Apps`}
+	locale={locale}
+>
+	<FaqJsonLd faqs={faqs} />
+	<Breadcrumbs items={[
+		{ label: t("breadcrumbs.home"), href: `/${locale}` },
+		{ label: t("breadcrumbs.contact"), href: `/${locale}/contact` },
+	]} />
+
+	<header style="padding:52px 0 44px;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:48px;" class="dark:!border-[rgba(255,255,255,0.06)]">
+		<p style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;color:var(--color-brand-500);margin-bottom:12px;">
+			<span style="display:block;width:22px;height:2px;border-radius:2px;background:var(--color-brand-400);flex-shrink:0;"></span>
+			FusionCore Apps
+		</p>
+		<div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+			<h1 style="font-family:var(--font-display);font-size:clamp(2.4rem,6vw,3.75rem);font-weight:900;letter-spacing:-0.045em;line-height:1;color:var(--color-gray-900);" class="dark:!text-white">
+				{t("contact.title")}
+			</h1>
+			<p style="font-size:15px;max-width:360px;line-height:1.65;" class="text-gray-500 dark:text-[rgba(255,255,255,0.38)] sm:text-right">
+				{t("contact.subtitle")}
+			</p>
+		</div>
+	</header>
+
+	<div class="grid gap-10 lg:grid-cols-3 lg:gap-12">
+		<div class="flex flex-col gap-4 lg:col-span-1">
+			<p style="font-size:11px;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;color:var(--color-gray-400);margin-bottom:4px;" class="dark:!text-[rgba(255,255,255,0.24)]">
+				{t("contact.info")}
+			</p>
+			<a class="contact-method" href="mailto:jeanrey.ese@gmail.com">
+				<div class="contact-method__icon" style="background:rgba(46,207,255,0.09);border:1px solid rgba(46,207,255,0.16);">
+					<svg fill="none" height="17" stroke="rgba(46,207,255,0.80)" stroke-width="1.7" viewBox="0 0 24 24" width="17"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" /></svg>
+				</div>
+				<div class="min-w-0">
+					<p class="contact-method__title">{t("contact.emailUs")}</p>
+					<p class="contact-method__body">jeanrey.ese@gmail.com</p>
+					<span class="contact-method__link">{t("contact.writeNow")} →</span>
+				</div>
+			</a>
+			<a class="contact-method" href="mailto:jeanrey.ese@gmail.com?subject=App Support Request">
+				<div class="contact-method__icon" style="background:rgba(46,207,255,0.07);border:1px solid rgba(46,207,255,0.13);">
+					<svg fill="none" height="17" stroke="rgba(46,207,255,0.72)" stroke-width="1.7" viewBox="0 0 24 24" width="17"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round" /></svg>
+				</div>
+				<div class="min-w-0">
+					<p class="contact-method__title">{t("contact.support")}</p>
+					<p class="contact-method__body">{t("contact.supportBody")}</p>
+					<span class="contact-method__link">{t("contact.getHelp")} →</span>
+				</div>
+			</a>
+			<a class="contact-method" href="mailto:jeanrey.ese@gmail.com?subject=Business Inquiry">
+				<div class="contact-method__icon" style="background:rgba(255,138,42,0.09);border:1px solid rgba(255,138,42,0.16);">
+					<svg fill="none" height="17" stroke="rgba(255,138,42,0.80)" stroke-width="1.7" viewBox="0 0 24 24" width="17"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" /></svg>
+				</div>
+				<div class="min-w-0">
+					<p class="contact-method__title">{t("contact.business")}</p>
+					<p class="contact-method__body">{t("contact.businessBody")}</p>
+					<span class="contact-method__link" style="color:var(--color-accent-500);">{t("contact.letsTalk")} →</span>
+				</div>
+			</a>
+			<div style="margin-top:4px;padding:14px 16px;border-radius:12px;background:rgba(46,207,255,0.04);border:1px solid rgba(46,207,255,0.10);" class="dark:!bg-[rgba(46,207,255,0.03)]">
+				<p style="font-size:12.5px;line-height:1.65;" class="text-gray-500 dark:text-[rgba(255,255,255,0.30)]">
+					{t("contact.responseNote")}
+				</p>
+			</div>
+		</div>
+
+		<div class="lg:col-span-2">
+			<ContactForm locale={locale} privacyHref={`/${locale}/privacy`} client:load />
+		</div>
+	</div>
+
+	<section style="margin-top:80px;padding-top:56px;border-top:1px solid rgba(0,0,0,0.07);" class="dark:!border-[rgba(255,255,255,0.06)]">
+		<div class="mb-10 text-center">
+			<p style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;color:var(--color-brand-500);margin-bottom:12px;">
+				<span style="display:block;width:16px;height:2px;border-radius:2px;background:var(--color-brand-400);"></span>
+				{t("contact.faq")}
+				<span style="display:block;width:16px;height:2px;border-radius:2px;background:var(--color-brand-400);"></span>
+			</p>
+			<h2 style="font-family:var(--font-display);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-bottom:10px;" class="text-gray-900 dark:text-white">
+				{t("contact.faqTitle")}
+			</h2>
+			<p style="font-size:15px;" class="text-gray-500 dark:text-[rgba(255,255,255,0.38)]">
+				{t("contact.faqSubtitle")}
+			</p>
+		</div>
+		<FaqAccordion faqs={faqs} client:visible />
+	</section>
+</BaseLayout>

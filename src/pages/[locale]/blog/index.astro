@@ -1,0 +1,72 @@
+---
+import BlogPostCard from "@/components/BlogPostCard.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations, type Locale } from "@/i18n/utils";
+import { getCollection } from "astro:content";
+
+export function getStaticPaths() {
+	return [{ params: { locale: "es" } }, { params: { locale: "pt" } }];
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const t = useTranslations(locale);
+
+const allPosts = (await getCollection("blog", ({ slug }) => slug.startsWith(`${locale}/`)))
+	.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+const heroPost = allPosts.find((p) => p.data.featured) ?? allPosts[0];
+const gridPosts = heroPost ? allPosts.filter((p) => p.slug !== heroPost.slug) : allPosts;
+
+const canonical = new URL(`/${locale}/blog`, Astro.site).href;
+---
+
+<BaseLayout
+	{canonical}
+	description={t("blog.subtitle")}
+	title={`${t("blog.title")} — FusionCore`}
+	locale={locale}
+>
+	<header class="blog-index-header">
+		<p class="blog-index-header__eyebrow">{t("blog.journal")}</p>
+		<div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+			<h1 style="font-family:var(--font-display);font-size:clamp(2.4rem,6vw,3.75rem);font-weight:900;letter-spacing:-0.045em;line-height:1;color:var(--color-gray-900);" class="dark:!text-white">
+				{t("blog.title")}
+			</h1>
+			<p style="font-size:15px;color:var(--color-gray-500);max-width:380px;" class="dark:!text-[rgba(255,255,255,0.38)] sm:text-right">
+				{t("blog.subtitle")}
+			</p>
+		</div>
+	</header>
+
+	{allPosts.length > 0 ? (
+		<div class="space-y-10">
+			{heroPost && <BlogPostCard post={heroPost} featured={true} index={0} />}
+			{gridPosts.length > 0 && (
+				<div>
+					<p class="mb-6" style="font-size:11px;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;color:var(--color-gray-400);">
+						{t("blog.latestPosts")}
+					</p>
+					<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+						{gridPosts.map((post, i) => (
+							<BlogPostCard post={post} index={i + 1} />
+						))}
+					</div>
+				</div>
+			)}
+		</div>
+	) : (
+		<div class="py-24 text-center">
+			<div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl border" style="background:rgba(46,207,255,0.05);border-color:rgba(46,207,255,0.12);">
+				<svg aria-hidden="true" class="h-10 w-10" fill="none" stroke="rgba(46,207,255,0.5)" stroke-width="1.2" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+				</svg>
+			</div>
+			<h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:-0.03em;" class="mb-2 text-gray-900 dark:text-white">
+				{t("blog.noPosts")}
+			</h2>
+			<p style="font-size:15px;" class="text-gray-500 dark:text-[rgba(255,255,255,0.38)]">
+				{t("blog.noPostsBody")}
+			</p>
+		</div>
+	)}
+</BaseLayout>

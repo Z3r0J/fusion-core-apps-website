@@ -2,7 +2,9 @@
 import "@/styles/global.css";
 
 import GooglePlayLogo from "@/assets/gplay-logo.svg";
+import { LanguagePicker } from "@/components/LanguagePicker.tsx";
 import ThemeToggle from "@/components/ThemeToggle.tsx";
+import { getLocalePath, getLocaleFromPath, stripLocalePath, useTranslations, type Locale } from "@/i18n/utils";
 
 const {
 	title = "FusionCore Apps — Premium Mobile Applications",
@@ -19,6 +21,24 @@ const {
 
 const year = new Date().getFullYear();
 const currentPath = Astro.url.pathname;
+
+// i18n — compute locale links from current pathname
+const currentLocale = locale ?? getLocaleFromPath(currentPath);
+const basePath = stripLocalePath(currentPath);
+const localeLinks = {
+	en: getLocalePath(basePath, "en"),
+	es: getLocalePath(basePath, "es"),
+	pt: getLocalePath(basePath, "pt"),
+};
+const t = useTranslations(currentLocale as Locale);
+
+// Locale-aware nav hrefs
+const navHome    = getLocalePath("/", currentLocale as Locale);
+const navApps    = getLocalePath("/apps", currentLocale as Locale);
+const navBlog    = getLocalePath("/blog", currentLocale as Locale);
+const navPrivacy = getLocalePath("/privacy", currentLocale as Locale);
+const navContact = getLocalePath("/contact", currentLocale as Locale);
+const navTerms   = getLocalePath("/terms", currentLocale as Locale);
 // IMPORTANT: Use Astro.url.pathname (not Astro.url) — pathname strips query params.
 // Using Astro.url.href would bake ?utm_source=... or ?from=AppAgg.com into the canonical,
 // creating duplicate-content variants that confuse Googlebot. Never change this to Astro.url.
@@ -40,8 +60,10 @@ const resolvedOgImage =
 		<meta content={description} name="description" />
 		<meta content={noindex ? "noindex,nofollow" : "index,follow"} name="robots" />
 		<link href={canonicalUrl} rel="canonical" />
-		<link href={canonicalUrl} hreflang="x-default" rel="alternate" />
-		<link href={canonicalUrl} hreflang={locale} rel="alternate" />
+		<link href={new URL(localeLinks.en, Astro.site).href} hreflang="x-default" rel="alternate" />
+		<link href={new URL(localeLinks.en, Astro.site).href} hreflang="en" rel="alternate" />
+		<link href={new URL(localeLinks.es, Astro.site).href} hreflang="es" rel="alternate" />
+		<link href={new URL(localeLinks.pt, Astro.site).href} hreflang="pt-BR" rel="alternate" />
 
 		<meta content={ogType} property="og:type" />
 		<meta content={new URL(Astro.url.pathname, Astro.site).href} property="og:url" />
@@ -51,7 +73,7 @@ const resolvedOgImage =
 		<meta content="1200" property="og:image:width" />
 		<meta content="630" property="og:image:height" />
 		<meta content="FusionCore Apps" property="og:site_name" />
-		<meta content={locale === "es" ? "es_ES" : "en_US"} property="og:locale" />
+		<meta content={currentLocale === "es" ? "es_419" : currentLocale === "pt" ? "pt_BR" : "en_US"} property="og:locale" />
 
 		<meta content="summary_large_image" name="twitter:card" />
 		<meta content="@FusioncoreApps" name="twitter:site" />
@@ -146,7 +168,7 @@ const resolvedOgImage =
 			class="button button--primary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
 			href="#main"
 		>
-			Skip to main content
+			{t("footer.skipToContent")}
 		</a>
 
 		<!-- ── Header: Morphing Glass Pill ── -->
@@ -157,7 +179,7 @@ const resolvedOgImage =
 					class="header__pill mx-auto flex max-w-7xl items-center justify-between"
 				>
 					<!-- Logo -->
-					<a href="/" class="header__logo group flex min-w-0 flex-shrink-0 items-center gap-2.5">
+					<a href={navHome} class="header__logo group flex min-w-0 flex-shrink-0 items-center gap-2.5">
 						<img
 							src="/logo.png"
 							alt="FusionCore Apps"
@@ -173,41 +195,42 @@ const resolvedOgImage =
 					<ul class="hidden items-center gap-0.5 md:flex" role="menubar">
 						<li role="none">
 							<a
-								class:list={["nav-pill-link", { "nav-pill-link--active": currentPath.startsWith("/apps") }]}
-								href="/apps"
+								class:list={["nav-pill-link", { "nav-pill-link--active": basePath.startsWith("/apps") }]}
+								href={navApps}
 								role="menuitem"
-							>Apps</a>
+							>{t("nav.apps")}</a>
 						</li>
 						<li role="none">
 							<a
-								class:list={["nav-pill-link", { "nav-pill-link--active": currentPath.startsWith("/blog") }]}
-								href="/blog"
+								class:list={["nav-pill-link", { "nav-pill-link--active": basePath.startsWith("/blog") }]}
+								href={navBlog}
 								role="menuitem"
-							>Blog</a>
+							>{t("nav.blog")}</a>
 						</li>
 						<li role="none">
 							<a
-								class:list={["nav-pill-link", { "nav-pill-link--active": currentPath === "/privacy" }]}
-								href="/privacy"
+								class:list={["nav-pill-link", { "nav-pill-link--active": basePath === "/privacy" }]}
+								href={navPrivacy}
 								role="menuitem"
-							>Privacy</a>
+							>{t("nav.privacy")}</a>
 						</li>
 						<li role="none">
 							<a
-								class:list={["nav-pill-link", { "nav-pill-link--active": currentPath === "/contact" }]}
-								href="/contact"
+								class:list={["nav-pill-link", { "nav-pill-link--active": basePath === "/contact" }]}
+								href={navContact}
 								role="menuitem"
-							>Contact</a>
+							>{t("nav.contact")}</a>
 						</li>
 					</ul>
 
 					<!-- Actions -->
 					<div class="flex flex-shrink-0 items-center gap-2">
 						<ThemeToggle client:load />
+						<LanguagePicker currentLocale={currentLocale} links={localeLinks} client:load />
 
 						<!-- Desktop CTA -->
-						<a href="/apps" class="nav-cta hidden items-center gap-1.5 md:inline-flex">
-							Browse Apps
+						<a href={navApps} class="nav-cta hidden items-center gap-1.5 md:inline-flex">
+							{t("nav.browseApps")}
 							<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 								<path d="M9 18l6-6-6-6"/>
 							</svg>
@@ -216,8 +239,8 @@ const resolvedOgImage =
 						<!-- Animated hamburger for mobile -->
 						<button
 							id="menu-btn"
-							class="menu-btn flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gray-100 text-gray-600 transition-colors duration-200 hover:bg-gray-200 focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:outline-none dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 md:hidden"
-							aria-label="Open navigation menu"
+							class="menu-btn flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-gray-500 transition-colors duration-150 hover:bg-gray-100 hover:text-gray-800 focus:outline-none dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100 md:hidden"
+							aria-label={t("nav.openMenu")}
 							aria-expanded="false"
 							aria-controls="mobile-overlay"
 						>
@@ -243,7 +266,7 @@ const resolvedOgImage =
 		>
 			<!-- Top bar -->
 			<div class="flex flex-shrink-0 items-center justify-between px-6 py-4">
-				<a href="/" class="flex items-center gap-2.5" id="overlay-logo">
+				<a href={navHome} class="flex items-center gap-2.5" id="overlay-logo">
 					<img src="/logo.png" alt="FusionCore Apps" class="h-8 w-8 flex-shrink-0 rounded-lg object-contain" />
 					<span class="gradient-text font-bold" style="font-family: var(--font-display); font-size: 15px; letter-spacing: -0.02em;">
 						FusionCore Apps
@@ -251,8 +274,8 @@ const resolvedOgImage =
 				</a>
 				<button
 					id="close-overlay"
-					class="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-600 transition-colors duration-200 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
-					aria-label="Close navigation menu"
+					class="flex h-8 w-8 items-center justify-center rounded-lg text-gray-500 transition-colors duration-150 hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100"
+					aria-label={t("nav.closeMenu")}
 				>
 					<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<path d="M18 6L6 18M6 6l12 12"/>
@@ -266,41 +289,41 @@ const resolvedOgImage =
 					<ul class="divide-y divide-gray-200/70 dark:divide-white/5">
 						<li class="mobile-link-item">
 							<a
-								class:list={["mobile-nav-link", { "mobile-nav-link--active": currentPath.startsWith("/apps") }]}
-								href="/apps"
+								class:list={["mobile-nav-link", { "mobile-nav-link--active": basePath.startsWith("/apps") }]}
+								href={navApps}
 								id="mobile-link-apps"
 							>
-								<span>Apps</span>
+								<span>{t("nav.apps")}</span>
 								<svg class="h-6 w-6 flex-shrink-0 opacity-30 transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
 							</a>
 						</li>
 						<li class="mobile-link-item">
 							<a
-								class:list={["mobile-nav-link", { "mobile-nav-link--active": currentPath.startsWith("/blog") }]}
-								href="/blog"
+								class:list={["mobile-nav-link", { "mobile-nav-link--active": basePath.startsWith("/blog") }]}
+								href={navBlog}
 								id="mobile-link-blog"
 							>
-								<span>Blog</span>
+								<span>{t("nav.blog")}</span>
 								<svg class="h-6 w-6 flex-shrink-0 opacity-30 transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
 							</a>
 						</li>
 						<li class="mobile-link-item">
 							<a
-								class:list={["mobile-nav-link", { "mobile-nav-link--active": currentPath === "/privacy" }]}
-								href="/privacy"
+								class:list={["mobile-nav-link", { "mobile-nav-link--active": basePath === "/privacy" }]}
+								href={navPrivacy}
 								id="mobile-link-privacy"
 							>
-								<span>Privacy</span>
+								<span>{t("nav.privacy")}</span>
 								<svg class="h-6 w-6 flex-shrink-0 opacity-30 transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
 							</a>
 						</li>
 						<li class="mobile-link-item">
 							<a
-								class:list={["mobile-nav-link", { "mobile-nav-link--active": currentPath === "/contact" }]}
-								href="/contact"
+								class:list={["mobile-nav-link", { "mobile-nav-link--active": basePath === "/contact" }]}
+								href={navContact}
 								id="mobile-link-contact"
 							>
-								<span>Contact</span>
+								<span>{t("nav.contact")}</span>
 								<svg class="h-6 w-6 flex-shrink-0 opacity-30 transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
 							</a>
 						</li>
@@ -309,19 +332,19 @@ const resolvedOgImage =
 
 				<!-- Subtle stat row -->
 				<p class="mt-8 text-xs font-medium tracking-widest uppercase text-gray-400 dark:text-gray-600">
-					Free Android apps &nbsp;·&nbsp; 3 apps &nbsp;·&nbsp; 3.3K+ downloads
+					{t("footer.mobileStats")}
 				</p>
 			</div>
 
 			<!-- Bottom CTA -->
 			<div class="mobile-overlay__footer flex-shrink-0 px-8 pb-12 pt-6">
 				<a
-					href="/apps"
+					href={navApps}
 					id="mobile-cta"
 					class="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-bold text-white shadow-lg"
 					style="background: linear-gradient(135deg, #ff8a2a 0%, #e8455b 100%);"
 				>
-					Browse All Apps
+					{t("footer.browseAllApps")}
 					<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 						<path d="M9 18l6-6-6-6"/>
 					</svg>
@@ -368,22 +391,22 @@ const resolvedOgImage =
 					<div class="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-20 text-center sm:px-6 lg:px-8">
 						<div class="footer-cta-island__label section-label">
 							<span class="inline-block h-1.5 w-1.5 rounded-full mr-2 opacity-50"></span>
-							Available on Google Play
+							{t("footer.availableOn")}
 						</div>
 						<h2 class="footer-cta-island__title">
-							Premium apps.<br/>Free to start.
+							{t("footer.ctaTitle")}
 						</h2>
 						<p class="footer-cta-island__body">
-							Every app is free to download on Google Play. Some unlock additional features through an optional subscription — but the core experience is always free.
+							{t("footer.ctaBody")}
 						</p>
-						<a href="/apps" class="footer-cta-island__btn">
+						<a href={navApps} class="footer-cta-island__btn">
 							<svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 								<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#2ecfff" opacity="0.9"/>
 								<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#ffc107" opacity="0.9"/>
 								<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="#ff3e00"/>
 								<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="#00e081" opacity="0.9"/>
 							</svg>
-							Browse All Apps
+							{t("footer.browseAllApps")}
 						</a>
 					</div>
 				</div>
@@ -399,7 +422,7 @@ const resolvedOgImage =
 
 						<!-- Column 1: Brand -->
 						<div class="space-y-6">
-							<a href="/" class="inline-flex items-center gap-3 group">
+							<a href={navHome} class="inline-flex items-center gap-3 group">
 								<img
 									src="/logo.png"
 									alt="FusionCore Apps"
@@ -411,24 +434,24 @@ const resolvedOgImage =
 							</a>
 
 							<p class="max-w-[240px] text-sm leading-relaxed text-gray-500 dark:text-gray-500">
-								Free Android apps crafted with care — for Bible reading, shopping, and everyday life.
+								{t("footer.tagline")}
 							</p>
 
 							<!-- Mini stat strip -->
 							<div class="flex items-center gap-4">
 								<div>
 									<div class="text-base font-bold text-gray-900 dark:text-white" style="font-family: var(--font-display); letter-spacing: -0.03em;">3.3K+</div>
-									<div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600">Downloads</div>
+									<div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600">{t("footer.downloads")}</div>
 								</div>
 								<div class="h-7 w-px bg-gray-200 dark:bg-gray-800"></div>
 								<div>
 									<div class="text-base font-bold text-gray-900 dark:text-white" style="font-family: var(--font-display); letter-spacing: -0.03em;">4.5★</div>
-									<div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600">Rating</div>
+									<div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600">{t("footer.rating")}</div>
 								</div>
 								<div class="h-7 w-px bg-gray-200 dark:bg-gray-800"></div>
 								<div>
-									<div class="text-base font-bold text-gray-900 dark:text-white" style="font-family: var(--font-display); letter-spacing: -0.03em;">Free</div>
-									<div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600">Always</div>
+									<div class="text-base font-bold text-gray-900 dark:text-white" style="font-family: var(--font-display); letter-spacing: -0.03em;">{t("footer.free")}</div>
+									<div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600">{t("footer.always")}</div>
 								</div>
 							</div>
 
@@ -437,7 +460,7 @@ const resolvedOgImage =
 								href="https://play.google.com/store/apps/dev?id=5173536626513659112"
 								target="_blank"
 								rel="noopener noreferrer"
-								aria-label="Get it on Google Play"
+								aria-label={t("footer.availableOn")}
 								class="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-all duration-200 hover:border-gray-400 hover:text-gray-900 dark:border-gray-800 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:text-white"
 							>
 								<GooglePlayLogo class="h-4 w-4" />
@@ -447,33 +470,33 @@ const resolvedOgImage =
 
 						<!-- Column 2: Navigation -->
 						<div>
-							<h3 class="footer__col-title">Navigation</h3>
+							<h3 class="footer__col-title">{t("footer.navigation")}</h3>
 							<ul class="space-y-0.5">
-								<li><a class="footer__link" href="/">Home</a></li>
-								<li><a class="footer__link" href="/apps">Apps</a></li>
-								<li><a class="footer__link" href="/blog">Blog</a></li>
-								<li><a class="footer__link" href="/contact">Contact</a></li>
-								<li><a class="footer__link" href="/privacy">Privacy</a></li>
-								<li><a class="footer__link" href="/terms">Terms</a></li>
+								<li><a class="footer__link" href={navHome}>{t("nav.home")}</a></li>
+								<li><a class="footer__link" href={navApps}>{t("nav.apps")}</a></li>
+								<li><a class="footer__link" href={navBlog}>{t("nav.blog")}</a></li>
+								<li><a class="footer__link" href={navContact}>{t("nav.contact")}</a></li>
+								<li><a class="footer__link" href={navPrivacy}>{t("nav.privacy")}</a></li>
+								<li><a class="footer__link" href={navTerms}>{t("nav.terms")}</a></li>
 							</ul>
 						</div>
 
 						<!-- Column 3: Our Apps -->
 						<div>
-							<h3 class="footer__col-title">Our Apps</h3>
+							<h3 class="footer__col-title">{t("footer.ourApps")}</h3>
 							<ul class="space-y-0.5">
-								<li><a class="footer__link" href="/apps/bible-tpt">Bible TPT</a></li>
-								<li><a class="footer__link" href="/apps/biblia-tla">Biblia TLA</a></li>
-								<li><a class="footer__link" href="/apps/cartwise-grocery-shopping-list">CartWise</a></li>
+								<li><a class="footer__link" href={getLocalePath("/apps/bible-tpt", currentLocale as Locale)}>Bible TPT</a></li>
+								<li><a class="footer__link" href={getLocalePath("/apps/biblia-tla", currentLocale as Locale)}>Biblia TLA</a></li>
+								<li><a class="footer__link" href={getLocalePath("/apps/cartwise-grocery-shopping-list", currentLocale as Locale)}>CartWise</a></li>
 								<li>
-									<a class="footer__link" href="/apps/claimly-receipt-tracker">
+									<a class="footer__link" href={getLocalePath("/apps/claimly-receipt-tracker", currentLocale as Locale)}>
 										Claimly
 										<span class="ml-1 inline-flex items-center rounded-full px-1.5 py-0.5 text-[10px] font-bold" style="background: rgba(234,88,12,0.10); color: #ea580c;">Beta</span>
 									</a>
 								</li>
 								<li class="pt-2">
-									<a class="footer__link footer__link--accent" href="/apps">
-										View All &rarr;
+									<a class="footer__link footer__link--accent" href={navApps}>
+										{t("footer.viewAll")}
 									</a>
 								</li>
 							</ul>
@@ -481,7 +504,7 @@ const resolvedOgImage =
 
 						<!-- Column 4: Connect -->
 						<div>
-							<h3 class="footer__col-title">Get in Touch</h3>
+							<h3 class="footer__col-title">{t("footer.getInTouch")}</h3>
 							<ul class="space-y-1">
 								<li>
 									<a
@@ -523,15 +546,15 @@ const resolvedOgImage =
 					<!-- Bottom bar -->
 					<div class="relative z-10 mt-14 flex flex-col items-center justify-between gap-3 border-t border-gray-200 py-6 dark:border-gray-800/60 sm:flex-row">
 						<p class="text-sm text-gray-400 dark:text-gray-600">
-							&copy; {year} FusionCore Apps. All rights reserved.
+							&copy; {year} FusionCore Apps. {t("footer.allRightsReserved")}
 						</p>
 						<div class="flex items-center gap-5 text-sm">
-							<a class="text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-600 dark:hover:text-gray-400" href="/privacy">Privacy Policy</a>
+							<a class="text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-600 dark:hover:text-gray-400" href={navPrivacy}>{t("footer.privacyPolicy")}</a>
 							<span class="text-gray-200 dark:text-gray-800">&middot;</span>
-							<a class="text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-600 dark:hover:text-gray-400" href="/terms">Terms of Service</a>
+							<a class="text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-600 dark:hover:text-gray-400" href={navTerms}>{t("footer.termsOfService")}</a>
 						</div>
 						<p class="text-sm text-gray-400 dark:text-gray-600">
-							Built for Android
+							{t("footer.builtForAndroid")}
 						</p>
 					</div>
 				</div>

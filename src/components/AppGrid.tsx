@@ -1,5 +1,7 @@
 import { Filter, Grid, List, Search, Star } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
+import { useTranslations, type Locale } from "@/i18n/utils";
+
 export type App = {
 	slug: string;
 	title: string;
@@ -22,6 +24,7 @@ export type App = {
 type Props = {
 	apps: App[];
 	showFilters?: boolean;
+	locale?: Locale;
 };
 
 function useDebounced<T>(value: T, delay = 180) {
@@ -62,7 +65,7 @@ const CATEGORY_ACCENTS: Record<string, { bg: string; glow: string }> = {
 const DEFAULT_ACCENT = { bg: "linear-gradient(150deg, #0b1c2d 0%, #0e2a42 55%, #0b1c2d 100%)", glow: "rgba(46,207,255,0.45)" };
 
 // Download Modal Component
-function DownloadModal({ app, onClose }: { app: App; onClose: () => void }) {
+function DownloadModal({ app, onClose, t }: { app: App; onClose: () => void; t: ReturnType<typeof useTranslations> }) {
 	return (
 		<div
 			className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
@@ -80,7 +83,7 @@ function DownloadModal({ app, onClose }: { app: App; onClose: () => void }) {
 					type="button"
 					onClick={onClose}
 					className="absolute top-4 right-4 text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-200"
-					aria-label="Close"
+					aria-label={t("app.close")}
 				>
 					<svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -100,7 +103,7 @@ function DownloadModal({ app, onClose }: { app: App; onClose: () => void }) {
 							</h3>
 						</div>
 					</div>
-					<p className="text-sm text-gray-600 dark:text-gray-400">Choose your platform to download</p>
+					<p className="text-sm text-gray-600 dark:text-gray-400">{t("app.choosePlatform")}</p>
 				</div>
 
 				<div className="space-y-3">
@@ -118,7 +121,7 @@ function DownloadModal({ app, onClose }: { app: App; onClose: () => void }) {
 						</svg>
 						<div className="flex-1 text-left">
 							<div className="text-sm font-semibold text-gray-900 dark:text-white">Google Play</div>
-							<div className="text-xs text-gray-500 dark:text-gray-400">Download for Android</div>
+							<div className="text-xs text-gray-500 dark:text-gray-400">{t("app.downloadForAndroid")}</div>
 						</div>
 						<svg className="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 18l6-6-6-6" /></svg>
 					</a>
@@ -163,7 +166,7 @@ const BetaIcon = () => (
 	</svg>
 );
 
-const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "grid" | "list" }) {
+const AppCard = React.memo(function AppCard({ app, mode, locale, t }: { app: App; mode: "grid" | "list"; locale: Locale; t: ReturnType<typeof useTranslations> }) {
 	const [showModal, setShowModal] = React.useState(false);
 	const price = app.price ?? "Free";
 	const rating = app.rating ?? 4.5;
@@ -171,6 +174,7 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 	const isBeta = app.beta ?? false;
 	const betaUrl = app.betaGroupUrl ?? app.playUrl;
 	const accent = CATEGORY_ACCENTS[app.category] ?? DEFAULT_ACCENT;
+	const appHref = locale === "en" ? `/apps/${app.slug}` : `/${locale}/apps/${app.slug}`;
 
 	const handleDownloadClick = (e: React.MouseEvent) => {
 		e.preventDefault();
@@ -213,7 +217,7 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 						<div className="flex items-stretch">
 							{/* Left accent thumbnail */}
 							<a
-								href={`/apps/${app.slug}`}
+								href={appHref}
 								className="app-store-card__stage relative flex w-[88px] flex-shrink-0 items-center justify-center overflow-hidden select-none"
 								style={{ background: accent.bg }}
 								tabIndex={-1}
@@ -236,7 +240,7 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 
 							{/* Right content */}
 							<a
-								href={`/apps/${app.slug}`}
+								href={appHref}
 								id={`app-${app.slug}`}
 								className="flex min-w-0 flex-1 flex-col justify-center px-4 py-4"
 							>
@@ -274,7 +278,7 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 										aria-label={`Join beta for ${app.title}`}
 									>
 										<BetaIcon />
-										Join Beta
+										{t("app.joinBeta")}
 									</a>
 								) : (
 									<button
@@ -283,14 +287,14 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 										aria-label={`Download ${app.title}`}
 									>
 										<GPIcon />
-										Download
+										{t("app.getOnGooglePlay")}
 									</button>
 								)}
 							</div>
 						</div>
 					</div>
 				</article>
-				{showModal && <DownloadModal app={app} onClose={closeModal} />}
+				{showModal && <DownloadModal app={app} onClose={closeModal} t={t} />}
 			</>
 		);
 	}
@@ -306,7 +310,7 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 
 					{/* Stage */}
 					<a
-						href={`/apps/${app.slug}`}
+						href={appHref}
 						className="app-store-card__stage relative block h-[152px] overflow-hidden select-none"
 						style={{ background: accent.bg }}
 						tabIndex={-1}
@@ -360,7 +364,7 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 							{!isBeta && isTopRated && (
 								<span className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold"
 									style={{ background: "rgba(0,0,0,0.40)", color: "#fbbf24", backdropFilter: "blur(8px)", border: "1px solid rgba(251,191,36,0.22)" }}>
-									★ Top Rated
+									{t("app.topRated")}
 								</span>
 							)}
 						</div>
@@ -368,7 +372,7 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 
 					{/* Card body */}
 					<a
-						href={`/apps/${app.slug}`}
+						href={appHref}
 						id={`app-${app.slug}`}
 						className="block px-5 pt-4 pb-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-inset"
 					>
@@ -400,7 +404,7 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 									aria-label={`Join beta for ${app.title}`}
 								>
 									<BetaIcon />
-									<span>Join Beta — Free</span>
+									<span>{t("app.joinBeta")}</span>
 								</a>
 							) : (
 								<button
@@ -409,19 +413,20 @@ const AppCard = React.memo(function AppCard({ app, mode }: { app: App; mode: "gr
 									aria-label={`Download ${app.title}`}
 								>
 									<GPIcon />
-									<span>Get on Google Play</span>
+									<span>{t("app.getOnGooglePlay")}</span>
 								</button>
 							)}
 						</div>
 					</div>
 				</div>
 			</article>
-			{showModal && <DownloadModal app={app} onClose={closeModal} />}
+			{showModal && <DownloadModal app={app} onClose={closeModal} t={t} />}
 		</>
 	);
 });
 
-export default function AppGrid({ apps, showFilters = true }: Props) {
+export default function AppGrid({ apps, showFilters = true, locale = "en" }: Props) {
+	const t = useTranslations(locale);
 	const [search, setSearch] = useState("");
 	const [category, setCategory] = useState("All");
 	const [mode, setMode] = useState<"grid" | "list">("grid");
@@ -551,7 +556,7 @@ export default function AppGrid({ apps, showFilters = true }: Props) {
 				>
 					{filtered.map((app) => (
 						<li key={app.slug}>
-							<AppCard app={app} mode={mode} />
+							<AppCard app={app} mode={mode} locale={locale} t={t} />
 						</li>
 					))}
 				</ul>

@@ -1,0 +1,94 @@
+---
+import BlogJsonLd from "@/components/BlogJsonLd.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations, type Locale } from "@/i18n/utils";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const allPosts = await getCollection("blog");
+	const locales: Locale[] = ["es", "pt"];
+	return locales.flatMap((locale) => {
+		const localePosts = allPosts.filter(({ slug }) => slug.startsWith(`${locale}/`));
+		return localePosts.map((post) => ({
+			params: { locale, slug: post.slug.replace(`${locale}/`, "") },
+			props: { post, locale },
+		}));
+	});
+}
+
+const { post, locale } = Astro.props as { post: Awaited<ReturnType<typeof getCollection<"blog">>>[number]; locale: Locale };
+const t = useTranslations(locale);
+const { Content } = await post.render();
+const postSlug = post.slug.replace(`${locale}/`, "");
+
+const title = `${post.data.title} | FusionCore`;
+const description = post.data.description;
+const canonical = new URL(`/${locale}/blog/${postSlug}`, Astro.site).href;
+const ogImage = post.data.image || "/og-default.png";
+
+const formattedDate = post.data.publishedAt.toLocaleDateString(locale === "es" ? "es-419" : "pt-BR", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
+---
+
+<BaseLayout {canonical} {description} {ogImage} {title} ogType="article" locale={locale}>
+	<BlogJsonLd post={post} url={canonical} />
+
+	<article class="mx-auto max-w-3xl">
+		<nav aria-label="Breadcrumb" class="mb-6 flex items-center gap-2 text-xs" style="color:var(--color-gray-400);">
+			<a href={`/${locale}`} class="transition-colors hover:text-gray-600 dark:hover:text-white/60">{t("breadcrumbs.home")}</a>
+			<span aria-hidden="true" style="opacity:0.35">/</span>
+			<a href={`/${locale}/blog`} class="transition-colors hover:text-gray-600 dark:hover:text-white/60">{t("breadcrumbs.blog")}</a>
+			<span aria-hidden="true" style="opacity:0.35">/</span>
+			<span class="truncate max-w-[200px]" style="color:var(--color-gray-600);">{post.data.title}</span>
+		</nav>
+
+		<header class="blog-article-header">
+			{post.data.tags.length > 0 && (
+				<div class="mb-5 flex flex-wrap gap-2">
+					{post.data.tags.map((tag) => <span class="blog-tag">{tag}</span>)}
+				</div>
+			)}
+			<h1 class="blog-article-header__title">{post.data.title}</h1>
+			<div class="blog-article-header__byline">
+				<span class="author">{post.data.author}</span>
+				<span aria-hidden="true" style="opacity:0.3">·</span>
+				<time datetime={post.data.publishedAt.toISOString()}>{formattedDate}</time>
+				{post.data.featured && (
+					<>
+						<span aria-hidden="true" style="opacity:0.3">·</span>
+						<span class="blog-featured-badge">{t("blog.featured")}</span>
+					</>
+				)}
+			</div>
+		</header>
+
+		{post.data.image && (
+			<div class="blog-article-cover">
+				<img alt={post.data.title} loading="eager" src={post.data.image} />
+			</div>
+		)}
+
+		<div class="blog-prose">
+			<Content />
+		</div>
+
+		<footer class="mt-16 pt-8" style="border-top:1px solid rgba(0,0,0,0.08);">
+			<div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+				<div style="font-size:13px;color:var(--color-gray-400);">
+					<span class="font-semibold" style="color:var(--color-gray-700);">{post.data.author}</span>
+					<span aria-hidden="true" style="margin:0 8px;opacity:0.4">·</span>
+					<time datetime={post.data.publishedAt.toISOString()}>{formattedDate}</time>
+				</div>
+				<a class="blog-back-link" href={`/${locale}/blog`}>
+					<svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="14">
+						<path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+					{t("blog.backToBlog")}
+				</a>
+			</div>
+		</footer>
+	</article>
+</BaseLayout>

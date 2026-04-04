@@ -6,10 +6,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { ArrowRight, Star } from "lucide-react";
 
-const apps = await getCollection("apps");
+const apps = await getCollection("apps", ({ slug }) => slug.startsWith("en/"));
 const featuredApps = apps.slice(0, 4);
 
-const blogPosts = await getCollection("blog");
+const blogPosts = await getCollection("blog", ({ slug }) => slug.startsWith("en/"));
 const latestPosts = blogPosts
 	.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
 	.slice(0, 3);
@@ -331,7 +331,7 @@ const features = [
 
 				<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 					{latestPosts.map((post, i) => (
-						<a href={`/blog/${post.slug}`} class="blog-teaser-card no-underline" style={`animation-delay: ${i * 80}ms`}>
+						<a href={`/blog/${post.slug.replace("en/", "")}`} class="blog-teaser-card no-underline" style={`animation-delay: ${i * 80}ms`}>
 							<div class="flex-1 space-y-3">
 								{post.data.tags && post.data.tags.length > 0 && (
 									<span class="inline-block rounded-full bg-brand-50 dark:bg-brand-950/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">

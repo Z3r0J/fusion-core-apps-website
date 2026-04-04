@@ -3,9 +3,8 @@ import BlogPostCard from "@/components/BlogPostCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const allPosts = (await getCollection("blog")).sort(
-	(a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-);
+const allPosts = (await getCollection("blog", ({ slug }) => slug.startsWith("en/")))
+	.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
 
 // Most recent featured post becomes the hero; rest go in the grid
 const heroPost = allPosts.find((p) => p.data.featured) ?? allPosts[0];
