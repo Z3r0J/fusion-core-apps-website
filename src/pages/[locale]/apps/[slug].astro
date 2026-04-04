@@ -40,7 +40,7 @@ const isBeta = app.data.beta ?? false;
 ---
 
 <BaseLayout {canonical} {description} {ogImage} {title} locale={locale} showFooterCta={false}>
-	<AppJsonLd app={app} />
+	<AppJsonLd app={app} canonical={canonical} />
 
 	<div class="-mx-4 sm:-mx-6 lg:-mx-8 mb-12">
 		<div class="app-detail-hero relative overflow-hidden">
@@ -147,7 +147,7 @@ const isBeta = app.data.beta ?? false;
 					<div class="snap-center shrink-0 group">
 						<div class="relative overflow-hidden shadow-2xl transition-transform duration-300 group-hover:-translate-y-2" style="width: 180px; height: 360px; border-radius: 1.75rem; border: 2px solid rgba(255,255,255,0.08); background: #0b1c2d;">
 							<div class="absolute top-2.5 left-1/2 -translate-x-1/2 h-4 w-14 rounded-full z-10" style="background: #0b1c2d;"></div>
-							<img src={shot} alt={`${app.data.title} screenshot ${i + 1}`} class="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
+							<img src={shot} alt={`${app.data.title} — ${t("app.screenshots")} ${i + 1}`} class="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
 						</div>
 						<p class="mt-2 text-center text-xs text-gray-400 dark:text-gray-600 tabular-nums">{i + 1}/{app.data.screenshots.length}</p>
 					</div>

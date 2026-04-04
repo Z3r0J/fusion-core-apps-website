@@ -1,11 +1,17 @@
 ---
 import type { CollectionEntry } from "astro:content";
-const { app } = Astro.props as { app: CollectionEntry<"apps"> };
+const { app, canonical } = Astro.props as { app: CollectionEntry<"apps">; canonical?: string };
 
 const screenshots =
 	app.data.screenshots?.length > 0
 		? app.data.screenshots.map((s: string) => new URL(s, Astro.site).href)
 		: undefined;
+
+const localeToLanguage: Record<string, string> = { en: "en", es: "es-419", pt: "pt-BR" };
+const inLanguage = app.data.locale ? (localeToLanguage[app.data.locale] ?? app.data.locale) : undefined;
+
+const isFree = !app.data.price || ["Free", "Gratis", "Grátis", "0"].includes(app.data.price);
+const pageUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 
 const structuredData = {
 	"@context": "https://schema.org",
@@ -14,13 +20,13 @@ const structuredData = {
 	"operatingSystem": "Android",
 	"applicationCategory": app.data.category,
 	"description": app.data.description,
-	"url": new URL(`/apps/${app.slug}`, Astro.site).href,
+	"url": pageUrl,
 	"downloadUrl": app.data.playUrl,
 	"image": app.data.icon ? new URL(app.data.icon, Astro.site).href : undefined,
 	...(app.data.version ? { "softwareVersion": app.data.version } : {}),
 	...(screenshots ? { "screenshot": screenshots } : {}),
 	...(app.data.lastUpdated ? { "dateModified": app.data.lastUpdated } : {}),
-	...(app.data.locale ? { "inLanguage": app.data.locale } : {}),
+	...(inLanguage ? { "inLanguage": inLanguage } : {}),
 	"applicationSubCategory": app.data.category,
 	"contentRating": "Everyone",
 	"author": {
@@ -30,8 +36,8 @@ const structuredData = {
 	},
 	"offers": {
 		"@type": "Offer",
-		"price": app.data.price === "Free" ? "0" : app.data.price,
-		"priceCurrency": "USD",
+		"price": isFree ? "0" : app.data.price,
+		...(isFree ? {} : { "priceCurrency": "USD" }),
 		"availability": "https://schema.org/InStock",
 	},
 	"publisher": { "@type": "Organization", "name": "FusionCore Apps" },

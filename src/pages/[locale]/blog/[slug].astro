@@ -21,7 +21,7 @@ const t = useTranslations(locale);
 const { Content } = await post.render();
 const postSlug = post.slug.replace(`${locale}/`, "");
 
-const title = `${post.data.title} | FusionCore`;
+const title = `${post.data.title} — FusionCore`;
 const description = post.data.description;
 const canonical = new URL(`/${locale}/blog/${postSlug}`, Astro.site).href;
 const ogImage = post.data.image || "/og-default.png";

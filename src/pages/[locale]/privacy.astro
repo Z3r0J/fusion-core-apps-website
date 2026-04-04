@@ -12,12 +12,12 @@ export function getStaticPaths() {
 const { locale } = Astro.params as { locale: Locale };
 const t = useTranslations(locale);
 
-const policy = await getEntry("legal", "privacy");
-if (!policy) throw new Error("Privacy policy not found");
+const policy = await getEntry("legal", `privacy-${locale}` as "privacy-es" | "privacy-pt");
+if (!policy) throw new Error(`Privacy policy not found for locale: ${locale}`);
 const { Content } = await policy.render();
 
-const title = `${t("breadcrumbs.privacy")} — FusionCore Apps`;
-const description = "Privacy policy for FusionCore Apps mobile applications and website.";
+const title = `${policy.data.title} — FusionCore Apps`;
+const description = t("legal.privacyDescription");
 const canonical = new URL(`/${locale}/privacy`, Astro.site).href;
 ---
 
@@ -26,7 +26,7 @@ const canonical = new URL(`/${locale}/privacy`, Astro.site).href;
 		{ label: t("breadcrumbs.home"), href: `/${locale}` },
 		{ label: t("breadcrumbs.privacy"), href: `/${locale}/privacy` },
 	]} />
-	<LegalLayout eyebrow="Legal" icon="shield" title={t("breadcrumbs.privacy")} updatedAt={policy.data.updatedAt}>
+	<LegalLayout eyebrow="Legal" icon="shield" title={policy.data.title} updatedAt={policy.data.updatedAt}>
 		<Content />
 	</LegalLayout>
 </BaseLayout>

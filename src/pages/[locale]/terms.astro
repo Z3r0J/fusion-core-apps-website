@@ -3,6 +3,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import LegalLayout from "@/components/LegalLayout.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { useTranslations, type Locale } from "@/i18n/utils";
+import { getEntry } from "astro:content";
 
 export function getStaticPaths() {
 	return [{ params: { locale: "es" } }, { params: { locale: "pt" } }];
@@ -11,8 +12,12 @@ export function getStaticPaths() {
 const { locale } = Astro.params as { locale: Locale };
 const t = useTranslations(locale);
 
-const title = `${t("breadcrumbs.terms")} — FusionCore Apps`;
-const description = "Terms of service for FusionCore Apps mobile applications and website.";
+const terms = await getEntry("legal", `terms-${locale}` as "terms-es" | "terms-pt");
+if (!terms) throw new Error(`Terms not found for locale: ${locale}`);
+const { Content } = await terms.render();
+
+const title = `${terms.data.title} — FusionCore Apps`;
+const description = t("legal.termsDescription");
 const canonical = new URL(`/${locale}/terms`, Astro.site).href;
 ---
 
@@ -21,14 +26,7 @@ const canonical = new URL(`/${locale}/terms`, Astro.site).href;
 		{ label: t("breadcrumbs.home"), href: `/${locale}` },
 		{ label: t("breadcrumbs.terms"), href: `/${locale}/terms` },
 	]} />
-	<LegalLayout eyebrow="Legal" icon="document" title={t("breadcrumbs.terms")} updatedAt="2026-03-01">
-		<h2 id="agreement">Agreement to Terms</h2>
-		<p>By accessing or using any application or service provided by FusionCore Apps, you agree to be bound by these Terms of Service.</p>
-		<h2 id="use-license">Use License</h2>
-		<p>FusionCore Apps grants you a limited, non-exclusive, non-transferable, revocable license to use our applications for personal, non-commercial purposes.</p>
-		<h2 id="disclaimer">Disclaimer</h2>
-		<p>Our applications and services are provided "as is" without warranties of any kind.</p>
-		<h2 id="contact">Contact Us</h2>
-		<p>Questions about these Terms? <a href={`/${locale}/contact`}>Contact us</a>.</p>
+	<LegalLayout eyebrow="Legal" icon="document" title={terms.data.title} updatedAt={terms.data.updatedAt}>
+		<Content />
 	</LegalLayout>
 </BaseLayout>

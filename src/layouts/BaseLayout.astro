@@ -62,7 +62,7 @@ const resolvedOgImage =
 		<link href={canonicalUrl} rel="canonical" />
 		<link href={new URL(localeLinks.en, Astro.site).href} hreflang="x-default" rel="alternate" />
 		<link href={new URL(localeLinks.en, Astro.site).href} hreflang="en" rel="alternate" />
-		<link href={new URL(localeLinks.es, Astro.site).href} hreflang="es" rel="alternate" />
+		<link href={new URL(localeLinks.es, Astro.site).href} hreflang="es-419" rel="alternate" />
 		<link href={new URL(localeLinks.pt, Astro.site).href} hreflang="pt-BR" rel="alternate" />
 
 		<meta content={ogType} property="og:type" />
@@ -73,7 +73,7 @@ const resolvedOgImage =
 		<meta content="1200" property="og:image:width" />
 		<meta content="630" property="og:image:height" />
 		<meta content="FusionCore Apps" property="og:site_name" />
-		<meta content={currentLocale === "es" ? "es_419" : currentLocale === "pt" ? "pt_BR" : "en_US"} property="og:locale" />
+		<meta content={currentLocale === "es" ? "es_MX" : currentLocale === "pt" ? "pt_BR" : "en_US"} property="og:locale" />
 
 		<meta content="summary_large_image" name="twitter:card" />
 		<meta content="@FusioncoreApps" name="twitter:site" />
@@ -118,19 +118,17 @@ const resolvedOgImage =
 				"sameAs": ["https://play.google.com/store/apps/dev?id=5173536626513659112"]
 			}
 		</script>
-		<script is:inline type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "WebSite",
-				"url": "https://www.fusioncoreapps.com",
-				"name": "FusionCore Apps",
-				"potentialAction": {
-					"@type": "SearchAction",
-					"target": "https://www.fusioncoreapps.com/apps?q={search_term_string}",
-					"query-input": "required name=search_term_string"
-				}
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"url": "https://www.fusioncoreapps.com",
+			"name": "FusionCore Apps",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": `https://www.fusioncoreapps.com/${currentLocale !== "en" ? currentLocale + "/" : ""}apps?q={search_term_string}`,
+				"query-input": "required name=search_term_string"
 			}
-		</script>
+		}).replace(/</g, "\\u003c")}></script>
 
 		<script is:inline>
 			(function () {

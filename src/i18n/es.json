@@ -83,11 +83,16 @@
   "apps": {
     "overline": "Google Play · Desarrollador Verificado",
     "title": "Todas las Aplicaciones",
+    "metaDescription": "Explora todas las apps Android de FusionCore: Biblia TPT, Biblia TLA, CartWise y más — gratis en Google Play.",
     "apps": "Apps",
     "downloads": "Descargas",
     "free": "Gratis",
     "always": "Siempre",
     "viewAll": "Ver todas las apps"
+  },
+  "legal": {
+    "privacyDescription": "Política de privacidad de FusionCore Apps — cómo recopilamos, usamos y protegemos tu información en nuestras apps Android.",
+    "termsDescription": "Términos de servicio de FusionCore Apps — condiciones de uso para nuestras aplicaciones Android y sitio web."
   },
   "app": {
     "screenshots": "Capturas de pantalla",

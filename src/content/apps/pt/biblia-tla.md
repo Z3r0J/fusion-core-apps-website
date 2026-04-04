@@ -5,7 +5,7 @@ description: "Biblia TLA é um aplicativo de Bíblia em espanhol usando a Traduc
 icon: "/images/apps/biblia-tla/icon.webp"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.biblia.tla"
 category: "Books & Reference"
-tags: ["bíblia em espanhol", "biblia tla", "bíblia em áudio", "bíblia offline", "lenguaje actual", "android"]
+tags: ["bíblia em espanhol", "biblia tla", "bíblia em áudio", "bíblia offline", "tradução em linguagem atual", "android"]
 locale: "pt"
 price: "Free"
 version: "1.1.4"

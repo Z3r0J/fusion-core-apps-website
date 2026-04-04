@@ -23,7 +23,7 @@ const canonical = new URL(`/${locale}/blog`, Astro.site).href;
 <BaseLayout
 	{canonical}
 	description={t("blog.subtitle")}
-	title={`${t("blog.title")} — FusionCore`}
+	title={locale === "es" ? "Blog de FusionCore — Apps Android, Guías y Artículos" : "Blog da FusionCore — Apps Android, Guias e Artigos"}
 	locale={locale}
 >
 	<header class="blog-index-header">
