@@ -33,6 +33,25 @@ const categories = [...new Set(apps.map((a) => a.category))];
 	description="Browse all FusionCore Apps: Bible TPT Passion Translation, Biblia TLA en Español Fácil, and CartWise Grocery Shopping List. Free Android apps on Google Play."
 	title="Android Apps: Bible, Grocery & Productivity — FusionCore"
 >
+	<script
+		is:inline
+		set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			"name": "FusionCore Apps",
+			"description": "All Android apps published by FusionCore Apps on Google Play",
+			"url": canonical,
+			"numberOfItems": apps.length,
+			"itemListElement": apps.map((app, i) => ({
+				"@type": "ListItem",
+				"position": i + 1,
+				"name": app.title,
+				"url": `https://www.fusioncoreapps.com/apps/${app.slug}`,
+			})),
+		}).replace(/</g, "\\u003c")}
+		slot="head"
+		type="application/ld+json"
+	></script>
 	<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Apps", href: "/apps" }]} />
 
 	<!-- Page Header -->

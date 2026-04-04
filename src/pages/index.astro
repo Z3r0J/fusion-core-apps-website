@@ -169,9 +169,9 @@ const features = [
 
 	<!-- ─── SOCIAL PROOF / STATS ─────────────────────────────────────────────── -->
 	<section class="-mx-4 sm:-mx-6 lg:-mx-8 mb-0">
-		<div class="relative overflow-hidden" style="background: linear-gradient(135deg, #0b1c2d 0%, #0e2a42 50%, #0b1c2d 100%);">
-			<!-- Subtle dot grid on dark bg -->
-			<div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle, rgba(46,207,255,0.2) 1px, transparent 1px); background-size: 32px 32px;"></div>
+		<div class="social-proof-section relative overflow-hidden">
+			<!-- Dot grid (subtle in light, visible in dark) -->
+			<div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-[0.06] dark:opacity-30" style="background-image: radial-gradient(circle, rgba(46,207,255,0.6) 1px, transparent 1px); background-size: 32px 32px;"></div>
 
 			<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
 
@@ -179,20 +179,20 @@ const features = [
 				<AnimatedSection client:visible>
 					<div class="grid grid-cols-2 gap-8 sm:grid-cols-4 mb-20">
 						<div class="text-center">
-							<div class="font-display font-extrabold text-white tracking-tight" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.04em; font-family: 'Urbanist', 'Space Grotesk', system-ui;">3.3K+</div>
-							<div class="mt-2 text-xs font-semibold tracking-widest uppercase text-gray-400">Downloads</div>
+							<div class="social-proof-stat-num">3.3K+</div>
+							<div class="social-proof-stat-label">Downloads</div>
 						</div>
 						<div class="text-center">
-							<div class="font-display font-extrabold text-white tracking-tight" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.04em; font-family: 'Urbanist', 'Space Grotesk', system-ui;">4.5★</div>
-							<div class="mt-2 text-xs font-semibold tracking-widest uppercase text-gray-400">Avg. Rating</div>
+							<div class="social-proof-stat-num">4.5★</div>
+							<div class="social-proof-stat-label">Avg. Rating</div>
 						</div>
 						<div class="text-center">
-							<div class="font-display font-extrabold text-white tracking-tight" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.04em; font-family: 'Urbanist', 'Space Grotesk', system-ui;">3</div>
-							<div class="mt-2 text-xs font-semibold tracking-widest uppercase text-gray-400">Apps Published</div>
+							<div class="social-proof-stat-num">3</div>
+							<div class="social-proof-stat-label">Apps Published</div>
 						</div>
 						<div class="text-center">
-							<div class="font-display font-extrabold" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.04em; font-family: 'Urbanist', 'Space Grotesk', system-ui; background: linear-gradient(135deg, #ff8a2a, #2ecfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Free</div>
-							<div class="mt-2 text-xs font-semibold tracking-widest uppercase text-gray-400">To Download</div>
+							<div class="social-proof-stat-num" style="background: linear-gradient(135deg, #ff8a2a, #2ecfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Free</div>
+							<div class="social-proof-stat-label">To Download</div>
 						</div>
 					</div>
 				</AnimatedSection>
@@ -200,69 +200,72 @@ const features = [
 				<!-- Testimonials -->
 				<AnimatedSection client:visible delay={0.2}>
 					<div class="mb-10">
-						<div class="section-label text-brand-400 mb-4">
+						<div class="section-label text-brand-500 dark:text-brand-400 mb-4">
 							<span class="section-label__dot" style="background-color: var(--color-brand-400);"></span>
 							<span>What users say</span>
 						</div>
-						<h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+						<h2 class="social-proof-heading">
 							Trusted by thousands of users
 						</h2>
 					</div>
 
 					<div class="grid gap-5 sm:grid-cols-3">
 						<!-- Testimonial 1 -->
-						<div class="rounded-2xl border border-white/8 bg-white/5 p-6 backdrop-blur-sm">
+						<div class="testimonial-card">
 							<div class="mb-3 flex gap-0.5">
 								{Array.from({ length: 5 }).map(() => (
 									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
 								))}
 							</div>
-							<p class="mb-5 text-sm leading-relaxed text-gray-300">
+							<p class="testimonial-text">
 								"Best Bible app I've found. The TPT translation reads beautifully and the interface is clean and easy to navigate. Use it every day."
 							</p>
-							<div class="flex items-center gap-3 pt-4 border-t border-white/8">
+							<div class="testimonial-divider"></div>
+							<div class="flex items-center gap-3 pt-4">
 								<div class="h-8 w-8 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">JD</div>
 								<div>
-									<div class="text-sm font-semibold text-white">John D.</div>
-									<div class="text-xs text-gray-500">Bible TPT</div>
+									<div class="testimonial-name">John D.</div>
+									<div class="testimonial-app">Bible TPT</div>
 								</div>
 							</div>
 						</div>
 
 						<!-- Testimonial 2 -->
-						<div class="rounded-2xl border border-white/8 bg-white/5 p-6 backdrop-blur-sm">
+						<div class="testimonial-card">
 							<div class="mb-3 flex gap-0.5">
 								{Array.from({ length: 5 }).map(() => (
 									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
 								))}
 							</div>
-							<p class="mb-5 text-sm leading-relaxed text-gray-300">
+							<p class="testimonial-text">
 								"Finally a grocery list app that just works. No bloat, no complexity. I share my list with my wife and it works perfectly every time."
 							</p>
-							<div class="flex items-center gap-3 pt-4 border-t border-white/8">
+							<div class="testimonial-divider"></div>
+							<div class="flex items-center gap-3 pt-4">
 								<div class="h-8 w-8 rounded-full bg-gradient-to-br from-accent-400 to-accent-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">MS</div>
 								<div>
-									<div class="text-sm font-semibold text-white">Mario S.</div>
-									<div class="text-xs text-gray-500">CartWise Grocery List</div>
+									<div class="testimonial-name">Mario S.</div>
+									<div class="testimonial-app">CartWise Grocery List</div>
 								</div>
 							</div>
 						</div>
 
 						<!-- Testimonial 3 -->
-						<div class="rounded-2xl border border-white/8 bg-white/5 p-6 backdrop-blur-sm">
+						<div class="testimonial-card">
 							<div class="mb-3 flex gap-0.5">
 								{Array.from({ length: 5 }).map(() => (
 									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
 								))}
 							</div>
-							<p class="mb-5 text-sm leading-relaxed text-gray-300">
+							<p class="testimonial-text">
 								"Me encanta esta app de la Biblia TLA. Muy fácil de usar y la traducción es clara. La uso todos los días con mi familia."
 							</p>
-							<div class="flex items-center gap-3 pt-4 border-t border-white/8">
+							<div class="testimonial-divider"></div>
+							<div class="flex items-center gap-3 pt-4">
 								<div class="h-8 w-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">CR</div>
 								<div>
-									<div class="text-sm font-semibold text-white">Carlos R.</div>
-									<div class="text-xs text-gray-500">Biblia TLA en Español</div>
+									<div class="testimonial-name">Carlos R.</div>
+									<div class="testimonial-app">Biblia TLA en Español</div>
 								</div>
 							</div>
 						</div>

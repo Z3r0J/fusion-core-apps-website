@@ -58,15 +58,13 @@ const isBeta = app.data.beta ?? false;
 
 			<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-14 pt-8">
 				<!-- Breadcrumb -->
-				<nav aria-label="Breadcrumb">
-					<ol class="flex items-center gap-2 text-sm">
-						<li><a href="/" class="text-gray-400 hover:text-gray-700 dark:text-white/50 dark:hover:text-white transition-colors">Home</a></li>
-						<li class="text-gray-300 dark:text-white/25">›</li>
-						<li><a href="/apps" class="text-gray-400 hover:text-gray-700 dark:text-white/50 dark:hover:text-white transition-colors">Apps</a></li>
-						<li class="text-gray-300 dark:text-white/25">›</li>
-						<li class="text-gray-600 dark:text-white/80 font-medium truncate max-w-[200px]">{app.data.title}</li>
-					</ol>
-				</nav>
+				<Breadcrumbs
+					items={[
+						{ label: "Home", href: "/" },
+						{ label: "Apps", href: "/apps" },
+						{ label: app.data.title, href: `/apps/${app.slug}` },
+					]}
+				/>
 
 				<!-- App identity row -->
 				<div class="mt-8 flex flex-col gap-8 sm:flex-row sm:items-start">

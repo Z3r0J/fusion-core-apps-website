@@ -8,6 +8,7 @@ const {
 	title = "FusionCore Apps — Premium Mobile Applications",
 	description = "Professional mobile app development studio delivering secure, innovative, and user-friendly applications for Android and iOS platforms. Transform your ideas into powerful digital experiences.",
 	ogImage = "/og-default.png",
+	ogType = "website",
 	canonical,
 	noindex = false,
 	bodyClass = "",
@@ -42,14 +43,18 @@ const resolvedOgImage =
 		<link href={canonicalUrl} hreflang="x-default" rel="alternate" />
 		<link href={canonicalUrl} hreflang={locale} rel="alternate" />
 
-		<meta content="website" property="og:type" />
+		<meta content={ogType} property="og:type" />
 		<meta content={new URL(Astro.url.pathname, Astro.site).href} property="og:url" />
 		<meta content={title} property="og:title" />
 		<meta content={description} property="og:description" />
 		<meta content={resolvedOgImage} property="og:image" />
+		<meta content="1200" property="og:image:width" />
+		<meta content="630" property="og:image:height" />
 		<meta content="FusionCore Apps" property="og:site_name" />
+		<meta content={locale === "es" ? "es_ES" : "en_US"} property="og:locale" />
 
 		<meta content="summary_large_image" name="twitter:card" />
+		<meta content="@FusioncoreApps" name="twitter:site" />
 		<meta content={new URL(Astro.url.pathname, Astro.site).href} name="twitter:url" />
 		<meta content={title} name="twitter:title" />
 		<meta content={description} name="twitter:description" />
@@ -61,12 +66,18 @@ const resolvedOgImage =
 		<meta content="yes" name="mobile-web-app-capable" />
 		<meta content="default" name="apple-mobile-web-app-status-bar-style" />
 
-		<link rel="preload" href="/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preconnect" href="https://fonts.bunny.net" />
+		<link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
+		<link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+		<link
+			rel="preload"
+			href="https://fonts.bunny.net/css?family=urbanist:700,800,900|dm-sans:400,500&display=swap"
+			as="style"
+		/>
 		<link href="https://fonts.bunny.net/css?family=urbanist:400,500,600,700,800,900|dm-sans:300,400,500,600&display=swap" rel="stylesheet" />
 
 		<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
-		<link href="/favicon.svg" rel="apple-touch-icon" />
+		<!-- apple-touch-icon.png must be a 180×180 PNG at /public/apple-touch-icon.png -->
+		<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
 
 		<script is:inline type="application/ld+json">
 			{
@@ -75,9 +86,27 @@ const resolvedOgImage =
 				"name": "FusionCore Apps",
 				"description": "Professional mobile app development studio",
 				"url": "https://www.fusioncoreapps.com",
-				"logo": "https://www.fusioncoreapps.com/logo.png",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https://www.fusioncoreapps.com/logo.png",
+					"width": 528,
+					"height": 551
+				},
 				"foundingDate": "2024",
 				"sameAs": ["https://play.google.com/store/apps/dev?id=5173536626513659112"]
+			}
+		</script>
+		<script is:inline type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				"url": "https://www.fusioncoreapps.com",
+				"name": "FusionCore Apps",
+				"potentialAction": {
+					"@type": "SearchAction",
+					"target": "https://www.fusioncoreapps.com/apps?q={search_term_string}",
+					"query-input": "required name=search_term_string"
+				}
 			}
 		</script>
 
@@ -325,33 +354,30 @@ const resolvedOgImage =
 			<!-- Top gradient line (always visible) -->
 			<div class="h-px w-full" style="background: linear-gradient(90deg, transparent 0%, #ff8a2a 25%, #e8455b 50%, #2ecfff 75%, transparent 100%);"></div>
 
-			<!-- CTA Island — always dark, creates contrast anchor -->
+			<!-- CTA Island — theme-aware -->
 			{showFooterCta && (
-				<div class="relative overflow-hidden" style="background: #080f1a;">
-					<!-- Ambient glow accents -->
+				<div class="footer-cta-island">
+					<!-- Ambient glow accents (visible in dark, subtle in light) -->
 					<div aria-hidden="true" class="pointer-events-none absolute inset-0">
-						<div class="absolute -top-24 right-1/4 h-64 w-64 rounded-full blur-[80px]" style="background: rgba(255,138,42,0.18);"></div>
-						<div class="absolute -bottom-16 left-1/4 h-56 w-56 rounded-full blur-[80px]" style="background: rgba(46,207,255,0.14);"></div>
+						<div class="absolute -top-24 right-1/4 h-64 w-64 rounded-full blur-[80px] opacity-30 dark:opacity-100" style="background: rgba(255,138,42,0.15);"></div>
+						<div class="absolute -bottom-16 left-1/4 h-56 w-56 rounded-full blur-[80px] opacity-20 dark:opacity-100" style="background: rgba(46,207,255,0.12);"></div>
 					</div>
 					<!-- Dot grid texture -->
-					<div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-20" style="background-image: radial-gradient(circle, rgba(46,207,255,0.2) 1px, transparent 1px); background-size: 28px 28px;"></div>
+					<div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-[0.07] dark:opacity-20" style="background-image: radial-gradient(circle, rgba(46,207,255,0.5) 1px, transparent 1px); background-size: 28px 28px;"></div>
 
 					<div class="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-20 text-center sm:px-6 lg:px-8">
-						<div class="section-label" style="color: rgba(255,255,255,0.45);">
-							<span class="inline-block h-1.5 w-1.5 rounded-full mr-2" style="background: rgba(255,255,255,0.4);"></span>
+						<div class="footer-cta-island__label section-label">
+							<span class="inline-block h-1.5 w-1.5 rounded-full mr-2 opacity-50"></span>
 							Available on Google Play
 						</div>
-						<h2 style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 900; letter-spacing: -0.04em; line-height: 0.95; color: #fff;">
+						<h2 class="footer-cta-island__title">
 							Premium apps.<br/>Free to start.
 						</h2>
-						<p class="max-w-md text-base leading-relaxed" style="color: rgba(255,255,255,0.55);">
+						<p class="footer-cta-island__body">
 							Every app is free to download on Google Play. Some unlock additional features through an optional subscription — but the core experience is always free.
 						</p>
-						<a
-							href="/apps"
-							class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-gray-900 shadow-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
-						>
-							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
+						<a href="/apps" class="footer-cta-island__btn">
+							<svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 								<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#2ecfff" opacity="0.9"/>
 								<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#ffc107" opacity="0.9"/>
 								<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="#ff3e00"/>

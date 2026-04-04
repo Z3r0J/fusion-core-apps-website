@@ -4,6 +4,7 @@ description: "La Biblia TLA (Traducción en Lenguaje Actual) hace que leer las E
 publishedAt: "2026-03-01"
 author: "FusionCore Apps"
 tags: ["biblia", "español", "apps", "android"]
+image: "/images/blog/biblia-tla-espanol-facil-guia.png"
 featured: false
 ---
 
@@ -48,4 +49,6 @@ Tener la app instalada es solo el primer paso. Estos consejos te ayudarán a man
 
 La Biblia TLA elimina la barrera del lenguaje complicado y hace que las Escrituras sean accesibles para todos los hispanohablantes. Combinada con una app diseñada para la simplicidad y la comodidad, leer la Biblia se convierte en una experiencia agradable y enriquecedora.
 
-Descarga Biblia TLA gratis en Google Play y comienza tu viaje de lectura hoy. No importa si es tu primera vez abriendo una Biblia o si llevas años leyendo: la TLA te ofrece una perspectiva fresca y clara del texto que ha inspirado a la humanidad durante siglos.
+No importa si es tu primera vez abriendo una Biblia o si llevas años leyendo: la TLA te ofrece una perspectiva fresca y clara del texto que ha inspirado a la humanidad durante siglos.
+
+[Descarga Biblia TLA gratis para Android →](/apps/biblia-tla)

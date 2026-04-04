@@ -26,7 +26,7 @@ const formattedDate = post.data.publishedAt.toLocaleDateString("en-US", {
 });
 ---
 
-<BaseLayout {canonical} {description} {ogImage} {title}>
+<BaseLayout {canonical} {description} {ogImage} {title} ogType="article" locale={post.data.tags?.includes("español") || post.data.tags?.includes("biblia") ? "es" : "en"}>
 	<BlogJsonLd post={post} url={canonical} />
 
 	<article class="mx-auto max-w-3xl">

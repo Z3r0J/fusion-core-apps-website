@@ -3,6 +3,8 @@ import type { CollectionEntry } from "astro:content";
 
 const { post, url } = Astro.props as { post: CollectionEntry<"blog">; url: string };
 
+const siteUrl = Astro.site?.href.replace(/\/$/, "") ?? "https://www.fusioncoreapps.com";
+
 const structuredData = {
 	"@context": "https://schema.org",
 	"@type": "Article",
@@ -10,6 +12,13 @@ const structuredData = {
 	"description": post.data.description,
 	"datePublished": post.data.publishedAt.toISOString(),
 	"dateModified": (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": url,
+	},
+	"image": post.data.image
+		? new URL(post.data.image, Astro.site).href
+		: `${siteUrl}/og-default.png`,
 	"author": {
 		"@type": "Organization",
 		"name": "FusionCore Apps",
@@ -21,10 +30,11 @@ const structuredData = {
 		"logo": {
 			"@type": "ImageObject",
 			"url": "https://www.fusioncoreapps.com/logo.png",
+			"width": 528,
+			"height": 551,
 		},
 	},
 	"url": url,
-	...(post.data.image ? { image: post.data.image } : {}),
 };
 ---
 

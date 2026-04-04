@@ -27,25 +27,25 @@ export default defineConfig({
 					return item;
 				}
 				// Individual app pages
-				if (item.url.includes("/apps/") && item.url !== "https://www.fusioncoreapps.com/apps/") {
+				if (item.url.includes("/apps/") && item.url !== "https://www.fusioncoreapps.com/apps") {
 					item.changefreq = "monthly";
 					item.priority = 0.9;
 					return item;
 				}
 				// Apps listing
-				if (item.url === "https://www.fusioncoreapps.com/apps/") {
+				if (item.url === "https://www.fusioncoreapps.com/apps") {
 					item.changefreq = "weekly";
 					item.priority = 0.8;
 					return item;
 				}
 				// Blog posts
-				if (item.url.includes("/blog/") && item.url !== "https://www.fusioncoreapps.com/blog/") {
+				if (item.url.includes("/blog/") && item.url !== "https://www.fusioncoreapps.com/blog") {
 					item.changefreq = "monthly";
 					item.priority = 0.7;
 					return item;
 				}
 				// Blog listing
-				if (item.url === "https://www.fusioncoreapps.com/blog/") {
+				if (item.url === "https://www.fusioncoreapps.com/blog") {
 					item.changefreq = "weekly";
 					item.priority = 0.7;
 					return item;

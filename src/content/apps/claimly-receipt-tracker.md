@@ -11,7 +11,7 @@ price: "Free"
 version: "1.0.0"
 lastUpdated: "2026-03-31"
 screenshots: ["/images/screenshots/claimly-home.jpg", "/images/screenshots/claimly-scanner.jpg", "/images/screenshots/claimly-review.jpg", "/images/screenshots/claimly-warranties.jpg", "/images/screenshots/claimly-detail.jpg", "/images/screenshots/claimly-attachments.jpg"]
-downloads: "0"
+downloads: "Beta"
 beta: true
 betaGroupUrl: "https://groups.google.com/g/fusionapps-tester"
 ---

@@ -4,6 +4,7 @@ description: "Claimly is FusionCore's new warranty and receipt tracker for Andro
 publishedAt: "2026-03-31"
 author: "FusionCore Apps"
 tags: ["claimly", "warranty tracker", "receipt scanner", "android", "beta", "new app"]
+image: "/images/blog/claimly-beta-launch-join-warranty-tracker.png"
 featured: true
 ---
 
