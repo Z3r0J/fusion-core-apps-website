@@ -1820,6 +1820,132 @@
 	}
 	.dark .blog-prose hr { border-top-color: rgba(255,255,255,0.08); }
 
+	/* ─── Shared markdown tables (blog, legal, app prose) ─────────────────── */
+	.blog-prose table,
+	.legal-content table,
+	.prose table {
+		width: 100%;
+		margin: 1.9em 0;
+		font-size: 15px;
+		line-height: 1.55;
+		border-collapse: separate;
+		border-spacing: 0;
+		border: 1px solid rgba(0,0,0,0.08);
+		border-radius: 12px;
+		background: #ffffff;
+		box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+	}
+	.dark .blog-prose table,
+	.dark .legal-content table,
+	.dark .prose table {
+		border-color: rgba(255,255,255,0.08);
+		background: rgba(255,255,255,0.02);
+		box-shadow: none;
+	}
+
+	.blog-prose thead,
+	.legal-content thead,
+	.prose thead {
+		background: linear-gradient(180deg, rgba(46,207,255,0.09), rgba(46,207,255,0.03));
+	}
+	.dark .blog-prose thead,
+	.dark .legal-content thead,
+	.dark .prose thead {
+		background: linear-gradient(180deg, rgba(46,207,255,0.12), rgba(46,207,255,0.04));
+	}
+
+	.blog-prose th,
+	.legal-content th,
+	.prose th {
+		text-align: left;
+		padding: 12px 16px;
+		font-weight: 700;
+		font-size: 12px;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--color-gray-800);
+		border-bottom: 1px solid rgba(46,207,255,0.20);
+	}
+	.dark .blog-prose th,
+	.dark .legal-content th,
+	.dark .prose th {
+		color: #ffffff;
+		border-bottom-color: rgba(46,207,255,0.28);
+	}
+
+	.blog-prose td,
+	.legal-content td,
+	.prose td {
+		padding: 12px 16px;
+		border-bottom: 1px solid rgba(0,0,0,0.05);
+		color: var(--color-gray-700);
+		vertical-align: top;
+	}
+	.dark .blog-prose td,
+	.dark .legal-content td,
+	.dark .prose td {
+		border-bottom-color: rgba(255,255,255,0.05);
+		color: rgba(255,255,255,0.72);
+	}
+
+	.blog-prose tbody tr:nth-child(even),
+	.legal-content tbody tr:nth-child(even),
+	.prose tbody tr:nth-child(even) {
+		background: rgba(15,23,42,0.02);
+	}
+	.dark .blog-prose tbody tr:nth-child(even),
+	.dark .legal-content tbody tr:nth-child(even),
+	.dark .prose tbody tr:nth-child(even) {
+		background: rgba(255,255,255,0.025);
+	}
+
+	.blog-prose tbody tr:hover,
+	.legal-content tbody tr:hover,
+	.prose tbody tr:hover {
+		background: rgba(46,207,255,0.05);
+	}
+	.dark .blog-prose tbody tr:hover,
+	.dark .legal-content tbody tr:hover,
+	.dark .prose tbody tr:hover {
+		background: rgba(46,207,255,0.07);
+	}
+
+	.blog-prose tbody tr:last-child td,
+	.legal-content tbody tr:last-child td,
+	.prose tbody tr:last-child td {
+		border-bottom: none;
+	}
+
+	/* Round the corner cells so the rounded border looks continuous */
+	.blog-prose thead tr:first-child th:first-child,
+	.legal-content thead tr:first-child th:first-child,
+	.prose thead tr:first-child th:first-child { border-top-left-radius: 12px; }
+	.blog-prose thead tr:first-child th:last-child,
+	.legal-content thead tr:first-child th:last-child,
+	.prose thead tr:first-child th:last-child { border-top-right-radius: 12px; }
+	.blog-prose tbody tr:last-child td:first-child,
+	.legal-content tbody tr:last-child td:first-child,
+	.prose tbody tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+	.blog-prose tbody tr:last-child td:last-child,
+	.legal-content tbody tr:last-child td:last-child,
+	.prose tbody tr:last-child td:last-child { border-bottom-right-radius: 12px; }
+
+	/* Inline code inside cells stays compact */
+	.blog-prose td code,
+	.legal-content td code,
+	.prose td code { font-size: 0.85em; padding: 1px 5px; }
+
+	/* Horizontal scroll on narrow viewports — tables stay legible */
+	@media (max-width: 720px) {
+		.blog-prose table,
+		.legal-content table,
+		.prose table {
+			display: block;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+	}
+
 	/* Back to blog pill link */
 	.blog-back-link {
 		display: inline-flex;

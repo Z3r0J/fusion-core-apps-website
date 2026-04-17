@@ -4,7 +4,7 @@ description: "Claimly is a warranty tracker and receipt scanner for Android. Sca
 publishedAt: "2026-04-17"
 author: "FusionCore Apps"
 tags: ["claimly", "warranty tracker", "receipt scanner", "android app", "product launch", "fusioncore apps"]
-image: "/images/blog/claimly-beta-launch-join-warranty-tracker.png"
+image: "/images/blog/claimly-now-available-google-play.png"
 featured: true
 ---
 

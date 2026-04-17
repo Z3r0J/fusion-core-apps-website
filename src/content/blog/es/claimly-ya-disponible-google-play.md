@@ -4,7 +4,7 @@ description: "Claimly es un rastreador de garantías y escáner de recibos para 
 publishedAt: "2026-04-17"
 author: "FusionCore Apps"
 tags: ["claimly", "rastreador de garantías", "escáner de recibos", "android", "lanzamiento", "fusioncore apps"]
-image: "/images/blog/claimly-beta-launch-join-warranty-tracker.png"
+image: "/images/blog/claimly-ya-disponible-google-play.png"
 featured: true
 ---
 
