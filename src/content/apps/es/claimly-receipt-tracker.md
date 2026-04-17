@@ -1,7 +1,7 @@
 ---
 title: "Claimly: Rastreador de Garantías y Recibos"
 tagline: "Nunca pierdas una garantía. Escanea recibos, rastrea garantías y recibe alertas de vencimiento."
-description: "Claimly es un rastreador de garantías y recibos que guarda todas tus compras en un solo lugar. Escanea cualquier recibo con la cámara, deja que la IA complete los detalles automáticamente y recibe notificaciones antes de que venzan las garantías. Actualmente en acceso anticipado — únete a la beta para probarlo primero."
+description: "Claimly es un rastreador de garantías y recibos que guarda todas tus compras en un solo lugar. Escanea cualquier recibo con la cámara, deja que la IA complete los detalles automáticamente y recibe notificaciones antes de que venzan las garantías."
 icon: "/images/apps/claimly/icon.png"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusioncoreapps.claimly"
 category: "Productivity"
@@ -9,20 +9,13 @@ tags: ["rastreador de garantías", "escáner de recibos", "inventario", "recorda
 locale: "es"
 price: "Free"
 version: "1.0.0"
-lastUpdated: "2026-03-31"
+lastUpdated: "2026-04-17"
 screenshots: ["/images/screenshots/claimly-home.jpg", "/images/screenshots/claimly-scanner.jpg", "/images/screenshots/claimly-review.jpg", "/images/screenshots/claimly-warranties.jpg", "/images/screenshots/claimly-detail.jpg", "/images/screenshots/claimly-attachments.jpg"]
-downloads: "Beta"
-beta: true
-betaGroupUrl: "https://groups.google.com/g/fusionapps-tester"
+downloads: "1K+"
+beta: false
 ---
 ## Descripción
 **Claimly: Rastreador de Garantías y Recibos** es tu inventario personal de todo lo que tienes. Escanea recibos con la cámara, deja que la IA extraiga automáticamente el nombre del producto, tienda, fecha y precio, y luego rastrea garantías del comercio, del fabricante y extendidas — todo con temporizadores de cuenta regresiva para que nunca pierdas un plazo de reclamo.
-
-Actualmente estamos en **acceso anticipado** — únete a la beta para ser uno de los primeros usuarios y ayudar a mejorar la app con tu feedback.
-
-## Cómo unirte a la Beta
-1. **Únete al grupo de testers**: [groups.google.com/g/fusionapps-tester](https://groups.google.com/g/fusionapps-tester)
-2. **Descarga Claimly** desde Google Play después de unirte al grupo
 
 ## Características
 - **Escáner de recibos** — apunta la cámara a cualquier recibo, la IA extrae todos los detalles automáticamente

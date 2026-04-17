@@ -1,7 +1,7 @@
 ---
 title: "Claimly: Warranty & Receipt Tracker"
 tagline: "Never lose a warranty again. Scan receipts, track warranties, and get expiry alerts."
-description: "Claimly is a warranty and receipt tracker that keeps all your purchases and warranties in one place. Scan any receipt with your camera, let AI auto-fill the details, and get notified before warranties expire. Currently in early access — join the beta to try it first."
+description: "Claimly is a warranty and receipt tracker that keeps all your purchases and warranties in one place. Scan any receipt with your camera, let AI auto-fill the details, and get notified before warranties expire."
 icon: "/images/apps/claimly/icon.png"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusioncoreapps.claimly"
 category: "Productivity"
@@ -9,20 +9,13 @@ tags: ["warranty tracker", "receipt scanner", "inventory app", "warranty reminde
 locale: "en"
 price: "Free"
 version: "1.0.0"
-lastUpdated: "2026-03-31"
+lastUpdated: "2026-04-17"
 screenshots: ["/images/screenshots/claimly-home.jpg", "/images/screenshots/claimly-scanner.jpg", "/images/screenshots/claimly-review.jpg", "/images/screenshots/claimly-warranties.jpg", "/images/screenshots/claimly-detail.jpg", "/images/screenshots/claimly-attachments.jpg"]
-downloads: "Beta"
-beta: true
-betaGroupUrl: "https://groups.google.com/g/fusionapps-tester"
+downloads: "1K+"
+beta: false
 ---
 ## Overview
 **Claimly: Warranty & Receipt Tracker** is your personal inventory for everything you own. Scan receipts with your camera, let AI auto-extract the product name, store, date, and price, then track store warranties, manufacturer warranties, and extended warranties — all with countdown timers so you never miss a claim deadline.
-
-We're currently in **early access** — join the beta to be one of the first users and shape the app with your feedback.
-
-## How to Join the Beta
-1. **Join our tester group**: [groups.google.com/g/fusionapps-tester](https://groups.google.com/g/fusionapps-tester)
-2. **Download Claimly** from Google Play after joining the group
 
 ## Features
 - **Receipt scanner** — point your camera at any receipt, AI extracts all the details automatically
