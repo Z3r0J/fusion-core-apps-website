@@ -17,6 +17,20 @@ const {
 	showHero = false,
 	locale = "en",
 	showFooterCta = true,
+	// Locales for which a real translation of the current page exists.
+	// Defaults to all three for backward compat (homepage, /apps, /about, etc.).
+	// Pages like blog posts SHOULD pass an explicit list so Google does not infer
+	// translations that do not exist (causes 404s in GSC — e.g., /pt/blog/<en-only-slug>).
+	availableLocales = ["en", "es", "pt"] as Array<"en" | "es" | "pt">,
+	// Optional override for the per-locale URLs of the current page.
+	// Default behavior derives sibling URLs by naive path translation
+	// (e.g., /blog/foo → /es/blog/foo), which is wrong when translated
+	// posts live under different slugs. Pages with a `translationKey`
+	// should pass exact URLs here so hreflang and the language switcher
+	// route to the correct locale-specific slugs.
+	localeLinks: localeLinksOverride = undefined as
+		| Partial<{ en: string; es: string; pt: string }>
+		| undefined,
 } = Astro.props;
 
 const year = new Date().getFullYear();
@@ -25,11 +39,15 @@ const currentPath = Astro.url.pathname;
 // i18n — compute locale links from current pathname
 const currentLocale = locale ?? getLocaleFromPath(currentPath);
 const basePath = stripLocalePath(currentPath);
-const localeLinks = {
+const defaultLocaleLinks = {
 	en: getLocalePath(basePath, "en"),
 	es: getLocalePath(basePath, "es"),
 	pt: getLocalePath(basePath, "pt"),
 };
+// Partial-merge so callers can override only the locales they have real
+// translations for; the rest fall back to the naive path translation
+// (used by the language switcher when no override is supplied).
+const localeLinks = { ...defaultLocaleLinks, ...(localeLinksOverride ?? {}) };
 const t = useTranslations(currentLocale as Locale);
 
 // Locale-aware nav hrefs
@@ -60,10 +78,18 @@ const resolvedOgImage =
 		<meta content={description} name="description" />
 		<meta content={noindex ? "noindex,nofollow" : "index,follow"} name="robots" />
 		<link href={canonicalUrl} rel="canonical" />
-		<link href={new URL(localeLinks.en, Astro.site).href} hreflang="x-default" rel="alternate" />
-		<link href={new URL(localeLinks.en, Astro.site).href} hreflang="en" rel="alternate" />
-		<link href={new URL(localeLinks.es, Astro.site).href} hreflang="es-419" rel="alternate" />
-		<link href={new URL(localeLinks.pt, Astro.site).href} hreflang="pt-BR" rel="alternate" />
+		{availableLocales.includes("en") && (
+			<link href={new URL(localeLinks.en, Astro.site).href} hreflang="x-default" rel="alternate" />
+		)}
+		{availableLocales.includes("en") && (
+			<link href={new URL(localeLinks.en, Astro.site).href} hreflang="en" rel="alternate" />
+		)}
+		{availableLocales.includes("es") && (
+			<link href={new URL(localeLinks.es, Astro.site).href} hreflang="es-419" rel="alternate" />
+		)}
+		{availableLocales.includes("pt") && (
+			<link href={new URL(localeLinks.pt, Astro.site).href} hreflang="pt-BR" rel="alternate" />
+		)}
 
 		<meta content={ogType} property="og:type" />
 		<meta content={new URL(Astro.url.pathname, Astro.site).href} property="og:url" />

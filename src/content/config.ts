@@ -57,6 +57,10 @@ const blog = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
+		// Stable cross-locale identifier shared by translations of the same post.
+		// When present on multiple posts, the blog page resolves siblings and emits
+		// correct hreflang links (and language-switcher URLs) per locale.
+		translationKey: z.string().optional(),
 		publishedAt: z.coerce.date(),
 		updatedAt: z.coerce.date().optional(),
 		author: z.string().default("FusionCore Apps"),

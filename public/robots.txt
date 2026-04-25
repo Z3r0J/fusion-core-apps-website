@@ -3,6 +3,11 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
+# Allow legitimate SearchAction target URLs (must precede the broad Disallow below)
+# These match the schema.org SearchAction `target` emitted in BaseLayout
+Allow: /apps?q=
+Allow: /es/apps?q=
+Allow: /pt/apps?q=
 # Disallow all URLs with query parameters (UTM, referral trackers, etc.)
 # Prevents crawl budget waste on parameterized variants like ?from=AppAgg.com or ?utm_source=...
 Disallow: /*?*

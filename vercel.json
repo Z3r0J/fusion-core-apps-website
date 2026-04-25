@@ -3,6 +3,11 @@
   "installCommand": "pnpm install",
   "redirects": [
     {
+      "source": "/blog/claimly-ya-disponible-google-play",
+      "destination": "/es/blog/claimly-ya-disponible-google-play",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

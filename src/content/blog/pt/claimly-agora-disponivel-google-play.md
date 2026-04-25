@@ -1,6 +1,7 @@
 ---
 title: "Claimly Agora Está no Google Play — O Rastreador de Garantias que Escaneia Seus Recibos"
 description: "Claimly é um rastreador de garantias e scanner de recibos para Android. Escaneie recibos com OCR, rastreie múltiplas garantias por produto e receba alertas de vencimento."
+translationKey: "claimly-google-play-launch"
 publishedAt: "2026-04-17"
 author: "FusionCore Apps"
 tags: ["claimly", "rastreador de garantias", "scanner de recibos", "android", "lançamento", "fusioncore apps"]

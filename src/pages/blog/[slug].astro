@@ -2,6 +2,7 @@
 import BlogJsonLd from "@/components/BlogJsonLd.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import type { Locale } from "@/i18n/utils";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog", ({ slug }) => slug.startsWith("en/"));
@@ -25,9 +26,39 @@ const formattedDate = post.data.publishedAt.toLocaleDateString("en-US", {
 	month: "long",
 	day: "numeric",
 });
+
+// ── Cross-locale sibling resolution ──
+// If this post declares a `translationKey`, find every post sharing it (each
+// lives under a different `<locale>/...` slug). Build the exact per-locale URL
+// for hreflang and the language switcher. Without a key, only the current
+// locale is advertised — preventing GSC 404s on inferred translations.
+const allBlogPosts = await getCollection("blog");
+const siblings = post.data.translationKey
+	? allBlogPosts.filter((p) => p.data.translationKey === post.data.translationKey)
+	: [post];
+
+const localeLinksOverride: Partial<Record<Locale, string>> = {};
+const availableLocales: Locale[] = [];
+for (const sibling of siblings) {
+	const [siblingLocale, ...rest] = sibling.slug.split("/");
+	if (siblingLocale !== "en" && siblingLocale !== "es" && siblingLocale !== "pt") continue;
+	const siblingSlug = rest.join("/");
+	localeLinksOverride[siblingLocale as Locale] =
+		siblingLocale === "en" ? `/blog/${siblingSlug}` : `/${siblingLocale}/blog/${siblingSlug}`;
+	availableLocales.push(siblingLocale as Locale);
+}
 ---
 
-<BaseLayout {canonical} {description} {ogImage} {title} ogType="article" locale="en">
+<BaseLayout
+	{canonical}
+	{description}
+	{ogImage}
+	{title}
+	ogType="article"
+	locale="en"
+	availableLocales={availableLocales}
+	localeLinks={post.data.translationKey ? localeLinksOverride : undefined}
+>
 	<BlogJsonLd post={post} url={canonical} />
 
 	<article class="mx-auto max-w-3xl">
