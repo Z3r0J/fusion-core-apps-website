@@ -31,3 +31,5 @@ Compras semanales, planificación de menú familiar, compradores conscientes del
 
 ## ¿Por qué CartWise?
 CartWise es la única app de lista de compras que **suma el carrito en tiempo real** mientras compras — sin sorpresas en la caja. Con entrada por voz, listas con IA, compartir por WhatsApp y análisis de gastos, es la app de compras más inteligente disponible.
+
+¿Quieres el recorrido completo? Visita la [página de CartWise](/es/cartwise) o mira [cómo se compara CartWise](/es/compare-apps) con Bring!, Listonic, AnyList y OurGroceries.

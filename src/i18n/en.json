@@ -11,7 +11,7 @@
     "home": "Home"
   },
   "footer": {
-    "tagline": "Free Android apps crafted with care — for Bible reading, shopping, and everyday life.",
+    "tagline": "Free Android apps crafted with care, for Bible reading, shopping, and everyday life.",
     "navigation": "Navigation",
     "ourApps": "Our Apps",
     "viewAll": "View All →",
@@ -26,10 +26,11 @@
     "termsOfService": "Terms of Service",
     "availableOn": "Available on Google Play",
     "ctaTitle": "Premium apps. Free to start.",
-    "ctaBody": "Every app is free to download on Google Play. Some unlock additional features through an optional subscription — but the core experience is always free.",
+    "ctaBody": "Every app is free to download on Google Play. Some unlock additional features through an optional subscription, but the core experience is always free.",
     "browseAllApps": "Browse All Apps",
     "skipToContent": "Skip to main content",
-    "mobileStats": "Free Android apps · 3 apps · 3.3K+ downloads"
+    "mobileStats": "Free Android apps · 3 apps · 3.3K+ downloads",
+    "compareApps": "Compare apps"
   },
   "contact": {
     "title": "Contact Us",
@@ -52,7 +53,7 @@
     "overline": "Free Android Apps · Google Play Verified",
     "title": "Apps built for",
     "titleGradient": "real people.",
-    "subtitle": "Bible reading, grocery lists, and everyday tools — crafted with care and free to download on Google Play.",
+    "subtitle": "Bible reading, grocery lists, and everyday tools, crafted with care and free to download on Google Play.",
     "statsDownloads": "Downloads",
     "statsRating": "Avg. Rating",
     "statsFree": "Free",
@@ -69,14 +70,14 @@
     "socialTrustedBy": "Trusted by thousands of users",
     "featuresOverline": "Why FusionCore",
     "featuresTitle": "Built different, on purpose.",
-    "featuresSubtitle": "Every decision — from architecture to animation — is made with the end user in mind.",
+    "featuresSubtitle": "Every decision, from architecture to animation, is made with the end user in mind.",
     "blogOverline": "From the blog",
     "blogTitle": "Guides & insights",
     "blogAllPosts": "All posts",
     "blogRead": "Read",
     "ctaOverline": "Ready to download?",
     "ctaTitle": "Premium apps. Free to start.",
-    "ctaBody": "Every app is free to download on Google Play. Some unlock additional features through an optional subscription — but the core experience is always free.",
+    "ctaBody": "Every app is free to download on Google Play. Some unlock additional features through an optional subscription, but the core experience is always free.",
     "ctaBrowse": "Browse All Apps",
     "ctaContact": "Contact us"
   },
@@ -92,7 +93,9 @@
   },
   "legal": {
     "privacyDescription": "Privacy policy for FusionCore Apps — how we collect, use, and protect your information in our Android apps.",
-    "termsDescription": "Terms of service for FusionCore Apps — usage conditions for our Android applications and website."
+    "termsDescription": "Terms of service for FusionCore Apps — usage conditions for our Android applications and website.",
+    "cartwisePrivacyDescription": "Privacy policy for CartWise — how the grocery-list app collects, uses, and protects your information.",
+    "cartwiseTermsDescription": "Terms of service for CartWise — usage conditions for the grocery-list app."
   },
   "app": {
     "screenshots": "Screenshots",
@@ -108,7 +111,7 @@
     "tags": "Tags",
     "freeDownload": "Free Download",
     "getOnGooglePlay": "Get on Google Play",
-    "joinBeta": "Join Beta — Free",
+    "joinBeta": "Join the free beta",
     "allApps": "← All Apps",
     "moreFrom": "More from FusionCore",
     "downloadsLabel": "downloads",
@@ -134,6 +137,195 @@
     "blog": "Blog",
     "contact": "Contact",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "cartwise": "CartWise",
+    "cartwisePrivacy": "Privacy Policy",
+    "cartwiseTerms": "Terms of Service"
+  },
+  "cartwise": {
+    "meta": {
+      "title": "CartWise – Free Grocery List App with Live Price Calculator (No Sign-Up)",
+      "description": "Add items by voice or AI, watch your cart total update as you shop, and share lists instantly via QR or WhatsApp. Free, offline, no account needed. Android."
+    },
+    "hero": {
+      "eyebrow": "FusionCore Apps · CartWise",
+      "appName": "CartWise",
+      "appCategory": "Shared Grocery List",
+      "headline": "The free grocery list app that adds up your total as you shop",
+      "tagline": "Grocery list with a real-time price calculator, voice input, and instant sharing. No fuss, no signup.",
+      "ctaDownload": "Get it on Google Play",
+      "ctaLearnMore": "See all features ↓",
+      "trustNoAccount": "No account needed",
+      "trustFree": "Free to start",
+      "trustOffline": "Works offline"
+    },
+    "features": {
+      "eyebrow": "Features",
+      "headline": "Everything your grocery trip needs, and a running total",
+      "subline": "Built for real shopping, not demos.",
+      "priceCalc": {
+        "title": "Real-time Price Calculator",
+        "desc": "See the running total update as you tick items. Know your budget before you reach the checkout."
+      },
+      "voice": {
+        "title": "Voice-to-Text Input",
+        "desc": "Say \"2 liters of milk\" and it lands on your list. Hands full? Voice works."
+      },
+      "ai": {
+        "title": "AI-Generated Lists",
+        "desc": "Tell CartWise what you're cooking and it builds the ingredient list for you."
+      },
+      "sharing": {
+        "title": "Instant Sharing",
+        "desc": "Share via QR code or WhatsApp link. Everyone sees updates in real time, no account needed."
+      },
+      "analytics": {
+        "title": "Budget Tracker & Analytics",
+        "desc": "Spending reports by category let you spot where the budget is going each week."
+      },
+      "categories": {
+        "title": "Smart Auto-Categorization",
+        "desc": "Items are grouped by aisle automatically, so you move through the store in order."
+      },
+      "reminders": {
+        "title": "Smart Reminders",
+        "desc": "Set a reminder to leave the house at the right time. CartWise pings you, not the other way around."
+      },
+      "offline": {
+        "title": "Offline-First",
+        "desc": "All your lists are stored locally. No signal in the store? CartWise still works perfectly."
+      },
+      "languages": {
+        "title": "Available in 8 Languages",
+        "desc": "English, Spanish, Portuguese, French, German, Italian, Dutch, and Polish."
+      }
+    },
+    "screenshots": {
+      "eyebrow": "Screenshots",
+      "headline": "See it in action",
+      "count": "6 screens"
+    },
+    "plans": {
+      "eyebrow": "Plans",
+      "headline": "Start free. Upgrade when you're ready.",
+      "subline": "CartWise is free to use. Pro is an optional upgrade for power users.",
+      "free": {
+        "label": "Free",
+        "price": "$0",
+        "priceNote": "Always free",
+        "feature1": "Unlimited lists & items",
+        "feature2": "Real-time price calculator & budget tracking",
+        "feature3": "Shared lists with real-time sync (QR + WhatsApp)",
+        "feature4": "Reports, export (CSV/PDF/image) & offline",
+        "feature5": "Voice input (10/day) & reminders (1 per list)",
+        "noPro1": "Includes ads",
+        "cta": "Download Free"
+      },
+      "pro": {
+        "label": "Pro",
+        "badge": "PRO",
+        "price": "Optional upgrade",
+        "priceNote": "Unlock the full experience",
+        "feature1": "Remove all ads",
+        "feature2": "Unlimited voice input",
+        "feature3": "Multiple reminders per list",
+        "feature4": "Premium themes",
+        "feature5": "Priority support",
+        "cta": "Get CartWise, it's free",
+        "ctaNote": "Upgrade to Pro available inside the app"
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "headline": "Common questions",
+      "q1": "Do I need an account to use CartWise?",
+      "a1": "No. CartWise works entirely without an account. Open the app and start shopping. Sharing a list doesn't require the other person to sign up either.",
+      "q2": "Is CartWise free?",
+      "a2": "Yes — CartWise is free to download and use, with no account. The free tier includes unlimited lists, the price calculator, budget tracking, and shared lists with real-time sync. Voice input (10/day) and reminders (1 per list) are included too. Pro is an optional in-app upgrade that removes ads, lifts those caps, and adds premium themes and priority support.",
+      "q3": "How does list sharing work?",
+      "a3": "Tap the share button on any list to generate a QR code or a WhatsApp link. Anyone who scans or taps the link joins the list instantly. Changes made by any member appear in real time for everyone.",
+      "q4": "Does voice input record or store my audio?",
+      "a4": "No. Speech is converted to text on your device using Android's built-in speech recognition. No audio is sent to FusionCore's servers or stored anywhere.",
+      "q5": "What platforms is CartWise available on?",
+      "a5": "CartWise is currently available on Android via Google Play. iOS support is on our roadmap."
+    },
+    "cta": {
+      "headline": "Your next grocery run starts here.",
+      "subline": "Free to download. No account. Works offline. Share instantly.",
+      "download": "Download on Google Play",
+      "trust": "No account needed · Free to start · Android"
+    },
+    "compare": {
+      "eyebrow": "Comparisons",
+      "headline": "See how CartWise compares",
+      "subline": "Honest, side-by-side comparisons with popular grocery list apps.",
+      "seeAll": "All comparisons"
+    }
+  },
+  "cartwiseCompare": {
+    "breadcrumb": {
+      "home": "Home",
+      "compare": "Compare apps"
+    },
+    "index": {
+      "metaTitle": "CartWise App Comparisons — FusionCore Apps",
+      "metaDescription": "Honest, side-by-side comparisons of CartWise vs other grocery list apps. Find out which shopping list app fits your needs.",
+      "eyebrow": "App comparisons",
+      "heading": "CartWise vs the competition",
+      "deck": "Honest, feature-by-feature breakdowns so you can pick the grocery list app that actually fits the way you shop."
+    },
+    "hero": {
+      "vsLabel": "VS",
+      "eyebrow": "CartWise vs {{competitor}}",
+      "titleSuffix": "Which Grocery List App Wins in 2026?",
+      "updatedLabel": "Updated",
+      "readTime": "~8 min read",
+      "byAuthor": "By FusionCore Apps",
+      "ctaDownload": "Get CartWise on Google Play",
+      "ctaCompare": "See the comparison ↓",
+      "ratingLabel": "reviews"
+    },
+    "quickTable": {
+      "colCategory": "Category",
+      "colCartwise": "CartWise",
+      "winnerBadge": "✓ Recommended"
+    },
+    "featureTable": {
+      "eyebrow": "Side-by-side comparison",
+      "subhead": "A factual feature breakdown. No spin, you decide.",
+      "colFeature": "Feature",
+      "winnerBadge": "✓ Recommended",
+      "footnote": "Feature information is based on publicly available store listings and official descriptions. Some features may vary by region or app version."
+    },
+    "procon": {
+      "goodLabel": "The good",
+      "badLabel": "The bad"
+    },
+    "winnerCallout": {
+      "label": "The winner"
+    },
+    "ctaMid": {
+      "headline": "Download CartWise free",
+      "subline": "No account, no setup. Add your first item in under 10 seconds.",
+      "button": "Get it on Google Play"
+    },
+    "related": {
+      "label": "Read about other alternatives",
+      "heading": "More CartWise comparisons",
+      "cardTag": "Compare",
+      "seeAllLabel": "All comparisons",
+      "seeAllTitle": "See all app comparisons",
+      "seeAllSub": "Browse every CartWise comparison guide"
+    },
+    "cta": {
+      "eyebrow": "Ready to switch?",
+      "headline": "Ready to try a free {{competitor}} alternative?",
+      "subline": "Download CartWise in seconds. No account, no setup. Just start your list.",
+      "ctaButton": "Download on Google Play",
+      "trustFree": "Free",
+      "trustNoAccount": "No account",
+      "trustOffline": "Works offline",
+      "trustPlatform": "Android"
+    }
   }
 }

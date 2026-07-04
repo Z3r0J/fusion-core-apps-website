@@ -1,0 +1,104 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations } from "@/i18n/utils";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("comparisons", ({ slug }) =>
+	slug.startsWith("en/"),
+);
+
+const t = useTranslations("en");
+
+const hubUrl = new URL("/compare-apps", Astro.site).href;
+const structuredData = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "CollectionPage",
+			name: t("cartwiseCompare.index.metaTitle"),
+			description: t("cartwiseCompare.index.metaDescription"),
+			url: hubUrl,
+		},
+		{
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{
+					"@type": "ListItem",
+					position: 1,
+					name: t("cartwiseCompare.breadcrumb.home"),
+					item: new URL("/", Astro.site).href,
+				},
+				{
+					"@type": "ListItem",
+					position: 2,
+					name: t("cartwiseCompare.breadcrumb.compare"),
+					item: hubUrl,
+				},
+			],
+		},
+		{
+			"@type": "ItemList",
+			itemListElement: entries.map((entry, i) => ({
+				"@type": "ListItem",
+				position: i + 1,
+				name: `CartWise vs ${entry.data.competitorName}`,
+				url: new URL(`/compare-apps/cartwise-vs-${entry.data.competitorSlug}`, Astro.site).href,
+			})),
+		},
+	],
+};
+
+// Escape < in JSON-LD to prevent script injection
+const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
+---
+
+<BaseLayout
+	title={t("cartwiseCompare.index.metaTitle")}
+	description={t("cartwiseCompare.index.metaDescription")}
+	locale="en"
+	showFooterCta={false}
+>
+	<script type="application/ld+json" set:html={jsonLd}></script>
+	<div class="mx-auto px-6 py-14 lg:py-20" style="max-width:960px;">
+		<!-- Breadcrumbs -->
+		<nav class="flex items-center gap-1.5 text-xs font-medium text-gray-400 mb-8" aria-label="Breadcrumb">
+			<a href="/" class="hover:text-brand-500 transition-colors">Home</a>
+			<span class="text-gray-300">/</span>
+			<span class="text-gray-600 font-semibold">Compare apps</span>
+		</nav>
+
+		<!-- Heading -->
+		<div class="mb-3">
+			<div class="inline-flex items-center gap-2 mb-4">
+				<span class="inline-block w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+				<span class="text-[11px] font-bold tracking-widest uppercase text-brand-600">{t("cartwiseCompare.index.eyebrow")}</span>
+			</div>
+			<h1 class="font-display font-black text-gray-900 dark:text-gray-50 mb-3" style="font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em;">
+				{t("cartwiseCompare.index.heading")}
+			</h1>
+			<p class="text-base text-gray-500 dark:text-white/55 leading-relaxed" style="max-width:640px;">
+				{t("cartwiseCompare.index.deck")}
+			</p>
+		</div>
+
+		<!-- Card grid -->
+		<div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+			{entries.map((entry) => (
+				<a
+					href={`/compare-apps/cartwise-vs-${entry.data.competitorSlug}`}
+					class="block rounded-[16px] p-6 bg-white dark:bg-white/3 border border-gray-200/90 dark:border-white/7 no-underline transition-all hover:-translate-y-0.5 hover:border-brand-400/30 hover:shadow-[0_8px_24px_rgba(46,207,255,0.08)]"
+				>
+					<div class="text-[10px] font-bold tracking-[0.1em] uppercase text-brand-600 dark:text-brand-400 mb-2">
+						CartWise vs
+					</div>
+					<div class="font-display font-bold text-lg text-gray-900 dark:text-gray-50 leading-snug mb-1">
+						{entry.data.competitorName}
+					</div>
+					<div class="text-sm text-gray-400 dark:text-white/35 leading-snug">
+						{entry.data.description}
+					</div>
+				</a>
+			))}
+		</div>
+	</div>
+</BaseLayout>

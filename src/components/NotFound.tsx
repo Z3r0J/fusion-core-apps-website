@@ -28,23 +28,6 @@ export default function NotFound() {
 
 	return (
 		<section className="relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden px-4 py-16">
-			{/* Background decoration blobs */}
-			<div
-				className="pointer-events-none absolute top-1/4 -left-32 h-72 w-72 rounded-full opacity-20 blur-3xl dark:opacity-10"
-				style={{ background: "linear-gradient(135deg, #ff8a2a, #e8455b)" }}
-				aria-hidden="true"
-			/>
-			<div
-				className="pointer-events-none absolute -right-32 bottom-1/4 h-80 w-80 rounded-full opacity-20 blur-3xl dark:opacity-10"
-				style={{ background: "linear-gradient(135deg, #4fb3ff, #2ecfff)" }}
-				aria-hidden="true"
-			/>
-			<div
-				className="pointer-events-none absolute top-10 right-1/4 h-48 w-48 rounded-full opacity-15 blur-3xl dark:opacity-5"
-				style={{ background: "linear-gradient(135deg, #e8455b, #4fb3ff)" }}
-				aria-hidden="true"
-			/>
-
 			{/* Floating 404 number */}
 			<motion.div
 				animate={{ y: [0, -15, 0] }}
@@ -52,13 +35,7 @@ export default function NotFound() {
 			>
 				<p
 					aria-hidden="true"
-					className="select-none text-[120px] font-black leading-none sm:text-[150px] lg:text-[180px]"
-					style={{
-						background: "linear-gradient(135deg, #ff8a2a, #e8455b, #4fb3ff, #2ecfff)",
-						backgroundClip: "text",
-						WebkitBackgroundClip: "text",
-						color: "transparent",
-					}}
+					className="select-none text-[120px] font-black leading-none text-gray-200 dark:text-gray-700 sm:text-[150px] lg:text-[180px]"
 				>
 					404
 				</p>

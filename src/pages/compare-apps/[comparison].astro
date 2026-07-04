@@ -1,0 +1,51 @@
+---
+import ComparisonLayout from "@/components/ComparisonLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const entries = await getCollection("comparisons", ({ slug }) =>
+		slug.startsWith("en/"),
+	);
+	return entries.map((e) => ({
+		params: { comparison: `cartwise-vs-${e.data.competitorSlug}` },
+		props: { entry: e },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Resolve related items from sibling en entries
+const allEn = await getCollection("comparisons", ({ slug }) =>
+	slug.startsWith("en/"),
+);
+const relatedItems = (entry.data.relatedSlugs ?? [])
+	.map((s: string) => {
+		const match = allEn.find((e) => e.data.competitorSlug === s);
+		return match
+			? { slug: match.data.competitorSlug, competitorName: match.data.competitorName }
+			: null;
+	})
+	.filter(Boolean) as { slug: string; competitorName: string }[];
+
+const canonical = new URL(
+	`/compare-apps/cartwise-vs-${entry.data.competitorSlug}`,
+	Astro.site,
+).href;
+---
+
+<BaseLayout
+	title={entry.data.title}
+	description={entry.data.description}
+	ogImage="/images/apps/cartwise-grocery-shopping-list/icon.png"
+	ogImageWidth={512}
+	ogImageHeight={512}
+	canonical={canonical}
+	locale="en"
+	showFooterCta={false}
+>
+	<ComparisonLayout {...entry.data} locale="en" relatedItems={relatedItems}>
+		<Content />
+	</ComparisonLayout>
+</BaseLayout>

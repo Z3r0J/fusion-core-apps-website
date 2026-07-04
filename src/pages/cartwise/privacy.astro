@@ -1,0 +1,33 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import LegalLayout from "@/components/LegalLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getEntry } from "astro:content";
+
+const policy = await getEntry("legal", "cartwise-privacy");
+if (!policy) throw new Error("CartWise privacy policy not found");
+const { Content } = await policy.render();
+
+const title = "CartWise Privacy Policy — FusionCore Apps";
+const description = "Privacy policy for CartWise — how the grocery-list app collects, uses, and protects your information.";
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<BaseLayout {canonical} {description} {title}>
+	<Breadcrumbs
+		items={[
+			{ label: "Home", href: "/" },
+			{ label: "CartWise", href: "/cartwise" },
+			{ label: "Privacy Policy", href: "/cartwise/privacy" },
+		]}
+	/>
+
+	<LegalLayout
+		eyebrow="Legal"
+		icon="shield"
+		title="CartWise Privacy Policy"
+		updatedAt={policy.data.updatedAt}
+	>
+		<Content />
+	</LegalLayout>
+</BaseLayout>

@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CartWise vs Bring!: Which Grocery List App Wins in 2026? | FusionCore Apps</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+            display: ['Urbanist', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50:  '#f0faff',
+              100: '#e0f6ff',
+              200: '#baeaff',
+              300: '#7ddbff',
+              400: '#2ecfff',
+              500: '#06b6f0',
+              600: '#0091cc',
+              700: '#0674a6',
+              800: '#0a618a',
+              900: '#0e5173',
+              950: '#08344d',
+            },
+            accent: {
+              50:  '#fff8eb',
+              100: '#ffecd1',
+              200: '#ffd5a3',
+              300: '#ffbd75',
+              400: '#ffa547',
+              500: '#ff8a2a',
+              600: '#db681a',
+              700: '#b84a0d',
+            },
+            gray: {
+              50:  '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              600: '#475569',
+              700: '#334155',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
+            },
+          },
+          typography: {
+            DEFAULT: {
+              css: {
+                color: '#334155',
+                lineHeight: '1.85',
+              },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ── Design-system tokens (mirrors global.css) ── */
+    :root {
+      --fc-brand: #2ecfff;
+      --fc-brand-dark: #0091cc;
+      --fc-orange: #ff8a2a;
+      --fc-orange-dark: #db681a;
+      --fc-dark-bg: #0b1c2d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-family: 'DM Sans', system-ui, sans-serif; }
+    body { overflow-x: hidden; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Urbanist', system-ui, sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    body {
+      background: #ffffff;
+      color: #0f172a;
+    }
+    html.dark body {
+      background: #020617;
+      color: #f1f5f9;
+    }
+
+    /* ── Section label (mirrors .section-label) ── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #06b6f0;
+    }
+    html.dark .section-label { color: #2ecfff; }
+
+    .section-label__dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #06b6f0;
+      animation: glow-pulse 2.5s ease-in-out infinite;
+    }
+    html.dark .section-label__dot { background: #2ecfff; }
+
+    /* ── Gradient download button (orange) ── */
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #ff8a2a, #db681a);
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-download::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.15) 50%, transparent 65%);
+      transform: translateX(-110%);
+      transition: transform 0.55s ease;
+    }
+    .btn-download:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,138,42,0.4); }
+    .btn-download:hover::after { transform: translateX(110%); }
+
+    /* ── Ghost button ── */
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 22px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #475569;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    html.dark .btn-ghost {
+      color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.14);
+    }
+    .btn-ghost:hover { background: #f1f5f9; }
+    html.dark .btn-ghost:hover { background: rgba(255,255,255,0.14); color: #fff; }
+
+    /* ── Article hero ── */
+    .article-hero {
+      background: #f7f9fc;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    html.dark .article-hero {
+      background: linear-gradient(135deg, #0b1c2d 0%, #0e2a42 55%, #0a2535 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+    html.dark .breadcrumb { color: rgba(255,255,255,0.35); }
+    .breadcrumb a { color: #64748b; text-decoration: none; transition: color 0.15s ease; }
+    html.dark .breadcrumb a { color: rgba(255,255,255,0.45); }
+    .breadcrumb a:hover { color: #2ecfff; }
+    .breadcrumb-sep { color: #cbd5e1; }
+    html.dark .breadcrumb-sep { color: rgba(255,255,255,0.2); }
+    .breadcrumb-current { color: #475569; font-weight: 600; }
+    html.dark .breadcrumb-current { color: rgba(255,255,255,0.6); }
+
+    /* ── App icon pair in hero ── */
+    .hero-icon-pair {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .hero-app-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+      background: #0b1c2d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .hero-icon-vs {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      padding: 4px 8px;
+      background: #f1f5f9;
+      border-radius: 6px;
+    }
+    html.dark .hero-icon-vs {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── Byline row ── */
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(226,232,240,0.8);
+      font-size: 13px;
+      color: #64748b;
+      flex-wrap: wrap;
+    }
+    html.dark .byline { border-top-color: rgba(255,255,255,0.07); color: rgba(255,255,255,0.45); }
+    .byline-author { font-weight: 600; color: #334155; }
+    html.dark .byline-author { color: rgba(255,255,255,0.7); }
+    .byline-sep { color: #cbd5e1; }
+    html.dark .byline-sep { color: rgba(255,255,255,0.15); }
+
+    /* ── Rating callout ── */
+    .rating-callout {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff8eb;
+      border: 1px solid #ffd5a3;
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #b84a0d;
+    }
+    html.dark .rating-callout {
+      background: rgba(255,138,42,0.08);
+      border-color: rgba(255,138,42,0.2);
+      color: #ff8a2a;
+    }
+    .star-row { color: #ff8a2a; letter-spacing: -1px; font-size: 13px; }
+
+    /* ── Table 1 — Quick breakdown ── */
+    .table-quick {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 14px;
+    }
+    .table-quick thead th {
+      padding: 14px 16px;
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      text-align: left;
+    }
+    .table-quick thead .th-label {
+      color: #64748b;
+      background: #f8fafc;
+      border-radius: 10px 0 0 0;
+      border: 1px solid rgba(226,232,240,0.9);
+      border-right: none;
+    }
+    html.dark .table-quick thead .th-label {
+      color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.07);
+    }
+    .table-quick thead .th-cartwise {
+      color: #fff;
+      background: linear-gradient(135deg, #0b1c2d, #1a3a5c);
+      border-top: 2px solid #2ecfff;
+      text-align: center;
+    }
+    html.dark .table-quick thead .th-cartwise {
+      background: linear-gradient(135deg, #0e2845, #1a3a5c);
+    }
+    .table-quick thead .th-competitor {
+      color: #334155;
+      background: #f8fafc;
+      border-radius: 0 10px 0 0;
+      border: 1px solid rgba(226,232,240,0.9);
+      border-left: none;
+      text-align: center;
+    }
+    html.dark .table-quick thead .th-competitor {
+      color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.07);
+    }
+    .table-quick tbody td {
+      padding: 13px 16px;
+      border-bottom: 1px solid rgba(226,232,240,0.7);
+      vertical-align: middle;
+    }
+    html.dark .table-quick tbody td { border-bottom-color: rgba(255,255,255,0.05); }
+    .table-quick tbody .td-label {
+      font-weight: 600;
+      color: #475569;
+      font-size: 13px;
+    }
+    html.dark .table-quick tbody .td-label { color: rgba(255,255,255,0.5); }
+    .table-quick tbody .td-cartwise {
+      text-align: center;
+      color: #0f172a;
+      font-weight: 600;
+      background: rgba(46,207,255,0.04);
+      border-left: 2px solid rgba(46,207,255,0.15);
+      border-right: 2px solid rgba(46,207,255,0.15);
+    }
+    html.dark .table-quick tbody .td-cartwise {
+      color: #f1f5f9;
+      background: rgba(46,207,255,0.05);
+    }
+    .table-quick tbody .td-competitor {
+      text-align: center;
+      color: #334155;
+      font-weight: 500;
+    }
+    html.dark .table-quick tbody .td-competitor { color: rgba(255,255,255,0.65); }
+    .table-quick tbody tr:last-child td:first-child { border-radius: 0 0 0 10px; }
+    .table-quick tbody tr:last-child td:last-child { border-radius: 0 0 10px 0; }
+    .table-quick tbody tr:last-child td { border-bottom: none; }
+
+    .winner-badge-quick {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #2ecfff;
+      background: rgba(46,207,255,0.12);
+      border: 1px solid rgba(46,207,255,0.25);
+      border-radius: 9999px;
+      padding: 3px 10px;
+      margin-top: 4px;
+    }
+
+    /* ── Table 2 — Feature matrix ── */
+    .table-matrix {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 14px;
+    }
+    .table-matrix thead th {
+      padding: 14px 18px;
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: left;
+    }
+    .table-matrix thead .th-feature {
+      color: #64748b;
+      border-bottom: 1px solid rgba(226,232,240,0.9);
+      width: 45%;
+    }
+    html.dark .table-matrix thead .th-feature { color: rgba(255,255,255,0.4); border-bottom-color: rgba(255,255,255,0.07); }
+    .table-matrix thead .th-cw {
+      color: #fff;
+      background: linear-gradient(135deg, #0b1c2d, #1a3a5c);
+      border-radius: 12px 0 0 0;
+      border-top: 2px solid #2ecfff;
+      text-align: center;
+      width: 27.5%;
+    }
+    html.dark .table-matrix thead .th-cw {
+      background: linear-gradient(135deg, #0e2845, #1a3a5c);
+    }
+    .table-matrix thead .th-comp {
+      color: #334155;
+      background: #f8fafc;
+      border-radius: 0 12px 0 0;
+      border: 1px solid rgba(226,232,240,0.9);
+      border-left: none;
+      text-align: center;
+      width: 27.5%;
+    }
+    html.dark .table-matrix thead .th-comp {
+      color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.07);
+    }
+    .table-matrix tbody tr:hover td { background: rgba(46,207,255,0.015); }
+    html.dark .table-matrix tbody tr:hover td { background: rgba(46,207,255,0.025); }
+    .table-matrix tbody td {
+      padding: 13px 18px;
+      border-bottom: 1px solid rgba(226,232,240,0.6);
+      vertical-align: middle;
+    }
+    html.dark .table-matrix tbody td { border-bottom-color: rgba(255,255,255,0.05); }
+    .table-matrix tbody .td-feat {
+      font-weight: 500;
+      color: #334155;
+      font-size: 14px;
+    }
+    html.dark .table-matrix tbody .td-feat { color: rgba(255,255,255,0.72); }
+    .table-matrix tbody .td-cw {
+      text-align: center;
+      background: rgba(46,207,255,0.04);
+      border-left: 2px solid rgba(46,207,255,0.12);
+      border-right: 2px solid rgba(46,207,255,0.12);
+    }
+    html.dark .table-matrix tbody .td-cw { background: rgba(46,207,255,0.06); }
+    .table-matrix tbody .td-comp { text-align: center; }
+    .table-matrix tbody tr:last-child td { border-bottom: none; }
+
+    .cell-yes {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #0091cc;
+    }
+    html.dark .cell-yes { color: #2ecfff; }
+    .cell-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #94a3b8;
+    }
+    html.dark .cell-no { color: rgba(255,255,255,0.25); }
+    .cell-partial {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      background: rgba(100,116,139,0.08);
+      border-radius: 6px;
+      padding: 2px 8px;
+    }
+    html.dark .cell-partial {
+      color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .table-footnote {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+    html.dark .table-footnote { color: rgba(255,255,255,0.3); }
+
+    .winner-badge-matrix {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #2ecfff;
+      background: rgba(46,207,255,0.12);
+      border: 1px solid rgba(46,207,255,0.22);
+      border-radius: 9999px;
+      padding: 2px 8px;
+      margin-top: 3px;
+    }
+
+    /* ── Pro/Con block ── */
+    .procon-card {
+      border-radius: 18px;
+      padding: 28px;
+      border: 1.5px solid rgba(226,232,240,0.9);
+      background: #ffffff;
+    }
+    html.dark .procon-card {
+      background: rgba(255,255,255,0.025);
+      border-color: rgba(255,255,255,0.065);
+    }
+    .procon-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(226,232,240,0.8);
+    }
+    html.dark .procon-header { border-bottom-color: rgba(255,255,255,0.07); }
+    .procon-app-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #0b1c2d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .procon-app-name {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    html.dark .procon-app-name { color: #f1f5f9; }
+    .procon-tagline {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+    html.dark .procon-tagline { color: rgba(255,255,255,0.4); }
+
+    .pros-section { margin-bottom: 18px; }
+    .procon-list-header {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .procon-list-header.good { color: #059669; }
+    .procon-list-header.bad { color: #94a3b8; }
+    html.dark .procon-list-header.good { color: #34d399; }
+    html.dark .procon-list-header.bad { color: rgba(255,255,255,0.3); }
+
+    .procon-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .procon-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #334155;
+    }
+    html.dark .procon-list li { color: rgba(255,255,255,0.7); }
+    .procon-list .pro-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(5,150,105,0.1);
+      border: 1px solid rgba(5,150,105,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    html.dark .procon-list .pro-icon {
+      background: rgba(52,211,153,0.1);
+      border-color: rgba(52,211,153,0.2);
+    }
+    .procon-list .con-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(148,163,184,0.1);
+      border: 1px solid rgba(148,163,184,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    html.dark .procon-list .con-icon {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    /* ── Winner callout band ── */
+    .winner-callout {
+      background: linear-gradient(135deg, #0b1c2d 0%, #0e2a42 55%, #0a2535 100%);
+      border-radius: 20px;
+      padding: 36px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .winner-callout-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .winner-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #2ecfff;
+      margin-bottom: 12px;
+    }
+    .winner-headline {
+      font-family: 'Urbanist', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .winner-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    /* ── Download CTA band (mid-article) ── */
+    .cta-band-mid {
+      background: linear-gradient(135deg, #0b2037 0%, #103252 55%, #0a2535 100%);
+      border-radius: 20px;
+      padding: 32px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band-mid-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .cta-band-mid-text h3 {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .cta-band-mid-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── Prose body (article sections) ── */
+    .prose-article {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #334155;
+    }
+    html.dark .prose-article { color: rgba(255,255,255,0.7); }
+    .prose-article p { margin-bottom: 20px; }
+    .prose-article p:last-child { margin-bottom: 0; }
+    .prose-article strong {
+      color: #0f172a;
+      font-weight: 600;
+    }
+    html.dark .prose-article strong { color: rgba(255,255,255,0.9); }
+    .prose-article em { color: #475569; }
+    html.dark .prose-article em { color: rgba(255,255,255,0.6); }
+
+    .prose-h2 {
+      font-family: 'Urbanist', sans-serif;
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    html.dark .prose-h2 { color: #f1f5f9; }
+
+    /* ── Related cards ── */
+    .related-card {
+      border-radius: 14px;
+      padding: 20px 22px;
+      background: #ffffff;
+      border: 1px solid rgba(226,232,240,0.9);
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    html.dark .related-card {
+      background: rgba(255,255,255,0.025);
+      border-color: rgba(255,255,255,0.065);
+    }
+    .related-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(46,207,255,0.3);
+      box-shadow: 0 8px 24px rgba(46,207,255,0.1);
+    }
+    .related-card-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #06b6f0;
+      margin-bottom: 6px;
+    }
+    html.dark .related-card-tag { color: #2ecfff; }
+    .related-card-title {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    html.dark .related-card-title { color: #f1f5f9; }
+    .related-card-sub {
+      font-size: 12px;
+      color: #64748b;
+    }
+    html.dark .related-card-sub { color: rgba(255,255,255,0.35); }
+
+    /* ── Section alt background ── */
+    .section-alt {
+      background: #f8fafc;
+    }
+    html.dark .section-alt {
+      background: rgba(11,28,45,0.6);
+    }
+
+    /* ── Final CTA band ── */
+    .cta-band {
+      background: linear-gradient(135deg, #0b1c2d 0%, #0e2a42 55%, #0a2535 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── Theme toggle ── */
+    #theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 9999;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      background: rgba(46,207,255,0.12);
+      border: 1px solid rgba(46,207,255,0.25);
+      color: #0091cc;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    html.dark #theme-toggle {
+      background: rgba(46,207,255,0.1);
+      border-color: rgba(46,207,255,0.2);
+      color: #2ecfff;
+    }
+    #theme-toggle:hover { transform: scale(1.05); }
+
+    /* ── Glow ── */
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+
+    /* ── Trust badge ── */
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #64748b;
+    }
+    html.dark .trust-badge { color: rgba(255,255,255,0.45); }
+
+    /* ── Gradient text ── */
+    .gradient-text {
+      background: linear-gradient(135deg, #2ecfff, #0091cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+      height: 1px;
+      background: rgba(226,232,240,0.7);
+    }
+    html.dark .section-divider { background: rgba(255,255,255,0.06); }
+  </style>
+</head>
+
+<body>
+
+<!-- ── LIGHT/DARK TOGGLE (mockup utility) ── -->
+<button id="theme-toggle" onclick="document.documentElement.classList.toggle('dark'); this.textContent = document.documentElement.classList.contains('dark') ? '☀ Light' : '🌙 Dark';">
+  🌙 Dark
+</button>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- ARTICLE HERO                                                       -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="article-hero relative overflow-hidden">
+
+  <!-- Dot grid overlay -->
+  <div aria-hidden="true" style="
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(46,207,255,0.2) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    opacity: 0.3;
+  "></div>
+
+  <!-- Cyan glow top-right -->
+  <div aria-hidden="true" style="
+    position: absolute; top: -80px; right: -80px;
+    width: 320px; height: 320px; border-radius: 9999px;
+    background: radial-gradient(circle, rgba(46,207,255,0.6), transparent 70%);
+    filter: blur(90px); opacity: 0.18;
+  "></div>
+
+  <!-- Orange glow bottom-left -->
+  <div aria-hidden="true" style="
+    position: absolute; bottom: -48px; left: -48px;
+    width: 220px; height: 220px; border-radius: 9999px;
+    background: radial-gradient(circle, rgba(255,138,42,0.8), transparent 70%);
+    filter: blur(70px); opacity: 0.1;
+  "></div>
+
+  <div class="relative mx-auto px-6 py-14 lg:py-20" style="max-width: 840px;">
+
+    <!-- Breadcrumb -->
+    <!-- i18n: cartwiseCompare.breadcrumb.* -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="/compare">Compare apps</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">CartWise vs Bring!</span>
+    </nav>
+
+    <!-- App icon pair -->
+    <!-- i18n: cartwiseCompare.hero.vsLabel -->
+    <div class="hero-icon-pair">
+      <div class="hero-app-icon">
+        <img src="/images/apps/cartwise-grocery-shopping-list/icon.png" alt="CartWise icon" style="width:100%;height:100%;object-fit:cover;border-radius:14px;" onerror="this.style.display='none';this.parentNode.innerHTML='🛒';" />
+      </div>
+      <span class="hero-icon-vs">VS</span>
+      <div class="hero-app-icon" style="background:#e8f4fd;">
+        <span style="font-size:26px;">🛍️</span>
+      </div>
+    </div>
+
+    <!-- Section label -->
+    <div class="section-label mb-5">
+      <span class="section-label__dot"></span>
+      <!-- i18n: cartwiseCompare.hero.eyebrow -->
+      <span>CartWise vs Bring!</span>
+    </div>
+
+    <!-- H1 -->
+    <h1 style="
+      font-family: 'Urbanist', sans-serif;
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: #0f172a;
+      margin-bottom: 16px;
+    ">
+      <!-- i18n: cartwiseCompare.hero.title -->
+      <span style="color:#0f172a;" class="dark:text-gray-50">CartWise vs Bring!:</span>
+      <br />
+      <span class="gradient-text">Which Grocery List App Wins in 2026?</span>
+    </h1>
+    <style>html.dark h1 span:first-child { color: #f1f5f9; }</style>
+
+    <!-- Deck (short intro hook) -->
+    <p style="font-size: 17px; line-height: 1.7; color: #475569; max-width: 680px; margin-bottom: 24px;">
+      <!-- i18n: cartwiseCompare.hero.deck -->
+      Both apps let you build grocery lists and share them with family. But Bring! and CartWise take very different bets on what "smart" means. Here is an honest look at both.
+    </p>
+
+    <!-- Rating callouts -->
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px;">
+      <div class="rating-callout">
+        <span class="star-row">★★★★★</span>
+        <span>CartWise · 4.7 (680+ reviews)</span>
+      </div>
+      <!-- i18n: cartwiseCompare.hero.competitorRating -->
+      <div class="rating-callout" style="background:#f8fafc; border-color:#e2e8f0; color:#64748b;">
+        <span style="color:#94a3b8;" class="star-row">★★★★☆</span>
+        <span style="color:#64748b;">Bring! · 4.5 (150K+ reviews)</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:28px;">
+      <a href="https://play.google.com/store/apps/details?id=com.fusionapps.cartwise"
+         target="_blank" rel="noopener nofollow sponsored"
+         class="btn-download">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.9"/>
+          <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"/>
+          <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"/>
+          <path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"/>
+        </svg>
+        <!-- i18n: cartwiseCompare.hero.ctaDownload -->
+        Get CartWise on Google Play
+      </a>
+      <a href="#comparison" class="btn-ghost">
+        <!-- i18n: cartwiseCompare.hero.ctaCompare -->
+        See the comparison ↓
+      </a>
+    </div>
+
+    <!-- Byline -->
+    <div class="byline">
+      <!-- i18n: cartwiseCompare.hero.byline -->
+      <span><span class="byline-author">By FusionCore Apps</span></span>
+      <span class="byline-sep">·</span>
+      <!-- i18n: cartwiseCompare.hero.updatedLabel -->
+      <span>Updated <strong>June 2026</strong></span>
+      <span class="byline-sep">·</span>
+      <span>~8 min read</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- ARTICLE BODY                                                       -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="mx-auto px-6 py-14 lg:py-20" style="max-width: 840px;">
+
+
+  <!-- ── H2 1: INTRO HOOK ─────────────────────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <h2 class="prose-h2" style="margin-bottom:20px;">What to keep in mind about grocery list apps</h2>
+    <div class="prose-article">
+      <p>
+        Not all shopping apps compete on the same axis. Some optimize for discovery — beautiful recipe browsing, deal alerts, and store integration. Others focus on the act of shopping itself: speed, offline reliability, and accurate running totals so you do not overshoot the budget at the register.
+      </p>
+      <p>
+        Bring! sits firmly in the discovery camp. It has a large community, a polished recipe import feature, and a catalogue interface that makes browsing feel like flipping through a store flyer. <strong>CartWise sits in the utility camp.</strong> It loads in under two seconds, works without a connection, and keeps a live price total without asking you to set up an account first.
+      </p>
+      <p>
+        Neither approach is wrong. The right app depends on whether you shop from inspiration or from a list you build while standing in the kitchen — and on how much you actually care about knowing your spend before you hit checkout. This article runs both apps through the same tests so you can make a clean call.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ── H2 2: QUICK BREAKDOWN TABLE ─────────────────────────────── -->
+  <section id="comparison" style="margin-bottom: 56px;">
+    <h2 class="prose-h2" style="margin-bottom: 8px;">Quick breakdown</h2>
+    <p class="prose-article" style="margin-bottom: 24px; font-size:15px;">
+      At a glance — what each app does best.
+    </p>
+
+    <!-- Table 1 -->
+    <div style="border-radius: 16px; overflow: hidden; border: 1px solid rgba(226,232,240,0.9);">
+      <style>html.dark div:has(> .table-quick) { border-color: rgba(255,255,255,0.07); }</style>
+      <table class="table-quick">
+        <thead>
+          <tr>
+            <!-- i18n: cartwiseCompare.quickTable.colCategory -->
+            <th class="th-label">Category</th>
+            <!-- i18n: cartwiseCompare.quickTable.colCartwise -->
+            <th class="th-cartwise">
+              CartWise
+              <br />
+              <span class="winner-badge-quick">✓ Recommended</span>
+            </th>
+            <!-- i18n: cartwiseCompare.quickTable.colCompetitor -->
+            <th class="th-competitor">Bring!</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-label">⭐ Best feature</td>
+            <td class="td-cartwise">Live price calculator</td>
+            <td class="td-competitor">Recipe import</td>
+          </tr>
+          <tr>
+            <td class="td-label">👥 Best for</td>
+            <td class="td-cartwise">Budget-focused shoppers</td>
+            <td class="td-competitor">Recipe planners</td>
+          </tr>
+          <tr>
+            <td class="td-label">🔥 Game-changer</td>
+            <td class="td-cartwise">Voice-to-list + AI suggestions</td>
+            <td class="td-competitor">Community product catalog</td>
+          </tr>
+          <tr>
+            <td class="td-label">🤖 AI</td>
+            <td class="td-cartwise">AI list generation</td>
+            <td class="td-competitor">None listed</td>
+          </tr>
+          <tr>
+            <td class="td-label">💎 Pricing</td>
+            <td class="td-cartwise">Free · Pro optional</td>
+            <td class="td-competitor">Free · Bring! Plus paid</td>
+          </tr>
+          <tr>
+            <td class="td-label">☝️ Overall</td>
+            <td class="td-cartwise" style="color:#0091cc;font-weight:700;">Best for fast, offline shopping</td>
+            <td class="td-competitor">Better for recipe discovery</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- ── H2 3: CARTWISE PRO/CON ───────────────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <h2 class="prose-h2" style="margin-bottom: 24px;">CartWise</h2>
+    <div class="procon-card">
+      <div class="procon-header">
+        <div class="procon-app-icon">
+          <img src="/images/apps/cartwise-grocery-shopping-list/icon.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" onerror="this.style.display='none';this.parentNode.innerHTML='🛒';" />
+        </div>
+        <div>
+          <div class="procon-app-name">CartWise</div>
+          <div class="procon-tagline">Grocery List + Price Calculator · Android · Free</div>
+        </div>
+        <div class="rating-callout" style="margin-left:auto; flex-shrink:0;">
+          <span class="star-row">★★★★★</span>
+          <span>4.7</span>
+        </div>
+      </div>
+
+      <!-- The good -->
+      <div class="pros-section">
+        <div class="procon-list-header good">The good</div>
+        <ul class="procon-list">
+          <li>
+            <span class="pro-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Real-time price calculator.</strong> Add a unit price to each item and CartWise keeps a live running total as you check things off. No mental math at the register.</span>
+          </li>
+          <li>
+            <span class="pro-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>No account required.</strong> Open the app and start a list immediately. Sharing also requires no account on the recipient's end — just scan a QR code or tap a link.</span>
+          </li>
+          <li>
+            <span class="pro-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Voice input and AI lists.</strong> Say items out loud while cooking; the app transcribes them. Or describe a meal and let AI build the ingredient list.</span>
+          </li>
+          <li>
+            <span class="pro-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Genuinely offline.</strong> All lists and items live on-device first. The app functions fully without a connection — useful in stores with poor signal.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- The bad -->
+      <div>
+        <div class="procon-list-header bad">The bad</div>
+        <ul class="procon-list">
+          <li>
+            <span class="con-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span><strong>Android only for now.</strong> There is no iOS app yet. If your household is split between Android and iPhone, CartWise is not the right shared-list solution at this time.</span>
+          </li>
+          <li>
+            <span class="con-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span><strong>No recipe browser.</strong> CartWise focuses on the list-making act. If you want to browse community recipes and auto-pull ingredients, you are doing that elsewhere.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── H2 4: BRING! PRO/CON ─────────────────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <!-- i18n: cartwiseCompare.competitor.heading -->
+    <h2 class="prose-h2" style="margin-bottom: 24px;">Bring!</h2>
+    <div class="procon-card">
+      <div class="procon-header">
+        <div class="procon-app-icon" style="background:#e8f4fd;">
+          <span style="font-size:24px;">🛍️</span>
+        </div>
+        <div>
+          <div class="procon-app-name">Bring!</div>
+          <div class="procon-tagline">Shopping List · iOS + Android · Free</div>
+        </div>
+        <div class="rating-callout" style="margin-left:auto; flex-shrink:0; background:#f8fafc; border-color:#e2e8f0; color:#64748b;">
+          <span style="color:#94a3b8;" class="star-row">★★★★☆</span>
+          <span style="color:#64748b;">4.5</span>
+        </div>
+      </div>
+
+      <!-- The good -->
+      <div class="pros-section">
+        <div class="procon-list-header good">The good</div>
+        <ul class="procon-list">
+          <li>
+            <span class="pro-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Huge community catalog.</strong> Bring! has a well-established product database with images, making items easier to recognize and tap. Familiar to most users in Europe.</span>
+          </li>
+          <li>
+            <span class="pro-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Cross-platform sharing.</strong> Available on both iOS and Android, so a household with mixed devices can share a single list without anyone being left out.</span>
+          </li>
+          <li>
+            <span class="pro-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Recipe import.</strong> Bring! can pull ingredients from recipe URLs directly into a list, a useful shortcut for meal planners.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- The bad -->
+      <div>
+        <div class="procon-list-header bad">The bad</div>
+        <ul class="procon-list">
+          <li>
+            <span class="con-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span><strong>No price calculator.</strong> There is no built-in way to track item costs or see a running total. If budget awareness is important, Bring! does not address this.</span>
+          </li>
+          <li>
+            <span class="con-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span><strong>Account required for sharing.</strong> To collaborate on a list, both parties need a Bring! account. The friction slows down quick sharing with someone who does not have the app.</span>
+          </li>
+          <li>
+            <span class="con-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span><strong>No voice input or AI lists.</strong> There is no documented voice transcription or AI-driven list generation in the current version. Both are standard in CartWise.</span>
+          </li>
+          <li>
+            <span class="con-icon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span><strong>Partial offline support.</strong> The catalog-based interface requires connectivity to load product images and suggestions, which can feel slow in spotty coverage areas.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── H2 5: FEATURE MATRIX TABLE ───────────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <!-- i18n: cartwiseCompare.featureTable.eyebrow -->
+    <div class="section-label mb-4">
+      <span class="section-label__dot"></span>
+      <span>Side-by-side comparison</span>
+    </div>
+    <h2 class="prose-h2" style="margin-bottom: 8px;">CartWise vs Bring!: Free Features Face-Off</h2>
+    <p style="font-size:14px; color:#64748b; margin-bottom:24px; line-height:1.6;">
+      <!-- i18n: cartwiseCompare.featureTable.subhead -->
+      A factual feature breakdown. No spin — you decide.
+    </p>
+
+    <div style="border-radius: 16px; overflow: hidden; border: 1px solid rgba(226,232,240,0.9); overflow-x: auto;">
+      <table class="table-matrix">
+        <thead>
+          <tr>
+            <!-- i18n: cartwiseCompare.featureTable.colFeature -->
+            <th class="th-feature">Feature</th>
+            <th class="th-cw">
+              CartWise
+              <br />
+              <span class="winner-badge-matrix">✓ Recommended</span>
+            </th>
+            <!-- i18n: cartwiseCompare.featureTable.colCompetitor -->
+            <th class="th-comp">Bring!</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-feat">Real-time price calculator</td>
+            <td class="td-cw"><span class="cell-yes"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+            <td class="td-comp"><span class="cell-no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No</span></td>
+          </tr>
+          <tr>
+            <td class="td-feat">Free tier available</td>
+            <td class="td-cw"><span class="cell-yes"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+            <td class="td-comp"><span class="cell-yes"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+          </tr>
+          <tr>
+            <td class="td-feat">No account required</td>
+            <td class="td-cw"><span class="cell-yes"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+            <td class="td-comp"><span class="cell-no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Required</span></td>
+          </tr>
+          <tr>
+            <td class="td-feat">Fully works offline</td>
+            <td class="td-cw"><span class="cell-yes"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+            <td class="td-comp"><span class="cell-partial">Partial</span></td>
+          </tr>
+          <tr>
+            <td class="td-feat">Voice input</td>
+            <td class="td-cw"><span class="cell-yes"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+            <td class="td-comp"><span class="cell-no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Not listed</span></td>
+          </tr>
+          <tr>
+            <td class="td-feat">AI-generated lists</td>
+            <td class="td-cw"><span class="cell-yes"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+            <td class="td-comp"><span class="cell-no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Not listed</span></td>
+          </tr>
+          <tr>
+            <td class="td-feat">Share via QR + link</td>
+            <td class="td-cw"><span class="cell-yes"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+            <td class="td-comp"><span class="cell-partial">Link only</span></td>
+          </tr>
+          <tr>
+            <td class="td-feat">Recipe import</td>
+            <td class="td-cw"><span class="cell-no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No</span></td>
+            <td class="td-comp"><span class="cell-yes" style="color:#64748b;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+          </tr>
+          <tr>
+            <td class="td-feat">iOS + Android</td>
+            <td class="td-cw"><span class="cell-partial">Android</span></td>
+            <td class="td-comp"><span class="cell-yes" style="color:#64748b;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Both</span></td>
+          </tr>
+          <tr>
+            <td class="td-feat">Ad-free option</td>
+            <td class="td-cw"><span class="cell-partial">Pro upgrade</span></td>
+            <td class="td-comp"><span class="cell-partial">Bring! Plus</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-footnote">
+      <!-- i18n: cartwiseCompare.featureTable.footnote -->
+      Feature information is based on publicly available store listings and official descriptions as of June 2026. Some features may vary by region or app version.
+    </p>
+  </section>
+
+
+  <!-- ── H2 6: MID-ARTICLE WINNER CALLOUT ─────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <div class="winner-callout">
+
+      <!-- Dot grid -->
+      <div aria-hidden="true" style="
+        position: absolute; inset: 0; border-radius: 20px;
+        background-image: radial-gradient(circle, rgba(46,207,255,0.15) 1.5px, transparent 1.5px);
+        background-size: 24px 24px; opacity: 0.5;
+      "></div>
+      <!-- Glow -->
+      <div aria-hidden="true" style="
+        position: absolute; top: -40px; right: -40px;
+        width: 220px; height: 220px; border-radius: 9999px;
+        background: radial-gradient(circle, rgba(46,207,255,0.5), transparent 70%);
+        filter: blur(70px); opacity: 0.3;
+      "></div>
+
+      <div class="winner-callout-inner">
+        <!-- i18n: cartwiseCompare.winnerCallout.label -->
+        <div class="winner-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          The winner
+        </div>
+        <!-- i18n: cartwiseCompare.winnerCallout.headline -->
+        <div class="winner-headline">CartWise wins on utility, budget, and speed.</div>
+        <p class="winner-sub">
+          <!-- i18n: cartwiseCompare.winnerCallout.body -->
+          For shoppers who care about spending less and checking out faster, CartWise delivers a tighter, more focused experience — without asking for an account or a connection. If your top priority is recipe discovery or you need iOS, Bring! is the better pick.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── H2 7: PRICE TRACKING & BUDGETING ─────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <h2 class="prose-h2">Price tracking &amp; budgeting</h2>
+    <div class="prose-article">
+      <p>
+        This is the clearest divergence between the two apps. <strong>CartWise treats the price field as a first-class feature.</strong> Every item can carry a unit price and a quantity. As you work through the store and check items off, a live total at the bottom of the list updates in real time. Shoppers on a tight budget can see the moment they are about to overspend — before they reach the cashier.
+      </p>
+      <p>
+        Bring! does not offer a price calculator in its free tier or, as of this writing, in Bring! Plus. The app is designed around visual product tiles — you tap the items you want, the list populates, and you shop. There is no mechanism to track spend unless you use a separate tool alongside it.
+      </p>
+      <p>
+        If knowing your total before checkout matters to you, this is a decisive advantage for CartWise. For shoppers who have a rough budget in their head and do not need a number, Bring!'s approach is perfectly adequate.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ── H2 8: SHARING & COLLABORATION ────────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <h2 class="prose-h2">Sharing &amp; collaboration</h2>
+    <div class="prose-article">
+      <p>
+        Both apps let you share a grocery list with someone else. <strong>The friction difference is significant.</strong> CartWise generates a QR code and a shareable link. The person receiving it does not need a CartWise account — they tap the link, the app opens (or they download it), and they are immediately editing the same list. This makes it practical for sending a list to a partner, a parent, or a housemate in seconds.
+      </p>
+      <p>
+        Bring! requires both parties to have a Bring! account before a list can be shared. On one hand, this enables a slightly richer real-time collaboration experience with user avatars and persistent shared spaces. On the other hand, it is a hard stop for anyone who does not already have the app — and convincing someone to create an account just to see a grocery list is a real barrier.
+      </p>
+      <p>
+        Bring! has an edge on iOS + Android households. If your partner uses an iPhone, CartWise cannot help — it is Android only at this time. In a mixed-platform home, Bring! is the only option of the two.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ── H2 9: VOICE & AI ──────────────────────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <h2 class="prose-h2">Voice &amp; AI</h2>
+    <div class="prose-article">
+      <p>
+        <strong>CartWise is ahead on both fronts.</strong> Voice input lets you speak a list while your hands are occupied — cooking, unloading the fridge, driving. The transcription is near-instant. The AI list generator is a different feature: type a meal name ("weeknight pasta") and CartWise generates a plausible ingredient list that you can edit before saving. For people who hate blank-slate list building, this is a meaningful time saver.
+      </p>
+      <p>
+        Bring!'s strength is its catalog. The auto-complete when typing an item is fast and pulls from a large, community-sourced product database. But that is a different kind of intelligence — data-driven autocomplete, not generative. Neither voice transcription nor AI generation appears in Bring!'s current public feature set.
+      </p>
+      <p>
+        Advantage CartWise. This is likely to remain a differentiator as AI features are baked progressively deeper into CartWise's core flow.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ── H2 10: OFFLINE & NO-ACCOUNT ──────────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <h2 class="prose-h2">Offline access &amp; no-account setup</h2>
+    <div class="prose-article">
+      <p>
+        CartWise uses <strong>local-first architecture</strong>: all lists and items are written to on-device SQLite first. The app works fully without an internet connection, which matters in stores with patchy mobile coverage. When a connection is available, shared lists sync — but the app never requires connectivity to read or write.
+      </p>
+      <p>
+        Bring! is primarily a cloud-backed app with offline reading. While listed items remain accessible without a connection, the product catalog, recipe imports, and real-time collaboration depend on being online. In a basement grocery store or a rural area, this is a practical limitation.
+      </p>
+      <p>
+        On the account question: CartWise has no sign-up gate at all. You open it, create a list, and go. Bring! requires registration to unlock list sharing, which is the core reason most people download a grocery app. That registration step is a small but measurable drop-off point.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ── MID-ARTICLE CTA BAND ──────────────────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <div class="cta-band-mid">
+
+      <!-- Glow -->
+      <div aria-hidden="true" style="
+        position: absolute; top: -30px; right: -30px;
+        width: 180px; height: 180px; border-radius: 9999px;
+        background: radial-gradient(circle, rgba(255,138,42,0.6), transparent 70%);
+        filter: blur(60px); opacity: 0.3;
+      "></div>
+      <!-- Dot grid -->
+      <div aria-hidden="true" style="
+        position: absolute; inset: 0; border-radius: 20px;
+        background-image: radial-gradient(circle, rgba(46,207,255,0.12) 1.5px, transparent 1.5px);
+        background-size: 22px 22px; opacity: 0.5;
+      "></div>
+
+      <div class="cta-band-mid-inner">
+        <div class="cta-band-mid-text">
+          <!-- i18n: cartwiseCompare.ctaMid.headline -->
+          <h3>Download CartWise free</h3>
+          <!-- i18n: cartwiseCompare.ctaMid.subline -->
+          <p>No account, no setup — add your first item in under 10 seconds.</p>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.fusionapps.cartwise"
+           target="_blank" rel="noopener nofollow sponsored"
+           class="btn-download" style="flex-shrink:0;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.9"/>
+            <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"/>
+            <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"/>
+            <path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"/>
+          </svg>
+          <!-- i18n: cartwiseCompare.ctaMid.button -->
+          Get it on Google Play
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── H2 11: FINAL VERDICT ──────────────────────────────────────── -->
+  <section style="margin-bottom: 56px;">
+    <h2 class="prose-h2">The winner: CartWise</h2>
+    <div class="prose-article">
+      <p>
+        Bring! is a polished, popular app with a legitimate reason to exist. Its catalog-first design is intuitive, it has a large user base, and cross-platform support is a real competitive advantage. If you use recipes heavily and have a mixed iOS/Android household, Bring! is the right call.
+      </p>
+      <p>
+        For everyone else — <strong>CartWise is the more capable daily shopping tool.</strong> The live price calculator is a feature category where no major competitor has matched it at zero cost. Voice input and AI list generation save real time. The no-account, offline-first architecture means the app works when and where you need it, with zero friction to get started.
+      </p>
+      <p>
+        CartWise is not the app with the bigger audience or the prettier catalog. It is the app built around the moment of actually buying groceries — and that is exactly what most shoppers need.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ── H2 12: RELATED LINKS ──────────────────────────────────────── -->
+  <section>
+    <div class="section-label mb-4">
+      <span class="section-label__dot"></span>
+      <!-- i18n: cartwiseCompare.related.label -->
+      <span>Read about other alternatives</span>
+    </div>
+    <h2 class="prose-h2" style="margin-bottom: 20px;">More CartWise comparisons</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px;">
+
+      <a href="/compare/cartwise-vs-listonic" class="related-card">
+        <div class="related-card-tag">Compare</div>
+        <div class="related-card-title">CartWise vs Listonic</div>
+        <div class="related-card-sub">Price calculator · No account · Voice</div>
+      </a>
+
+      <a href="/compare/cartwise-vs-anylist" class="related-card">
+        <div class="related-card-tag">Compare</div>
+        <div class="related-card-title">CartWise vs AnyList</div>
+        <div class="related-card-sub">Free tier · Offline · AI lists</div>
+      </a>
+
+      <a href="/compare/cartwise-vs-ourgroceries" class="related-card">
+        <div class="related-card-tag">Compare</div>
+        <div class="related-card-title">CartWise vs OurGroceries</div>
+        <div class="related-card-sub">Sharing · Budget tools · Android</div>
+      </a>
+
+      <a href="/compare" class="related-card" style="border-style: dashed;">
+        <div class="related-card-tag">All comparisons</div>
+        <div class="related-card-title">See all app comparisons</div>
+        <div class="related-card-sub">Browse every CartWise comparison guide</div>
+      </a>
+
+    </div>
+  </section>
+
+
+</div><!-- end article body -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- FINAL CTA BAND                                                     -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="cta-band" style="padding: 80px 24px;">
+
+  <!-- Dot grid -->
+  <div aria-hidden="true" style="
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(46,207,255,0.18) 1.5px, transparent 1.5px);
+    background-size: 28px 28px; opacity: 0.4;
+  "></div>
+
+  <!-- Cyan glow -->
+  <div aria-hidden="true" style="
+    position: absolute; top: -64px; right: -64px;
+    width: 320px; height: 320px; border-radius: 9999px;
+    background: radial-gradient(circle, rgba(46,207,255,0.6), transparent 70%);
+    filter: blur(90px); opacity: 0.28;
+  "></div>
+
+  <!-- Orange glow -->
+  <div aria-hidden="true" style="
+    position: absolute; bottom: -48px; left: -48px;
+    width: 240px; height: 240px; border-radius: 9999px;
+    background: radial-gradient(circle, rgba(255,138,42,0.8), transparent 70%);
+    filter: blur(80px); opacity: 0.18;
+  "></div>
+
+  <div class="relative mx-auto text-center" style="max-width: 600px; position: relative; z-index: 1;">
+
+    <div class="section-label mb-5" style="justify-content: center;">
+      <span class="section-label__dot"></span>
+      <span>Ready to switch?</span>
+    </div>
+
+    <h2 style="
+      font-family: 'Urbanist', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 14px;
+    ">
+      <!-- i18n: cartwiseCompare.cta.headline -->
+      Ready to try a free Bring! alternative?
+    </h2>
+
+    <p style="font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.65); margin-bottom: 32px;">
+      <!-- i18n: cartwiseCompare.cta.subline -->
+      Download CartWise in seconds. No account, no setup — just start your list.
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 24px;">
+      <a href="https://play.google.com/store/apps/details?id=com.fusionapps.cartwise"
+         target="_blank" rel="noopener nofollow sponsored"
+         class="btn-download">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.9"/>
+          <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"/>
+          <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"/>
+          <path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"/>
+        </svg>
+        <!-- i18n: cartwiseCompare.cta.ctaButton -->
+        Download on Google Play
+      </a>
+    </div>
+
+    <!-- Trust line -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap;">
+      <span class="trust-badge" style="color: rgba(255,255,255,0.45);">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Free
+      </span>
+      <span class="trust-badge" style="color: rgba(255,255,255,0.45);">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        No account
+      </span>
+      <span class="trust-badge" style="color: rgba(255,255,255,0.45);">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Works offline
+      </span>
+      <span class="trust-badge" style="color: rgba(255,255,255,0.45);">Android</span>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

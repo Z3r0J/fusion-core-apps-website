@@ -11,7 +11,7 @@
     "home": "Inicio"
   },
   "footer": {
-    "tagline": "Apps gratuitas para Android — lectura bíblica, compras y herramientas para el día a día.",
+    "tagline": "Apps gratuitas para Android: lectura bíblica, compras y herramientas para el día a día.",
     "navigation": "Navegación",
     "ourApps": "Nuestras Apps",
     "viewAll": "Ver todas →",
@@ -26,10 +26,11 @@
     "termsOfService": "Términos de Servicio",
     "availableOn": "Disponible en Google Play",
     "ctaTitle": "Apps premium. Gratis para empezar.",
-    "ctaBody": "Todas nuestras apps son gratuitas en Google Play. Algunas ofrecen funciones adicionales mediante suscripción opcional — pero la experiencia principal siempre es gratis.",
+    "ctaBody": "Todas nuestras apps son gratuitas en Google Play. Algunas ofrecen funciones adicionales mediante suscripción opcional, pero la experiencia principal siempre es gratis.",
     "browseAllApps": "Ver todas las Apps",
     "skipToContent": "Saltar al contenido principal",
-    "mobileStats": "Apps Android gratis · 3 apps · 3.3K+ descargas"
+    "mobileStats": "Apps Android gratis · 3 apps · 3.3K+ descargas",
+    "compareApps": "Comparar apps"
   },
   "contact": {
     "title": "Contáctanos",
@@ -52,7 +53,7 @@
     "overline": "Apps Gratis para Android · Verificado en Google Play",
     "title": "Apps hechas para",
     "titleGradient": "personas reales.",
-    "subtitle": "Lectura bíblica, listas de compras y herramientas cotidianas — creadas con cuidado y gratuitas en Google Play.",
+    "subtitle": "Lectura bíblica, listas de compras y herramientas cotidianas, creadas con cuidado y gratuitas en Google Play.",
     "statsDownloads": "Descargas",
     "statsRating": "Valoración media",
     "statsFree": "Gratis",
@@ -69,14 +70,14 @@
     "socialTrustedBy": "La confianza de miles de usuarios",
     "featuresOverline": "Por qué FusionCore",
     "featuresTitle": "Distintas, a propósito.",
-    "featuresSubtitle": "Cada decisión — desde la arquitectura hasta la animación — se toma pensando en el usuario final.",
+    "featuresSubtitle": "Cada decisión, desde la arquitectura hasta la animación, se toma pensando en el usuario final.",
     "blogOverline": "Desde el blog",
     "blogTitle": "Guías y artículos",
     "blogAllPosts": "Ver todos",
     "blogRead": "Leer",
     "ctaOverline": "¿Listo para descargar?",
     "ctaTitle": "Apps premium. Gratis para empezar.",
-    "ctaBody": "Todas nuestras apps son gratuitas en Google Play. Algunas ofrecen funciones adicionales mediante suscripción opcional — pero la experiencia principal siempre es gratis.",
+    "ctaBody": "Todas nuestras apps son gratuitas en Google Play. Algunas ofrecen funciones adicionales mediante suscripción opcional, pero la experiencia principal siempre es gratis.",
     "ctaBrowse": "Ver todas las Apps",
     "ctaContact": "Contáctanos"
   },
@@ -92,7 +93,9 @@
   },
   "legal": {
     "privacyDescription": "Política de privacidad de FusionCore Apps — cómo recopilamos, usamos y protegemos tu información en nuestras apps Android.",
-    "termsDescription": "Términos de servicio de FusionCore Apps — condiciones de uso para nuestras aplicaciones Android y sitio web."
+    "termsDescription": "Términos de servicio de FusionCore Apps — condiciones de uso para nuestras aplicaciones Android y sitio web.",
+    "cartwisePrivacyDescription": "Política de privacidad de CartWise — cómo la app de lista de compras recopila, usa y protege tu información.",
+    "cartwiseTermsDescription": "Términos de servicio de CartWise — condiciones de uso para la app de lista de compras."
   },
   "app": {
     "screenshots": "Capturas de pantalla",
@@ -108,7 +111,7 @@
     "tags": "Etiquetas",
     "freeDownload": "Descarga Gratuita",
     "getOnGooglePlay": "Obtener en Google Play",
-    "joinBeta": "Únete a la Beta — Gratis",
+    "joinBeta": "Únete a la beta gratis",
     "allApps": "← Todas las Apps",
     "moreFrom": "Más de FusionCore",
     "downloadsLabel": "descargas",
@@ -134,6 +137,195 @@
     "blog": "Blog",
     "contact": "Contacto",
     "privacy": "Política de Privacidad",
-    "terms": "Términos de Servicio"
+    "terms": "Términos de Servicio",
+    "cartwise": "CartWise",
+    "cartwisePrivacy": "Política de Privacidad",
+    "cartwiseTerms": "Términos de Servicio"
+  },
+  "cartwise": {
+    "meta": {
+      "title": "CartWise – App de Lista de Compras Gratis con Calculadora de Precios (Sin Registro)",
+      "description": "Agrega artículos por voz o IA, mira cómo el total se actualiza mientras compras y comparte listas al instante por QR o WhatsApp. Gratis, sin internet, sin cuenta. Android."
+    },
+    "hero": {
+      "eyebrow": "FusionCore Apps · CartWise",
+      "appName": "CartWise",
+      "appCategory": "Lista de Compras Compartida",
+      "headline": "La app de lista de compras gratis que suma tu total mientras compras",
+      "tagline": "Lista de compras con calculadora de precios en tiempo real, entrada de voz y compartir al instante. Sin complicaciones, sin registro.",
+      "ctaDownload": "Consíguelo en Google Play",
+      "ctaLearnMore": "Ver todas las funciones ↓",
+      "trustNoAccount": "Sin cuenta requerida",
+      "trustFree": "Gratis para empezar",
+      "trustOffline": "Funciona sin internet"
+    },
+    "features": {
+      "eyebrow": "Funciones",
+      "headline": "Todo lo que necesitas en el supermercado, y un total acumulado",
+      "subline": "Hecho para compras reales, no demos.",
+      "priceCalc": {
+        "title": "Calculadora de Precios en Tiempo Real",
+        "desc": "Mira cómo se actualiza el total mientras marcas artículos. Conoce tu presupuesto antes de llegar a la caja."
+      },
+      "voice": {
+        "title": "Entrada por Voz",
+        "desc": "Di \"2 litros de leche\" y aparece en tu lista. ¿Tienes las manos ocupadas? La voz funciona."
+      },
+      "ai": {
+        "title": "Listas Generadas por IA",
+        "desc": "Dile a CartWise qué vas a cocinar y armará la lista de ingredientes por ti."
+      },
+      "sharing": {
+        "title": "Compartir al Instante",
+        "desc": "Comparte por código QR o enlace de WhatsApp. Todos ven las actualizaciones en tiempo real, sin cuenta."
+      },
+      "analytics": {
+        "title": "Seguimiento de Presupuesto y Analíticas",
+        "desc": "Los reportes de gasto por categoría te muestran adónde va tu presupuesto cada semana."
+      },
+      "categories": {
+        "title": "Categorización Automática Inteligente",
+        "desc": "Los artículos se agrupan por pasillo automáticamente, para que recorras la tienda en orden."
+      },
+      "reminders": {
+        "title": "Recordatorios Inteligentes",
+        "desc": "Programa un recordatorio para salir a tiempo. CartWise te avisa, no al revés."
+      },
+      "offline": {
+        "title": "Primero Offline",
+        "desc": "Todas tus listas se guardan localmente. ¿Sin señal en la tienda? CartWise sigue funcionando perfecto."
+      },
+      "languages": {
+        "title": "Disponible en 8 Idiomas",
+        "desc": "Inglés, español, portugués, francés, alemán, italiano, neerlandés y polaco."
+      }
+    },
+    "screenshots": {
+      "eyebrow": "Capturas de Pantalla",
+      "headline": "Míralo en acción",
+      "count": "6 pantallas"
+    },
+    "plans": {
+      "eyebrow": "Planes",
+      "headline": "Comienza gratis. Mejora cuando estés listo.",
+      "subline": "CartWise es gratis. Pro es una mejora opcional para usuarios avanzados.",
+      "free": {
+        "label": "Gratis",
+        "price": "$0",
+        "priceNote": "Siempre gratis",
+        "feature1": "Listas e ítems ilimitados",
+        "feature2": "Calculadora de precios y control de presupuesto",
+        "feature3": "Listas compartidas con sync en tiempo real (QR + WhatsApp)",
+        "feature4": "Reportes, exportar (CSV/PDF/imagen) y sin internet",
+        "feature5": "Entrada por voz (10/día) y recordatorios (1 por lista)",
+        "noPro1": "Incluye anuncios",
+        "cta": "Descargar Gratis"
+      },
+      "pro": {
+        "label": "Pro",
+        "badge": "PRO",
+        "price": "Mejora opcional",
+        "priceNote": "Desbloquea la experiencia completa",
+        "feature1": "Quitar todos los anuncios",
+        "feature2": "Entrada por voz ilimitada",
+        "feature3": "Varios recordatorios por lista",
+        "feature4": "Temas premium",
+        "feature5": "Soporte prioritario",
+        "cta": "Obtener CartWise, es gratis",
+        "ctaNote": "La mejora a Pro está disponible dentro de la app"
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "headline": "Preguntas frecuentes",
+      "q1": "¿Necesito una cuenta para usar CartWise?",
+      "a1": "No. CartWise funciona completamente sin cuenta. Abre la app y empieza a comprar. Compartir una lista tampoco requiere que la otra persona se registre.",
+      "q2": "¿CartWise es gratis?",
+      "a2": "Sí, CartWise es gratis para descargar y usar, sin cuenta. El plan gratuito incluye listas ilimitadas, calculadora de precios, control de presupuesto y listas compartidas con sync en tiempo real. La entrada por voz (10/día) y los recordatorios (1 por lista) también están incluidos. Pro es una mejora opcional dentro de la app que quita los anuncios, sube esos topes y agrega temas premium y soporte prioritario.",
+      "q3": "¿Cómo funciona compartir una lista?",
+      "a3": "Toca el botón de compartir en cualquier lista para generar un código QR o un enlace de WhatsApp. Quien escanee o toque el enlace se une a la lista al instante. Los cambios de cualquier miembro aparecen en tiempo real para todos.",
+      "q4": "¿La entrada por voz graba o almacena mi audio?",
+      "a4": "No. El audio se convierte en texto en tu dispositivo usando el reconocimiento de voz integrado de Android. No se envía audio a los servidores de FusionCore ni se almacena en ningún lugar.",
+      "q5": "¿En qué plataformas está disponible CartWise?",
+      "a5": "CartWise está disponible actualmente en Android a través de Google Play. El soporte para iOS está en nuestra hoja de ruta."
+    },
+    "cta": {
+      "headline": "Tu próxima compra empieza aquí.",
+      "subline": "Gratis para descargar. Sin cuenta. Funciona sin internet. Comparte al instante.",
+      "download": "Descargar en Google Play",
+      "trust": "Sin cuenta requerida · Gratis para empezar · Android"
+    },
+    "compare": {
+      "eyebrow": "Comparativas",
+      "headline": "Mira cómo se compara CartWise",
+      "subline": "Comparativas honestas, lado a lado, con apps de listas de compras populares.",
+      "seeAll": "Todas las comparativas"
+    }
+  },
+  "cartwiseCompare": {
+    "breadcrumb": {
+      "home": "Inicio",
+      "compare": "Comparar apps"
+    },
+    "index": {
+      "metaTitle": "Comparativas de CartWise — FusionCore Apps",
+      "metaDescription": "Comparaciones honestas de CartWise frente a otras apps de lista de compras. Descubre cuál se adapta mejor a tu forma de comprar.",
+      "eyebrow": "Comparativas de apps",
+      "heading": "CartWise vs la competencia",
+      "deck": "Análisis honestos, función por función, para que elijas la app de lista de compras que de verdad se adapta a cómo compras."
+    },
+    "hero": {
+      "vsLabel": "VS",
+      "eyebrow": "CartWise vs {{competitor}}",
+      "titleSuffix": "¿Cuál app de lista de compras gana en 2026?",
+      "updatedLabel": "Actualizado",
+      "readTime": "~8 min de lectura",
+      "byAuthor": "Por FusionCore Apps",
+      "ctaDownload": "Obtener CartWise en Google Play",
+      "ctaCompare": "Ver la comparación ↓",
+      "ratingLabel": "reseñas"
+    },
+    "quickTable": {
+      "colCategory": "Categoría",
+      "colCartwise": "CartWise",
+      "winnerBadge": "✓ Recomendado"
+    },
+    "featureTable": {
+      "eyebrow": "Comparación lado a lado",
+      "subhead": "Un análisis factual de funciones. Sin rodeos, tú decides.",
+      "colFeature": "Función",
+      "winnerBadge": "✓ Recomendado",
+      "footnote": "La información de funciones se basa en listados públicos de tiendas y descripciones oficiales. Algunas funciones pueden variar según la región o versión de la app."
+    },
+    "procon": {
+      "goodLabel": "Lo bueno",
+      "badLabel": "Lo malo"
+    },
+    "winnerCallout": {
+      "label": "El ganador"
+    },
+    "ctaMid": {
+      "headline": "Descarga CartWise gratis",
+      "subline": "Sin cuenta, sin configuración. Agrega tu primer artículo en menos de 10 segundos.",
+      "button": "Obtenerlo en Google Play"
+    },
+    "related": {
+      "label": "Lee sobre otras alternativas",
+      "heading": "Más comparaciones de CartWise",
+      "cardTag": "Comparar",
+      "seeAllLabel": "Todas las comparaciones",
+      "seeAllTitle": "Ver todas las comparaciones de apps",
+      "seeAllSub": "Navega por todas las guías de comparación de CartWise"
+    },
+    "cta": {
+      "eyebrow": "¿Listo para cambiar?",
+      "headline": "¿Listo para probar una alternativa gratuita a {{competitor}}?",
+      "subline": "Descarga CartWise en segundos. Sin cuenta, sin configuración. Solo empieza tu lista.",
+      "ctaButton": "Descargar en Google Play",
+      "trustFree": "Gratis",
+      "trustNoAccount": "Sin cuenta",
+      "trustOffline": "Funciona sin internet",
+      "trustPlatform": "Android"
+    }
   }
 }

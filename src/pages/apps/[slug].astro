@@ -32,31 +32,12 @@ const price = app.data.price || "Free";
 const isBeta = app.data.beta ?? false;
 ---
 
-<BaseLayout {canonical} {description} {ogImage} {title} locale={app.data.locale || "en"} showFooterCta={false}>
+<BaseLayout {canonical} {description} {ogImage} ogImageWidth={app.data.icon ? 512 : 1536} ogImageHeight={app.data.icon ? 512 : 1024} {title} locale={app.data.locale || "en"} showFooterCta={false}>
 	<AppJsonLd app={app} />
 
 	<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
 	<div class="-mx-4 sm:-mx-6 lg:-mx-8 mb-12">
 		<div class="app-detail-hero relative overflow-hidden">
-			<!-- Dot grid: subtle in light, visible in dark -->
-			<div
-				class="absolute inset-0 opacity-40 dark:opacity-25"
-				style="background-image: radial-gradient(circle, rgba(46,207,255,0.2) 1.5px, transparent 1.5px); background-size: 28px 28px;"
-				aria-hidden="true"
-			></div>
-			<!-- Cyan glow — subtle in light, stronger in dark -->
-			<div
-				class="absolute -top-32 -right-32 h-96 w-96 rounded-full blur-[100px] opacity-20 dark:opacity-30"
-				style="background: radial-gradient(circle, rgba(46,207,255,0.6), transparent 70%);"
-				aria-hidden="true"
-			></div>
-			<!-- Orange glow -->
-			<div
-				class="absolute -bottom-16 -left-16 h-64 w-64 rounded-full blur-[80px] opacity-10 dark:opacity-20"
-				style="background: radial-gradient(circle, rgba(255,138,42,0.8), transparent 70%);"
-				aria-hidden="true"
-			></div>
-
 			<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-14 pt-8">
 				<!-- Breadcrumb -->
 				<Breadcrumbs
@@ -99,13 +80,10 @@ const isBeta = app.data.beta ?? false;
 							)}
 						</div>
 
-						<h1
-							class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900 dark:text-white"
-							style="letter-spacing: -0.03em;"
-						>
+						<h1 class="page-title">
 							{app.data.title}
 						</h1>
-						<p class="mt-2 text-lg text-gray-500 dark:text-white/65 max-w-xl leading-relaxed">
+						<p class="section-deck mt-2 max-w-xl">
 							{app.data.tagline}
 						</p>
 
@@ -160,7 +138,7 @@ const isBeta = app.data.beta ?? false;
 									target="_blank"
 									rel="noopener noreferrer"
 									class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.03]"
-									style="background: linear-gradient(135deg, #ff8a2a, #db681a);"
+									style="background: var(--color-accent-700);"
 								>
 									<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -171,7 +149,7 @@ const isBeta = app.data.beta ?? false;
 								<a
 									href={app.data.playUrl}
 									target="_blank"
-									rel="noopener nofollow sponsored"
+									rel="noopener"
 									aria-label="Get it on Google Play"
 								>
 									<GetInGooglePlayBadge class="h-14 w-auto select-none" />
@@ -318,7 +296,7 @@ const isBeta = app.data.beta ?? false;
 							target="_blank"
 							rel="noopener noreferrer"
 							class="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all hover:scale-[1.02]"
-							style="background: linear-gradient(135deg, #ff8a2a, #db681a);"
+							style="background: var(--color-accent-700);"
 						>
 							Join Beta — Free
 						</a>
@@ -326,9 +304,9 @@ const isBeta = app.data.beta ?? false;
 						<a
 							href={app.data.playUrl}
 							target="_blank"
-							rel="noopener nofollow sponsored"
+							rel="noopener"
 							class="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all hover:scale-[1.02]"
-							style="background: linear-gradient(135deg, #2ecfff, #0091cc);"
+							style="background: var(--color-brand-700);"
 						>
 							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
 								<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.9"></path>
@@ -365,7 +343,7 @@ const isBeta = app.data.beta ?? false;
 								loading="lazy"
 							/>
 						) : (
-							<div class="h-14 w-14 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-500 text-xl font-bold flex-shrink-0">
+							<div class="h-14 w-14 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-700 dark:text-brand-400 text-xl font-bold flex-shrink-0">
 								{other.data.title[0]}
 							</div>
 						)}

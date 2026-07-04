@@ -39,15 +39,11 @@ const price = app.data.price || t("app.free") || "Free";
 const isBeta = app.data.beta ?? false;
 ---
 
-<BaseLayout {canonical} {description} {ogImage} {title} locale={locale} showFooterCta={false}>
+<BaseLayout {canonical} {description} {ogImage} ogImageWidth={app.data.icon ? 512 : 1536} ogImageHeight={app.data.icon ? 512 : 1024} {title} locale={locale} showFooterCta={false}>
 	<AppJsonLd app={app} canonical={canonical} />
 
 	<div class="-mx-4 sm:-mx-6 lg:-mx-8 mb-12">
 		<div class="app-detail-hero relative overflow-hidden">
-			<div class="absolute inset-0 opacity-40 dark:opacity-25" style="background-image: radial-gradient(circle, rgba(46,207,255,0.2) 1.5px, transparent 1.5px); background-size: 28px 28px;" aria-hidden="true"></div>
-			<div class="absolute -top-32 -right-32 h-96 w-96 rounded-full blur-[100px] opacity-20 dark:opacity-30" style="background: radial-gradient(circle, rgba(46,207,255,0.6), transparent 70%);" aria-hidden="true"></div>
-			<div class="absolute -bottom-16 -left-16 h-64 w-64 rounded-full blur-[80px] opacity-10 dark:opacity-20" style="background: radial-gradient(circle, rgba(255,138,42,0.8), transparent 70%);" aria-hidden="true"></div>
-
 			<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-14 pt-8">
 				<Breadcrumbs items={[
 					{ label: t("breadcrumbs.home"), href: `/${locale}` },
@@ -76,10 +72,10 @@ const isBeta = app.data.beta ?? false;
 							)}
 						</div>
 
-						<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900 dark:text-white" style="letter-spacing: -0.03em;">
+						<h1 class="page-title">
 							{app.data.title}
 						</h1>
-						<p class="mt-2 text-lg text-gray-500 dark:text-white/65 max-w-xl leading-relaxed">{app.data.tagline}</p>
+						<p class="section-deck mt-2 max-w-xl">{app.data.tagline}</p>
 
 						<div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
 							{rating !== null && (
@@ -115,11 +111,11 @@ const isBeta = app.data.beta ?? false;
 
 						<div class="mt-7 flex flex-wrap items-center gap-4">
 							{isBeta ? (
-								<a href={app.data.betaGroupUrl ?? app.data.playUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.03]" style="background: linear-gradient(135deg, #ff8a2a, #db681a);">
+								<a href={app.data.betaGroupUrl ?? app.data.playUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.03]" style="background: var(--color-accent-700);">
 									{t("app.joinBeta")}
 								</a>
 							) : (
-								<a href={app.data.playUrl} target="_blank" rel="noopener nofollow sponsored" aria-label="Get it on Google Play">
+								<a href={app.data.playUrl} target="_blank" rel="noopener" aria-label="Get it on Google Play">
 									<GetInGooglePlayBadge class="h-14 w-auto select-none" />
 								</a>
 							)}
@@ -230,11 +226,11 @@ const isBeta = app.data.beta ?? false;
 					<p class="text-xs font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-2">{t("app.freeDownload")}</p>
 					<p class="text-base font-bold text-gray-900 dark:text-white mb-4">{app.data.title}</p>
 					{isBeta ? (
-						<a href={app.data.betaGroupUrl ?? app.data.playUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #ff8a2a, #db681a);">
+						<a href={app.data.betaGroupUrl ?? app.data.playUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all hover:scale-[1.02]" style="background: var(--color-accent-700);">
 							{t("app.joinBeta")}
 						</a>
 					) : (
-						<a href={app.data.playUrl} target="_blank" rel="noopener nofollow sponsored" class="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #2ecfff, #0091cc);">
+						<a href={app.data.playUrl} target="_blank" rel="noopener" class="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all hover:scale-[1.02]" style="background: var(--color-brand-700);">
 							{t("app.getOnGooglePlay")}
 						</a>
 					)}
@@ -255,7 +251,7 @@ const isBeta = app.data.beta ?? false;
 						{other.data.icon ? (
 							<img src={other.data.icon} alt={other.data.title} class="h-14 w-14 rounded-2xl object-cover shadow-md flex-shrink-0" loading="lazy" />
 						) : (
-							<div class="h-14 w-14 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-500 text-xl font-bold flex-shrink-0">
+							<div class="h-14 w-14 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-700 dark:text-brand-400 text-xl font-bold flex-shrink-0">
 								{other.data.title[0]}
 							</div>
 						)}

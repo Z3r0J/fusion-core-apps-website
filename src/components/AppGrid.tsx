@@ -57,12 +57,12 @@ function SkeletonCard() {
 
 // Category-to-accent-stage mapping
 const CATEGORY_ACCENTS: Record<string, { bg: string; glow: string }> = {
-	"Books & Reference": { bg: "linear-gradient(150deg, #160e30 0%, #2b1660 55%, #160e30 100%)", glow: "rgba(139,92,246,0.60)" },
-	"Shopping":          { bg: "linear-gradient(150deg, #1a0c04 0%, #3d1f06 55%, #1a0c04 100%)", glow: "rgba(251,146,60,0.60)" },
-	"Productivity":      { bg: "linear-gradient(150deg, #031018 0%, #072436 55%, #031018 100%)", glow: "rgba(46,207,255,0.60)" },
-	"Utilities":         { bg: "linear-gradient(150deg, #031018 0%, #072436 55%, #031018 100%)", glow: "rgba(46,207,255,0.60)" },
+	"Books & Reference": { bg: "#241452", glow: "rgba(139,92,246,0.60)" },
+	"Shopping":          { bg: "#3a1d08", glow: "rgba(251,146,60,0.60)" },
+	"Productivity":      { bg: "#08293d", glow: "rgba(46,207,255,0.60)" },
+	"Utilities":         { bg: "#08293d", glow: "rgba(46,207,255,0.60)" },
 };
-const DEFAULT_ACCENT = { bg: "linear-gradient(150deg, #0b1c2d 0%, #0e2a42 55%, #0b1c2d 100%)", glow: "rgba(46,207,255,0.45)" };
+const DEFAULT_ACCENT = { bg: "#0e2a42", glow: "rgba(46,207,255,0.45)" };
 
 // Download Modal Component
 function DownloadModal({ app, onClose, t }: { app: App; onClose: () => void; t: ReturnType<typeof useTranslations> }) {
@@ -223,10 +223,6 @@ const AppCard = React.memo(function AppCard({ app, mode, locale, t }: { app: App
 								tabIndex={-1}
 								aria-hidden="true"
 							>
-								<div
-									className="pointer-events-none absolute inset-0 rounded-full blur-2xl transition-all duration-500 group-hover:scale-125"
-									style={{ background: accent.glow, margin: "auto", width: 56, height: 56 }}
-								/>
 								{app.icon ? (
 									<img
 										src={app.icon}
@@ -258,7 +254,7 @@ const AppCard = React.memo(function AppCard({ app, mode, locale, t }: { app: App
 											style={{ background: "rgba(251,191,36,0.12)", border: "1px solid rgba(251,191,36,0.2)" }}>★ Top</span>
 									)}
 								</div>
-								<span className="mt-0.5 text-[11px] font-medium text-brand-500 dark:text-brand-400">{app.category}</span>
+								<span className="mt-0.5 text-[11px] font-medium text-brand-700 dark:text-brand-400">{app.category}</span>
 								<p className="mt-1 text-sm text-gray-500 dark:text-gray-400 line-clamp-1 leading-snug">{app.tagline}</p>
 								<div className="mt-2 flex items-center gap-2">
 									<div className="flex items-center gap-0.5">{stars}</div>
@@ -316,12 +312,6 @@ const AppCard = React.memo(function AppCard({ app, mode, locale, t }: { app: App
 						tabIndex={-1}
 						aria-hidden="true"
 					>
-						{/* Glow blob */}
-						<div
-							className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[90px] w-[90px] rounded-full blur-2xl transition-all duration-500 group-hover:h-28 group-hover:w-28"
-							style={{ background: accent.glow }}
-						/>
-
 						{/* Icon */}
 						<div className="absolute inset-0 flex items-center justify-center">
 							{app.icon ? (
@@ -348,7 +338,7 @@ const AppCard = React.memo(function AppCard({ app, mode, locale, t }: { app: App
 						{/* Price top-right */}
 						<div className="absolute top-3 right-3">
 							<span className="inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-bold"
-								style={{ background: "rgba(0,0,0,0.38)", color: "rgba(255,255,255,0.90)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.12)" }}>
+								style={{ background: "rgba(0,0,0,0.45)", color: "rgba(255,255,255,0.90)", border: "1px solid rgba(255,255,255,0.12)" }}>
 								{price}
 							</span>
 						</div>
@@ -357,13 +347,13 @@ const AppCard = React.memo(function AppCard({ app, mode, locale, t }: { app: App
 						<div className="absolute top-3 left-3 flex items-center gap-1.5">
 							{isBeta && (
 								<span className="inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-bold"
-									style={{ background: "rgba(234,88,12,0.92)", color: "#fff", backdropFilter: "blur(8px)" }}>
+									style={{ background: "rgba(234,88,12,0.95)", color: "#fff" }}>
 									Beta
 								</span>
 							)}
 							{!isBeta && isTopRated && (
 								<span className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold"
-									style={{ background: "rgba(0,0,0,0.40)", color: "#fbbf24", backdropFilter: "blur(8px)", border: "1px solid rgba(251,191,36,0.22)" }}>
+									style={{ background: "rgba(0,0,0,0.55)", color: "#fbbf24", border: "1px solid rgba(251,191,36,0.22)" }}>
 									{t("app.topRated")}
 								</span>
 							)}

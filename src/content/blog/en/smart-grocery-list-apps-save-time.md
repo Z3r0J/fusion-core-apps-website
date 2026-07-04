@@ -22,7 +22,7 @@ A smart grocery list app solves all three of these problems by bringing structur
 
 ## What to Look for in a Grocery App
 
-Not all grocery apps are created equal. Here are the features that actually make a difference:
+Not all grocery apps are created equal — we break down how the popular options stack up in our [app comparisons](/compare-apps). Here are the features that actually make a difference:
 
 ### Automatic Categorization
 

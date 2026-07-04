@@ -1,0 +1,33 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import LegalLayout from "@/components/LegalLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations, type Locale } from "@/i18n/utils";
+import { getEntry } from "astro:content";
+
+export function getStaticPaths() {
+	return [{ params: { locale: "es" } }, { params: { locale: "pt" } }];
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const t = useTranslations(locale);
+
+const policy = await getEntry("legal", `cartwise-terms-${locale}` as "cartwise-terms-es" | "cartwise-terms-pt");
+if (!policy) throw new Error(`CartWise terms of service not found for locale: ${locale}`);
+const { Content } = await policy.render();
+
+const title = `${policy.data.title} — CartWise`;
+const description = t("legal.cartwiseTermsDescription");
+const canonical = new URL(`/${locale}/cartwise/terms`, Astro.site).href;
+---
+
+<BaseLayout {canonical} {description} {title} locale={locale}>
+	<Breadcrumbs items={[
+		{ label: t("breadcrumbs.home"), href: `/${locale}` },
+		{ label: t("breadcrumbs.cartwise"), href: `/${locale}/cartwise` },
+		{ label: t("breadcrumbs.cartwiseTerms"), href: `/${locale}/cartwise/terms` },
+	]} />
+	<LegalLayout eyebrow="Legal" icon="document" title={policy.data.title} updatedAt={policy.data.updatedAt}>
+		<Content />
+	</LegalLayout>
+</BaseLayout>

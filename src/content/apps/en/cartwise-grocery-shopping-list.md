@@ -31,3 +31,5 @@ Weekly grocery shopping, family meal planning, budget-conscious shoppers, and ho
 
 ## Why CartWise?
 CartWise is the only grocery list app that **adds up your cart in real time** while you shop — so no more surprise totals at the register. Combine that with voice input, AI lists, WhatsApp sharing, and spending analytics, and you have the smartest grocery app available.
+
+Want the full tour? Visit the [CartWise landing page](/cartwise), or see [how CartWise compares](/compare-apps) with Bring!, Listonic, AnyList, and OurGroceries.

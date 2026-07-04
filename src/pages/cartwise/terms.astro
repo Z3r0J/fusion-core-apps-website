@@ -1,0 +1,33 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import LegalLayout from "@/components/LegalLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getEntry } from "astro:content";
+
+const policy = await getEntry("legal", "cartwise-terms");
+if (!policy) throw new Error("CartWise terms of service not found");
+const { Content } = await policy.render();
+
+const title = "CartWise Terms of Service — FusionCore Apps";
+const description = "Terms of service for CartWise — usage conditions for the grocery-list app.";
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<BaseLayout {canonical} {description} {title}>
+	<Breadcrumbs
+		items={[
+			{ label: "Home", href: "/" },
+			{ label: "CartWise", href: "/cartwise" },
+			{ label: "Terms of Service", href: "/cartwise/terms" },
+		]}
+	/>
+
+	<LegalLayout
+		eyebrow="Legal"
+		icon="document"
+		title="CartWise Terms of Service"
+		updatedAt={policy.data.updatedAt}
+	>
+		<Content />
+	</LegalLayout>
+</BaseLayout>

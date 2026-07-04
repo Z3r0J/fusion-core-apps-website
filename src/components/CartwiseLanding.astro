@@ -1,0 +1,764 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  locale: "en" | "es" | "pt";
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const PLAY_URL = "https://play.google.com/store/apps/details?id=com.fusionapps.cartwise";
+
+const screenshots = [
+  { src: "/images/screenshots/cartwise-home.jpg",      alt: "CartWise home screen",        label: "1 / 6" },
+  { src: "/images/screenshots/cartwise-list.jpg",      alt: "CartWise list view",           label: "2 / 6" },
+  { src: "/images/screenshots/cartwise-create.jpg",    alt: "CartWise create list",         label: "3 / 6" },
+  { src: "/images/screenshots/cartwise-voice.jpg",     alt: "CartWise voice input",         label: "4 / 6" },
+  { src: "/images/screenshots/cartwise-ai.jpg",        alt: "CartWise AI list generation",  label: "5 / 6" },
+  { src: "/images/screenshots/cartwise-analytics.jpg", alt: "CartWise spending analytics",  label: "6 / 6" },
+];
+
+const features = [
+  {
+    title: t("cartwise.features.priceCalc.title"),
+    desc:  t("cartwise.features.priceCalc.desc"),
+    icon: `<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="10" x2="16" y2="14"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/>`,
+  },
+  {
+    title: t("cartwise.features.voice.title"),
+    desc:  t("cartwise.features.voice.desc"),
+    icon: `<path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>`,
+  },
+  {
+    title: t("cartwise.features.ai.title"),
+    desc:  t("cartwise.features.ai.desc"),
+    icon: `<path d="M15 4V2"/><path d="M15 16v-2"/><path d="M8 9h2"/><path d="M20 9h2"/><path d="M17.8 11.8 19 13"/><path d="M15 9h0"/><path d="M17.8 6.2 19 5"/><path d="m3 21 9-9"/><path d="M12.2 6.2 11 5"/>`,
+  },
+  {
+    title: t("cartwise.features.sharing.title"),
+    desc:  t("cartwise.features.sharing.desc"),
+    icon: `<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>`,
+  },
+  {
+    title: t("cartwise.features.analytics.title"),
+    desc:  t("cartwise.features.analytics.desc"),
+    icon: `<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>`,
+  },
+  {
+    title: t("cartwise.features.categories.title"),
+    desc:  t("cartwise.features.categories.desc"),
+    icon: `<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>`,
+  },
+  {
+    title: t("cartwise.features.reminders.title"),
+    desc:  t("cartwise.features.reminders.desc"),
+    icon: `<path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>`,
+  },
+  {
+    title: t("cartwise.features.offline.title"),
+    desc:  t("cartwise.features.offline.desc"),
+    icon: `<line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0119 12.55"/><path d="M5 12.55a10.94 10.94 0 015.17-2.39"/><path d="M10.71 5.05A16 16 0 0122.56 9"/><path d="M1.42 9a15.91 15.91 0 014.7-2.88"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>`,
+  },
+  {
+    title: t("cartwise.features.languages.title"),
+    desc:  t("cartwise.features.languages.desc"),
+    icon: `<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>`,
+  },
+];
+
+const freeFeatures = [
+  { text: t("cartwise.plans.free.feature1"), check: true },
+  { text: t("cartwise.plans.free.feature2"), check: true },
+  { text: t("cartwise.plans.free.feature3"), check: true },
+  { text: t("cartwise.plans.free.feature4"), check: true },
+  { text: t("cartwise.plans.free.feature5"), check: true },
+  { text: t("cartwise.plans.free.noPro1"),   check: false },
+];
+
+const proFeatures = [
+  t("cartwise.plans.pro.feature1"),
+  t("cartwise.plans.pro.feature2"),
+  t("cartwise.plans.pro.feature3"),
+  t("cartwise.plans.pro.feature4"),
+  t("cartwise.plans.pro.feature5"),
+];
+
+const faqs = [
+  { q: t("cartwise.faq.q1"), a: t("cartwise.faq.a1") },
+  { q: t("cartwise.faq.q2"), a: t("cartwise.faq.a2") },
+  { q: t("cartwise.faq.q3"), a: t("cartwise.faq.a3") },
+  { q: t("cartwise.faq.q4"), a: t("cartwise.faq.a4") },
+  { q: t("cartwise.faq.q5"), a: t("cartwise.faq.a5") },
+];
+
+const homeHref = locale === "en" ? "/" : `/${locale}`;
+const cartwiseHref = locale === "en" ? "/cartwise" : `/${locale}/cartwise`;
+const compareBase = locale === "en" ? "" : `/${locale}`;
+
+const compareCards = [
+  { href: `${compareBase}/compare-apps/cartwise-vs-bring`,        label: "CartWise vs Bring!" },
+  { href: `${compareBase}/compare-apps/cartwise-vs-listonic`,     label: "CartWise vs Listonic" },
+  { href: `${compareBase}/compare-apps/cartwise-vs-anylist`,      label: "CartWise vs AnyList" },
+  { href: `${compareBase}/compare-apps/cartwise-vs-ourgroceries`, label: "CartWise vs OurGroceries" },
+];
+
+const pageUrl = new URL(cartwiseHref, Astro.site).href;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "CartWise",
+      "operatingSystem": "ANDROID",
+      "applicationCategory": "ShoppingApplication",
+      "url": pageUrl,
+      "downloadUrl": PLAY_URL,
+      "installUrl": PLAY_URL,
+      "description": t("cartwise.meta.description"),
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": a,
+        },
+      })),
+    },
+  ],
+};
+---
+
+<!-- eslint-disable astro/no-set-html-directive -->
+<script
+  is:inline
+  set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
+  type="application/ld+json"
+></script>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- 1. HERO                                                        -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="-mx-4 sm:-mx-6 lg:-mx-8 mb-16" id="hero">
+  <section class="app-detail-hero relative overflow-hidden">
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 pt-8">
+
+      <!-- Breadcrumbs -->
+      <Breadcrumbs items={[
+        { label: t("breadcrumbs.home"),     href: homeHref },
+        { label: t("breadcrumbs.cartwise"), href: cartwiseHref },
+      ]} />
+
+      <!-- Eyebrow -->
+      <div class="section-label mb-8 mt-4">
+        <span class="section-label__dot"></span>
+        <span>{t("cartwise.hero.eyebrow")}</span>
+      </div>
+
+      <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12">
+
+        <!-- Left: copy -->
+        <div class="flex-1 max-w-2xl">
+
+          <!-- App icon + name row -->
+          <div class="flex items-center gap-5 mb-7">
+            <img
+              src="/images/apps/cartwise-grocery-shopping-list/icon.png"
+              alt="CartWise icon"
+              class="h-20 w-20 rounded-[1.375rem] shadow-2xl ring-1 ring-black/8 dark:ring-white/10 flex-shrink-0"
+              loading="eager"
+              width="80"
+              height="80"
+            />
+            <div>
+              <p class="text-xs font-bold tracking-[0.08em] uppercase text-brand-700 dark:text-brand-400 mb-0.5">
+                {t("cartwise.hero.appName")}
+              </p>
+              <p class="text-sm font-medium text-gray-500 dark:text-white/50">
+                {t("cartwise.hero.appCategory")}
+              </p>
+            </div>
+          </div>
+
+          <!-- Headline — full string with brand gradient -->
+          <h1 class="display-title mb-5">
+            {t("cartwise.hero.headline")}
+          </h1>
+
+          <!-- Tagline -->
+          <p class="section-deck mb-9">
+            {t("cartwise.hero.tagline")}
+          </p>
+
+          <!-- CTA group -->
+          <div class="flex flex-wrap items-center gap-4 mb-6">
+            <a
+              href={PLAY_URL}
+              target="_blank"
+              rel="noopener"
+              class="button button--download inline-flex items-center gap-2 rounded-[14px] px-7 py-3.5 text-sm font-bold"
+            >
+              <!-- Google Play icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.9"/>
+                <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"/>
+                <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"/>
+                <path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"/>
+              </svg>
+              {t("cartwise.hero.ctaDownload")}
+            </a>
+
+            <a
+              href="#features"
+              class="inline-flex items-center gap-2 rounded-[14px] border border-gray-300 bg-white px-5 py-3.5 text-sm font-semibold text-gray-700 shadow-sm transition-all hover:bg-gray-50 dark:border-white/20 dark:bg-white/10 dark:text-white/80 dark:hover:bg-white/15 dark:hover:text-white"
+            >
+              {t("cartwise.hero.ctaLearnMore")}
+            </a>
+          </div>
+
+          <!-- Trust badges -->
+          <div class="flex flex-wrap items-center gap-5">
+            <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 dark:text-white/45">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+              {t("cartwise.hero.trustNoAccount")}
+            </span>
+            <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 dark:text-white/45">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              {t("cartwise.hero.trustFree")}
+            </span>
+            <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 dark:text-white/45">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              {t("cartwise.hero.trustOffline")}
+            </span>
+          </div>
+        </div>
+
+        <!-- Right: floating phone preview -->
+        <div class="hidden lg:flex items-end gap-4 flex-shrink-0 pb-4" aria-hidden="true">
+          <div
+            class="relative overflow-hidden shadow-2xl flex-shrink-0"
+            style="width: 180px; height: 360px; border-radius: 1.75rem; border: 2px solid rgba(255,255,255,0.08); background: #0b1c2d; transform: translateY(-16px) rotate(-3deg);"
+          >
+            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 h-4 w-14 rounded-full z-10" style="background: #0b1c2d;"></div>
+            <img src="/images/screenshots/cartwise-home.jpg" alt="" class="w-full h-full object-cover" loading="eager" />
+            <div class="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);"></div>
+          </div>
+          <div
+            class="relative overflow-hidden shadow-2xl flex-shrink-0"
+            style="width: 180px; height: 360px; border-radius: 1.75rem; border: 2px solid rgba(255,255,255,0.08); background: #0b1c2d; transform: rotate(2deg);"
+          >
+            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 h-4 w-14 rounded-full z-10" style="background: #0b1c2d;"></div>
+            <img src="/images/screenshots/cartwise-list.jpg" alt="" class="w-full h-full object-cover" loading="eager" />
+            <div class="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- 2. FEATURE GRID                                                -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="features" class="mb-20">
+
+  <!-- Section header -->
+  <div class="text-center mb-14">
+    <div class="section-label justify-center mb-3.5">
+      <span class="section-label__dot"></span>
+      <span>{t("cartwise.features.eyebrow")}</span>
+    </div>
+    <h2 class="section-title mb-3.5">
+      {t("cartwise.features.headline")}
+    </h2>
+    <p class="section-deck mx-auto">
+      {t("cartwise.features.subline")}
+    </p>
+  </div>
+
+  <!-- Feature checklist — grocery-list ledger motif -->
+  <div class="cw-ledger">
+    {features.map((feature, i) => (
+      <div class="cw-ledger-row">
+        <span class="cw-ledger-tick" aria-hidden="true">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <div class="cw-ledger-body">
+          <h3 class="cw-ledger-title">{feature.title}</h3>
+          <p class="cw-ledger-desc">{feature.desc}</p>
+        </div>
+        <span class="cw-ledger-idx" aria-hidden="true">{(i + 1).toString().padStart(2, "0")}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- 3. SCREENSHOT SHOWCASE                                         -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="-mx-4 sm:-mx-6 lg:-mx-8 mb-20">
+  <section class="bg-gray-50 dark:bg-gray-900 border-y border-transparent dark:border-white/[0.06] py-20 px-4 sm:px-6 lg:px-8" id="screenshots">
+    <div class="mx-auto max-w-7xl">
+
+      <!-- Section header -->
+      <div class="flex items-center justify-between mb-9 flex-wrap gap-3">
+        <div>
+          <div class="section-label mb-2">
+            <span class="section-label__dot"></span>
+            <span>{t("cartwise.screenshots.eyebrow")}</span>
+          </div>
+          <h2 class="section-title">
+            {t("cartwise.screenshots.headline")}
+          </h2>
+        </div>
+        <span class="text-xs font-medium text-gray-400 dark:text-gray-500">
+          {t("cartwise.screenshots.count")}
+        </span>
+      </div>
+
+      <!-- Scrollable carousel -->
+      <div
+        class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory"
+        style="scrollbar-width: thin; scrollbar-color: rgba(46,207,255,0.3) transparent;"
+      >
+        {screenshots.map((shot, i) => (
+          <div class="snap-center flex flex-col items-center gap-2 flex-shrink-0 group">
+            <div
+              class="relative overflow-hidden shadow-2xl transition-transform duration-300 group-hover:-translate-y-2"
+              style="width: 180px; height: 360px; border-radius: 1.75rem; border: 2px solid rgba(255,255,255,0.08); background: #0b1c2d;"
+            >
+              <div class="absolute top-2.5 left-1/2 -translate-x-1/2 h-4 w-14 rounded-full z-10" style="background: #0b1c2d;"></div>
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                class="w-full h-full object-cover"
+                loading={i === 0 ? "eager" : "lazy"}
+              />
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);"></div>
+            </div>
+            <p class="text-xs font-medium text-gray-400 dark:text-gray-600 tabular-nums">{shot.label}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- 4. FREE vs PRO                                                 -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="plans" class="mb-20">
+
+  <!-- Section header -->
+  <div class="text-center mb-14">
+    <div class="section-label justify-center mb-3.5">
+      <span class="section-label__dot"></span>
+      <span>{t("cartwise.plans.eyebrow")}</span>
+    </div>
+    <h2 class="section-title mb-3">
+      {t("cartwise.plans.headline")}
+    </h2>
+    <p class="section-deck mx-auto">
+      {t("cartwise.plans.subline")}
+    </p>
+  </div>
+
+  <!-- Two-column plan cards -->
+  <div class="grid gap-6 max-w-3xl mx-auto" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+    <!-- FREE card -->
+    <div class="rounded-[22px] border-[1.5px] border-gray-200/90 bg-white p-8 dark:bg-white/[0.025] dark:border-white/[0.07]">
+      <div class="mb-6">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-gray-400 mb-1.5">
+          {t("cartwise.plans.free.label")}
+        </p>
+        <p class="text-gray-900 dark:text-white" style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1;">
+          {t("cartwise.plans.free.price")}
+        </p>
+        <p class="text-sm text-gray-500 dark:text-white/48 mt-1.5">
+          {t("cartwise.plans.free.priceNote")}
+        </p>
+      </div>
+
+      <ul class="flex flex-col gap-2.5 mb-7">
+        {freeFeatures.map((item) => (
+          <li class="flex items-start gap-2.5 text-sm text-gray-700 dark:text-white/72 leading-snug">
+            {item.check ? (
+              <svg class="flex-shrink-0 mt-0.5 text-brand-600 dark:text-brand-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            ) : (
+              <svg class="flex-shrink-0 mt-0.5 text-gray-400 dark:text-white/22" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            )}
+            <span class={item.check ? "" : "text-gray-400 dark:text-white/30"}>{item.text}</span>
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={PLAY_URL}
+        target="_blank"
+        rel="noopener"
+        class="flex w-full items-center justify-center rounded-[14px] border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 shadow-sm transition-all hover:bg-gray-50 dark:border-white/20 dark:bg-white/10 dark:text-white/80 dark:hover:bg-white/15 dark:hover:text-white"
+      >
+        {t("cartwise.plans.free.cta")}
+      </a>
+    </div>
+
+    <!-- PRO card -->
+    <div class="relative overflow-hidden rounded-[22px] border-[1.5px] border-brand-200 bg-brand-50 p-8 dark:border-white/10 dark:bg-[#0d2540]">
+
+      <!-- Pro badge -->
+      <div class="absolute top-5 right-5">
+        <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-extrabold tracking-[0.08em] uppercase text-white" style="background: var(--color-brand-700);">
+          {t("cartwise.plans.pro.badge")}
+        </span>
+      </div>
+
+      <div class="relative mb-6">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-brand-700 dark:text-brand-400 mb-1.5">
+          {t("cartwise.plans.pro.label")}
+        </p>
+        <p class="text-gray-900 dark:text-white" style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1;">
+          {t("cartwise.plans.pro.price")}
+        </p>
+        <p class="text-sm text-gray-600 dark:text-white/48 mt-1.5">
+          {t("cartwise.plans.pro.priceNote")}
+        </p>
+      </div>
+
+      <ul class="relative flex flex-col gap-2.5 mb-7">
+        {proFeatures.map((feat) => (
+          <li class="flex items-start gap-2.5 text-sm text-gray-700 dark:text-white/72 leading-snug">
+            <svg class="flex-shrink-0 mt-0.5 text-brand-600 dark:text-brand-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            {feat}
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={PLAY_URL}
+        target="_blank"
+        rel="noopener"
+        class="button button--primary relative flex w-full items-center justify-center rounded-[14px] py-3 text-sm font-bold text-white"
+      >
+        {t("cartwise.plans.pro.cta")}
+      </a>
+
+      <p class="relative text-[11px] text-gray-500 dark:text-white/40 text-center mt-3">
+        {t("cartwise.plans.pro.ctaNote")}
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- 5. FAQ                                                         -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="-mx-4 sm:-mx-6 lg:-mx-8 mb-0">
+  <section class="bg-gray-50 dark:bg-gray-900 border-y border-transparent dark:border-white/[0.06] py-20 px-4 sm:px-6 lg:px-8" id="faq">
+    <div class="mx-auto max-w-[760px]">
+
+      <!-- Section header -->
+      <div class="text-center mb-12">
+        <div class="section-label justify-center mb-3.5">
+          <span class="section-label__dot"></span>
+          <span>{t("cartwise.faq.eyebrow")}</span>
+        </div>
+        <h2 class="section-title">
+          {t("cartwise.faq.headline")}
+        </h2>
+      </div>
+
+      <!-- Accordion -->
+      <div class="flex flex-col gap-2.5">
+        {faqs.map((item, i) => (
+          <div class="faq-item" id={`faq-item-${i}`}>
+            <button
+              class="faq-btn"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
+              data-faq-btn
+            >
+              <span class="faq-question">{item.q}</span>
+              <svg
+                class="faq-chevron flex-shrink-0 transition-transform duration-200"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#94a3b8"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-answer hidden" id={`faq-answer-${i}`}>
+              {item.a}
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- 6. COMPARISONS                                                 -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="comparisons" class="mb-20">
+
+  <!-- Section header -->
+  <div class="text-center mb-12">
+    <div class="section-label justify-center mb-3.5">
+      <span class="section-label__dot"></span>
+      <span>{t("cartwise.compare.eyebrow")}</span>
+    </div>
+    <h2 class="section-title mb-3.5">
+      {t("cartwise.compare.headline")}
+    </h2>
+    <p class="section-deck mx-auto">
+      {t("cartwise.compare.subline")}
+    </p>
+  </div>
+
+  <!-- Comparison cards grid -->
+  <div class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));">
+    {compareCards.map((card) => (
+      <a
+        href={card.href}
+        class="group flex items-center justify-between gap-3 rounded-2xl border border-gray-200/90 bg-white px-5 py-4 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 hover:shadow-md dark:bg-white/[0.025] dark:border-white/[0.065] dark:hover:border-white/15"
+      >
+        <span class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">
+          {card.label}
+        </span>
+        <svg
+          class="h-4 w-4 flex-shrink-0 text-brand-600 dark:text-brand-400 transition-transform duration-200 group-hover:translate-x-0.5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </a>
+    ))}
+  </div>
+
+  <!-- See-all link -->
+  <div class="mt-6 text-center">
+    <a
+      href={`${compareBase}/compare-apps`}
+      class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 dark:text-brand-400 transition-colors hover:text-brand-800 dark:hover:text-brand-300"
+    >
+      {t("cartwise.compare.seeAll")}
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </a>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- 7. FINAL CTA BAND                                              -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="-mx-4 sm:-mx-6 lg:-mx-8" id="cta">
+  <section
+    class="relative overflow-hidden py-24 cta-band"
+  >
+    <div class="relative mx-auto max-w-[640px] px-4 sm:px-6 lg:px-8 text-center">
+
+      <!-- App icon -->
+      <img
+        src="/images/apps/cartwise-grocery-shopping-list/icon.png"
+        alt="CartWise"
+        class="mx-auto mb-6 rounded-[1.25rem] shadow-2xl"
+        style="width: 72px; height: 72px; box-shadow: 0 12px 40px rgba(0,0,0,0.35);"
+        loading="lazy"
+        width="72"
+        height="72"
+      />
+
+      <h2
+        class="section-title text-white mb-4"
+      >
+        {t("cartwise.cta.headline")}
+      </h2>
+
+      <p class="mb-9 leading-relaxed" style="font-size: 17px; color: rgba(255,255,255,0.60);">
+        {t("cartwise.cta.subline")}
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-6">
+        <a
+          href={PLAY_URL}
+          target="_blank"
+          rel="noopener"
+          class="button button--download inline-flex items-center gap-2.5 rounded-[14px] px-9 py-4 text-base font-bold"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.9"/>
+            <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"/>
+            <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"/>
+            <path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"/>
+          </svg>
+          {t("cartwise.cta.download")}
+        </a>
+      </div>
+
+      <p style="font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.03em;">
+        {t("cartwise.cta.trust")}
+      </p>
+
+    </div>
+  </section>
+</div>
+
+<style>
+  /* Thin cyan scrollbar for the screenshot carousel */
+  .snap-x::-webkit-scrollbar { height: 4px; }
+  .snap-x::-webkit-scrollbar-track { background: transparent; }
+  .snap-x::-webkit-scrollbar-thumb { background: rgba(46,207,255,0.3); border-radius: 9999px; }
+
+  /* FAQ open state — rotate chevron */
+  .faq-item--open .faq-chevron { transform: rotate(180deg); }
+
+  /* FAQ answer: shown when item has open class */
+  .faq-item--open .faq-answer { display: block; }
+
+  /* ── Feature checklist (grocery-list ledger) ── */
+  .cw-ledger {
+    max-width: 56rem;
+    margin: 0 auto;
+    border-top: 1px solid var(--color-gray-200);
+  }
+  :global(.dark) .cw-ledger { border-top-color: rgba(255, 255, 255, 0.1); }
+
+  @media (min-width: 768px) {
+    .cw-ledger {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2.75rem;
+    }
+  }
+
+  .cw-ledger-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    padding: 1.05rem 0.25rem;
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+  :global(.dark) .cw-ledger-row { border-bottom-color: rgba(255, 255, 255, 0.08); }
+
+  .cw-ledger-tick {
+    flex-shrink: 0;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-top: 0.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1.5px solid var(--color-brand-600);
+    color: var(--color-brand-700);
+  }
+  :global(.dark) .cw-ledger-tick {
+    border-color: rgba(46, 207, 255, 0.45);
+    color: var(--color-brand-400);
+  }
+
+  .cw-ledger-body { flex: 1 1 auto; min-width: 0; }
+
+  .cw-ledger-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-gray-900);
+  }
+  :global(.dark) .cw-ledger-title { color: #fff; }
+
+  .cw-ledger-desc {
+    margin-top: 0.2rem;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--color-gray-500);
+  }
+  :global(.dark) .cw-ledger-desc { color: rgba(255, 255, 255, 0.5); }
+
+  .cw-ledger-idx {
+    flex-shrink: 0;
+    padding-top: 0.15rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-gray-300);
+  }
+  :global(.dark) .cw-ledger-idx { color: var(--color-gray-700); }
+</style>
+
+<script>
+  function setupFaq() {
+    const btns = document.querySelectorAll<HTMLButtonElement>("[data-faq-btn]");
+    btns.forEach((btn) => {
+      // Remove old listener by cloning
+      const fresh = btn.cloneNode(true) as HTMLButtonElement;
+      btn.parentNode?.replaceChild(fresh, btn);
+      fresh.addEventListener("click", () => {
+        const item = fresh.closest(".faq-item");
+        if (!item) return;
+        const isOpen = item.classList.contains("faq-item--open");
+        // Close all
+        document.querySelectorAll(".faq-item").forEach((el) => {
+          el.classList.remove("faq-item--open");
+          el.querySelector("[data-faq-btn]")?.setAttribute("aria-expanded", "false");
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add("faq-item--open");
+          fresh.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupFaq);
+  } else {
+    setupFaq();
+  }
+  document.addEventListener("astro:page-load", setupFaq);
+</script>

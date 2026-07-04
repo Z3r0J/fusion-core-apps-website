@@ -1,0 +1,715 @@
+---
+import { useTranslations } from "@/i18n/utils";
+
+interface QuickTableRow {
+  category: string;
+  cartwise: string;
+  competitor: string;
+}
+
+interface FeatureRow {
+  feature: string;
+  cartwise: string;
+  competitor: string;
+}
+
+interface RelatedItem {
+  slug: string;
+  competitorName: string;
+}
+
+interface Props {
+  locale: "en" | "es" | "pt";
+  title: string;
+  description: string;
+  competitorName: string;
+  competitorSlug: string;
+  updatedAt: string;
+  cartwiseRating?: number;
+  cartwiseReviewCount?: string;
+  competitorRating?: number;
+  competitorReviewCount?: string;
+  competitorIconEmoji: string;
+  competitorIcon?: string;
+  heroDeck: string;
+  introParagraphs: string[];
+  quickTable: QuickTableRow[];
+  featureRows: FeatureRow[];
+  cartwiseGood: string[];
+  cartwiseBad: string[];
+  competitorGood: string[];
+  competitorBad: string[];
+  midVerdict: string;
+  finalVerdict: string[];
+  relatedSlugs: string[];
+  relatedItems: RelatedItem[];
+}
+
+const {
+  locale,
+  title,
+  competitorName,
+  updatedAt,
+  cartwiseRating,
+  cartwiseReviewCount,
+  competitorRating,
+  competitorReviewCount,
+  competitorIconEmoji,
+  competitorIcon,
+  heroDeck,
+  introParagraphs,
+  quickTable,
+  featureRows,
+  cartwiseGood,
+  cartwiseBad,
+  competitorGood,
+  competitorBad,
+  midVerdict,
+  finalVerdict,
+  relatedItems,
+} = Astro.props;
+
+const t = useTranslations(locale);
+
+const PLAY_URL = "https://play.google.com/store/apps/details?id=com.fusionapps.cartwise";
+const homeHref = locale === "en" ? "/" : `/${locale}`;
+const compareHref = locale === "en" ? "/compare-apps" : `/${locale}/compare-apps`;
+
+// Render star row: full stars + empty star for decimal
+function starRow(rating: number): string {
+  const full = Math.round(rating);
+  const stars = "★".repeat(Math.min(full, 5)) + "☆".repeat(Math.max(0, 5 - full));
+  return stars;
+}
+
+// Render a feature cell value
+function cellType(val: string): "yes" | "no" | "partial" {
+  if (val === "✓") return "yes";
+  if (val === "✗") return "no";
+  return "partial";
+}
+
+const ICON_SVG_CHECK = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`;
+const ICON_SVG_X = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+
+// Render the lightweight markdown used in frontmatter strings (pro/con bullet
+// leads) — those are rendered as plain text, so **bold**/*italic* never reach the
+// markdown parser. Escape first, then convert; content is first-party.
+function inlineMd(s: string): string {
+  const esc = s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return esc
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/(^|[^*])\*(?!\*)([^*]+?)\*(?!\*)/g, "$1<em>$2</em>");
+}
+
+// Structured data
+const pageUrl = new URL(`${compareHref}/cartwise-vs-${Astro.props.competitorSlug}`, Astro.site).href;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      headline: title,
+      datePublished: `${updatedAt}-01`,
+      dateModified: `${updatedAt}-01`,
+      url: pageUrl,
+      author: {
+        "@type": "Organization",
+        name: "FusionCore Apps",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "FusionCore Apps",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: t("cartwiseCompare.breadcrumb.home"),
+          item: new URL(homeHref, Astro.site).href,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: t("cartwiseCompare.breadcrumb.compare"),
+          item: new URL(compareHref, Astro.site).href,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: title,
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "CartWise",
+      operatingSystem: "ANDROID",
+      applicationCategory: "ShoppingApplication",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      downloadUrl: PLAY_URL,
+    },
+  ],
+};
+
+// Escape < in JSON-LD to prevent script injection
+const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
+---
+
+<script type="application/ld+json" set:html={jsonLd}></script>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- ARTICLE HERO                                          -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-gray-50"
+  style="background: var(--hero-bg-light, #f7f9fc);">
+  <style>
+    .compare-hero { background: #f7f9fc; }
+    :global(.dark) .compare-hero { background: var(--color-gray-900); border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+  </style>
+
+  <div class="compare-hero relative overflow-hidden">
+    <div class="relative mx-auto px-6 py-14 lg:py-20" style="max-width:840px;">
+
+      <!-- 1. Breadcrumb -->
+      <nav class="flex items-center gap-1.5 text-xs font-medium text-gray-400 dark:text-white/35 mb-6" aria-label="Breadcrumb">
+        <a href={homeHref} class="text-gray-500 dark:text-white/45 hover:text-brand-400 dark:hover:text-brand-400 transition-colors">{t("cartwiseCompare.breadcrumb.home")}</a>
+        <span class="text-gray-300 dark:text-white/20">/</span>
+        <a href={compareHref} class="text-gray-500 dark:text-white/45 hover:text-brand-400 dark:hover:text-brand-400 transition-colors">{t("cartwiseCompare.breadcrumb.compare")}</a>
+        <span class="text-gray-300 dark:text-white/20">/</span>
+        <span class="text-gray-600 dark:text-white/60 font-semibold">CartWise vs {competitorName}</span>
+      </nav>
+
+      <!-- App icon pair -->
+      <div class="flex items-center gap-2.5 mb-6">
+        <div class="w-14 h-14 rounded-[14px] overflow-hidden flex-shrink-0 shadow-md" style="background:#0b1c2d;">
+          <img
+            src="/images/apps/cartwise-grocery-shopping-list/icon.png"
+            alt="CartWise icon"
+            width="56" height="56"
+            class="w-full h-full object-cover rounded-[14px]"
+            onerror="this.style.display='none';this.parentNode.innerHTML='🛒';"
+          />
+        </div>
+        <span class="text-[11px] font-extrabold tracking-wider text-gray-400 dark:text-white/40 px-2 py-1 rounded-md bg-gray-100 dark:bg-white/8">
+          {t("cartwiseCompare.hero.vsLabel")}
+        </span>
+        <div class="w-14 h-14 rounded-[14px] overflow-hidden flex items-center justify-center flex-shrink-0 shadow-md text-3xl" style="background:#e8f4fd;">
+          {competitorIcon ? (
+            <img
+              src={competitorIcon}
+              alt={`${competitorName} icon`}
+              width="56" height="56"
+              class="w-full h-full object-cover rounded-[14px]"
+              onerror={`this.style.display='none';this.parentNode.innerHTML='${competitorIconEmoji}';`}
+            />
+          ) : (
+            competitorIconEmoji
+          )}
+        </div>
+      </div>
+
+      <!-- Eyebrow -->
+      <div class="inline-flex items-center gap-2 mb-5">
+                <span class="text-[12px] font-medium text-gray-500 dark:text-gray-400">
+          {t("cartwiseCompare.hero.eyebrow").replace("{{competitor}}", competitorName)}
+        </span>
+      </div>
+
+      <!-- H1 -->
+      <h1 class="page-title mb-4">
+        {title}
+      </h1>
+
+      <!-- heroDeck -->
+      <p class="section-deck mb-6" style="max-width:680px;">
+        {heroDeck}
+      </p>
+
+      <!-- Rating callouts -->
+      <div class="flex flex-wrap gap-3 mb-6">
+        <!-- CartWise rating (only when verified) -->
+        {cartwiseRating !== undefined ? (
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-[10px] text-xs font-semibold border"
+            style="background:#fff8eb;border-color:#ffd5a3;color:#b84a0d;">
+            <span class="text-accent-500 text-[13px] tracking-tight">{starRow(cartwiseRating)}</span>
+            <span>CartWise · {cartwiseRating} ({cartwiseReviewCount} {t("cartwiseCompare.hero.ratingLabel")})</span>
+          </div>
+        ) : (
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-[10px] text-xs font-semibold border"
+            style="background:#f0fdf4;border-color:#bbf7d0;color:#166534;">
+            <span>CartWise · New on Google Play</span>
+          </div>
+        )}
+        <!-- Competitor rating (only if provided) -->
+        {competitorRating !== undefined && (
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-[10px] text-xs font-semibold border"
+            style="background:#f8fafc;border-color:#e2e8f0;color:#64748b;">
+            <span class="text-[13px] tracking-tight" style="color:#94a3b8;">{starRow(competitorRating)}</span>
+            <span style="color:#64748b;">{competitorName} · {competitorRating}{competitorReviewCount ? ` (${competitorReviewCount} ${t("cartwiseCompare.hero.ratingLabel")})` : ""}</span>
+          </div>
+        )}
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap items-center gap-3 mb-7">
+        <a
+          href={PLAY_URL}
+          target="_blank"
+          rel="noopener"
+          class="btn-download inline-flex items-center gap-2 px-6 py-3 rounded-[14px] text-[15px] font-bold text-gray-950 transition-transform hover:-translate-y-0.5"
+          style="background: var(--color-accent-500);"
+        >
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.9"/>
+            <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"/>
+            <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"/>
+            <path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"/>
+          </svg>
+          {t("cartwiseCompare.hero.ctaDownload")}
+        </a>
+        <a href="#comparison" class="inline-flex items-center gap-1.5 px-[22px] py-3 rounded-[14px] text-sm font-semibold border transition-all text-gray-500 dark:text-white/75 bg-white dark:bg-white/8 border-gray-300 dark:border-white/14 hover:bg-gray-100 dark:hover:bg-white/14">
+          {t("cartwiseCompare.hero.ctaCompare")}
+        </a>
+      </div>
+
+      <!-- Byline -->
+      <div class="flex flex-wrap items-center gap-4 pt-5 border-t border-gray-200/80 dark:border-white/7 text-[13px] text-gray-500 dark:text-white/45">
+        <span class="font-semibold text-gray-700 dark:text-white/70">{t("cartwiseCompare.hero.byAuthor")}</span>
+        <span class="text-gray-300 dark:text-white/15">·</span>
+        <span>{t("cartwiseCompare.hero.updatedLabel")} <strong>{updatedAt}</strong></span>
+        <span class="text-gray-300 dark:text-white/15">·</span>
+        <span>{t("cartwiseCompare.hero.readTime")}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- ARTICLE BODY                                          -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="mx-auto px-6 py-14 lg:py-20 space-y-14" style="max-width:840px;">
+
+  <!-- 3. Intro paragraphs -->
+  {introParagraphs.length > 0 && (
+    <section>
+      <div class="text-base leading-[1.85] text-gray-600 dark:text-white/70 space-y-5">
+        {introParagraphs.map((p) => <p>{p}</p>)}
+      </div>
+    </section>
+  )}
+
+  <!-- 4. Quick Table -->
+  <section id="comparison">
+    <div class="overflow-hidden rounded-2xl border border-gray-200/90 dark:border-white/7">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr>
+            <th class="text-left px-4 py-3.5 text-[13px] font-bold font-display text-gray-500 dark:text-white/40 bg-gray-50 dark:bg-white/3 border border-gray-200/90 dark:border-white/7 border-r-0 rounded-tl-xl" style="border-bottom:none;">
+              {t("cartwiseCompare.quickTable.colCategory")}
+            </th>
+            <th class="text-center px-4 py-3.5 text-[13px] font-bold font-display text-white border-t-2 border-brand-400" style="background: var(--color-tech-blue);">
+              <div>{t("cartwiseCompare.quickTable.colCartwise")}</div>
+              <div class="mt-1 inline-flex items-center gap-1 text-[11px] font-bold tracking-wider text-brand-400 bg-brand-400/12 border border-brand-400/25 rounded-full px-2.5 py-0.5">
+                {t("cartwiseCompare.quickTable.winnerBadge")}
+              </div>
+            </th>
+            <th class="text-center px-4 py-3.5 text-[13px] font-bold font-display text-gray-700 dark:text-white/60 bg-gray-50 dark:bg-white/3 border border-gray-200/90 dark:border-white/7 border-l-0 rounded-tr-xl" style="border-bottom:none;">
+              {competitorName}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {quickTable.map((row, i) => (
+            <tr>
+              <td class={`px-4 py-3 text-[13px] font-semibold text-gray-500 dark:text-white/50 border-b border-gray-200/70 dark:border-white/5 ${i === quickTable.length - 1 ? "rounded-bl-xl border-b-0" : ""}`}>
+                {row.category}
+              </td>
+              <td class="px-4 py-3 text-center font-semibold text-gray-900 dark:text-gray-100 bg-brand-400/4 dark:bg-brand-400/5 border-l-2 border-r-2 border-brand-400/15 border-b border-gray-200/70 dark:border-white/5">
+                {row.cartwise}
+              </td>
+              <td class={`px-4 py-3 text-center font-medium text-gray-600 dark:text-white/65 border-b border-gray-200/70 dark:border-white/5 ${i === quickTable.length - 1 ? "rounded-br-xl border-b-0" : ""}`}>
+                {row.competitor}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5. Pro/Con cards -->
+  <section class="grid md:grid-cols-2 gap-6">
+    <!-- CartWise card -->
+    <div class="rounded-[18px] p-7 border border-gray-200/90 dark:border-white/7 bg-white dark:bg-white/3">
+      <div class="flex items-center gap-3.5 mb-5 pb-4 border-b border-gray-200/80 dark:border-white/7">
+        <div class="w-12 h-12 rounded-[12px] flex-shrink-0 overflow-hidden shadow-md" style="background:#0b1c2d;">
+          <img
+            src="/images/apps/cartwise-grocery-shopping-list/icon.png"
+            alt="CartWise"
+            width="48" height="48"
+            class="w-full h-full object-cover rounded-[12px]"
+            onerror="this.style.display='none';this.parentNode.innerHTML='🛒';"
+          />
+        </div>
+        <div class="min-w-0">
+          <div class="text-xl font-black font-display tracking-tight text-gray-900 dark:text-gray-100">CartWise</div>
+          <div class="text-xs text-gray-500 dark:text-white/40 mt-0.5">Grocery List + Price Calculator · Android · Free</div>
+        </div>
+        {cartwiseRating !== undefined && (
+          <div class="ml-auto flex-shrink-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-[10px] text-xs font-semibold border"
+            style="background:#fff8eb;border-color:#ffd5a3;color:#b84a0d;">
+            <span class="text-accent-500">{starRow(cartwiseRating)}</span>
+            <span>{cartwiseRating}</span>
+          </div>
+        )}
+      </div>
+
+      <div class="mb-4">
+        <div class="text-[11px] font-bold tracking-[0.1em] uppercase text-emerald-600 dark:text-emerald-400 mb-3">
+          {t("cartwiseCompare.procon.goodLabel")}
+        </div>
+        <ul class="space-y-2.5">
+          {cartwiseGood.map((item) => (
+            <li class="flex items-start gap-2.5 text-sm leading-snug text-gray-600 dark:text-white/70">
+              <span class="flex-shrink-0 mt-0.5 w-[18px] h-[18px] rounded-full flex items-center justify-center border"
+                style="background:rgba(5,150,105,0.1);border-color:rgba(5,150,105,0.25);">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span set:html={inlineMd(item)} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-[11px] font-bold tracking-[0.1em] uppercase text-gray-400 dark:text-white/30 mb-3">
+          {t("cartwiseCompare.procon.badLabel")}
+        </div>
+        <ul class="space-y-2.5">
+          {cartwiseBad.map((item) => (
+            <li class="flex items-start gap-2.5 text-sm leading-snug text-gray-600 dark:text-white/70">
+              <span class="flex-shrink-0 mt-0.5 w-[18px] h-[18px] rounded-full flex items-center justify-center border"
+                style="background:rgba(148,163,184,0.1);border-color:rgba(148,163,184,0.2);">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </span>
+              <span set:html={inlineMd(item)} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Competitor card -->
+    <div class="rounded-[18px] p-7 border border-gray-200/90 dark:border-white/7 bg-white dark:bg-white/3">
+      <div class="flex items-center gap-3.5 mb-5 pb-4 border-b border-gray-200/80 dark:border-white/7">
+        <div class="w-12 h-12 rounded-[12px] overflow-hidden flex-shrink-0 flex items-center justify-center text-3xl shadow-md" style="background:#e8f4fd;">
+          {competitorIcon ? (
+            <img
+              src={competitorIcon}
+              alt={`${competitorName} icon`}
+              width="48" height="48"
+              class="w-full h-full object-cover rounded-[12px]"
+              onerror={`this.style.display='none';this.parentNode.innerHTML='${competitorIconEmoji}';`}
+            />
+          ) : (
+            competitorIconEmoji
+          )}
+        </div>
+        <div class="min-w-0">
+          <div class="text-xl font-black font-display tracking-tight text-gray-900 dark:text-gray-100">{competitorName}</div>
+          <div class="text-xs text-gray-500 dark:text-white/40 mt-0.5">Shopping List · iOS + Android · Free</div>
+        </div>
+        {competitorRating !== undefined && (
+          <div class="ml-auto flex-shrink-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-[10px] text-xs font-semibold border"
+            style="background:#f8fafc;border-color:#e2e8f0;color:#64748b;">
+            <span style="color:#94a3b8;">{starRow(competitorRating)}</span>
+            <span style="color:#64748b;">{competitorRating}</span>
+          </div>
+        )}
+      </div>
+
+      <div class="mb-4">
+        <div class="text-[11px] font-bold tracking-[0.1em] uppercase text-emerald-600 dark:text-emerald-400 mb-3">
+          {t("cartwiseCompare.procon.goodLabel")}
+        </div>
+        <ul class="space-y-2.5">
+          {competitorGood.map((item) => (
+            <li class="flex items-start gap-2.5 text-sm leading-snug text-gray-600 dark:text-white/70">
+              <span class="flex-shrink-0 mt-0.5 w-[18px] h-[18px] rounded-full flex items-center justify-center border"
+                style="background:rgba(5,150,105,0.1);border-color:rgba(5,150,105,0.25);">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span set:html={inlineMd(item)} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-[11px] font-bold tracking-[0.1em] uppercase text-gray-400 dark:text-white/30 mb-3">
+          {t("cartwiseCompare.procon.badLabel")}
+        </div>
+        <ul class="space-y-2.5">
+          {competitorBad.map((item) => (
+            <li class="flex items-start gap-2.5 text-sm leading-snug text-gray-600 dark:text-white/70">
+              <span class="flex-shrink-0 mt-0.5 w-[18px] h-[18px] rounded-full flex items-center justify-center border"
+                style="background:rgba(148,163,184,0.1);border-color:rgba(148,163,184,0.2);">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </span>
+              <span set:html={inlineMd(item)} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Feature matrix -->
+  <section>
+    <div class="inline-flex items-center gap-2 mb-4">
+            <span class="text-[12px] font-medium text-gray-500 dark:text-gray-400">
+        {t("cartwiseCompare.featureTable.eyebrow")}
+      </span>
+    </div>
+    <p class="text-sm text-gray-500 dark:text-white/40 mb-6 leading-relaxed">
+      {t("cartwiseCompare.featureTable.subhead")}
+    </p>
+
+    <div class="overflow-x-auto rounded-2xl border border-gray-200/90 dark:border-white/7">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr>
+            <th class="text-left px-[18px] py-3.5 text-sm font-bold font-display text-gray-500 dark:text-white/40 border-b border-gray-200/90 dark:border-white/7" style="width:45%;">
+              {t("cartwiseCompare.featureTable.colFeature")}
+            </th>
+            <th class="text-center px-[18px] py-3.5 text-sm font-bold font-display text-white border-t-2 border-brand-400 rounded-tl-xl" style="background: var(--color-tech-blue);width:27.5%;">
+              <div>CartWise</div>
+              <div class="mt-1 inline-flex items-center gap-1 text-[10px] font-bold tracking-wider text-brand-400 bg-brand-400/12 border border-brand-400/22 rounded-full px-2 py-0.5">
+                {t("cartwiseCompare.featureTable.winnerBadge")}
+              </div>
+            </th>
+            <th class="text-center px-[18px] py-3.5 text-sm font-bold font-display text-gray-600 dark:text-white/60 bg-gray-50 dark:bg-white/3 border border-gray-200/90 dark:border-white/7 border-l-0 rounded-tr-xl" style="width:27.5%;border-bottom:none;">
+              {competitorName}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {featureRows.map((row, i) => {
+            const cwType = cellType(row.cartwise);
+            const compType = cellType(row.competitor);
+            const isLast = i === featureRows.length - 1;
+            return (
+              <tr class="hover:bg-brand-400/[0.015] dark:hover:bg-brand-400/[0.025] transition-colors">
+                <td class={`px-[18px] py-3 font-medium text-gray-600 dark:text-white/72 border-b border-gray-200/60 dark:border-white/5 ${isLast ? "border-b-0" : ""}`}>
+                  {row.feature}
+                </td>
+                <td class={`px-[18px] py-3 text-center bg-brand-400/4 dark:bg-brand-400/6 border-l-2 border-r-2 border-brand-400/12 border-b border-gray-200/60 dark:border-white/5 ${isLast ? "border-b-0" : ""}`}>
+                  {cwType === "yes" && (
+                    <span class="inline-flex items-center justify-center gap-1 text-[13px] font-semibold text-brand-700 dark:text-brand-400" set:html={`${ICON_SVG_CHECK} Yes`} />
+                  )}
+                  {cwType === "no" && (
+                    <span class="inline-flex items-center justify-center gap-1 text-[13px] font-medium text-gray-400 dark:text-white/25" set:html={`${ICON_SVG_X} No`} />
+                  )}
+                  {cwType === "partial" && (
+                    <span class="inline-flex items-center justify-center gap-1 text-xs font-semibold text-gray-500 dark:text-white/50 bg-gray-500/8 dark:bg-white/5 rounded-md px-2 py-0.5">{row.cartwise}</span>
+                  )}
+                </td>
+                <td class={`px-[18px] py-3 text-center border-b border-gray-200/60 dark:border-white/5 ${isLast ? "border-b-0" : ""}`}>
+                  {compType === "yes" && (
+                    <span class="inline-flex items-center justify-center gap-1 text-[13px] font-semibold text-brand-700 dark:text-brand-400" set:html={`${ICON_SVG_CHECK} Yes`} />
+                  )}
+                  {compType === "no" && (
+                    <span class="inline-flex items-center justify-center gap-1 text-[13px] font-medium text-gray-400 dark:text-white/25" set:html={`${ICON_SVG_X} No`} />
+                  )}
+                  {compType === "partial" && (
+                    <span class="inline-flex items-center justify-center gap-1 text-xs font-semibold text-gray-500 dark:text-white/50 bg-gray-500/8 dark:bg-white/5 rounded-md px-2 py-0.5">{row.competitor}</span>
+                  )}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-gray-400 dark:text-white/30 mt-3 leading-relaxed">
+      {t("cartwiseCompare.featureTable.footnote")}
+    </p>
+  </section>
+
+  <!-- 7. Mid winner callout -->
+  <section>
+    <div class="relative overflow-hidden rounded-[20px] p-9 lg:p-10 cta-panel">
+      <div class="relative z-[1]">
+        <div class="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.12em] uppercase text-brand-400 mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          {t("cartwiseCompare.winnerCallout.label")}
+        </div>
+        <p class="text-white/65 text-sm leading-[1.65]" style="max-width:540px;">
+          {midVerdict}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Prose body (slot) -->
+  <section>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <slot />
+    </div>
+  </section>
+
+  <!-- 9. Final verdict -->
+  {finalVerdict.length > 0 && (
+    <section>
+      <div class="relative overflow-hidden rounded-[20px] p-9 border border-brand-400/20 bg-brand-50 dark:bg-white/[0.03]">
+        <div class="space-y-4">
+          {finalVerdict.map((p) => (
+            <p class="text-gray-700 dark:text-white/70 leading-[1.75] text-[15px]">{p}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 10. Mid CTA band -->
+  <section>
+    <div class="relative overflow-hidden rounded-[20px] p-8 lg:p-9 cta-panel">
+      <div class="relative z-[1] flex flex-wrap items-center justify-between gap-6">
+        <div>
+          <h3 class="subsection-title text-white mb-1">
+            {t("cartwiseCompare.ctaMid.headline")}
+          </h3>
+          <p class="text-white/60 text-sm">{t("cartwiseCompare.ctaMid.subline")}</p>
+        </div>
+        <a
+          href={PLAY_URL}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-[14px] text-[15px] font-bold text-gray-950 flex-shrink-0 transition-transform hover:-translate-y-0.5"
+          style="background: var(--color-accent-500);"
+        >
+          {t("cartwiseCompare.ctaMid.button")}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Related cards -->
+  {relatedItems.length > 0 && (
+    <section>
+      <div class="inline-flex items-center gap-2 mb-2">
+                <span class="text-[12px] font-medium text-gray-500 dark:text-gray-400">
+          {t("cartwiseCompare.related.label")}
+        </span>
+      </div>
+      <h2 class="subsection-title mb-6">
+        {t("cartwiseCompare.related.heading")}
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {relatedItems.map((item) => {
+          const href = locale === "en"
+            ? `/compare-apps/cartwise-vs-${item.slug}`
+            : `/${locale}/compare-apps/cartwise-vs-${item.slug}`;
+          return (
+            <a
+              href={href}
+              class="block rounded-[14px] p-5 bg-white dark:bg-white/3 border border-gray-200/90 dark:border-white/7 no-underline transition-all hover:-translate-y-0.5 hover:border-gray-300 dark:hover:border-white/15 hover:shadow-md"
+            >
+              <div class="text-[10px] font-bold tracking-[0.1em] uppercase text-brand-700 dark:text-brand-400 mb-1.5">
+                {t("cartwiseCompare.related.cardTag")}
+              </div>
+              <div class="font-display font-bold text-[15px] text-gray-900 dark:text-gray-50 leading-snug mb-1">
+                CartWise vs {item.competitorName}
+              </div>
+              <div class="text-xs text-gray-400 dark:text-white/35">
+                CartWise vs {item.competitorName}
+              </div>
+            </a>
+          );
+        })}
+
+        <!-- See all card -->
+        <a
+          href={compareHref}
+          class="block rounded-[14px] p-5 bg-white dark:bg-white/3 border border-dashed border-gray-300 dark:border-white/12 no-underline transition-all hover:-translate-y-0.5 hover:border-brand-400/30"
+        >
+          <div class="text-[10px] font-bold tracking-[0.1em] uppercase text-gray-400 dark:text-white/35 mb-1.5">
+            {t("cartwiseCompare.related.seeAllLabel")}
+          </div>
+          <div class="font-display font-bold text-[15px] text-gray-900 dark:text-gray-50 leading-snug mb-1">
+            {t("cartwiseCompare.related.seeAllTitle")}
+          </div>
+          <div class="text-xs text-gray-400 dark:text-white/35">
+            {t("cartwiseCompare.related.seeAllSub")}
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- 12. FINAL CTA BAND                                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="relative overflow-hidden cta-band">
+  <div class="relative z-[1] mx-auto px-6 py-16 lg:py-20 text-center" style="max-width:640px;">
+    <div class="inline-flex items-center gap-2 mb-4">
+      <span class="text-[12px] font-medium text-white/55">
+        {t("cartwiseCompare.cta.eyebrow")}
+      </span>
+    </div>
+
+    <h2 class="section-title text-white mb-4">
+      {t("cartwiseCompare.cta.headline").replace("{{competitor}}", competitorName)}
+    </h2>
+    <p class="text-white/55 text-base mb-8 leading-relaxed">
+      {t("cartwiseCompare.cta.subline")}
+    </p>
+
+    <a
+      href={PLAY_URL}
+      target="_blank"
+      rel="noopener"
+      class="inline-flex items-center gap-2 px-7 py-4 rounded-[14px] text-base font-bold text-gray-950 mb-6 transition-transform hover:-translate-y-0.5"
+      style="background: var(--color-accent-500);"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.9"/>
+        <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"/>
+        <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"/>
+        <path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"/>
+      </svg>
+      {t("cartwiseCompare.cta.ctaButton")}
+    </a>
+
+    <!-- Trust badges -->
+    <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-white/45">
+      <span class="inline-flex items-center gap-1.5">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        {t("cartwiseCompare.cta.trustFree")}
+      </span>
+      <span class="inline-flex items-center gap-1.5">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        {t("cartwiseCompare.cta.trustNoAccount")}
+      </span>
+      <span class="inline-flex items-center gap-1.5">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        {t("cartwiseCompare.cta.trustOffline")}
+      </span>
+      <span class="inline-flex items-center gap-1.5">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        {t("cartwiseCompare.cta.trustPlatform")}
+      </span>
+    </div>
+  </div>
+</section>

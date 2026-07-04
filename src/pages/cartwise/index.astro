@@ -1,0 +1,26 @@
+---
+import CartwiseLanding from "@/components/CartwiseLanding.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations } from "@/i18n/utils";
+
+const t = useTranslations("en");
+
+const title = t("cartwise.meta.title");
+const description = t("cartwise.meta.description");
+const ogImage = "/images/apps/cartwise-grocery-shopping-list/icon.png";
+const canonical = new URL("/cartwise", Astro.site).href;
+---
+
+<BaseLayout
+  {title}
+  {description}
+  {ogImage}
+  ogImageWidth={512}
+  ogImageHeight={512}
+  locale="en"
+  canonical={canonical}
+  showFooterCta={false}
+  availableLocales={["en", "es", "pt"]}
+>
+  <CartwiseLanding locale="en" />
+</BaseLayout>

@@ -10,6 +10,10 @@ const {
 	title = "FusionCore Apps — Premium Mobile Applications",
 	description = "Professional mobile app development studio delivering secure, innovative, and user-friendly applications for Android and iOS platforms. Transform your ideas into powerful digital experiences.",
 	ogImage = "/og-default.png",
+	// Actual pixel dimensions of ogImage (og-default.png and blog images are 1536×1024;
+	// pages using the 512×512 app icon must pass 512/512).
+	ogImageWidth = 1536,
+	ogImageHeight = 1024,
 	ogType = "website",
 	canonical,
 	noindex = false,
@@ -96,8 +100,8 @@ const resolvedOgImage =
 		<meta content={title} property="og:title" />
 		<meta content={description} property="og:description" />
 		<meta content={resolvedOgImage} property="og:image" />
-		<meta content="1200" property="og:image:width" />
-		<meta content="630" property="og:image:height" />
+		<meta content={String(ogImageWidth)} property="og:image:width" />
+		<meta content={String(ogImageHeight)} property="og:image:height" />
 		<meta content="FusionCore Apps" property="og:site_name" />
 		<meta content={currentLocale === "es" ? "es_MX" : currentLocale === "pt" ? "pt_BR" : "en_US"} property="og:locale" />
 
@@ -114,14 +118,9 @@ const resolvedOgImage =
 		<meta content="yes" name="mobile-web-app-capable" />
 		<meta content="default" name="apple-mobile-web-app-status-bar-style" />
 
-		<link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
 		<link rel="preconnect" href="https://www.gstatic.com" crossorigin />
-		<link
-			rel="preload"
-			href="https://fonts.bunny.net/css?family=urbanist:700,800,900|dm-sans:400,500&display=swap"
-			as="style"
-		/>
-		<link href="https://fonts.bunny.net/css?family=urbanist:400,500,600,700,800,900|dm-sans:300,400,500,600&display=swap" rel="stylesheet" />
+		<link rel="preload" href="/fonts/bricolage-grotesque-variable.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
 
 		<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
 		<!-- apple-touch-icon.png must be a 180×180 PNG at /public/apple-touch-icon.png -->
@@ -210,9 +209,9 @@ const resolvedOgImage =
 							class="h-9 w-9 flex-shrink-0 rounded-xl object-contain transition-transform duration-300 group-hover:scale-105"
 						/>
 						<span
-							class="header__wordmark gradient-text overflow-hidden whitespace-nowrap font-bold"
+							class="header__wordmark overflow-hidden whitespace-nowrap font-bold text-gray-900 dark:text-white"
 							style="font-family: var(--font-display); letter-spacing: -0.025em; font-size: 15px;"
-						>FusionCore Apps</span>
+						>FusionCore<span class="text-brand-700 dark:text-brand-400"> Apps</span></span>
 					</a>
 
 					<!-- Desktop links -->
@@ -292,8 +291,8 @@ const resolvedOgImage =
 			<div class="flex flex-shrink-0 items-center justify-between px-6 py-4">
 				<a href={navHome} class="flex items-center gap-2.5" id="overlay-logo">
 					<img src="/logo.png" alt="FusionCore Apps" class="h-8 w-8 flex-shrink-0 rounded-lg object-contain" />
-					<span class="gradient-text font-bold" style="font-family: var(--font-display); font-size: 15px; letter-spacing: -0.02em;">
-						FusionCore Apps
+					<span class="font-bold text-gray-900 dark:text-white" style="font-family: var(--font-display); font-size: 15px; letter-spacing: -0.02em;">
+						FusionCore<span class="text-brand-700 dark:text-brand-400"> Apps</span>
 					</span>
 				</a>
 				<button
@@ -365,8 +364,8 @@ const resolvedOgImage =
 				<a
 					href={navApps}
 					id="mobile-cta"
-					class="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-bold text-white shadow-lg"
-					style="background: linear-gradient(135deg, #ff8a2a 0%, #e8455b 100%);"
+					class="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-bold text-white shadow-sm"
+					style="background: var(--color-brand-700);"
 				>
 					{t("footer.browseAllApps")}
 					<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -398,20 +397,12 @@ const resolvedOgImage =
 		<!-- ── Footer ── -->
 		<footer role="contentinfo">
 
-			<!-- Top gradient line (always visible) -->
-			<div class="h-px w-full" style="background: linear-gradient(90deg, transparent 0%, #ff8a2a 25%, #e8455b 50%, #2ecfff 75%, transparent 100%);"></div>
+			<!-- Top hairline -->
+			<div class="h-px w-full bg-gray-200 dark:bg-white/10"></div>
 
 			<!-- CTA Island — theme-aware -->
 			{showFooterCta && (
 				<div class="footer-cta-island">
-					<!-- Ambient glow accents (visible in dark, subtle in light) -->
-					<div aria-hidden="true" class="pointer-events-none absolute inset-0">
-						<div class="absolute -top-24 right-1/4 h-64 w-64 rounded-full blur-[80px] opacity-30 dark:opacity-100" style="background: rgba(255,138,42,0.15);"></div>
-						<div class="absolute -bottom-16 left-1/4 h-56 w-56 rounded-full blur-[80px] opacity-20 dark:opacity-100" style="background: rgba(46,207,255,0.12);"></div>
-					</div>
-					<!-- Dot grid texture -->
-					<div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-[0.07] dark:opacity-20" style="background-image: radial-gradient(circle, rgba(46,207,255,0.5) 1px, transparent 1px); background-size: 28px 28px;"></div>
-
 					<div class="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-20 text-center sm:px-6 lg:px-8">
 						<div class="footer-cta-island__label section-label">
 							<span class="inline-block h-1.5 w-1.5 rounded-full mr-2 opacity-50"></span>
@@ -499,6 +490,7 @@ const resolvedOgImage =
 								<li><a class="footer__link" href={navHome}>{t("nav.home")}</a></li>
 								<li><a class="footer__link" href={navApps}>{t("nav.apps")}</a></li>
 								<li><a class="footer__link" href={navBlog}>{t("nav.blog")}</a></li>
+								<li><a class="footer__link" href={getLocalePath("/compare-apps", currentLocale as Locale)}>{t("footer.compareApps")}</a></li>
 								<li><a class="footer__link" href={navContact}>{t("nav.contact")}</a></li>
 								<li><a class="footer__link" href={navPrivacy}>{t("nav.privacy")}</a></li>
 								<li><a class="footer__link" href={navTerms}>{t("nav.terms")}</a></li>
@@ -511,7 +503,7 @@ const resolvedOgImage =
 							<ul class="space-y-0.5">
 								<li><a class="footer__link" href={getLocalePath("/apps/bible-tpt", currentLocale as Locale)}>Bible TPT</a></li>
 								<li><a class="footer__link" href={getLocalePath("/apps/biblia-tla", currentLocale as Locale)}>Biblia TLA</a></li>
-								<li><a class="footer__link" href={getLocalePath("/apps/cartwise-grocery-shopping-list", currentLocale as Locale)}>CartWise</a></li>
+								<li><a class="footer__link" href={getLocalePath("/cartwise", currentLocale as Locale)}>CartWise</a></li>
 								<li>
 									<a class="footer__link" href={getLocalePath("/apps/claimly-receipt-tracker", currentLocale as Locale)}>
 										Claimly

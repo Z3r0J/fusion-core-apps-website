@@ -78,4 +78,33 @@ const legal = defineCollection({
 	}),
 });
 
-export const collections = { apps, blog, legal };
+const comparisons = defineCollection({
+	type: "content",
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		competitorName: z.string(),
+		competitorSlug: z.string(),
+		translationKey: z.string(),
+		updatedAt: z.string(),
+		cartwiseRating: z.number().optional(),
+		cartwiseReviewCount: z.string().optional(),
+		competitorRating: z.number().optional(),
+		competitorReviewCount: z.string().optional(),
+		competitorIconEmoji: z.string().default("📱"),
+		competitorIcon: urlOrPath.optional(),
+		heroDeck: z.string(),
+		introParagraphs: z.array(z.string()),
+		quickTable: z.array(z.object({ category: z.string(), cartwise: z.string(), competitor: z.string() })),
+		featureRows: z.array(z.object({ feature: z.string(), cartwise: z.string(), competitor: z.string() })),
+		cartwiseGood: z.array(z.string()),
+		cartwiseBad: z.array(z.string()),
+		competitorGood: z.array(z.string()),
+		competitorBad: z.array(z.string()),
+		midVerdict: z.string(),
+		finalVerdict: z.array(z.string()),
+		relatedSlugs: z.array(z.string()).default([]),
+	}),
+});
+
+export const collections = { apps, blog, legal, comparisons };
