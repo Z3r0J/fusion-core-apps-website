@@ -3,9 +3,31 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
+import { copyFileSync, existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import svgr from "vite-plugin-svgr";
 
 import vercel from "@astrojs/vercel";
+
+// Workaround: Astro runs adapter hooks first (integrations.unshift(adapter)),
+// so @astrojs/vercel packages .vercel/output/static BEFORE @astrojs/sitemap
+// writes its XML in astro:build:done — the sitemap never reaches the deploy
+// and /sitemap-index.xml 404s in production. Copy the files in afterwards.
+// Must stay AFTER sitemap() in the integrations array.
+const copySitemapToVercelOutput = {
+	name: "copy-sitemap-to-vercel-output",
+	hooks: {
+		"astro:build:done": ({ dir }) => {
+			const src = fileURLToPath(dir);
+			const dest = fileURLToPath(new URL("./.vercel/output/static/", import.meta.url));
+			if (!existsSync(dest)) return;
+			for (const file of readdirSync(src)) {
+				if (/^sitemap-.*\.xml$/.test(file)) copyFileSync(join(src, file), join(dest, file));
+			}
+		},
+	},
+};
 
 export default defineConfig({
 	site: "https://www.fusioncoreapps.com",
@@ -56,6 +78,24 @@ export default defineConfig({
 					item.priority = isLocale ? 0.6 : 0.7;
 					return item;
 				}
+				// CartWise landing
+				if (url.endsWith("/cartwise")) {
+					item.changefreq = "weekly";
+					item.priority = isLocale ? 0.8 : 0.9;
+					return item;
+				}
+				// Comparison detail pages
+				if (url.includes("/compare-apps/")) {
+					item.changefreq = "monthly";
+					item.priority = isLocale ? 0.6 : 0.7;
+					return item;
+				}
+				// Comparison hub
+				if (url.endsWith("/compare-apps")) {
+					item.changefreq = "weekly";
+					item.priority = isLocale ? 0.5 : 0.6;
+					return item;
+				}
 				// Blog listing
 				if (url.endsWith("/blog")) {
 					item.changefreq = "weekly";
@@ -69,6 +109,7 @@ export default defineConfig({
 			},
 		}),
 		mdx(),
+		copySitemapToVercelOutput,
 	],
 
 	vite: {

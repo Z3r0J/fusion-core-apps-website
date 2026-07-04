@@ -8,6 +8,16 @@
       "permanent": true
     },
     {
+      "source": "/pt/blog/claimly-ya-disponible-google-play",
+      "destination": "/pt/blog/claimly-agora-disponivel-google-play",
+      "permanent": true
+    },
+    {
+      "source": "/pt/blog/best-bible-apps-android-2026",
+      "destination": "/blog/best-bible-apps-android-2026",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
