@@ -67,6 +67,11 @@ const blog = defineCollection({
 		tags: z.array(z.string()).default([]),
 		image: z.string().optional(),
 		featured: z.boolean().default(false),
+		// Q&As mirrored by a visible FAQ section in the post body (Google requires
+		// on-page parity); rendered as FAQPage JSON-LD by BlogJsonLd.astro.
+		faq: z
+			.array(z.object({ question: z.string(), answer: z.string() }))
+			.optional(),
 	}),
 });
 

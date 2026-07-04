@@ -36,6 +36,21 @@ const structuredData = {
 	},
 	"url": url,
 };
+
+const faqData = post.data.faq?.length
+	? {
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": post.data.faq.map((item) => ({
+				"@type": "Question",
+				"name": item.question,
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": item.answer,
+				},
+			})),
+		}
+	: null;
 ---
 
 <!-- eslint-disable astro/no-set-html-directive -->
@@ -44,3 +59,12 @@ const structuredData = {
 	set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
 	type="application/ld+json"
 ></script>
+{
+	faqData && (
+		<script
+			is:inline
+			set:html={JSON.stringify(faqData).replace(/</g, "\\u003c")}
+			type="application/ld+json"
+		/>
+	)
+}

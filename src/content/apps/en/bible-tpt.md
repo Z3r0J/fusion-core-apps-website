@@ -1,11 +1,11 @@
 ---
-title: "Bible TPT: Passion Translation"
-tagline: "Encounter God's Word through The Passion Translation with Audio Bible, daily devotionals, and AI reading plans."
-description: "Bible TPT brings The Passion Translation to life with Audio Bible, offline access, daily devotionals, AI reading plans, and highlights. Over 2,000 installs."
+title: "Bible TPT — The Passion Translation Bible App"
+tagline: "The free TPT Bible app for Android — read The Passion Translation offline, with Audio Bible and daily devotionals."
+description: "Download the free TPT Bible app for Android. Read The Passion Translation offline, listen with Audio Bible, and follow daily devotionals and AI reading plans."
 icon: "/images/apps/bible-tpt/icon.png"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.bible.tpt"
 category: "Books & Reference"
-tags: ["bible app", "passion translation", "tpt", "audio bible", "offline bible", "android"]
+tags: ["tpt bible app", "the passion translation", "free download", "offline bible", "audio bible", "android"]
 locale: "en"
 price: "Free"
 version: "1.3.1"
@@ -16,7 +16,7 @@ ratingCount: 76
 downloads: "2K+"
 ---
 ## Overview
-**Bible TPT: Passion Translation** is a modern **TPT Bible app** built to help you immerse yourself in God's love through **The Passion Translation (TPT)** — a heartfelt, expressive translation that makes Scripture feel vivid and personal. With over **1,000 installs on Google Play**, it's built for daily spiritual growth. Stay connected to the Word anywhere with **offline access**, **Audio Bible**, **daily devotionals**, and **AI-generated reading plans**.
+**Bible TPT: Passion Translation** is a modern **TPT Bible app** built to help you immerse yourself in God's love through **The Passion Translation (TPT)** — a heartfelt, expressive translation that makes Scripture feel vivid and personal. With over **2,000 installs on Google Play**, it's built for daily spiritual growth. Stay connected to the Word anywhere with **offline access**, **Audio Bible**, **daily devotionals**, and **AI-generated reading plans**.
 
 ## Features
 - **TPT Bible (The Passion Translation)** — expressive language that brings Scripture to life
