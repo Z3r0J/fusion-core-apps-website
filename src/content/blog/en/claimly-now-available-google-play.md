@@ -1,6 +1,6 @@
 ---
-title: "Claimly Is Now Available on Google Play — The Warranty Tracker That Scans Your Receipts"
-description: "Claimly is a warranty tracker and receipt scanner for Android. Scan receipts with OCR, track multiple warranties per product, and get expiry alerts. Now on Google Play."
+title: "Claimly Is Now on Google Play: Warranty Tracker That Scans Receipts"
+description: "Claimly is a warranty tracker and receipt scanner for Android. Scan receipts with OCR, track multiple warranties per product, get expiry alerts."
 translationKey: "claimly-google-play-launch"
 publishedAt: "2026-04-17"
 author: "FusionCore Apps"

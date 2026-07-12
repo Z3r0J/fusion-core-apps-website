@@ -1,6 +1,6 @@
 ---
 title: "Best Bible Apps for Android in 2026 (Free, Offline & Study Picks)"
-description: "We tested the best Bible apps for Android in 2026 — Bible TPT, YouVersion, Blue Letter Bible and Biblia TLA — comparing free offline reading, audio, and study tools."
+description: "We tested the best Bible apps for Android: Bible TPT, YouVersion, Blue Letter Bible and Biblia TLA. Free offline reading, audio and study compared."
 publishedAt: "2026-03-01"
 updatedAt: "2026-07-04"
 author: "FusionCore Apps"

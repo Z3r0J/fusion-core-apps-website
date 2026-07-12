@@ -1,6 +1,6 @@
 ---
-title: "O App de Lista de Compras que Soma o Total Enquanto Você Faz as Compras"
-description: "Saiba o total do seu carrinho antes de chegar ao caixa. CartWise é o app de lista de compras com uma calculadora de preços em tempo real que mantém você dentro do orçamento."
+title: "O app de lista de compras que soma o total enquanto você compra"
+description: "Saiba o total do carrinho antes do caixa. O CartWise soma os preços em tempo real e mantém você dentro do orçamento enquanto faz as compras."
 translationKey: "grocery-list-price-calculator"
 publishedAt: "2026-06-26"
 author: "FusionCore Apps"
