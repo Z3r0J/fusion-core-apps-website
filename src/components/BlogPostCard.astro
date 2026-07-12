@@ -13,6 +13,9 @@ const postSlug = post.slug.replace(/^(en|es|pt)\//, "");
 const postLocale = post.slug.match(/^(es|pt)\//)?.[1];
 const href = hrefProp ?? (postLocale ? `/${postLocale}/blog/${postSlug}` : `/blog/${postSlug}`);
 
+// Branded OG card (1200x630) reads better in the list than the in-page hero shot
+const cardImage = post.data.ogImage ?? post.data.image;
+
 const formattedDate = post.data.publishedAt.toLocaleDateString("en-US", {
 	year: "numeric",
 	month: "long",
@@ -28,8 +31,8 @@ const delay = `${index * 75}ms`;
 			<a class="contents" href={href}>
 				{/* ── Image side ── */}
 				<div class="blog-card__image" style="min-height:260px;">
-					{post.data.image ? (
-						<img alt={post.data.title} loading="eager" src={post.data.image} />
+					{cardImage ? (
+						<img alt={post.data.title} loading="eager" src={cardImage} />
 					) : (
 						<div class="blog-card__image-placeholder">
 							<svg
@@ -86,8 +89,8 @@ const delay = `${index * 75}ms`;
 			<a class="flex flex-col flex-1" href={href}>
 				{/* ── Image stage ── */}
 				<div class="blog-card__image" style="height:188px;flex-shrink:0;">
-					{post.data.image ? (
-						<img alt={post.data.title} loading="lazy" src={post.data.image} />
+					{cardImage ? (
+						<img alt={post.data.title} loading="lazy" src={cardImage} />
 					) : (
 						<div class="blog-card__image-placeholder">
 							<svg
