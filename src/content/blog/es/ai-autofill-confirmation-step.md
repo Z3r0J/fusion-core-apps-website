@@ -62,7 +62,7 @@ El diseño sale de la regla, no de una librería de patrones:
 
 El objetivo no es que la persona audite el recibo. Es que una sola mirada honesta alcance. Si la pantalla de revisión está bien hecha, confirmar es un reflejo y corregir es posible: esa es toda la diferencia entre un rastreador de garantías que funciona y uno que miente.
 
-[DATO: porcentaje de escaneos en los que el usuario edita al menos un campo en la pantalla de revisión — vale la pena medirlo; si es casi cero, la barrera está sobredimensionada y debería encogerse a una microconfirmación]
+![Cómo leer el edit rate: entre 0 y 5% la barrera está sobredimensionada y debería encogerse a una microconfirmación, entre 5 y 40% es la zona sana donde la revisión se gana su lugar, y por encima de 40% la extracción falla y hay que arreglar el modelo](/images/blog/es/ai-autofill-edit-rate-zones.png)
 
 ## Dónde sí quitamos la barrera: CartWise
 

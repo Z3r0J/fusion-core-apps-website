@@ -62,7 +62,7 @@ The design follows from the rule, not from a pattern library:
 
 The goal is not to make the person audit the receipt. It is to make one honest glance sufficient. If the review screen is well built, confirming is a reflex and correcting is possible — and that is the entire difference between a warranty tracker that works and one that lies.
 
-[DATO: share of scans where the user edits at least one field on the review screen — a number worth measuring; if it is near zero, the gate is over-engineered and should shrink to a micro-confirmation]
+![How to read the edit rate: at 0–5% the gate is over-engineered and should shrink to a micro-confirmation, 5–40% is the healthy zone where the review step earns its keep, and above 40% the extraction is struggling and the model needs fixing](/images/blog/en/ai-autofill-edit-rate-zones.png)
 
 ## Where we skip the gate: CartWise
 
