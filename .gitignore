@@ -123,3 +123,7 @@ docs/build/
 
 # Warp terminal
 WARP.md
+# Graphify (local artifacts)
+graphify-out/cache/
+graphify-out/cost.json
+graphify-out/memory/

@@ -1,11 +1,12 @@
 ---
 title: "La App de Lista del Supermercado que Suma el Total Mientras Compras"
-description: "Conoce el total de tu carrito antes de llegar a la caja. CartWise es la app de lista del supermercado con una calculadora de precios en tiempo real que te ayuda a mantenerte dentro del presupuesto."
+description: "Conoce el total de tu carrito antes de llegar a la caja. CartWise suma los precios en tiempo real y te ayuda a no pasarte del presupuesto."
 translationKey: "grocery-list-price-calculator"
 publishedAt: "2026-06-26"
 author: "FusionCore Apps"
 tags: ["supermercado", "presupuesto", "android", "apps", "calculadora de precios"]
 image: "/images/screenshots/cartwise-home.jpg"
+ogImage: "/images/blog/es/grocery-list-app-adds-up-total.png"
 featured: false
 ---
 

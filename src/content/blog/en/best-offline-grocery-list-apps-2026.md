@@ -6,6 +6,7 @@ publishedAt: "2026-06-26"
 author: "FusionCore Apps"
 tags: ["grocery", "offline", "android", "apps", "productivity"]
 image: "/images/screenshots/cartwise-list.jpg"
+ogImage: "/images/blog/en/best-offline-grocery-list-apps-2026.png"
 featured: false
 ---
 

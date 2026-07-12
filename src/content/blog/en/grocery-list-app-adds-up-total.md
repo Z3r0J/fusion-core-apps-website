@@ -1,11 +1,12 @@
 ---
 title: "The Grocery List App That Adds Up Your Total as You Shop"
-description: "Know your cart total before you reach checkout. CartWise is the grocery list app with a built-in running price calculator that keeps you on budget as you shop."
+description: "Know your cart total before checkout. CartWise is the grocery list app with a running price calculator that keeps you on budget as you shop."
 translationKey: "grocery-list-price-calculator"
 publishedAt: "2026-06-26"
 author: "FusionCore Apps"
 tags: ["grocery", "budget", "android", "apps", "price calculator"]
 image: "/images/screenshots/cartwise-home.jpg"
+ogImage: "/images/blog/en/grocery-list-app-adds-up-total.png"
 featured: false
 ---
 

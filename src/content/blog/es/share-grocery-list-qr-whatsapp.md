@@ -1,11 +1,12 @@
 ---
 title: "Cómo compartir una lista de compras por código QR o WhatsApp"
-description: "Dos formas de compartir en CartWise: una lista en vivo que todos editan en tiempo real (QR o código de invitación), o una copia de solo lectura por WhatsApp. Sin cuenta."
+description: "Dos formas de compartir en CartWise: una lista en vivo que todos editan (QR o código de invitación), o una copia de solo lectura por WhatsApp."
 translationKey: "share-grocery-list-qr-whatsapp"
 publishedAt: "2026-06-26"
 author: "FusionCore Apps"
 tags: ["supermercado", "compartir", "android", "apps", "familia", "whatsapp"]
 image: "/images/screenshots/cartwise-create.jpg"
+ogImage: "/images/blog/es/share-grocery-list-qr-whatsapp.png"
 featured: false
 ---
 

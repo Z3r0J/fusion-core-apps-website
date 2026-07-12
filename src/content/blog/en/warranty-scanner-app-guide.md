@@ -1,11 +1,12 @@
 ---
-title: "Warranty Scanner Apps: How to Track Receipts and Never Miss a Claim (2026)"
+title: "Warranty Scanner Apps: Track Receipts, Never Miss a Claim (2026)"
 description: "A warranty scanner turns paper receipts into tracked warranties with expiry alerts. Here's how receipt scanning works and how to file a claim on time."
 translationKey: "warranty-scanner-guide"
 publishedAt: "2026-07-04"
 author: "FusionCore Apps"
 tags: ["warranty scanner", "receipt scanner", "warranty claim", "android", "apps"]
 image: "/images/screenshots/claimly-scanner.jpg"
+ogImage: "/images/blog/en/warranty-scanner-app-guide.png"
 featured: false
 faq:
   - question: "What is a warranty scanner app?"

@@ -1,0 +1,59 @@
+# Copy this to your project root as .claudeignore
+# Prevents Claude Code from scanning irrelevant directories/files
+
+# Dependencies
+node_modules/
+vendor/
+.pnp/
+.yarn/
+
+# Build output
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+.vercel/
+.netlify/
+.astro/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Generated / compiled
+*.min.js
+*.min.css
+*.map
+*.d.ts.map
+
+# Lock files (large, not useful for code understanding)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# Cache
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+*.tsbuildinfo
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VCS
+.git/
+.svn/
+
+# Graphify (CLI-consumed, don't scan)
+graphify-out/cache/
+graphify-out/graph.json
+graphify-out/graph.html

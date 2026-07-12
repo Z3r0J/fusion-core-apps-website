@@ -24,7 +24,12 @@ const postSlug = post.slug.replace(`${locale}/`, "");
 const title = `${post.data.title} — FusionCore`;
 const description = post.data.description;
 const canonical = new URL(`/${locale}/blog/${postSlug}`, Astro.site).href;
-const ogImage = post.data.image || "/og-default.png";
+// See blog/[slug].astro: the generated social card wins over the in-page hero,
+// and its 1200x630 size must be declared explicitly (BaseLayout defaults to the
+// 1536x1024 of og-default.png).
+const ogImage = post.data.ogImage || post.data.image || "/og-default.png";
+const ogImageWidth = post.data.ogImage ? 1200 : 1536;
+const ogImageHeight = post.data.ogImage ? 630 : 1024;
 
 const formattedDate = post.data.publishedAt.toLocaleDateString(locale === "es" ? "es-419" : "pt-BR", {
 	year: "numeric",
@@ -57,6 +62,8 @@ for (const sibling of siblings) {
 	{canonical}
 	{description}
 	{ogImage}
+	{ogImageHeight}
+	{ogImageWidth}
 	{title}
 	ogType="article"
 	locale={locale}

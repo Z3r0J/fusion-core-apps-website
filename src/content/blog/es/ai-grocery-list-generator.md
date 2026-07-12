@@ -1,11 +1,12 @@
 ---
-title: "Generador de lista de compras con IA: crea una lista completa en segundos"
+title: "Generador de lista de compras con IA: lista completa en segundos"
 description: "Háblale a CartWise y convierte lo que dices en una lista de compras limpia y ordenada — en tu propio idioma, gratis y sin cuenta."
 translationKey: "ai-grocery-list-generator"
 publishedAt: "2026-06-26"
 author: "FusionCore Apps"
 tags: ["compras", "IA", "android", "apps", "productividad"]
 image: "/images/screenshots/cartwise-ai.jpg"
+ogImage: "/images/blog/es/ai-grocery-list-generator.png"
 featured: false
 ---
 

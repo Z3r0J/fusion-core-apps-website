@@ -6,6 +6,7 @@ publishedAt: "2026-06-26"
 author: "FusionCore Apps"
 tags: ["grocery", "AI", "android", "apps", "productivity"]
 image: "/images/screenshots/cartwise-ai.jpg"
+ogImage: "/images/blog/en/ai-grocery-list-generator.png"
 featured: false
 ---
 
