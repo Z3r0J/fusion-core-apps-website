@@ -8,7 +8,7 @@ translationKey: "ai-autofill-confirmation-step"
 publishedAt: "2026-07-12"
 author: "FusionCore Apps"
 tags: ["ai ux", "product", "claimly", "ocr", "human in the loop"]
-ogImage: "/blog/og/en/ai-autofill-confirmation-step.png"
+ogImage: "/images/blog/en/ai-autofill-confirmation-step.png"
 featured: false
 faq:
   - question: "Should an AI auto-fill feature save data automatically?"

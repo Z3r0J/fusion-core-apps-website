@@ -6,7 +6,7 @@ publishedAt: "2026-04-17"
 author: "FusionCore Apps"
 tags: ["claimly", "warranty tracker", "receipt scanner", "android app", "product launch", "fusioncore apps"]
 image: "/images/blog/claimly-now-available-google-play.png"
-ogImage: "/blog/og/en/claimly-now-available-google-play.png"
+ogImage: "/images/blog/en/claimly-now-available-google-play.png"
 featured: true
 ---
 

@@ -6,7 +6,7 @@ publishedAt: "2026-06-26"
 author: "FusionCore Apps"
 tags: ["grocery", "budget", "android", "apps", "price calculator"]
 image: "/images/screenshots/cartwise-home.jpg"
-ogImage: "/blog/og/en/grocery-list-app-adds-up-total.png"
+ogImage: "/images/blog/en/grocery-list-app-adds-up-total.png"
 featured: false
 ---
 

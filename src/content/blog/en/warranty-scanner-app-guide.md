@@ -6,7 +6,7 @@ publishedAt: "2026-07-04"
 author: "FusionCore Apps"
 tags: ["warranty scanner", "receipt scanner", "warranty claim", "android", "apps"]
 image: "/images/screenshots/claimly-scanner.jpg"
-ogImage: "/blog/og/en/warranty-scanner-app-guide.png"
+ogImage: "/images/blog/en/warranty-scanner-app-guide.png"
 featured: false
 faq:
   - question: "What is a warranty scanner app?"

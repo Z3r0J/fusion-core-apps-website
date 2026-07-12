@@ -6,7 +6,7 @@ updatedAt: "2026-07-04"
 author: "FusionCore Apps"
 tags: ["bible", "bible study", "android", "apps", "offline"]
 image: "/images/blog/best-bible-apps-android-2026.png"
-ogImage: "/blog/og/en/best-bible-apps-android-2026.png"
+ogImage: "/images/blog/en/best-bible-apps-android-2026.png"
 featured: false
 faq:
   - question: "What is the best Bible app for Android in 2026?"

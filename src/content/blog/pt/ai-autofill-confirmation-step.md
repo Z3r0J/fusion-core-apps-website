@@ -8,7 +8,7 @@ translationKey: "ai-autofill-confirmation-step"
 publishedAt: "2026-07-12"
 author: "FusionCore Apps"
 tags: ["ux com ia", "produto", "claimly", "ocr", "human in the loop"]
-ogImage: "/blog/og/pt/ai-autofill-confirmation-step.png"
+ogImage: "/images/blog/pt/ai-autofill-confirmation-step.png"
 featured: false
 faq:
   - question: "Uma função de preenchimento automático com IA deveria salvar sozinha?"

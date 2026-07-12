@@ -6,7 +6,7 @@ publishedAt: "2026-04-17"
 author: "FusionCore Apps"
 tags: ["claimly", "rastreador de garantias", "scanner de recibos", "android", "lançamento", "fusioncore apps"]
 image: "/images/blog/claimly-agora-disponivel-google-play.png"
-ogImage: "/blog/og/pt/claimly-agora-disponivel-google-play.png"
+ogImage: "/images/blog/pt/claimly-agora-disponivel-google-play.png"
 featured: true
 ---
 

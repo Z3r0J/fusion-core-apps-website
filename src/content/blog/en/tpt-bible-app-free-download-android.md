@@ -6,7 +6,7 @@ publishedAt: "2026-07-04"
 author: "FusionCore Apps"
 tags: ["tpt bible app", "the passion translation", "free download", "offline bible", "android"]
 image: "/images/screenshots/bible-tpt-reading.jpg"
-ogImage: "/blog/og/en/tpt-bible-app-free-download-android.png"
+ogImage: "/images/blog/en/tpt-bible-app-free-download-android.png"
 featured: false
 faq:
   - question: "Is the TPT Bible app free?"

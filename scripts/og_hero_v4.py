@@ -29,7 +29,7 @@ python3 og_hero_v4.py --template dark \
   --title "AI Grocery List Generator: Build a Full List in Seconds" \
   --kicker Engineering --app CartWise --motif cart \
   --highlight "Seconds" --slug ai-grocery-list-generator \
-  --meta "Jul 2026 · 6 min" --out public/blog/ai-grocery-list.png
+  --meta "Jul 2026 · 6 min" --out public/images/blog/en/ai-grocery-list.png
 
 # icono real de la app en vez de motif:
 python3 og_hero_v4.py --template dark --title "..." --app Claimly \
@@ -39,7 +39,9 @@ python3 og_hero_v4.py --template dark --title "..." --app Claimly \
 python3 og_hero_v4.py --template dark --title "..." --photo assets/bg.jpg --out out.png
 
 # batch desde frontmatter de los .md de Astro:
-python3 og_hero_v4.py --batch src/content/blog --outdir public/blog/og
+# NO usar public/blog/: colisiona con la ruta /blog/[slug] y el asset no se sirve.
+python3 og_hero_v4.py --batch src/content/blog/es --outdir public/images/blog/es \
+  --fontdir scripts/fonts --logo public/logo.png
 """
 
 import argparse

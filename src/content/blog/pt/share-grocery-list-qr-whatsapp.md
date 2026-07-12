@@ -6,7 +6,7 @@ publishedAt: "2026-06-26"
 author: "FusionCore Apps"
 tags: ["supermercado", "compartilhamento", "android", "apps", "família", "whatsapp"]
 image: "/images/screenshots/cartwise-create.jpg"
-ogImage: "/blog/og/pt/share-grocery-list-qr-whatsapp.png"
+ogImage: "/images/blog/pt/share-grocery-list-qr-whatsapp.png"
 featured: false
 ---
 

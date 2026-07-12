@@ -5,7 +5,7 @@ publishedAt: "2026-03-01"
 author: "FusionCore Apps"
 tags: ["biblia", "español", "apps", "android"]
 image: "/images/blog/biblia-tla-espanol-facil-guia.png"
-ogImage: "/blog/og/es/biblia-tla-espanol-facil-guia.png"
+ogImage: "/images/blog/es/biblia-tla-espanol-facil-guia.png"
 featured: false
 ---
 

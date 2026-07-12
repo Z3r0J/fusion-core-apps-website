@@ -8,7 +8,7 @@ translationKey: "why-we-never-run-expo-prebuild"
 publishedAt: "2026-07-12"
 author: "FusionCore Apps"
 tags: ["expo", "react native", "android", "engineering", "build"]
-ogImage: "/blog/og/en/why-we-never-run-expo-prebuild.png"
+ogImage: "/images/blog/en/why-we-never-run-expo-prebuild.png"
 featured: false
 faq:
   - question: "What does expo prebuild actually do?"

@@ -5,7 +5,7 @@ publishedAt: "2026-03-01"
 author: "FusionCore Apps"
 tags: ["grocery", "productivity", "android", "apps"]
 image: "/images/blog/smart-grocery-list-apps-save-time.png"
-ogImage: "/blog/og/en/smart-grocery-list-apps-save-time.png"
+ogImage: "/images/blog/en/smart-grocery-list-apps-save-time.png"
 featured: false
 ---
 

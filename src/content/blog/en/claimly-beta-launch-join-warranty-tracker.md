@@ -5,7 +5,7 @@ publishedAt: "2026-03-31"
 author: "FusionCore Apps"
 tags: ["claimly", "warranty tracker", "receipt scanner", "android", "beta", "new app"]
 image: "/images/blog/claimly-beta-launch-join-warranty-tracker.png"
-ogImage: "/blog/og/en/claimly-beta-launch-join-warranty-tracker.png"
+ogImage: "/images/blog/en/claimly-beta-launch-join-warranty-tracker.png"
 featured: true
 ---
 
