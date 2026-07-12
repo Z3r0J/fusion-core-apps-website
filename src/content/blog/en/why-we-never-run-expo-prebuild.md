@@ -3,7 +3,6 @@ title: "Why we never run expo prebuild on our apps"
 description: "Our apps use Expo, but the android/ folder is hand-edited. Here's what prebuild breaks, and why we accept that trade-off."
 app: Bible TPT
 category: Engineering
-slug: why-we-never-run-expo-prebuild
 translationKey: "why-we-never-run-expo-prebuild"
 publishedAt: "2026-07-12"
 author: "FusionCore Apps"

@@ -3,7 +3,6 @@ title: "Autocompletado con IA: por qué mantenemos el paso de confirmación"
 description: "El escáner de Claimly rellena todo con IA y aun así pide confirmar. La regla que usamos para decidir cuándo una función con IA necesita revisión."
 app: Claimly
 category: Product
-slug: ai-autofill-confirmation-step
 translationKey: "ai-autofill-confirmation-step"
 publishedAt: "2026-07-12"
 author: "FusionCore Apps"

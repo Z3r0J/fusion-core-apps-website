@@ -3,7 +3,6 @@ title: "AI Auto-Fill UX: Why the Confirm Step Stays in Claimly"
 description: "Our receipt scanner pre-fills every field with AI and still asks you to confirm. The rule we use to decide when an AI feature needs a review step."
 app: Claimly
 category: Product
-slug: ai-autofill-confirmation-step
 translationKey: "ai-autofill-confirmation-step"
 publishedAt: "2026-07-12"
 author: "FusionCore Apps"

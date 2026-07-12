@@ -3,7 +3,6 @@ title: "Preenchimento automático com IA: por que a confirmação fica"
 description: "O scanner do Claimly preenche todos os campos com IA e ainda pede confirmação. A regra que usamos para decidir quando uma função com IA precisa de revisão."
 app: Claimly
 category: Product
-slug: ai-autofill-confirmation-step
 translationKey: "ai-autofill-confirmation-step"
 publishedAt: "2026-07-12"
 author: "FusionCore Apps"
