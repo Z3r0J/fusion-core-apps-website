@@ -1820,14 +1820,53 @@
 		background: rgba(46,207,255,0.06);
 		color: rgba(255,255,255,0.70);
 	}
+	/* Lists — Tailwind preflight strips list-style, so markers are rebuilt here:
+	   ul gets a rounded-square chip (app-icon shape), ol gets ledger-style mono numbers */
 	.blog-prose ul, .blog-prose ol {
-		padding-left: 1.5em;
+		list-style: none;
+		padding-left: 0.25em;
 		margin: 0 0 1.35em;
 	}
 	.blog-prose ul li, .blog-prose ol li {
-		margin-bottom: 0.4em;
+		position: relative;
+		margin-bottom: 0.55em;
 	}
-	.blog-prose ul li::marker {
+	.blog-prose ul > li {
+		padding-left: 1.75em;
+	}
+	.blog-prose ul > li::before {
+		content: "";
+		position: absolute;
+		left: 0.3em;
+		top: 0.58em;
+		width: 8px;
+		height: 8px;
+		border-radius: 2.5px;
+		background: var(--color-brand-400);
+	}
+	.blog-prose ul ul > li::before {
+		background: transparent;
+		border: 1.5px solid var(--color-brand-400);
+	}
+	.blog-prose ol {
+		counter-reset: blog-ol;
+	}
+	.blog-prose ol > li {
+		counter-increment: blog-ol;
+		padding-left: 2.3em;
+	}
+	.blog-prose ol > li::before {
+		content: counter(blog-ol, decimal-leading-zero);
+		position: absolute;
+		left: 0.1em;
+		top: 0.22em;
+		font-family: var(--font-mono);
+		font-size: 0.78em;
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		color: var(--color-brand-700);
+	}
+	.dark .blog-prose ol > li::before {
 		color: var(--color-brand-400);
 	}
 	.blog-prose code:not(pre code) {
