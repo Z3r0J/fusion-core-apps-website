@@ -22,9 +22,18 @@ const LEGAL_PAGES: Array<{ slug: string; path: string }> = [
 export const GET: APIRoute = async ({ site }) => {
 	const abs = (path: string) => new URL(path, site).href;
 
-	const apps = await getCollection("apps", ({ slug }) => slug.startsWith("en/"));
-	const posts = await getCollection("blog", ({ slug }) => slug.startsWith("en/"));
-	const comparisons = await getCollection("comparisons", ({ slug }) => slug.startsWith("en/"));
+	// Sort deterministically so the emitted /llms.txt is stable across builds
+	// (getCollection traversal order is not guaranteed). Apps/comparisons go
+	// alphabetically by title; posts go newest-first by publish date.
+	const apps = (await getCollection("apps", ({ slug }) => slug.startsWith("en/"))).sort((a, b) =>
+		a.data.title.localeCompare(b.data.title),
+	);
+	const posts = (await getCollection("blog", ({ slug }) => slug.startsWith("en/"))).sort(
+		(a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+	);
+	const comparisons = (
+		await getCollection("comparisons", ({ slug }) => slug.startsWith("en/"))
+	).sort((a, b) => a.data.title.localeCompare(b.data.title));
 	const legal = await getCollection("legal");
 	const legalBySlug = new Map(legal.map((e) => [e.slug, e]));
 
