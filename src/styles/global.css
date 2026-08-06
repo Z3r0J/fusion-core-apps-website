@@ -352,7 +352,7 @@
 
 	/* Beta-join CTA: white-on-orange (distinct from the black-on-orange download CTA) */
 	.button--beta {
-		@apply focus:ring-accent-500 text-white shadow-sm hover:shadow-md;
+		@apply text-white shadow-sm hover:shadow-md;
 		background: var(--color-accent-700);
 	}
 

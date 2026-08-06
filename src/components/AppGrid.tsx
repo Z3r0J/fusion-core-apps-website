@@ -256,11 +256,20 @@ const AppCard = React.memo(function AppCard({ app, mode, locale, t }: { app: App
 								</div>
 								<span className="mt-0.5 text-[11px] font-medium text-brand-700 dark:text-brand-400">{app.category}</span>
 								<p className="mt-1 text-sm text-gray-500 dark:text-gray-400 line-clamp-1 leading-snug">{app.tagline}</p>
-								{rating !== null && (
+								{(rating !== null || app.downloadsLabel) && (
 									<div className="mt-2 flex items-center gap-2">
-										<div className="flex items-center gap-0.5">{stars}</div>
-										<span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">{rating}</span>
-										{app.downloadsLabel && <span className="text-[11px] text-gray-400 dark:text-gray-500">&middot; {app.downloadsLabel}</span>}
+										{rating !== null && (
+											<>
+												<div className="flex items-center gap-0.5">{stars}</div>
+												<span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">{rating}</span>
+											</>
+										)}
+										{app.downloadsLabel && (
+											<span className="text-[11px] text-gray-400 dark:text-gray-500">
+												{rating !== null && "· "}
+												{app.downloadsLabel}
+											</span>
+										)}
 									</div>
 								)}
 							</a>
@@ -377,11 +386,23 @@ const AppCard = React.memo(function AppCard({ app, mode, locale, t }: { app: App
 						<p className="mt-1 text-sm text-gray-500 dark:text-gray-400 leading-snug line-clamp-2">
 							{app.tagline}
 						</p>
-						{rating !== null && (
-							<div className="mt-3 flex items-center gap-2.5" aria-label={`Rating ${rating} out of 5`}>
-								<div className="flex items-center gap-0.5">{stars}</div>
-								<span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">{rating}</span>
-								{app.downloadsLabel && <span className="text-[11px] text-gray-400 dark:text-gray-500">&middot; {app.downloadsLabel}</span>}
+						{(rating !== null || app.downloadsLabel) && (
+							<div
+								className="mt-3 flex items-center gap-2.5"
+								aria-label={rating !== null ? `Rating ${rating} out of 5` : undefined}
+							>
+								{rating !== null && (
+									<>
+										<div className="flex items-center gap-0.5">{stars}</div>
+										<span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">{rating}</span>
+									</>
+								)}
+								{app.downloadsLabel && (
+									<span className="text-[11px] text-gray-400 dark:text-gray-500">
+										{rating !== null && "· "}
+										{app.downloadsLabel}
+									</span>
+								)}
 							</div>
 						)}
 					</a>
