@@ -1,0 +1,488 @@
+{
+  "communities": {
+    "0": [
+      "astro_content",
+      "src_components_blogpostcard",
+      "src_components_breadcrumbs",
+      "src_components_legallayout",
+      "src_components_legallayout_tocnav",
+      "src_pages_apps_index",
+      "src_pages_blog_index",
+      "src_pages_blog_index_allposts",
+      "src_pages_cartwise_privacy",
+      "src_pages_cartwise_terms",
+      "src_pages_locale_apps_index",
+      "src_pages_locale_apps_index_getstaticpaths",
+      "src_pages_locale_cartwise_privacy",
+      "src_pages_locale_cartwise_privacy_description",
+      "src_pages_locale_cartwise_privacy_getstaticpaths",
+      "src_pages_locale_cartwise_privacy_locale",
+      "src_pages_locale_cartwise_privacy_t",
+      "src_pages_locale_cartwise_terms",
+      "src_pages_locale_cartwise_terms_description",
+      "src_pages_locale_cartwise_terms_getstaticpaths",
+      "src_pages_locale_cartwise_terms_locale",
+      "src_pages_locale_cartwise_terms_t",
+      "src_pages_locale_privacy",
+      "src_pages_locale_privacy_description",
+      "src_pages_locale_privacy_getstaticpaths",
+      "src_pages_locale_privacy_locale",
+      "src_pages_locale_privacy_t",
+      "src_pages_locale_terms",
+      "src_pages_locale_terms_description",
+      "src_pages_locale_terms_getstaticpaths",
+      "src_pages_locale_terms_locale",
+      "src_pages_locale_terms_t",
+      "src_pages_privacy",
+      "src_pages_terms"
+    ],
+    "1": [
+      "c_users_yacal_source_repos_fusion_core_apps_website_src_assets_gplay_logo_svg",
+      "c_users_yacal_source_repos_fusion_core_apps_website_src_styles_global_css",
+      "firebase_analytics_js",
+      "firebase_app_js",
+      "src_components_cartwiselanding",
+      "src_components_themetoggle",
+      "src_components_themetoggle_themetoggle",
+      "src_i18n_utils",
+      "src_i18n_utils_getlocalefrompath",
+      "src_i18n_utils_getlocalepath",
+      "src_i18n_utils_locales",
+      "src_i18n_utils_striplocalepath",
+      "src_i18n_utils_translations",
+      "src_i18n_utils_usetranslations",
+      "src_layouts_baselayout",
+      "src_layouts_baselayout_getlocalepath",
+      "src_pages_cartwise_index",
+      "src_pages_cartwise_index_description",
+      "src_pages_cartwise_index_t",
+      "src_pages_cartwise_index_title",
+      "src_pages_compare_apps_index",
+      "src_pages_locale_blog_index",
+      "src_pages_locale_blog_index_getstaticpaths",
+      "src_pages_locale_blog_slug",
+      "src_pages_locale_blog_slug_getstaticpaths",
+      "src_pages_locale_cartwise_index",
+      "src_pages_locale_cartwise_index_getstaticpaths",
+      "src_pages_locale_cartwise_index_locale",
+      "src_pages_locale_cartwise_index_t",
+      "src_pages_locale_compare_apps_index",
+      "src_pages_locale_compare_apps_index_getstaticpaths"
+    ],
+    "2": [
+      "package",
+      "package_dependencies",
+      "package_dependencies_astro",
+      "package_dependencies_astrojs_mdx",
+      "package_dependencies_astrojs_sitemap",
+      "package_dependencies_astrojs_vercel",
+      "package_dependencies_clsx",
+      "package_dependencies_framer_motion",
+      "package_dependencies_lucide_react",
+      "package_dependencies_tailwind_merge",
+      "package_dependencies_zod",
+      "package_lint_staged",
+      "package_lint_staged_css_scss_less_json_md_mdx_yml_yaml_html_js_mjs_cjs_jsx_ts_mts_cts_tsx_vue_astro_svelte",
+      "package_lint_staged_js_jsx_ts_tsx_astro",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_astro",
+      "package_scripts_build",
+      "package_scripts_check",
+      "package_scripts_dev",
+      "package_scripts_format",
+      "package_scripts_format_check",
+      "package_scripts_lint",
+      "package_scripts_lint_fix",
+      "package_scripts_prepare",
+      "package_scripts_preview",
+      "package_type",
+      "package_version"
+    ],
+    "3": [
+      "astro_assets",
+      "c_users_yacal_source_repos_fusion_core_apps_website_src_assets_google_play_badge_svg",
+      "c_users_yacal_source_repos_fusion_core_apps_website_src_assets_placeholder_app_svg",
+      "lucide_react",
+      "src_components_animatedsection",
+      "src_components_animatedsection_animatedsection",
+      "src_components_animatedsection_props",
+      "src_components_appcard",
+      "src_components_appjsonld",
+      "src_components_appjsonld_app_canonical",
+      "src_components_appjsonld_string",
+      "src_components_appjsonld_structureddata",
+      "src_components_appshowcase",
+      "src_components_appshowcase_appshowcase",
+      "src_components_appshowcase_phoneframe",
+      "src_components_appshowcase_phones",
+      "src_i18n_utils_locale",
+      "src_pages_admin_index",
+      "src_pages_apps_slug",
+      "src_pages_apps_slug_getstaticpaths",
+      "src_pages_index",
+      "src_pages_index_featuredapps",
+      "src_pages_index_features",
+      "src_pages_index_latestposts",
+      "src_pages_locale_apps_slug",
+      "src_pages_locale_apps_slug_getstaticpaths",
+      "src_pages_locale_index",
+      "src_pages_locale_index_getstaticpaths"
+    ],
+    "4": [
+      "package_devdependencies",
+      "package_devdependencies_astrojs_check",
+      "package_devdependencies_astrojs_react",
+      "package_devdependencies_autoprefixer",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_prettier",
+      "package_devdependencies_eslint_plugin_astro",
+      "package_devdependencies_eslint_plugin_jsx_a11y",
+      "package_devdependencies_google_play_scraper",
+      "package_devdependencies_husky",
+      "package_devdependencies_lint_staged",
+      "package_devdependencies_prettier",
+      "package_devdependencies_prettier_plugin_astro",
+      "package_devdependencies_prettier_plugin_astro_organize_imports",
+      "package_devdependencies_prettier_plugin_tailwindcss",
+      "package_devdependencies_react_dom",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_tailwindcss_aspect_ratio",
+      "package_devdependencies_tailwindcss_forms",
+      "package_devdependencies_tailwindcss_typography",
+      "package_devdependencies_tailwindcss_vite",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript",
+      "package_devdependencies_typescript_eslint_parser",
+      "package_devdependencies_vite_plugin_svgr"
+    ],
+    "5": [
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowimportingtsextensions",
+      "tsconfig_compileroptions_baseurl",
+      "tsconfig_compileroptions_declaration",
+      "tsconfig_compileroptions_emitdeclarationonly",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_jsximportsource",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_types",
+      "tsconfig_exclude",
+      "tsconfig_extends",
+      "tsconfig_include",
+      "tsconfig_paths"
+    ],
+    "6": [
+      "src_components_contactform",
+      "src_components_contactform_cfi18n",
+      "src_components_contactform_contactform",
+      "src_components_contactform_formstate",
+      "src_components_contactform_locale",
+      "src_components_contactform_props",
+      "src_components_faqaccordion",
+      "src_components_faqaccordion_faqaccordion",
+      "src_components_faqaccordion_faqitem",
+      "src_components_faqaccordion_props",
+      "src_components_faqjsonld",
+      "src_components_faqjsonld_structureddata",
+      "src_pages_contact",
+      "src_pages_contact_faqs",
+      "src_pages_locale_contact",
+      "src_pages_locale_contact_getstaticpaths"
+    ],
+    "7": [
+      "package_devdependencies_react",
+      "src_components_appgrid",
+      "src_components_appgrid_app",
+      "src_components_appgrid_appcard",
+      "src_components_appgrid_appgrid",
+      "src_components_appgrid_betaicon",
+      "src_components_appgrid_category_accents",
+      "src_components_appgrid_default_accent",
+      "src_components_appgrid_downloadmodal",
+      "src_components_appgrid_gpicon",
+      "src_components_appgrid_props",
+      "src_components_appgrid_skeletoncard",
+      "src_components_appgrid_usedebounced"
+    ],
+    "8": [
+      "src_pages_api_auth_check_session",
+      "src_pages_api_auth_check_session_get",
+      "src_pages_api_auth_logout",
+      "src_pages_api_auth_logout_post",
+      "src_pages_api_auth_session_store",
+      "src_pages_api_auth_session_store_validsessions",
+      "src_pages_api_auth_validate_pin",
+      "src_pages_api_auth_validate_pin_failedattempts",
+      "src_pages_api_auth_validate_pin_getclientip",
+      "src_pages_api_auth_validate_pin_isratelimited",
+      "src_pages_api_auth_validate_pin_post",
+      "src_pages_api_auth_validate_pin_recordfailedattempt"
+    ],
+    "9": [
+      "src_components_comparisonlayout",
+      "src_components_comparisonlayout_inlinemd",
+      "src_components_comparisonlayout_starrow",
+      "src_pages_compare_apps_comparison",
+      "src_pages_compare_apps_comparison_getstaticpaths",
+      "src_pages_compare_apps_comparison_relateditems",
+      "src_pages_locale_compare_apps_comparison",
+      "src_pages_locale_compare_apps_comparison_entry_locale",
+      "src_pages_locale_compare_apps_comparison_getstaticpaths",
+      "src_pages_locale_compare_apps_comparison_relateditems"
+    ],
+    "10": [
+      "c_users_yacal_source_repos_fusion_core_apps_website_src_pages_blog_slug",
+      "src_components_blogjsonld",
+      "src_components_blogjsonld_post_url",
+      "src_components_blogjsonld_structureddata",
+      "src_pages_blog_slug",
+      "src_pages_blog_slug_formatteddate",
+      "src_pages_blog_slug_getstaticpaths",
+      "src_pages_blog_slug_postslug",
+      "src_pages_blog_slug_string"
+    ],
+    "11": [
+      "src_components_languagepicker",
+      "src_components_languagepicker_checkicon",
+      "src_components_languagepicker_chevronicon",
+      "src_components_languagepicker_globeicon",
+      "src_components_languagepicker_labels",
+      "src_components_languagepicker_languagepicker",
+      "src_components_languagepicker_localelinks",
+      "src_components_languagepicker_names",
+      "src_components_languagepicker_props"
+    ],
+    "12": [
+      "src_lib_utils",
+      "src_lib_utils_cn",
+      "src_lib_utils_debounce",
+      "src_lib_utils_formatdate",
+      "src_lib_utils_formatnumber",
+      "src_lib_utils_generateid",
+      "src_lib_utils_isexternalurl",
+      "src_lib_utils_slugify",
+      "src_lib_utils_truncatetext"
+    ],
+    "13": [
+      "src_content_config",
+      "src_content_config_apps",
+      "src_content_config_blog",
+      "src_content_config_collections",
+      "src_content_config_comparisons",
+      "src_content_config_legal",
+      "src_content_config_urlorpath"
+    ],
+    "14": [
+      "src_pages_sitemap_0_xml",
+      "src_pages_sitemap_0_xml_entry",
+      "src_pages_sitemap_0_xml_get",
+      "src_pages_sitemap_0_xml_hreflang",
+      "src_pages_sitemap_0_xml_locale",
+      "src_pages_sitemap_0_xml_locales"
+    ],
+    "15": [
+      "src_components_statscounter",
+      "src_components_statscounter_counter",
+      "src_components_statscounter_props",
+      "src_components_statscounter_statitem",
+      "src_components_statscounter_statscounter"
+    ],
+    "16": [
+      "src_pages_api_apps_create",
+      "src_pages_api_apps_create_payload",
+      "src_pages_api_apps_create_post",
+      "src_pages_api_apps_create_slugify",
+      "src_pages_api_apps_create_tofrontmatter"
+    ],
+    "17": [
+      "src_components_notfound",
+      "src_components_notfound_navcards",
+      "src_components_notfound_notfound",
+      "src_pages_404"
+    ],
+    "18": [
+      "src_pages_api_apps_update",
+      "src_pages_api_apps_update_payload",
+      "src_pages_api_apps_update_put",
+      "src_pages_api_apps_update_tofrontmatter"
+    ],
+    "19": ["vercel", "vercel_installcommand", "vercel_redirects", "vercel_schema"],
+    "20": [
+      "scripts_fetch_play_store",
+      "scripts_fetch_play_store_apps",
+      "scripts_fetch_play_store_fields"
+    ],
+    "21": [
+      "src_components_cardimage",
+      "src_components_cardimage_cardimage",
+      "src_components_cardimage_cardimageprops"
+    ],
+    "22": [
+      "src_pages_api_apps_delete",
+      "src_pages_api_apps_delete_delete",
+      "src_pages_api_apps_delete_payload"
+    ],
+    "23": [
+      "src_pages_api_apps_slug",
+      "src_pages_api_apps_slug_get",
+      "src_pages_api_apps_slug_parsefrontmatter"
+    ],
+    "24": ["astro_config", "astro_config_rationale_9"],
+    "25": ["husky_pre_commit", "husky_pre_commit__entry"],
+    "26": ["src_components_phonemockup", "src_components_phonemockup_phonemockup"],
+    "27": ["src_pages_api_auth_get_api_key", "src_pages_api_auth_get_api_key_get"],
+    "28": ["src_pages_api_contact", "src_pages_api_contact_post"],
+    "29": ["src_pages_sitemap_index_xml", "src_pages_sitemap_index_xml_get"],
+    "30": ["eslint_config"],
+    "31": ["prettierrc"],
+    "32": ["src_env_d"]
+  },
+  "cohesion": {
+    "0": 0.08912655971479501,
+    "1": 0.1053763440860215,
+    "2": 0.06896551724137931,
+    "3": 0.10846560846560846,
+    "4": 0.07692307692307693,
+    "5": 0.11764705882352941,
+    "6": 0.14166666666666666,
+    "7": 0.16666666666666666,
+    "8": 0.25757575757575757,
+    "9": 0.2,
+    "10": 0.2222222222222222,
+    "11": 0.2222222222222222,
+    "12": 0.2222222222222222,
+    "13": 0.2857142857142857,
+    "14": 0.3333333333333333,
+    "15": 0.4,
+    "16": 0.6,
+    "17": 0.5,
+    "18": 0.6666666666666666,
+    "19": 0.5,
+    "20": 0.6666666666666666,
+    "21": 0.6666666666666666,
+    "22": 0.6666666666666666,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0
+  },
+  "gods": [
+    {
+      "id": "src_i18n_utils",
+      "label": "@/i18n/utils",
+      "degree": 28
+    },
+    {
+      "id": "src_i18n_utils_usetranslations",
+      "label": "useTranslations()",
+      "degree": 20
+    },
+    {
+      "id": "src_i18n_utils_locale",
+      "label": "Locale",
+      "degree": 17
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 12
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 11
+    },
+    {
+      "id": "c_users_yacal_source_repos_fusion_core_apps_website_src_assets_placeholder_app_svg",
+      "label": "@/assets/placeholder-app.svg",
+      "degree": 4
+    },
+    {
+      "id": "src_pages_api_auth_session_store_validsessions",
+      "label": "validSessions",
+      "degree": 4
+    },
+    {
+      "id": "src_pages_api_auth_validate_pin_post",
+      "label": "POST()",
+      "degree": 4
+    },
+    {
+      "id": "package_lint_staged",
+      "label": "lint-staged",
+      "degree": 3
+    },
+    {
+      "id": "src_components_appgrid_usedebounced",
+      "label": "useDebounced()",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "useDebounced()",
+      "target": "react",
+      "source_files": ["src/components/AppGrid.tsx", "package.json"],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "AppGrid()",
+      "target": "useTranslations()",
+      "source_files": ["src/components/AppGrid.tsx", "src/i18n/utils.ts"],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `devDependencies` connect `Community 4` to `Community 2`, `Community 7`?",
+      "why": "High betweenness centrality (0.121) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `react` connect `Community 7` to `Community 4`?",
+      "why": "High betweenness centrality (0.096) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `NOTE: the sitemap is generated by prerendered endpoints`, `name`, `version` to the rest of the system?",
+      "why": "146 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08912655971479501 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1053763440860215 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 2` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 3` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10846560846560846 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

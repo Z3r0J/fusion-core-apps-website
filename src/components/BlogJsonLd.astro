@@ -1,40 +1,78 @@
 ---
+import { useTranslations, type Locale } from "@/i18n/utils";
 import type { CollectionEntry } from "astro:content";
 
-const { post, url } = Astro.props as { post: CollectionEntry<"blog">; url: string };
+const {
+	post,
+	url,
+	locale = "en",
+} = Astro.props as { post: CollectionEntry<"blog">; url: string; locale?: Locale };
 
 const siteUrl = Astro.site?.href.replace(/\/$/, "") ?? "https://www.fusioncoreapps.com";
+const t = useTranslations(locale);
+const IN_LANGUAGE: Record<Locale, string> = { en: "en", es: "es-419", pt: "pt-BR" };
+const localeRoot = locale === "en" ? "" : `/${locale}`;
+
+// Prefer the 1200x630 social card (what SERPs and AI answers show), then the
+// in-page hero, then the site default.
+const imagePath = post.data.ogImage || post.data.image;
 
 const structuredData = {
 	"@context": "https://schema.org",
 	"@type": "Article",
 	"headline": post.data.title,
 	"description": post.data.description,
+	"inLanguage": IN_LANGUAGE[locale],
 	"datePublished": post.data.publishedAt.toISOString(),
 	"dateModified": (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
 	"mainEntityOfPage": {
 		"@type": "WebPage",
 		"@id": url,
 	},
-	"image": post.data.image
-		? new URL(post.data.image, Astro.site).href
-		: `${siteUrl}/og-default.png`,
+	"image": imagePath ? new URL(imagePath, Astro.site).href : `${siteUrl}/og-default.png`,
+	"keywords": post.data.tags.join(", "),
 	"author": {
 		"@type": "Organization",
 		"name": "FusionCore Apps",
-		"url": "https://www.fusioncoreapps.com",
+		"url": siteUrl,
 	},
 	"publisher": {
 		"@type": "Organization",
 		"name": "FusionCore Apps",
+		"url": siteUrl,
 		"logo": {
 			"@type": "ImageObject",
-			"url": "https://www.fusioncoreapps.com/logo.png",
+			"url": `${siteUrl}/logo.png`,
 			"width": 528,
 			"height": 551,
 		},
 	},
+	"isPartOf": {
+		"@type": "WebSite",
+		"name": "FusionCore Apps",
+		"url": siteUrl,
+	},
 	"url": url,
+};
+
+const breadcrumbData = {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": [
+		{
+			"@type": "ListItem",
+			"position": 1,
+			"name": t("breadcrumbs.home"),
+			"item": `${siteUrl}${localeRoot || "/"}`,
+		},
+		{
+			"@type": "ListItem",
+			"position": 2,
+			"name": t("breadcrumbs.blog"),
+			"item": `${siteUrl}${localeRoot}/blog`,
+		},
+		{ "@type": "ListItem", "position": 3, "name": post.data.title },
+	],
 };
 
 const faqData = post.data.faq?.length
@@ -54,11 +92,12 @@ const faqData = post.data.faq?.length
 ---
 
 <!-- eslint-disable astro/no-set-html-directive -->
+<!-- Article + BreadcrumbList share one tag (a JSON-LD array is valid and Google reads both). -->
 <script
 	is:inline
-	set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
+	set:html={JSON.stringify([structuredData, breadcrumbData]).replace(/</g, "\\u003c")}
 	type="application/ld+json"
-></script>
+/>
 {
 	faqData && (
 		<script

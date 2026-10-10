@@ -5,6 +5,7 @@ app: Claimly
 category: Tutorials
 translationKey: "how-to-file-warranty-claim"
 publishedAt: "2026-07-15"
+updatedAt: "2026-10-10"
 author: "FusionCore Apps"
 tags: ["warranty claim", "how to", "proof of purchase", "receipts", "consumer rights"]
 ogImage: "/images/blog/en/how-to-file-warranty-claim.png"
@@ -33,13 +34,13 @@ A claim moves faster when you have everything in one place first. Gather:
 - **The warranty terms.** The card in the box or the terms on the manufacturer's website, so you know exactly what is covered and for how long.
 - **Evidence of the defect.** Photos or a short video of the problem, and a note of when it started.
 
-The most common reason a claim is refused has nothing to do with the fault itself — it is that the customer cannot produce a legible receipt. Thermal receipts fade, and paperwork gets lost, so the person who kept a copy is the person who gets the repair.
+The most common reason a claim is refused has nothing to do with the fault itself — it is that the customer cannot produce a legible receipt. Thermal receipts fade, and paperwork gets lost, so the person who kept a copy is the person who gets the repair. Lost yours? Here is [how to get proof of purchase without a receipt](/blog/proof-of-purchase-warranty-lost-receipt).
 
 ## Step by Step: How to File a Warranty Claim
 
 1. **Check the coverage window.** Find the purchase date and the warranty length, and confirm you are still inside it. File the moment you notice a problem — waiting gives the company room to argue about when the fault started.
 2. **Decide who to contact.** A store warranty goes to the retailer; a manufacturer warranty goes to the brand. If you are unsure, start with whichever coverage is longer or better matches the fault.
-3. **Find the claim channel.** Most manufacturers have a support page or a "warranty claim" form on their site. If you cannot find it, searching the brand name plus "warranty claim" usually lands on the right page.
+3. **Find the claim channel.** Most manufacturers have a support page or a "warranty claim" form on their site. If you cannot find it, searching the brand name plus "warranty claim" usually lands on the right page. For a brand claim, our [manufacturer warranty claim email template](/blog/manufacturer-warranty-claim-email-template) gives you a ready-to-send message.
 4. **Describe the defect factually.** State when it started, what happens, and what you have already tried. Attach your photos and proof of purchase.
 5. **Submit and save the confirmation.** Keep the claim number, the date, and any email thread. If you called, note the agent's name and the reference number.
 6. **Follow up if you do not hear back.** Coverage terms often promise a response or resolution within a set number of days; if that passes, chase it with your claim number in hand.

@@ -135,7 +135,9 @@
     "noPosts": "No posts yet",
     "noPostsBody": "Working on new content. Check back soon.",
     "featured": "Featured",
-    "backToBlog": "Back to Blog"
+    "backToBlog": "Back to Blog",
+    "relatedPosts": "Related articles",
+    "updated": "Updated"
   },
   "breadcrumbs": {
     "home": "Home",

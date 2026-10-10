@@ -1,13 +1,21 @@
 ---
-title: "The Grocery List App That Adds Up Your Total as You Shop"
-description: "Know your cart total before checkout. CartWise is the grocery list app with a running price calculator that keeps you on budget as you shop."
+title: "Grocery List App With a Calculator That Adds Up Your Total"
+description: "CartWise is a free grocery list app with a built-in calculator: add prices as you shop and see your running total before checkout. No account needed."
 translationKey: "grocery-list-price-calculator"
 publishedAt: "2026-06-26"
+updatedAt: "2026-10-10"
 author: "FusionCore Apps"
 tags: ["grocery", "budget", "android", "apps", "price calculator"]
 image: "/images/screenshots/cartwise-home.jpg"
 ogImage: "/images/blog/en/grocery-list-app-adds-up-total.png"
 featured: false
+faq:
+  - question: "Is there a grocery list app with a calculator?"
+    answer: "Yes. CartWise is a free Android grocery list app with a built-in price calculator. Enter a price when you add an item and the app keeps a running total at the top of the list, so you know your cart total before checkout."
+  - question: "How do I add up my grocery total while I shop?"
+    answer: "Write your list in an app that tracks prices, enter each item's price as you add it (estimates are fine), and watch the running total. Checking items off as you shop shows how much is left to spend."
+  - question: "Is the CartWise price calculator free?"
+    answer: "Yes. CartWise is free on Google Play, needs no account, and works offline. The price calculator is part of the core app, not a paid add-on."
 ---
 
 ## Why Checkout Totals Always Seem to Surprise You
@@ -39,7 +47,7 @@ This is not about obsessing over every cent. It is about having awareness, so sm
 
 **The total is always visible.** CartWise shows the running total prominently on the list screen. You do not have to tap into a separate budget screen or do mental math — the number is right there, updating automatically.
 
-**Budgeting works across multiple lists.** CartWise lets you maintain separate lists (weekly groceries, a dinner party, a hardware run) each with their own tracked total, so you always know where each budget stands.
+**Budgeting works across multiple lists.** CartWise lets you maintain separate lists (weekly groceries, a dinner party, a hardware run) each with their own tracked total, so you always know where each budget stands. The same trick lets you [compare grocery prices across stores](/blog/compare-grocery-prices-across-stores): build one list per store and compare the totals.
 
 ## Speed Up List Building with Voice and AI
 
@@ -56,6 +64,20 @@ CartWise is completely free and does not require you to create an account. Your 
 There is no subscription required to use the price tracking feature. It is part of the core app.
 
 If your household shops together, CartWise also supports real-time shared lists via QR code or WhatsApp — so a partner can add items from home while you are already at the store, and the total updates for both of you.
+
+## Frequently Asked Questions
+
+### Is there a grocery list app with a calculator?
+
+Yes. CartWise is a free Android grocery list app with a built-in price calculator. Enter a price when you add an item and the app keeps a running total at the top of the list, so you know your cart total before checkout.
+
+### How do I add up my grocery total while I shop?
+
+Write your list in an app that tracks prices, enter each item's price as you add it (estimates are fine), and watch the running total. Checking items off as you shop shows how much is left to spend.
+
+### Is the CartWise price calculator free?
+
+Yes. CartWise is free on Google Play, needs no account, and works offline. The price calculator is part of the core app, not a paid add-on.
 
 ## A Simple Habit That Adds Up
 

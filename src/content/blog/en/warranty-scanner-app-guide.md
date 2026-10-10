@@ -1,8 +1,9 @@
 ---
-title: "Warranty Scanner Apps: Track Receipts, Never Miss a Claim (2026)"
-description: "A warranty scanner turns paper receipts into tracked warranties with expiry alerts. Here's how receipt scanning works and how to file a claim on time."
+title: "Warranty Scanner App: Scan Receipts and Track Every Warranty"
+description: "Scan a receipt with your phone and track every warranty with expiry alerts. How warranty scanner apps work, what to look for, and a free Android pick."
 translationKey: "warranty-scanner-guide"
 publishedAt: "2026-07-04"
+updatedAt: "2026-10-10"
 author: "FusionCore Apps"
 tags: ["warranty scanner", "receipt scanner", "warranty claim", "android", "apps"]
 image: "/images/screenshots/claimly-scanner.jpg"
@@ -69,6 +70,8 @@ When something breaks, the process is simpler than most people expect — *if* y
 3. **Contact the right party.** Store warranty → the retailer. Manufacturer warranty → the brand's support line or site.
 4. **Describe the defect factually.** When it started, what happens, what you have tried.
 5. **File before the expiry date.** Claims submitted even one day late are routinely denied — this is where expiry alerts earn their keep.
+
+For the full walkthrough, see [how to file a warranty claim](/blog/how-to-file-warranty-claim), our [manufacturer warranty claim email template](/blog/manufacturer-warranty-claim-email-template), and what to do if you [lost the receipt](/blog/proof-of-purchase-warranty-lost-receipt).
 
 ## Frequently Asked Questions
 

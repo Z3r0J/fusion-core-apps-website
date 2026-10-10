@@ -27,7 +27,7 @@ In this guide we cover what TPT is, how to download the app, and how to get the 
 
 The Passion Translation is a modern Bible translation that prioritizes the emotional and poetic force of the original languages. Where formal translations aim for word-for-word precision, TPT aims for heart-level impact — it reads the way you would speak to someone you love.
 
-That makes it especially popular for **devotional reading**: daily time in Scripture where the goal is connection, not exegesis. Many readers pair TPT with a formal translation for study and use TPT for their morning reading.
+That makes it especially popular for **devotional reading**: daily time in Scripture where the goal is connection, not exegesis. Many readers pair TPT with a formal translation for study and use TPT for their morning reading. (Wondering how it compares? Read our honest guide: [Is The Passion Translation accurate?](/blog/is-the-passion-translation-accurate))
 
 ## How to Download the TPT Bible App on Android
 

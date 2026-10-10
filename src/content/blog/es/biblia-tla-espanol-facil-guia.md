@@ -50,6 +50,8 @@ Tener la app instalada es solo el primer paso. Estos consejos te ayudarán a man
 
 La Biblia TLA elimina la barrera del lenguaje complicado y hace que las Escrituras sean accesibles para todos los hispanohablantes. Combinada con una app diseñada para la simplicidad y la comodidad, leer la Biblia se convierte en una experiencia agradable y enriquecedora.
 
+¿Llegaste buscando la Biblia TPT (The Passion Translation) en español? Te explicamos [si existe y qué versiones en español tienen un estilo parecido](/es/blog/biblia-tpt-en-espanol).
+
 No importa si es tu primera vez abriendo una Biblia o si llevas años leyendo: la TLA te ofrece una perspectiva fresca y clara del texto que ha inspirado a la humanidad durante siglos.
 
 [Descarga Biblia TLA gratis para Android →](/apps/biblia-tla)

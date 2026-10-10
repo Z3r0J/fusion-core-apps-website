@@ -33,7 +33,7 @@ O pedido anda mais rápido quando você tem tudo reunido desde o começo. Junte:
 - **Os termos da garantia.** O cartão que veio na caixa ou os termos no site do fabricante, para saber exatamente o que está coberto e por quanto tempo.
 - **Evidência do defeito.** Fotos ou um vídeo curto do problema, e uma anotação de quando ele começou.
 
-O motivo mais comum de recusa não tem a ver com o defeito em si, mas com o fato de a pessoa não conseguir apresentar uma nota fiscal legível. Recibos térmicos apagam e papéis se perdem, então quem guardou uma cópia é quem consegue o reparo.
+O motivo mais comum de recusa não tem a ver com o defeito em si, mas com o fato de a pessoa não conseguir apresentar uma nota fiscal legível. Recibos térmicos apagam e papéis se perdem, então quem guardou uma cópia é quem consegue o reparo. Perdeu a sua? Veja [onde achar o comprovante de compra sem nota fiscal](/pt/blog/comprovante-de-compra-garantia-sem-nota-fiscal).
 
 ## Passo a passo: como acionar a garantia
 

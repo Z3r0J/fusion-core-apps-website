@@ -1,0 +1,1422 @@
+{
+  ".claude/settings.local.json": {
+    "mtime": 1785994158.192512,
+    "ast_hash": "e1e6a9248a2c4263532a7794b328f232",
+    "semantic_hash": ""
+  },
+  ".husky/pre-commit": {
+    "mtime": 1755466069.887741,
+    "ast_hash": "025aa82ab964aae52a65e6ec95cf8b13",
+    "semantic_hash": "025aa82ab964aae52a65e6ec95cf8b13"
+  },
+  ".prettierrc.mjs": {
+    "mtime": 1755466069.887741,
+    "ast_hash": "ec27cde696e77be5d352f6a60e36b560",
+    "semantic_hash": "ec27cde696e77be5d352f6a60e36b560"
+  },
+  ".vscode/extensions.json": {
+    "mtime": 1755466069.900704,
+    "ast_hash": "3adedb22d082dbd1ebb00b75d21403aa",
+    "semantic_hash": "3adedb22d082dbd1ebb00b75d21403aa"
+  },
+  ".vscode/launch.json": {
+    "mtime": 1755466069.900704,
+    "ast_hash": "60493763dcbc2d109e57da86d997602a",
+    "semantic_hash": "60493763dcbc2d109e57da86d997602a"
+  },
+  ".vscode/settings.json": {
+    "mtime": 1755466069.900704,
+    "ast_hash": "f6c32701f4cc5016cca0d5d6efc3401c",
+    "semantic_hash": "f6c32701f4cc5016cca0d5d6efc3401c"
+  },
+  ".vscode/tailwindcss.json": {
+    "mtime": 1755466069.900704,
+    "ast_hash": "9b781d0e6bced60052cccdd1f6788631",
+    "semantic_hash": "9b781d0e6bced60052cccdd1f6788631"
+  },
+  "astro.config.mjs": {
+    "mtime": 1786025622.520127,
+    "ast_hash": "ffe38c6463c34c95a3d5831ea35412ec",
+    "semantic_hash": ""
+  },
+  "eslint.config.js": {
+    "mtime": 1755466069.900704,
+    "ast_hash": "16b885402aea83116b155b5ee2ee06ac",
+    "semantic_hash": "16b885402aea83116b155b5ee2ee06ac"
+  },
+  "package.json": {
+    "mtime": 1774924160.3559291,
+    "ast_hash": "49de5c4d1a4771f0f8435d9c7f090dd4",
+    "semantic_hash": "49de5c4d1a4771f0f8435d9c7f090dd4"
+  },
+  "scripts/fetch-play-store.mjs": {
+    "mtime": 1785994158.1988015,
+    "ast_hash": "9cc675aa3d2e96759678b5b1f126732c",
+    "semantic_hash": "9cc675aa3d2e96759678b5b1f126732c"
+  },
+  "src/components/AnimatedSection.tsx": {
+    "mtime": 1785994158.2082508,
+    "ast_hash": "6d31d09317dc868efdbde347009d1e88",
+    "semantic_hash": "6d31d09317dc868efdbde347009d1e88"
+  },
+  "src/components/AppCard.astro": {
+    "mtime": 1785994158.2097585,
+    "ast_hash": "d45a394cb21ee96c8c7191731d6b89ea",
+    "semantic_hash": "d45a394cb21ee96c8c7191731d6b89ea"
+  },
+  "src/components/AppGrid.tsx": {
+    "mtime": 1786026732.9375675,
+    "ast_hash": "01091fd7e64fb6b36be7db87df559b93",
+    "semantic_hash": ""
+  },
+  "src/components/AppJsonLd.astro": {
+    "mtime": 1785994158.211766,
+    "ast_hash": "56048641b6e709805ba5e0ecc636d264",
+    "semantic_hash": "56048641b6e709805ba5e0ecc636d264"
+  },
+  "src/components/AppShowcase.tsx": {
+    "mtime": 1786025622.5486703,
+    "ast_hash": "3bca42989ac32cc7f4d6b66ca52bb0e4",
+    "semantic_hash": ""
+  },
+  "src/components/BlogJsonLd.astro": {
+    "mtime": 1785994158.2137742,
+    "ast_hash": "44ae3f060cbd30565db1e7a34ed69bde",
+    "semantic_hash": "44ae3f060cbd30565db1e7a34ed69bde"
+  },
+  "src/components/BlogPostCard.astro": {
+    "mtime": 1785994158.2137742,
+    "ast_hash": "8bc68929f2ee13c53b54425990b663ed",
+    "semantic_hash": ""
+  },
+  "src/components/Breadcrumbs.astro": {
+    "mtime": 1785994158.2137742,
+    "ast_hash": "0aa7fcf4ccfca13bc3a8b8b79515c245",
+    "semantic_hash": "0aa7fcf4ccfca13bc3a8b8b79515c245"
+  },
+  "src/components/CardImage.tsx": {
+    "mtime": 1786025622.5509868,
+    "ast_hash": "cf8fad3184d4d60282d0d1b37833e3c1",
+    "semantic_hash": ""
+  },
+  "src/components/CartwiseLanding.astro": {
+    "mtime": 1785994158.2137742,
+    "ast_hash": "defbb928a5eb1f730ab8d4ca8dc16d37",
+    "semantic_hash": "defbb928a5eb1f730ab8d4ca8dc16d37"
+  },
+  "src/components/ComparisonLayout.astro": {
+    "mtime": 1783136228.3809164,
+    "ast_hash": "7b83764842d26ae4b107f01c3e260e17",
+    "semantic_hash": "7b83764842d26ae4b107f01c3e260e17"
+  },
+  "src/components/ContactForm.tsx": {
+    "mtime": 1785994158.2137742,
+    "ast_hash": "f1368f21b699a9baaf103dea603e4acf",
+    "semantic_hash": "f1368f21b699a9baaf103dea603e4acf"
+  },
+  "src/components/FaqAccordion.tsx": {
+    "mtime": 1785994158.2137742,
+    "ast_hash": "4bdff848a4a73021e71b5ada89a655bd",
+    "semantic_hash": "4bdff848a4a73021e71b5ada89a655bd"
+  },
+  "src/components/FaqJsonLd.astro": {
+    "mtime": 1785994158.2185616,
+    "ast_hash": "e10ba6771682fbb2352aff5ff058d651",
+    "semantic_hash": "e10ba6771682fbb2352aff5ff058d651"
+  },
+  "src/components/LanguagePicker.tsx": {
+    "mtime": 1785994158.2185616,
+    "ast_hash": "9712fe02197e7e3980c406adf40aea7d",
+    "semantic_hash": "9712fe02197e7e3980c406adf40aea7d"
+  },
+  "src/components/LegalLayout.astro": {
+    "mtime": 1785994158.2185616,
+    "ast_hash": "6a9cc40b173874b178052d4acd3e7cb8",
+    "semantic_hash": "6a9cc40b173874b178052d4acd3e7cb8"
+  },
+  "src/components/NotFound.tsx": {
+    "mtime": 1785994158.2185616,
+    "ast_hash": "acf220bb9bbff4b20889b8a04d677e86",
+    "semantic_hash": "acf220bb9bbff4b20889b8a04d677e86"
+  },
+  "src/components/PhoneMockup.tsx": {
+    "mtime": 1785994158.2185616,
+    "ast_hash": "4af22692e1ef3db6c2cd817ec20714db",
+    "semantic_hash": "4af22692e1ef3db6c2cd817ec20714db"
+  },
+  "src/components/StatsCounter.tsx": {
+    "mtime": 1785994158.2185616,
+    "ast_hash": "143777ece70fc3f7d1c9f2a4bab05664",
+    "semantic_hash": "143777ece70fc3f7d1c9f2a4bab05664"
+  },
+  "src/components/ThemeToggle.tsx": {
+    "mtime": 1785994158.2185616,
+    "ast_hash": "0a4689ad059f758a35fa0034fedbc83a",
+    "semantic_hash": "0a4689ad059f758a35fa0034fedbc83a"
+  },
+  "src/content/config.ts": {
+    "mtime": 1785994158.249911,
+    "ast_hash": "6acf95df8295ba64c1b0be7b8c1ffdd5",
+    "semantic_hash": ""
+  },
+  "src/env.d.ts": {
+    "mtime": 1757476162.0324368,
+    "ast_hash": "8949dc94c40062ae7194e9100ac19e84",
+    "semantic_hash": "8949dc94c40062ae7194e9100ac19e84"
+  },
+  "src/i18n/en.json": {
+    "mtime": 1786026732.9466336,
+    "ast_hash": "61e29d1aa0173319fc663708bc8fda48",
+    "semantic_hash": ""
+  },
+  "src/i18n/es.json": {
+    "mtime": 1786026732.9495895,
+    "ast_hash": "ab5371df45e14cb6a71becb48222c6a9",
+    "semantic_hash": ""
+  },
+  "src/i18n/pt.json": {
+    "mtime": 1786026732.951002,
+    "ast_hash": "38da97beb4d24782eb6c01bfe854d82d",
+    "semantic_hash": ""
+  },
+  "src/i18n/utils.ts": {
+    "mtime": 1785994158.249911,
+    "ast_hash": "3ea527c8de73da3ae346258ac8e27c9f",
+    "semantic_hash": "3ea527c8de73da3ae346258ac8e27c9f"
+  },
+  "src/layouts/BaseLayout.astro": {
+    "mtime": 1786026732.226964,
+    "ast_hash": "ff8596fb8221681532b2f23053d145dc",
+    "semantic_hash": ""
+  },
+  "src/lib/utils.ts": {
+    "mtime": 1774916108.7477634,
+    "ast_hash": "2dc4ae23f7bd78206dd75e456811b40a",
+    "semantic_hash": "2dc4ae23f7bd78206dd75e456811b40a"
+  },
+  "src/pages/404.astro": {
+    "mtime": 1785994158.249911,
+    "ast_hash": "9904f0ea4f5cca4199de2d950c2bef8c",
+    "semantic_hash": "9904f0ea4f5cca4199de2d950c2bef8c"
+  },
+  "src/pages/[locale]/apps/[slug].astro": {
+    "mtime": 1786026732.226964,
+    "ast_hash": "53ff82ba5436a8bfff0c115a22b92929",
+    "semantic_hash": ""
+  },
+  "src/pages/[locale]/apps/index.astro": {
+    "mtime": 1786026732.226964,
+    "ast_hash": "c0679fef727e882cdb6c07fe86233337",
+    "semantic_hash": ""
+  },
+  "src/pages/[locale]/blog/[slug].astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "94f572dd3c69e78533ad684ebf33ccfb",
+    "semantic_hash": ""
+  },
+  "src/pages/[locale]/blog/index.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "52bbb5f3ca7647f60e6bb6efb28d01dd",
+    "semantic_hash": "52bbb5f3ca7647f60e6bb6efb28d01dd"
+  },
+  "src/pages/[locale]/cartwise/index.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "32ae9818f2ba4b95a4ca7c62c731d9b1",
+    "semantic_hash": "32ae9818f2ba4b95a4ca7c62c731d9b1"
+  },
+  "src/pages/[locale]/cartwise/privacy.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "090dd89ef66db83e117e6eb6a1749085",
+    "semantic_hash": "090dd89ef66db83e117e6eb6a1749085"
+  },
+  "src/pages/[locale]/cartwise/terms.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "9dc127a727994c02902d03732fb379c0",
+    "semantic_hash": "9dc127a727994c02902d03732fb379c0"
+  },
+  "src/pages/[locale]/compare-apps/[comparison].astro": {
+    "mtime": 1786025622.5721536,
+    "ast_hash": "b539d450cb617e86e8d77e4e67bcde5a",
+    "semantic_hash": ""
+  },
+  "src/pages/[locale]/compare-apps/index.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "51f015d383fbc3d19b35b5f57d2e1d49",
+    "semantic_hash": "51f015d383fbc3d19b35b5f57d2e1d49"
+  },
+  "src/pages/[locale]/contact.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "cecaf12500911bf406ef1086f511e3f6",
+    "semantic_hash": "cecaf12500911bf406ef1086f511e3f6"
+  },
+  "src/pages/[locale]/index.astro": {
+    "mtime": 1786026732.226964,
+    "ast_hash": "3159956457cea12ab3189dee347d3959",
+    "semantic_hash": ""
+  },
+  "src/pages/[locale]/privacy.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "dcd97f9011e473e63141d77f829ba8bb",
+    "semantic_hash": "dcd97f9011e473e63141d77f829ba8bb"
+  },
+  "src/pages/[locale]/terms.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "a447709a03e1a14c8bd459e352a93876",
+    "semantic_hash": "a447709a03e1a14c8bd459e352a93876"
+  },
+  "src/pages/admin/index.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "bd1763a1a869f4fd6290864d546ee539",
+    "semantic_hash": "bd1763a1a869f4fd6290864d546ee539"
+  },
+  "src/pages/api/apps/[slug].ts": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "28ab9e750bff3e2d28bc8b793da4f7d2",
+    "semantic_hash": ""
+  },
+  "src/pages/api/apps/create.ts": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "cc10fff612342f04438e9e85feadf278",
+    "semantic_hash": ""
+  },
+  "src/pages/api/apps/delete.ts": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "f7edb60fcacfa6b4ab5b45ad992fd3cc",
+    "semantic_hash": ""
+  },
+  "src/pages/api/apps/update.ts": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "4912b9dd919f4713a4fb305f6a52ad48",
+    "semantic_hash": ""
+  },
+  "src/pages/api/auth/_session-store.ts": {
+    "mtime": 1774916479.9971242,
+    "ast_hash": "0a0a9de2274dc572de820f44512c1aa4",
+    "semantic_hash": "0a0a9de2274dc572de820f44512c1aa4"
+  },
+  "src/pages/api/auth/check-session.ts": {
+    "mtime": 1774916497.726934,
+    "ast_hash": "187c1f1a8bbe7d83433262b66d816769",
+    "semantic_hash": "187c1f1a8bbe7d83433262b66d816769"
+  },
+  "src/pages/api/auth/get-api-key.ts": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "1e621363dc6b5b5bf4ebdd30e33fb895",
+    "semantic_hash": ""
+  },
+  "src/pages/api/auth/logout.ts": {
+    "mtime": 1774916499.7469854,
+    "ast_hash": "ceb5a4f39bcce4e8c420936488f4fbee",
+    "semantic_hash": "ceb5a4f39bcce4e8c420936488f4fbee"
+  },
+  "src/pages/api/auth/validate-pin.ts": {
+    "mtime": 1774916495.1406977,
+    "ast_hash": "92e1196f41a3f68cc5daf5b2e0ccf762",
+    "semantic_hash": "92e1196f41a3f68cc5daf5b2e0ccf762"
+  },
+  "src/pages/api/contact.ts": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "6a733a4ef60368d9cf440a4695f0ce93",
+    "semantic_hash": ""
+  },
+  "src/pages/apps/[slug].astro": {
+    "mtime": 1786026732.226964,
+    "ast_hash": "3e98f3d12eb4be9b619fa9dcf3e21bdc",
+    "semantic_hash": ""
+  },
+  "src/pages/apps/index.astro": {
+    "mtime": 1786026732.226964,
+    "ast_hash": "b9f2e8d3fbaa278432775124d1c64e28",
+    "semantic_hash": ""
+  },
+  "src/pages/blog/[slug].astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "abbba1e8abe0e36cdec8b7663d17dbc9",
+    "semantic_hash": ""
+  },
+  "src/pages/blog/index.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "87190d3b80237500257beabaf05b2762",
+    "semantic_hash": "87190d3b80237500257beabaf05b2762"
+  },
+  "src/pages/cartwise/index.astro": {
+    "mtime": 1785994158.256295,
+    "ast_hash": "a60423814a89cb435beba0dbdadfc887",
+    "semantic_hash": "a60423814a89cb435beba0dbdadfc887"
+  },
+  "src/pages/cartwise/privacy.astro": {
+    "mtime": 1785994158.272298,
+    "ast_hash": "e7ac66539d1108797c4716bb61cc32a5",
+    "semantic_hash": "e7ac66539d1108797c4716bb61cc32a5"
+  },
+  "src/pages/cartwise/terms.astro": {
+    "mtime": 1782450157.969531,
+    "ast_hash": "173610ca2a7ed2507616f02c59cde601",
+    "semantic_hash": "173610ca2a7ed2507616f02c59cde601"
+  },
+  "src/pages/compare-apps/[comparison].astro": {
+    "mtime": 1786025622.5721536,
+    "ast_hash": "426f698821d53c2de2ab109e013087dd",
+    "semantic_hash": ""
+  },
+  "src/pages/compare-apps/index.astro": {
+    "mtime": 1785994158.272298,
+    "ast_hash": "389fac023be537060ad71b95fd75bbf2",
+    "semantic_hash": "389fac023be537060ad71b95fd75bbf2"
+  },
+  "src/pages/contact.astro": {
+    "mtime": 1785994158.2743065,
+    "ast_hash": "dbf816241651f70993bc711156b4e9e4",
+    "semantic_hash": "dbf816241651f70993bc711156b4e9e4"
+  },
+  "src/pages/index.astro": {
+    "mtime": 1786026732.95302,
+    "ast_hash": "d3f4639e299a731627a59e2a913be723",
+    "semantic_hash": ""
+  },
+  "src/pages/privacy.astro": {
+    "mtime": 1775331482.0791407,
+    "ast_hash": "d9c701403c6827cd0082b9a4be21e1c6",
+    "semantic_hash": "d9c701403c6827cd0082b9a4be21e1c6"
+  },
+  "src/pages/sitemap-0.xml.ts": {
+    "mtime": 1785994158.2743065,
+    "ast_hash": "9dd7e5417b327d681941e74ffeef238a",
+    "semantic_hash": "9dd7e5417b327d681941e74ffeef238a"
+  },
+  "src/pages/sitemap-index.xml.ts": {
+    "mtime": 1783139726.5252519,
+    "ast_hash": "7d4a5b5e34bbbb82735854c49ecb2ca2",
+    "semantic_hash": "7d4a5b5e34bbbb82735854c49ecb2ca2"
+  },
+  "src/pages/terms.astro": {
+    "mtime": 1785994158.2743065,
+    "ast_hash": "879b31644068061880cff2be28b3de2d",
+    "semantic_hash": "879b31644068061880cff2be28b3de2d"
+  },
+  "tsconfig.json": {
+    "mtime": 1755466069.9168267,
+    "ast_hash": "62349abe90927e87535e52a0b6d24631",
+    "semantic_hash": "62349abe90927e87535e52a0b6d24631"
+  },
+  "vercel.json": {
+    "mtime": 1786025622.589416,
+    "ast_hash": "6e19a17d949fb75343da37470679264f",
+    "semantic_hash": ""
+  },
+  "scripts/og_hero_v4.py": {
+    "mtime": 1783882138.42796,
+    "ast_hash": "ef530ee7221624fd6a6cf05802db4f19",
+    "semantic_hash": ""
+  },
+  ".claude/agents/vision.md": {
+    "mtime": 1785994158.192512,
+    "ast_hash": "790442e5b50454f9fe4c40c1360f03ae",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1786026732.130384,
+    "ast_hash": "0eca8a0e1c08479eee37f188cfe8f464",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1767753249.0591173,
+    "ast_hash": "dbfc8d7e1f5e68628e8c3045f1dd3ef9",
+    "semantic_hash": ""
+  },
+  "design/cartwise-comparison-HANDOFF.md": {
+    "mtime": 1785994158.1988015,
+    "ast_hash": "74da92f845edb2cbcfe6920272990976",
+    "semantic_hash": ""
+  },
+  "design/cartwise-comparison-template.html": {
+    "mtime": 1785994158.1988015,
+    "ast_hash": "445e0cfe97fc0c35cc747e5b98caf5c7",
+    "semantic_hash": ""
+  },
+  "design/cartwise-landing-HANDOFF.md": {
+    "mtime": 1785994158.1988015,
+    "ast_hash": "2195662b9a8f29ea21faed24fc9ee568",
+    "semantic_hash": ""
+  },
+  "design/cartwise-landing.html": {
+    "mtime": 1785994158.1988015,
+    "ast_hash": "ffc0c4650f9c2ea966614ec160246525",
+    "semantic_hash": ""
+  },
+  "design/cartwise-vs-HANDOFF.md": {
+    "mtime": 1785994158.1988015,
+    "ast_hash": "94acbe23646a71ba674e987df88f68dc",
+    "semantic_hash": ""
+  },
+  "design/cartwise-vs-template.html": {
+    "mtime": 1785994158.1988015,
+    "ast_hash": "bee8f830963f692cad6c264efc578e49",
+    "semantic_hash": ""
+  },
+  "public/app-ads.txt": {
+    "mtime": 1777292270.752575,
+    "ast_hash": "d29029382686dbcec424576714d3d4f6",
+    "semantic_hash": ""
+  },
+  "public/googleefda3981b3a45745.html": {
+    "mtime": 1767978901.6522012,
+    "ast_hash": "4fd9145595f0f0a1047e53784312692d",
+    "semantic_hash": ""
+  },
+  "public/robots.txt": {
+    "mtime": 1786025622.5416603,
+    "ast_hash": "3bf0555863b2f2cd6e96f021171a0f0a",
+    "semantic_hash": ""
+  },
+  "src/content/apps/en/bible-tpt.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "c9ab44383d8d2db8f44d507e74a8fb2c",
+    "semantic_hash": ""
+  },
+  "src/content/apps/en/biblia-tla.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "b40491cd196cea2081203c011f56ced8",
+    "semantic_hash": ""
+  },
+  "src/content/apps/en/cartwise-grocery-shopping-list.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "d01f82d1df3e2b9f5852dc9d57793f4f",
+    "semantic_hash": ""
+  },
+  "src/content/apps/en/claimly-receipt-tracker.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "ce6932f09a88aef96527894b62a5dc87",
+    "semantic_hash": ""
+  },
+  "src/content/apps/es/bible-tpt.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "4b4bfa6906d59a3736ccda95a69cdf72",
+    "semantic_hash": ""
+  },
+  "src/content/apps/es/biblia-tla.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "10e043a5fd76301572082f5574139161",
+    "semantic_hash": ""
+  },
+  "src/content/apps/es/cartwise-grocery-shopping-list.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "0af24de739371bdca3405e980db57a0a",
+    "semantic_hash": ""
+  },
+  "src/content/apps/es/claimly-receipt-tracker.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "050e868caee6e53b7cd4e17ca3fc11d6",
+    "semantic_hash": ""
+  },
+  "src/content/apps/pt/bible-tpt.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "a082591040db63223f14657da012df90",
+    "semantic_hash": ""
+  },
+  "src/content/apps/pt/biblia-tla.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "ce0ddc5fdb027404a96b5f9aaac54b77",
+    "semantic_hash": ""
+  },
+  "src/content/apps/pt/cartwise-grocery-shopping-list.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "e86c9a6d1802d20e690b8b9181d62835",
+    "semantic_hash": ""
+  },
+  "src/content/apps/pt/claimly-receipt-tracker.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "aa6e2929d861cd9935eae329523fd83c",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/ai-autofill-confirmation-step.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "28b1cdbefef94de765ad67d3ce149eb6",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/ai-grocery-list-generator.md": {
+    "mtime": 1783882138.429975,
+    "ast_hash": "2d11546e4382838ae0efc40838cd39c6",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/best-bible-apps-android-2026.md": {
+    "mtime": 1783882138.4321132,
+    "ast_hash": "9bee18304d9808919410a942fa0f0950",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/best-offline-grocery-list-apps-2026.md": {
+    "mtime": 1783882138.4993715,
+    "ast_hash": "3132e13fd4aaf3f70391b4c2333be2ae",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/claimly-beta-launch-join-warranty-tracker.md": {
+    "mtime": 1783882138.5761504,
+    "ast_hash": "8784bc7c9365e9a87b0d32a966d90a37",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/claimly-now-available-google-play.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "9663d4ce42fb1d102e7282f80686e6e8",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/grocery-list-app-adds-up-total.md": {
+    "mtime": 1783882138.7059114,
+    "ast_hash": "c43760396c495ced5c5a544be7cfc058",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/share-grocery-list-qr-whatsapp.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "374015c2636f1bfadd50907446fd00fd",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/smart-grocery-list-apps-save-time.md": {
+    "mtime": 1783882138.7155902,
+    "ast_hash": "317d3023419611ec3963724cdd3317e7",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/tpt-bible-app-free-download-android.md": {
+    "mtime": 1783882138.7168555,
+    "ast_hash": "9a2d5488f906b9205642dcaff56a21df",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/warranty-scanner-app-guide.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "acdc9a5785ce6f313f2cbc24bd9f82c2",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/why-we-never-run-expo-prebuild.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "185fbc5d954dabf034b6be547e74b7e5",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/ai-autofill-confirmation-step.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "eed464c07ce50f03c90e410d6c8f0fce",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/ai-grocery-list-generator.md": {
+    "mtime": 1783882138.7186153,
+    "ast_hash": "2103ccba7643ced380c06c591d78800d",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/best-offline-grocery-list-apps-2026.md": {
+    "mtime": 1783882138.7206333,
+    "ast_hash": "084e7383fcfc05b9bb426d674ccedf89",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/biblia-tla-espanol-facil-guia.md": {
+    "mtime": 1783882138.7206333,
+    "ast_hash": "64cfdf932ca9799164356bda197b1c41",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/claimly-ya-disponible-google-play.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "340c73bc3207c7534d48c9af6462189d",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/grocery-list-app-adds-up-total.md": {
+    "mtime": 1783882138.722651,
+    "ast_hash": "080b7ab0b54d5beb365cfc010d939b87",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/share-grocery-list-qr-whatsapp.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "1e08dd973396d2144884d8789cc6ecc1",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/why-we-never-run-expo-prebuild.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "81deacd236d8330297682de997649542",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/ai-autofill-confirmation-step.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "ffb39c15c9ceeba07293aa443ef96adf",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/ai-grocery-list-generator.md": {
+    "mtime": 1783882138.724667,
+    "ast_hash": "4e920df96f3b7cca9ebff5a5aa49d0a4",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/best-offline-grocery-list-apps-2026.md": {
+    "mtime": 1783882138.724667,
+    "ast_hash": "a12b2e148d8ab4c88d0921592ebda84e",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/claimly-agora-disponivel-google-play.md": {
+    "mtime": 1785994158.2403321,
+    "ast_hash": "52c59570e905d75e2152e758c283b8cc",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/grocery-list-app-adds-up-total.md": {
+    "mtime": 1783882138.7266843,
+    "ast_hash": "7c9f088cd9cde5e77e9790bf9f28dac0",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/share-grocery-list-qr-whatsapp.md": {
+    "mtime": 1785994158.2403321,
+    "ast_hash": "0b2d7bd6c8943ad3cb2e0724e8eeaa2c",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/why-we-never-run-expo-prebuild.md": {
+    "mtime": 1785994158.2403321,
+    "ast_hash": "6ad7ee1772c2f0e50adc0b67dec85375",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/en/cartwise-vs-anylist.md": {
+    "mtime": 1785994158.2403321,
+    "ast_hash": "62c8ddb940aca480367a071fd2e64fa1",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/en/cartwise-vs-bring.md": {
+    "mtime": 1785994158.2403321,
+    "ast_hash": "fca4691ccb5cabca2b2ee498bc93ed18",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/en/cartwise-vs-listonic.md": {
+    "mtime": 1785994158.2403321,
+    "ast_hash": "50eee03042f52fa56444b2109d6da4d7",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/en/cartwise-vs-ourgroceries.md": {
+    "mtime": 1785994158.2403321,
+    "ast_hash": "5a5c3b82489d75ea3575c2590e4a2a91",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/es/cartwise-vs-anylist.md": {
+    "mtime": 1785994158.2458873,
+    "ast_hash": "4e305ad5622dd7b3d2767cf94c78ab43",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/es/cartwise-vs-bring.md": {
+    "mtime": 1785994158.2458873,
+    "ast_hash": "cbc35453c55f2f307965ddeb66232a5d",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/es/cartwise-vs-listonic.md": {
+    "mtime": 1785994158.2458873,
+    "ast_hash": "8d7a4984e056b94c3988f1465515fa34",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/es/cartwise-vs-ourgroceries.md": {
+    "mtime": 1785994158.247899,
+    "ast_hash": "adef32166538f842f4c712474e05458f",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/pt/cartwise-vs-anylist.md": {
+    "mtime": 1785994158.247899,
+    "ast_hash": "0af6cff7d5cc34939f14840be94e5d19",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/pt/cartwise-vs-bring.md": {
+    "mtime": 1785994158.247899,
+    "ast_hash": "52e8d4a0facb3e66d92c47cdcdf99f62",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/pt/cartwise-vs-listonic.md": {
+    "mtime": 1785994158.247899,
+    "ast_hash": "ae4415f6c415f85f9956cd3d8272d840",
+    "semantic_hash": ""
+  },
+  "src/content/comparisons/pt/cartwise-vs-ourgroceries.md": {
+    "mtime": 1785994158.249911,
+    "ast_hash": "2942327e32563b1a58d3bff232bcd4c8",
+    "semantic_hash": ""
+  },
+  "src/content/legal/cartwise-privacy-es.md": {
+    "mtime": 1782453025.308453,
+    "ast_hash": "6769ec2695926f76635ac968d88ea840",
+    "semantic_hash": ""
+  },
+  "src/content/legal/cartwise-privacy-pt.md": {
+    "mtime": 1782453098.1466732,
+    "ast_hash": "48efcf5c8cb9637cbf464d23de2a19ae",
+    "semantic_hash": ""
+  },
+  "src/content/legal/cartwise-privacy.md": {
+    "mtime": 1782452946.8626378,
+    "ast_hash": "c5d2c8d6b395cb8a92cb5fa53345b912",
+    "semantic_hash": ""
+  },
+  "src/content/legal/cartwise-terms-es.md": {
+    "mtime": 1782450331.7133825,
+    "ast_hash": "ec40c7dbc014285ce64a95f9069a216f",
+    "semantic_hash": ""
+  },
+  "src/content/legal/cartwise-terms-pt.md": {
+    "mtime": 1782450393.1001527,
+    "ast_hash": "2e19b206145e5552eacbf8447220414d",
+    "semantic_hash": ""
+  },
+  "src/content/legal/cartwise-terms.md": {
+    "mtime": 1782449665.1312969,
+    "ast_hash": "6787cfb7681bdda3fee6d0b964d0384e",
+    "semantic_hash": ""
+  },
+  "src/content/legal/privacy-es.md": {
+    "mtime": 1775342217.2426586,
+    "ast_hash": "f85d0138171580bed9e05e70d60fae89",
+    "semantic_hash": ""
+  },
+  "src/content/legal/privacy-pt.md": {
+    "mtime": 1775342198.9577384,
+    "ast_hash": "244860d171ccba97c7e6c3996f396eab",
+    "semantic_hash": ""
+  },
+  "src/content/legal/privacy.md": {
+    "mtime": 1775342212.2951145,
+    "ast_hash": "c9ccdac2cba0f9188ef9b190642c2543",
+    "semantic_hash": ""
+  },
+  "src/content/legal/terms-es.md": {
+    "mtime": 1775341891.4685438,
+    "ast_hash": "659a6d71011d50088525591db026e728",
+    "semantic_hash": ""
+  },
+  "src/content/legal/terms-pt.md": {
+    "mtime": 1775341930.4356687,
+    "ast_hash": "42bd6026340fd267e183420352b4fbd4",
+    "semantic_hash": ""
+  },
+  "src/content/legal/terms.md": {
+    "mtime": 1775341845.8251421,
+    "ast_hash": "b560714471a63169f6ec3e6e48ad2890",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1767849307.4275413,
+    "ast_hash": "5ecb1a6c9dff5445f88c3984cb300a5e",
+    "semantic_hash": ""
+  },
+  "public/images/apps/bible-tpt/icon.png": {
+    "mtime": 1774916410.5600326,
+    "ast_hash": "c36dcda954e25a6ad44bff2bf336ae8c",
+    "semantic_hash": ""
+  },
+  "public/images/apps/bible-tpt/screenshot-0.webp": {
+    "mtime": 1774916410.56403,
+    "ast_hash": "889f924417cfa8e20b48e65ba718ac52",
+    "semantic_hash": ""
+  },
+  "public/images/apps/bible-tpt/screenshot-1.webp": {
+    "mtime": 1774916410.5660472,
+    "ast_hash": "40a8676755805b2ea07781a6da776dea",
+    "semantic_hash": ""
+  },
+  "public/images/apps/bible-tpt/screenshot-2.webp": {
+    "mtime": 1774916410.5680592,
+    "ast_hash": "fd4329634729dbca691e9ea5cde4a78c",
+    "semantic_hash": ""
+  },
+  "public/images/apps/biblia-tla/icon.webp": {
+    "mtime": 1774923246.8145337,
+    "ast_hash": "7dea49ff4f4bd992749484d595d9aa58",
+    "semantic_hash": ""
+  },
+  "public/images/apps/biblia-tla/screenshot-0.webp": {
+    "mtime": 1774916410.5760622,
+    "ast_hash": "dfe6800607eaac87bcf33353fb31a0a3",
+    "semantic_hash": ""
+  },
+  "public/images/apps/biblia-tla/screenshot-1.webp": {
+    "mtime": 1774916410.5770712,
+    "ast_hash": "7c667eac645d335533126d18fecd64c1",
+    "semantic_hash": ""
+  },
+  "public/images/apps/biblia-tla/screenshot-2.webp": {
+    "mtime": 1774916410.5780716,
+    "ast_hash": "bd61aaee2cb251549416374a4149a342",
+    "semantic_hash": ""
+  },
+  "public/images/apps/cartwise-grocery-shopping-list/icon.png": {
+    "mtime": 1774916410.6181974,
+    "ast_hash": "13a436a5910866a51b125e9f8aee95de",
+    "semantic_hash": ""
+  },
+  "public/images/apps/cartwise-grocery-shopping-list/screenshot-0.webp": {
+    "mtime": 1774916410.6342463,
+    "ast_hash": "0b7479b95501d3b012bbee62aa2df2be",
+    "semantic_hash": ""
+  },
+  "public/images/apps/cartwise-grocery-shopping-list/screenshot-1.webp": {
+    "mtime": 1774916410.640547,
+    "ast_hash": "bbb28b74cc3c909f83e133bab5d26ddc",
+    "semantic_hash": ""
+  },
+  "public/images/apps/cartwise-grocery-shopping-list/screenshot-2.webp": {
+    "mtime": 1774916410.6461518,
+    "ast_hash": "89212afb16414de8ee6f240c5f513b31",
+    "semantic_hash": ""
+  },
+  "public/images/apps/claimly/icon.png": {
+    "mtime": 1774938511.6571076,
+    "ast_hash": "30d0a578aedc2b27fc4db4c31b3de080",
+    "semantic_hash": ""
+  },
+  "public/images/blog/best-bible-apps-android-2026.png": {
+    "mtime": 1775344989.1054866,
+    "ast_hash": "4c5c08cb794d5c6a2f4a984efd27aac0",
+    "semantic_hash": ""
+  },
+  "public/images/blog/biblia-tla-espanol-facil-guia.png": {
+    "mtime": 1775342751.947048,
+    "ast_hash": "a6e6f39044bd88ea0384576009828312",
+    "semantic_hash": ""
+  },
+  "public/images/blog/claimly-agora-disponivel-google-play.png": {
+    "mtime": 1776433576.955947,
+    "ast_hash": "ebe2872a08839dc01245b5e02bdcac01",
+    "semantic_hash": ""
+  },
+  "public/images/blog/claimly-beta-launch-join-warranty-tracker.png": {
+    "mtime": 1775342681.060732,
+    "ast_hash": "0243e5bab0a7ee7079c168299ba91b85",
+    "semantic_hash": ""
+  },
+  "public/images/blog/claimly-now-available-google-play.png": {
+    "mtime": 1776433001.344134,
+    "ast_hash": "4772573ba086c176c2f2e7300818140c",
+    "semantic_hash": ""
+  },
+  "public/images/blog/claimly-ya-disponible-google-play.png": {
+    "mtime": 1776433468.0735216,
+    "ast_hash": "9bf4804fe21b258584a1052e81d00155",
+    "semantic_hash": ""
+  },
+  "public/images/blog/smart-grocery-list-apps-save-time.png": {
+    "mtime": 1775342951.8667176,
+    "ast_hash": "c8c45674b935c59ee2420d97aa906a15",
+    "semantic_hash": ""
+  },
+  "public/images/comparisons/anylist.png": {
+    "mtime": 1782531467.6571796,
+    "ast_hash": "cb9a8cad61df07b39bdc8c23feac7ab4",
+    "semantic_hash": ""
+  },
+  "public/images/comparisons/bring.png": {
+    "mtime": 1782531466.2914581,
+    "ast_hash": "851e4791c169ab67a05e2c1629595299",
+    "semantic_hash": ""
+  },
+  "public/images/comparisons/listonic.png": {
+    "mtime": 1782531467.2355988,
+    "ast_hash": "ab51f00b69200dda4fe77375c46c13e8",
+    "semantic_hash": ""
+  },
+  "public/images/comparisons/ourgroceries.png": {
+    "mtime": 1782531466.6710148,
+    "ast_hash": "c6d7d98eaab3ae82d98473e616bd16c4",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/bible-tpt-audio.jpg": {
+    "mtime": 1774921497.2714262,
+    "ast_hash": "65c7d7d926552380bbfe14b958bf0d76",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/bible-tpt-reading.jpg": {
+    "mtime": 1774921497.7861974,
+    "ast_hash": "a6fb2c6a0924cefac5e1ef21d3960b47",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/bible-tpt-verse.jpg": {
+    "mtime": 1774921497.9272952,
+    "ast_hash": "673a2866c7a9791f5d7f3d9747a45df4",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/biblia-tla-audio.jpg": {
+    "mtime": 1774922777.230125,
+    "ast_hash": "d5347ab6d22246a6fcdc90129d35a062",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/biblia-tla-books.jpg": {
+    "mtime": 1774922663.218169,
+    "ast_hash": "58a92b2cf14323f3f2a107a06bef7204",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/biblia-tla-plan-detail.jpg": {
+    "mtime": 1774922777.649181,
+    "ast_hash": "ec30ba5f545cf4d59e01a9ec72350f40",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/biblia-tla-plans.jpg": {
+    "mtime": 1774922663.1611514,
+    "ast_hash": "29fe9284052ebfe72eecff972109e146",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/biblia-tla-reading.jpg": {
+    "mtime": 1774922663.096172,
+    "ast_hash": "42d1a25a537df31b16a11b1e2758b11d",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/biblia-tla-splash.jpg": {
+    "mtime": 1774922778.051536,
+    "ast_hash": "5fee2976b3e14bc345ff956f9cfe4a91",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/cartwise-ai.jpg": {
+    "mtime": 1774922776.4003615,
+    "ast_hash": "29b812dab3d83b628f3c594186360e98",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/cartwise-analytics.jpg": {
+    "mtime": 1774922776.8175926,
+    "ast_hash": "b9112cdc5de9d97991548f136ae49577",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/cartwise-create.jpg": {
+    "mtime": 1774922775.6698132,
+    "ast_hash": "acaaf15402cfae81672a730be0ce1514",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/cartwise-home.jpg": {
+    "mtime": 1774922775.3685052,
+    "ast_hash": "872586bce89c48f676f5cb5444cde938",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/cartwise-list.jpg": {
+    "mtime": 1774922775.561059,
+    "ast_hash": "775fb6484b9e0a5d3d111497bfe8a6d4",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/cartwise-share.jpg": {
+    "mtime": 1774921498.490122,
+    "ast_hash": "885e2c876a70eee6af13e7d3efe27bcd",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/cartwise-voice.jpg": {
+    "mtime": 1774922776.0659237,
+    "ast_hash": "dc07bd2119054290304afe5e5716c262",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/claimly-attachments.jpg": {
+    "mtime": 1774938511.9274218,
+    "ast_hash": "dbcc95663d18162b3c314601f7ac2914",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/claimly-detail.jpg": {
+    "mtime": 1774938511.880171,
+    "ast_hash": "71b60f4626a8d41443e9035d194fea24",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/claimly-home.jpg": {
+    "mtime": 1774938511.6988132,
+    "ast_hash": "3e3ec864cdd5c697a5877c7da6fa6e8f",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/claimly-review.jpg": {
+    "mtime": 1774938511.791523,
+    "ast_hash": "a36915fb31aa61bae210dc74ef65ee85",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/claimly-scanner.jpg": {
+    "mtime": 1774938511.74803,
+    "ast_hash": "8ed5fde17643d137a0cca81362107b50",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/claimly-warranties.jpg": {
+    "mtime": 1774938511.835494,
+    "ast_hash": "05e7dcfeff884e103995bee7b55e5a80",
+    "semantic_hash": ""
+  },
+  "public/logo.png": {
+    "mtime": 1767846485.2468505,
+    "ast_hash": "deebd6af32e69c682bc70f28f23f68bf",
+    "semantic_hash": ""
+  },
+  "public/og-default.png": {
+    "mtime": 1761455224.4888525,
+    "ast_hash": "5648edb0684715208963aeddeacd2876",
+    "semantic_hash": ""
+  },
+  "src/assets/google-play-badge.svg": {
+    "mtime": 1755466069.900704,
+    "ast_hash": "748e079c6326ff568843dce60cd4101c",
+    "semantic_hash": ""
+  },
+  "src/assets/gplay-logo.svg": {
+    "mtime": 1755466069.900704,
+    "ast_hash": "5a440d93f88fa191ffc03c2302d0c00f",
+    "semantic_hash": ""
+  },
+  "src/assets/logo.svg": {
+    "mtime": 1755466069.900704,
+    "ast_hash": "3d587061b6834fbe3dde4f20783d7a59",
+    "semantic_hash": ""
+  },
+  "src/assets/placeholder-app.svg": {
+    "mtime": 1755466069.900704,
+    "ast_hash": "b3700012dc6bbd58a5c7b442eac02b86",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/ai-autofill-confirmation-step.png": {
+    "mtime": 1784119272.775386,
+    "ast_hash": "e91cfc92121d154a26773f2fc7e639f4",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/ai-grocery-list-generator.png": {
+    "mtime": 1784119274.9273615,
+    "ast_hash": "67b26311ddefe85bd82ffac3838121e6",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/best-bible-apps-android-2026.png": {
+    "mtime": 1784119276.6430354,
+    "ast_hash": "3ee450bb2e323394401fe8a30a8d069f",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/best-offline-grocery-list-apps-2026.png": {
+    "mtime": 1784119278.0238993,
+    "ast_hash": "0b38d743856bea29da4ab648606b1dc7",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/claimly-beta-launch-join-warranty-tracker.png": {
+    "mtime": 1784119279.27101,
+    "ast_hash": "b719a0a0a36d45260310a135f530c15e",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/claimly-now-available-google-play.png": {
+    "mtime": 1784119280.5662856,
+    "ast_hash": "3d0114f7e5ffb6ac72217810681e3ab8",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/grocery-list-app-adds-up-total.png": {
+    "mtime": 1784119283.5349636,
+    "ast_hash": "162d498b7ff8cffedb8e1ae16d9b2810",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/share-grocery-list-qr-whatsapp.png": {
+    "mtime": 1784119286.1756053,
+    "ast_hash": "88fa331bcec1e15e6855ef6e47784649",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/smart-grocery-list-apps-save-time.png": {
+    "mtime": 1784119287.3997426,
+    "ast_hash": "982389dbd2e9d8f2b816b6b348aa4ce1",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/tpt-bible-app-free-download-android.png": {
+    "mtime": 1784119288.6621263,
+    "ast_hash": "4eec80d7c3232dca31f6797fc69d00a8",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/warranty-scanner-app-guide.png": {
+    "mtime": 1784119289.8891451,
+    "ast_hash": "a723e32a3e210f5a18a6e54b325888e1",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/why-we-never-run-expo-prebuild.png": {
+    "mtime": 1784119291.1429472,
+    "ast_hash": "d33eef0acf9a3d2eaaeff9b0d48154f4",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/ai-autofill-confirmation-step.png": {
+    "mtime": 1784119304.7596428,
+    "ast_hash": "fae648daa1be941f89a213de048d70f1",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/ai-grocery-list-generator.png": {
+    "mtime": 1784119305.8409934,
+    "ast_hash": "8d0d1b2ea6fddfd20bd6d7e53a25a040",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/best-offline-grocery-list-apps-2026.png": {
+    "mtime": 1784119306.9710948,
+    "ast_hash": "257f9d72ac6bebd0ac08c6f5c29cbdf3",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/biblia-tla-espanol-facil-guia.png": {
+    "mtime": 1784119308.375224,
+    "ast_hash": "826dc2984232af6d6239e21c433cc7f9",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/claimly-ya-disponible-google-play.png": {
+    "mtime": 1784119309.871934,
+    "ast_hash": "52e2bdb1f189df05e0c328c3636a94ad",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/grocery-list-app-adds-up-total.png": {
+    "mtime": 1784119314.185459,
+    "ast_hash": "2de7f9d993edb8ce59f6db2e554d3792",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/share-grocery-list-qr-whatsapp.png": {
+    "mtime": 1784119319.3216565,
+    "ast_hash": "2e4e2026beea6579915d103e7a6f31da",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/why-we-never-run-expo-prebuild.png": {
+    "mtime": 1784119323.2622287,
+    "ast_hash": "eb158e15c66a4a014747b194fe66113e",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/ai-autofill-confirmation-step.png": {
+    "mtime": 1784119327.2816832,
+    "ast_hash": "d8392bbdb97eb60aa12d26301d1d63e2",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/ai-grocery-list-generator.png": {
+    "mtime": 1786026732.177577,
+    "ast_hash": "7d60cfafa63e03d673b9e0adaeba1c4e",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/best-offline-grocery-list-apps-2026.png": {
+    "mtime": 1784119330.486944,
+    "ast_hash": "059e9f31f551546e0f9db9111fcbe7d4",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/claimly-agora-disponivel-google-play.png": {
+    "mtime": 1786026732.177577,
+    "ast_hash": "22d4cd2f16d4fbaee00988375b399abc",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/grocery-list-app-adds-up-total.png": {
+    "mtime": 1784119337.42454,
+    "ast_hash": "ca2a2ba8453a5e781af24c240020b768",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/share-grocery-list-qr-whatsapp.png": {
+    "mtime": 1784119342.9869556,
+    "ast_hash": "1fd55f0c88fa1b713339e4848317a22b",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/why-we-never-run-expo-prebuild.png": {
+    "mtime": 1784119347.0437505,
+    "ast_hash": "31af8e64c2414a2c346776658054e759",
+    "semantic_hash": ""
+  },
+  "scripts/edit_rate_zones.py": {
+    "mtime": 1783883877.056412,
+    "ast_hash": "b61dd4ce4205bf5b1ad288fcce8cb3ea",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/ai-autofill-edit-rate-zones.png": {
+    "mtime": 1783883895.5489845,
+    "ast_hash": "071776681e6242e3fbb7bad1958496fb",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/ai-autofill-edit-rate-zones.png": {
+    "mtime": 1783883895.7601106,
+    "ast_hash": "b5f53657768788413acf7adccd85a1ca",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/ai-autofill-edit-rate-zones.png": {
+    "mtime": 1783883895.9549954,
+    "ast_hash": "0d457d01756d6f6f099e828f6a5fdf59",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1785992765.8504784,
+    "ast_hash": "2a89c7061c90380fc27a01bbb2b556a3",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/google-play-12-testers-requirement.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "db7405cd71ad3494bfd5ca1995bc5616",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/google-play-12-testers-requirement.md": {
+    "mtime": 1785994158.2242708,
+    "ast_hash": "de33d4c24cd34cf6cb2922f2c0dbb4ae",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/google-play-12-testers-requirement.md": {
+    "mtime": 1785994158.2403321,
+    "ast_hash": "5a0e08b42a0a3b6aad1c6db1754c50b5",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/google-play-12-testers-requirement.png": {
+    "mtime": 1784119281.8606882,
+    "ast_hash": "4db69ad92662da08c524153ae83baff7",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/google-play-12-testers-requirement.png": {
+    "mtime": 1784119311.6649537,
+    "ast_hash": "dea4a1178bab10779dfa8452bffd1910",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/google-play-12-testers-requirement.png": {
+    "mtime": 1784119334.1253624,
+    "ast_hash": "bf174c7e325bf142241731d00c2d2e8a",
+    "semantic_hash": ""
+  },
+  ".claude/agent-memory/rhodey/MEMORY.md": {
+    "mtime": 1785993695.8231702,
+    "ast_hash": "c400993c1d3f5824e85ee62940828063",
+    "semantic_hash": ""
+  },
+  ".claude/agent-memory/rhodey/project_tooling-gotchas.md": {
+    "mtime": 1785993703.7255106,
+    "ast_hash": "b69e22c32eab37affac6386c833758de",
+    "semantic_hash": ""
+  },
+  "public/.well-known/mcp.json": {
+    "mtime": 1786025622.5244145,
+    "ast_hash": "565b87bb9313ccc19af7a067c54217de",
+    "semantic_hash": ""
+  },
+  "src/components/ComparisonJsonLd.astro": {
+    "mtime": 1786025622.5543015,
+    "ast_hash": "dac0256172e5fbaee72936bd736b1043",
+    "semantic_hash": ""
+  },
+  "src/pages/llms.txt.ts": {
+    "mtime": 1786026732.226964,
+    "ast_hash": "23df693116a91e9ac2b981ac97af727f",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/bible-tpt-reading.webp": {
+    "mtime": 1786025622.5244145,
+    "ast_hash": "79ce4f0934ca6c3a6e611cb5396ac86b",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/bible-tpt-verse.webp": {
+    "mtime": 1786025622.5322495,
+    "ast_hash": "baafb3f5ce063e53f7590b377237375e",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/cartwise-list.webp": {
+    "mtime": 1786025622.5356717,
+    "ast_hash": "99c6a5a3e1eaf6e6dff26f56efa8a606",
+    "semantic_hash": ""
+  },
+  "src/content/apps/en/expiroo.md": {
+    "mtime": 1786026732.215259,
+    "ast_hash": "5fd268a9001f09a84991fa574a87c3b6",
+    "semantic_hash": ""
+  },
+  "src/content/apps/es/expiroo.md": {
+    "mtime": 1786026732.215259,
+    "ast_hash": "7db6361d2a052e807c1933fd913e18d3",
+    "semantic_hash": ""
+  },
+  "src/content/apps/pt/expiroo.md": {
+    "mtime": 1786026732.2172697,
+    "ast_hash": "0936486091d1293a5f02597e53adeb7b",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/best-before-vs-use-by-dates.md": {
+    "mtime": 1786026732.2172697,
+    "ast_hash": "541ba422f68e08635cec674cb9f84a4f",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/expiroo-food-expiry-tracker-beta.md": {
+    "mtime": 1786026732.2172697,
+    "ast_hash": "49abb3c7aae386f35a106c501a62e127",
+    "semantic_hash": ""
+  },
+  "src/content/blog/en/how-to-file-warranty-claim.md": {
+    "mtime": 1786026732.2172697,
+    "ast_hash": "864abe9e5c664cc0a887762b541236cf",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/expiroo-control-caducidad-beta.md": {
+    "mtime": 1786026732.2172697,
+    "ast_hash": "8e048deb07efbae0be5e0c57b38808ff",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/fecha-caducidad-vs-consumo-preferente.md": {
+    "mtime": 1786026732.2172697,
+    "ast_hash": "65d330c1f7b756a132eec93d59fc1de6",
+    "semantic_hash": ""
+  },
+  "src/content/blog/es/how-to-file-warranty-claim.md": {
+    "mtime": 1786026732.2172697,
+    "ast_hash": "70e1834fa0e563f47d9cec298f70939c",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/data-validade-vs-prazo-consumo.md": {
+    "mtime": 1786026732.2172697,
+    "ast_hash": "c728e8ff89307adca4ceb9a9a5821eb6",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/expiroo-controle-validade-beta.md": {
+    "mtime": 1786026732.2172697,
+    "ast_hash": "0b67c839daeb51ebdb3eb3c0c48e7766",
+    "semantic_hash": ""
+  },
+  "src/content/blog/pt/how-to-file-warranty-claim.md": {
+    "mtime": 1786026732.2249558,
+    "ast_hash": "43fd93020b5e1a81d1f7e96d844dac0d",
+    "semantic_hash": ""
+  },
+  "public/images/apps/expiroo/icon.png": {
+    "mtime": 1786026732.130384,
+    "ast_hash": "7bac140492a1f4029a9bd739c2d19eac",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/best-before-vs-use-by-dates.png": {
+    "mtime": 1786026732.130384,
+    "ast_hash": "333e14b5076643e7e21afa28cf1002bc",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/expiroo-food-expiry-tracker-beta.png": {
+    "mtime": 1786026732.1368833,
+    "ast_hash": "b6c53dfc72e7528c7622e8526b1499b7",
+    "semantic_hash": ""
+  },
+  "public/images/blog/en/how-to-file-warranty-claim.png": {
+    "mtime": 1786026732.1614892,
+    "ast_hash": "cfcb4e6f40bc28df2c3b3df3f239145b",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/expiroo-control-caducidad-beta.png": {
+    "mtime": 1786026732.1691985,
+    "ast_hash": "7e5f6c23cd4800128e1d921164a96c57",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/fecha-caducidad-vs-consumo-preferente.png": {
+    "mtime": 1786026732.1691985,
+    "ast_hash": "f252f7a619742a0ecc3e913dc5c8889f",
+    "semantic_hash": ""
+  },
+  "public/images/blog/es/how-to-file-warranty-claim.png": {
+    "mtime": 1786026732.177577,
+    "ast_hash": "cad2a512af4ca6db46635bf8bb9a51af",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/data-validade-vs-prazo-consumo.png": {
+    "mtime": 1786026732.177577,
+    "ast_hash": "d0fbe0714c4d83c8d8aeafedbf14e84f",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/expiroo-controle-validade-beta.png": {
+    "mtime": 1786026732.1933682,
+    "ast_hash": "7b4b6d68e2b4078b7e5d2e8c1f838238",
+    "semantic_hash": ""
+  },
+  "public/images/blog/pt/how-to-file-warranty-claim.png": {
+    "mtime": 1786026732.1933682,
+    "ast_hash": "dbe74c4c1c2edee598f6dc0ccad52b46",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/expiroo-home.jpg": {
+    "mtime": 1786026732.1933682,
+    "ast_hash": "61df96949df101116242ed8105406378",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/expiroo-locations.jpg": {
+    "mtime": 1786026732.2021384,
+    "ast_hash": "d5709a382dcfdf1fdfab3baf7c1708f9",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/expiroo-notify.jpg": {
+    "mtime": 1786026732.205434,
+    "ast_hash": "f9b85f9896fcc796d0140583b0dfc122",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/expiroo-scan.jpg": {
+    "mtime": 1786026732.205434,
+    "ast_hash": "d507ab470da4d461127e7a9d410f7f32",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/expiroo-settings.jpg": {
+    "mtime": 1786026732.211218,
+    "ast_hash": "82ea172ff77b3fe7a8ea795fb373949a",
+    "semantic_hash": ""
+  },
+  "public/images/screenshots/expiroo-waste.jpg": {
+    "mtime": 1786026732.212727,
+    "ast_hash": "8aa38d4595daf771ce426dbe284dd46e",
+    "semantic_hash": ""
+  }
+}

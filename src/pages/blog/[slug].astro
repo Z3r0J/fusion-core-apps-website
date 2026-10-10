@@ -1,8 +1,9 @@
 ---
 import BlogJsonLd from "@/components/BlogJsonLd.astro";
+import RelatedPosts from "@/components/RelatedPosts.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import type { Locale } from "@/i18n/utils";
+import { useTranslations, type Locale } from "@/i18n/utils";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog", ({ slug }) => slug.startsWith("en/"));
@@ -26,11 +27,14 @@ const ogImage = post.data.ogImage || post.data.image || "/og-default.png";
 const ogImageWidth = post.data.ogImage ? 1200 : 1536;
 const ogImageHeight = post.data.ogImage ? 630 : 1024;
 
-const formattedDate = post.data.publishedAt.toLocaleDateString("en-US", {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
-});
+const t = useTranslations("en");
+// Frontmatter dates are UTC midnight; format in UTC so the day never shifts with the build machine's timezone.
+const dateFormat: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
+const formattedDate = post.data.publishedAt.toLocaleDateString("en-US", dateFormat);
+// Only surface "Updated" when the post was actually revised after publishing.
+const updatedAt =
+	post.data.updatedAt && post.data.updatedAt > post.data.publishedAt ? post.data.updatedAt : undefined;
+const formattedUpdated = updatedAt?.toLocaleDateString("en-US", dateFormat);
 
 // ── Cross-locale sibling resolution ──
 // If this post declares a `translationKey`, find every post sharing it (each
@@ -66,7 +70,7 @@ for (const sibling of siblings) {
 	availableLocales={availableLocales}
 	localeLinks={post.data.translationKey ? localeLinksOverride : undefined}
 >
-	<BlogJsonLd post={post} url={canonical} />
+	<BlogJsonLd locale="en" post={post} url={canonical} />
 
 	<article class="mx-auto max-w-3xl">
 
@@ -100,6 +104,16 @@ for (const sibling of siblings) {
 				<span aria-hidden="true" style="opacity:0.3">·</span>
 				<time datetime={post.data.publishedAt.toISOString()}>{formattedDate}</time>
 				{
+					updatedAt && (
+						<>
+							<span aria-hidden="true" style="opacity:0.3">·</span>
+							<span>
+								{t("blog.updated")} <time datetime={updatedAt.toISOString()}>{formattedUpdated}</time>
+							</span>
+						</>
+					)
+				}
+				{
 					post.data.featured && (
 						<>
 							<span aria-hidden="true" style="opacity:0.3">·</span>
@@ -127,6 +141,8 @@ for (const sibling of siblings) {
 		<div class="blog-prose">
 			<Content />
 		</div>
+
+		<RelatedPosts locale="en" post={post} />
 
 		{/* ── Article footer ── */}
 		<footer class="mt-16 pt-8" style="border-top:1px solid rgba(0,0,0,0.08);" class="dark:!border-white/[0.07]">
