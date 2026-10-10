@@ -135,7 +135,9 @@
     "noPosts": "Sin publicaciones todavía",
     "noPostsBody": "Estamos preparando nuevo contenido. Vuelve pronto.",
     "featured": "Destacado",
-    "backToBlog": "Volver al Blog"
+    "backToBlog": "Volver al Blog",
+    "relatedPosts": "Artículos relacionados",
+    "updated": "Actualizado"
   },
   "breadcrumbs": {
     "home": "Inicio",

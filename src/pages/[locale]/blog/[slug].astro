@@ -1,5 +1,6 @@
 ---
 import BlogJsonLd from "@/components/BlogJsonLd.astro";
+import RelatedPosts from "@/components/RelatedPosts.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { useTranslations, type Locale } from "@/i18n/utils";
 import { getCollection } from "astro:content";
@@ -31,11 +32,14 @@ const ogImage = post.data.ogImage || post.data.image || "/og-default.png";
 const ogImageWidth = post.data.ogImage ? 1200 : 1536;
 const ogImageHeight = post.data.ogImage ? 630 : 1024;
 
-const formattedDate = post.data.publishedAt.toLocaleDateString(locale === "es" ? "es-419" : "pt-BR", {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
-});
+const dateLocale = locale === "es" ? "es-419" : "pt-BR";
+// Frontmatter dates are UTC midnight; format in UTC so the day never shifts with the build machine's timezone.
+const dateFormat: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
+const formattedDate = post.data.publishedAt.toLocaleDateString(dateLocale, dateFormat);
+// Only surface "Updated" when the post was actually revised after publishing.
+const updatedAt =
+	post.data.updatedAt && post.data.updatedAt > post.data.publishedAt ? post.data.updatedAt : undefined;
+const formattedUpdated = updatedAt?.toLocaleDateString(dateLocale, dateFormat);
 
 // ── Cross-locale sibling resolution ──
 // See blog/[slug].astro for the rationale. Posts sharing a `translationKey`
@@ -70,7 +74,7 @@ for (const sibling of siblings) {
 	availableLocales={availableLocales}
 	localeLinks={post.data.translationKey ? localeLinksOverride : undefined}
 >
-	<BlogJsonLd post={post} url={canonical} />
+	<BlogJsonLd locale={locale} post={post} url={canonical} />
 
 	<article class="mx-auto max-w-3xl">
 		<nav aria-label="Breadcrumb" class="mb-6 flex items-center gap-2 text-xs" style="color:var(--color-gray-400);">
@@ -92,6 +96,14 @@ for (const sibling of siblings) {
 				<span class="author">{post.data.author}</span>
 				<span aria-hidden="true" style="opacity:0.3">·</span>
 				<time datetime={post.data.publishedAt.toISOString()}>{formattedDate}</time>
+				{updatedAt && (
+					<>
+						<span aria-hidden="true" style="opacity:0.3">·</span>
+						<span>
+							{t("blog.updated")} <time datetime={updatedAt.toISOString()}>{formattedUpdated}</time>
+						</span>
+					</>
+				)}
 				{post.data.featured && (
 					<>
 						<span aria-hidden="true" style="opacity:0.3">·</span>
@@ -110,6 +122,8 @@ for (const sibling of siblings) {
 		<div class="blog-prose">
 			<Content />
 		</div>
+
+		<RelatedPosts locale={locale} post={post} />
 
 		<footer class="mt-16 pt-8" style="border-top:1px solid rgba(0,0,0,0.08);">
 			<div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">

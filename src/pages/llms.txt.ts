@@ -31,6 +31,14 @@ export const GET: APIRoute = async ({ site }) => {
 	const posts = (await getCollection("blog", ({ slug }) => slug.startsWith("en/"))).sort(
 		(a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
 	);
+	// Localized posts are listed too: many es/pt articles have no English sibling
+	// (different keywords per market), so AI crawlers would never find them from
+	// the English list alone.
+	const localizedPosts = (locale: "es" | "pt") =>
+		getCollection("blog", ({ slug }) => slug.startsWith(`${locale}/`)).then((entries) =>
+			entries.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()),
+		);
+	const [esPosts, ptPosts] = await Promise.all([localizedPosts("es"), localizedPosts("pt")]);
 	const comparisons = (
 		await getCollection("comparisons", ({ slug }) => slug.startsWith("en/"))
 	).sort((a, b) => a.data.title.localeCompare(b.data.title));
@@ -44,6 +52,12 @@ export const GET: APIRoute = async ({ site }) => {
 	const blogLines = posts.map(
 		(post) => `- [${post.data.title}](${abs(`/blog/${stripEn(post.slug)}`)}): ${post.data.description}`,
 	);
+
+	const localizedLines = (entries: typeof esPosts, locale: "es" | "pt") =>
+		entries.map(
+			(post) =>
+				`- [${post.data.title}](${abs(`/${locale}/blog/${post.slug.replace(`${locale}/`, "")}`)}): ${post.data.description}`,
+		);
 
 	const comparisonLines = comparisons.map(
 		(entry) =>
@@ -66,13 +80,19 @@ ${appLines.join("\n")}
 ## Blog
 ${blogLines.join("\n")}
 
+## Blog (Español)
+${localizedLines(esPosts, "es").join("\n")}
+
+## Blog (Português)
+${localizedLines(ptPosts, "pt").join("\n")}
+
 ## Comparisons
 ${comparisonLines.join("\n")}
 
 ## Legal
 ${legalLines.join("\n")}
 
-Spanish (/es) and Portuguese (/pt) translations are available for most pages.
+Spanish (/es) and Portuguese (/pt) versions are available for most app, comparison, and legal pages.
 `;
 
 	return new Response(body, {

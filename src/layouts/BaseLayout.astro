@@ -122,9 +122,14 @@ const resolvedOgImage =
 		<link rel="preload" href="/fonts/bricolage-grotesque-variable.woff2" as="font" type="font/woff2" crossorigin />
 		<link rel="preload" href="/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
 
-		<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
-		<!-- apple-touch-icon.png must be a 180×180 PNG at /public/apple-touch-icon.png -->
+		<!-- Favicons come from the real brand mark (logo.png). Google Search requires a
+		     square favicon whose size is a multiple of 48px, so the 96×96 PNG is listed
+		     first; favicon.ico covers legacy /favicon.ico requests. public/favicon.svg is a
+		     placeholder mark that no longer matches the logo and is intentionally unused. -->
+		<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
+		<link href="/favicon.ico" rel="icon" sizes="48x48" />
 		<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+		<link href="/site.webmanifest" rel="manifest" />
 
 		<script is:inline type="application/ld+json">
 			{

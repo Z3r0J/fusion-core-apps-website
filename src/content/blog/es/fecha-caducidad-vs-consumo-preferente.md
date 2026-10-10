@@ -45,7 +45,7 @@ Vas a encontrar la fecha de **consumo preferente** en alimentos no perecederos y
 
 Esta fecha es la estimación del fabricante de cuánto tiempo el producto mantiene su mejor calidad. Una lata de porotos un mes después de su consumo preferente no es peligrosa — quizás esté un poco más blanda o con menos sabor. La pasta seca puede estar perfecta mucho después de la fecha impresa si se guardó bien.
 
-Para estos alimentos, usá tu criterio. Revisá olores raros, moho, un sabor extraño o un cambio en la textura. Si todo parece normal, normalmente lo está. El consumo preferente es una guía, no un freno absoluto.
+Para estos alimentos, usá tu criterio. Revisá olores raros, moho, un sabor extraño o un cambio en la textura. Si todo parece normal, normalmente lo está. El consumo preferente es una guía, no un freno absoluto. Si querés una tabla por tipo de alimento, mirá [¿se puede comer un producto vencido?](/es/blog/producto-vencido-se-puede-consumir).
 
 ## La fecha de caducidad, explicada
 

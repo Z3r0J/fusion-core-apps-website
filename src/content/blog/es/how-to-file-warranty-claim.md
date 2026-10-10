@@ -33,7 +33,7 @@ La reclamación avanza más rápido cuando tienes todo junto desde el principio.
 - **Los términos de la garantía.** La tarjeta que venía en la caja o los términos en el sitio del fabricante, para saber exactamente qué está cubierto y por cuánto tiempo.
 - **Evidencia del defecto.** Fotos o un video corto del problema, y una nota de cuándo empezó.
 
-El motivo más común de rechazo no tiene que ver con la falla en sí, sino con que la persona no puede presentar un recibo legible. Los recibos térmicos se borran y los papeles se pierden, así que quien guardó una copia es quien consigue la reparación.
+El motivo más común de rechazo no tiene que ver con la falla en sí, sino con que la persona no puede presentar un recibo legible. Los recibos térmicos se borran y los papeles se pierden, así que quien guardó una copia es quien consigue la reparación. ¿Perdiste el tuyo? Mira [cómo conseguir el comprobante de compra sin factura](/es/blog/comprobante-de-compra-garantia-sin-factura).
 
 ## Paso a paso: cómo reclamar la garantía
 
@@ -46,7 +46,7 @@ El motivo más común de rechazo no tiene que ver con la falla en sí, sino con 
 
 ## Garantía del vendedor vs. garantía del fabricante: a quién contactar
 
-Un mismo producto puede estar cubierto por más de una garantía a la vez, cada una con su propio reloj. La **garantía del vendedor** la ofrece la tienda que te vendió el artículo. La **garantía del fabricante** viene de la marca que lo hizo y suele durar más. Algunas compras también incluyen una **garantía extendida** que pagaste aparte.
+Un mismo producto puede estar cubierto por más de una garantía a la vez, cada una con su propio reloj. La **garantía del vendedor** la ofrece la tienda que te vendió el artículo. La **garantía del fabricante** viene de la marca que lo hizo y suele durar más. Algunas compras también incluyen una **garantía extendida** que pagaste aparte. Explicamos cada tipo, qué cubre y cuánto dura en [garantía de un producto](/es/blog/garantia-de-un-producto).
 
 Lee todas antes de reclamar. Si la garantía del fabricante cubre tu falla específica por más tiempo, contactar a la marca directamente puede ahorrarte un paso. Si la tienda gestionó la venta y ofrece cambios inmediatos, puede ser más rápida. No hay una regla universal: la parte correcta es quien cubre *tu* falla por más tiempo y con menos fricción.
 

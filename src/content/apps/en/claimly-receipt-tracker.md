@@ -1,7 +1,7 @@
 ---
 title: "Claimly: Warranty Scanner & Receipt Tracker"
 tagline: "The warranty scanner app for Android — scan any receipt, track every warranty, and get alerts before deadlines pass."
-description: "Claimly is a free warranty scanner and receipt tracker for Android. Scan any receipt with your camera, let AI auto-fill the details, and get alerts before warranties expire."
+description: "Free warranty scanner and receipt tracker for Android. Scan any receipt, let AI fill in the details, and get alerts before your warranties expire."
 icon: "/images/apps/claimly/icon.png"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusioncoreapps.claimly"
 category: "Productivity"

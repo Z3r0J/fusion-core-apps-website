@@ -72,16 +72,22 @@ export const GET: APIRoute = async ({ site }) => {
 	// App detail pages — same slug across locales
 	const apps = await getCollection("apps");
 	const appSlugs = new Map<string, Locale[]>();
+	// Newest `lastUpdated` (yyyy-mm-dd) across a slug's locales -> <lastmod>.
+	const appLastmod = new Map<string, string>();
 	for (const app of apps) {
 		const [locale, ...rest] = app.slug.split("/");
 		if (!LOCALES.includes(locale as Locale)) continue;
 		const slug = rest.join("/");
 		appSlugs.set(slug, [...(appSlugs.get(slug) ?? []), locale as Locale]);
+		const updated = app.data.lastUpdated;
+		if (/^\d{4}-\d{2}-\d{2}$/.test(updated) && updated > (appLastmod.get(slug) ?? "")) {
+			appLastmod.set(slug, updated);
+		}
 	}
 	for (const [slug, locales] of appSlugs) {
 		const paths: Partial<Record<Locale, string>> = {};
 		for (const l of locales) paths[l] = localePath(l, `/apps/${slug}`);
-		addLocalized(paths, { changefreq: "monthly", priority: [0.9, 0.8] });
+		addLocalized(paths, { changefreq: "monthly", priority: [0.9, 0.8], lastmod: appLastmod.get(slug) });
 	}
 
 	// Blog posts — per-locale slugs, siblings resolved via translationKey

@@ -1,0 +1,73 @@
+---
+import { useTranslations, type Locale } from "@/i18n/utils";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+// Internal links between posts of the same locale. Ranks siblings by shared
+// tags (then recency) so every article passes link equity to its topic cluster
+// instead of dead-ending at "Back to Blog".
+interface Props {
+	post: CollectionEntry<"blog">;
+	locale: Locale;
+	limit?: number;
+}
+
+const { post, locale, limit = 3 } = Astro.props;
+const t = useTranslations(locale);
+
+const candidates = await getCollection(
+	"blog",
+	({ slug }) => slug.startsWith(`${locale}/`) && slug !== post.slug,
+);
+// Platform tags shared by almost every post would link unrelated topics together.
+const GENERIC_TAGS = new Set(["android", "apps", "android app", "app android", "fusioncore apps"]);
+const tags = new Set(
+	post.data.tags.map((tag) => tag.toLowerCase()).filter((tag) => !GENERIC_TAGS.has(tag)),
+);
+const related = candidates
+	.map((candidate) => ({
+		candidate,
+		score: candidate.data.tags.filter((tag) => tags.has(tag.toLowerCase())).length,
+	}))
+	.filter(({ score }) => score > 0)
+	.sort(
+		(a, b) =>
+			b.score - a.score ||
+			b.candidate.data.publishedAt.getTime() - a.candidate.data.publishedAt.getTime(),
+	)
+	.slice(0, limit)
+	.map(({ candidate }) => candidate);
+
+const hrefFor = (entry: CollectionEntry<"blog">) => {
+	const slug = entry.slug.replace(/^(en|es|pt)\//, "");
+	return locale === "en" ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
+};
+---
+
+{
+	related.length > 0 && (
+		<aside aria-labelledby="related-posts-title" class="mt-16">
+			<h2
+				class="mb-5 text-sm font-semibold tracking-wider text-gray-500 uppercase dark:text-gray-400"     id="related-posts-title"
+			>
+				{t("blog.relatedPosts")}
+			</h2>
+			<ul class="grid gap-4 sm:grid-cols-3">
+				{related.map((entry) => (
+					<li>
+						<a
+							class="block h-full rounded-2xl border border-gray-200 p-5 transition-colors hover:border-gray-400 dark:border-white/10 dark:hover:border-white/30"
+							href={hrefFor(entry)}
+						>
+							<span class="block text-base leading-snug font-semibold text-gray-900 dark:text-white">
+								{entry.data.title}
+							</span>
+							<span class="mt-2 line-clamp-3 block text-sm text-gray-500 dark:text-gray-400">
+								{entry.data.description}
+							</span>
+						</a>
+					</li>
+				))}
+			</ul>
+		</aside>
+	)
+}

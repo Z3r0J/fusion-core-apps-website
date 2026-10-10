@@ -3,6 +3,12 @@
   "installCommand": "pnpm install",
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "fusion-core-apps.vercel.app" }],
+      "destination": "https://www.fusioncoreapps.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/blog/claimly-ya-disponible-google-play",
       "destination": "/es/blog/claimly-ya-disponible-google-play",
       "permanent": true
