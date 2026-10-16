@@ -25,7 +25,7 @@ const t = useTranslations(locale);
 const { Content } = await app.render();
 const appSlug = app.slug.replace(`${locale}/`, "");
 
-const title = `${app.data.title} — FusionCore Apps`;
+const title = app.data.seoTitle ?? `${app.data.title} — FusionCore Apps`;
 const description = app.data.description;
 const canonical = new URL(`/${locale}/apps/${appSlug}`, Astro.site).href;
 const ogImage = app.data.icon || "/og-default.png";

@@ -1,22 +1,23 @@
 ---
 title: "Bible TPT: Passion Translation"
+seoTitle: "App Biblia TPT: The Passion Translation para Android"
 tagline: "Sumérgete en la Palabra de Dios con The Passion Translation, Audio Biblia, devocionales diarios y planes de lectura con IA."
-description: "Bible TPT trae The Passion Translation a la vida con Audio Biblia, acceso offline, devocionales diarios, planes de lectura con IA y resaltados. Más de 2.000 instalaciones."
+description: "Bible TPT trae The Passion Translation a la vida con Audio Biblia, acceso offline, devocionales diarios, planes de lectura con IA y resaltados. Más de 5.000 instalaciones."
 icon: "/images/apps/bible-tpt/icon.png"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.bible.tpt"
 category: "Books & Reference"
 tags: ["biblia app", "passion translation", "tpt", "audio biblia", "biblia offline", "android"]
 locale: "es"
 price: "Free"
-version: "1.3.1"
-lastUpdated: "2026-03-29"
+version: "1.4.7"
+lastUpdated: "2026-10-06"
 screenshots: ["/images/screenshots/bible-tpt-reading.jpg", "/images/screenshots/bible-tpt-audio.jpg", "/images/screenshots/bible-tpt-verse.jpg"]
 rating: 4.474
 ratingCount: 76
-downloads: "2K+"
+downloads: "5K+"
 ---
 ## Descripción
-**Bible TPT: Passion Translation** es una app bíblica moderna construida para ayudarte a sumergirte en el amor de Dios a través de **The Passion Translation (TPT)** — una traducción expresiva que hace que las Escrituras se sientan vívidas y personales. Con más de **1.000 instalaciones en Google Play**, está diseñada para el crecimiento espiritual diario. Mantente conectado a la Palabra en cualquier lugar con **acceso offline**, **Audio Biblia**, **devocionales diarios** y **planes de lectura generados por IA**.
+**Bible TPT: Passion Translation** es una app bíblica moderna construida para ayudarte a sumergirte en el amor de Dios a través de **The Passion Translation (TPT)** — una traducción expresiva que hace que las Escrituras se sientan vívidas y personales. Con más de **5.000 instalaciones en Google Play**, está diseñada para el crecimiento espiritual diario. Mantente conectado a la Palabra en cualquier lugar con **acceso offline**, **Audio Biblia**, **devocionales diarios** y **planes de lectura generados por IA**.
 
 ## Características
 - **Biblia TPT (The Passion Translation)** — lenguaje expresivo que da vida a las Escrituras

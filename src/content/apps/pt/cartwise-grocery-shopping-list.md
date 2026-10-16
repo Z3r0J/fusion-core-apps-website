@@ -8,8 +8,8 @@ category: "Shopping"
 tags: ["lista de compras", "lista compartilhada", "entrada por voz", "calculadora de preços", "android"]
 locale: "pt"
 price: "Free"
-version: "1.0.5"
-lastUpdated: "2026-03-10"
+version: "2.0.5"
+lastUpdated: "2026-08-18"
 screenshots: ["/images/screenshots/cartwise-home.jpg", "/images/screenshots/cartwise-list.jpg", "/images/screenshots/cartwise-create.jpg", "/images/screenshots/cartwise-voice.jpg", "/images/screenshots/cartwise-ai.jpg", "/images/screenshots/cartwise-analytics.jpg"]
 downloads: "100+"
 ---

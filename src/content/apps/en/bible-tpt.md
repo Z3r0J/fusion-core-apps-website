@@ -1,5 +1,6 @@
 ---
 title: "Bible TPT — The Passion Translation Bible App"
+seoTitle: "Passion Translation Bible App: Bible TPT, Free on Android"
 tagline: "The free TPT Bible app for Android — read The Passion Translation offline, with Audio Bible and daily devotionals."
 description: "Download the free TPT Bible app for Android. Read The Passion Translation offline, listen with Audio Bible, and follow daily devotionals and AI reading plans."
 icon: "/images/apps/bible-tpt/icon.png"
@@ -8,15 +9,15 @@ category: "Books & Reference"
 tags: ["tpt bible app", "the passion translation", "free download", "offline bible", "audio bible", "android"]
 locale: "en"
 price: "Free"
-version: "1.3.1"
-lastUpdated: "2026-03-29"
+version: "1.4.7"
+lastUpdated: "2026-10-06"
 screenshots: ["/images/screenshots/bible-tpt-reading.jpg", "/images/screenshots/bible-tpt-audio.jpg", "/images/screenshots/bible-tpt-verse.jpg"]
 rating: 4.474
 ratingCount: 76
-downloads: "2K+"
+downloads: "5K+"
 ---
 ## Overview
-**Bible TPT: Passion Translation** is a modern **TPT Bible app** built to help you immerse yourself in God's love through **The Passion Translation (TPT)** — a heartfelt, expressive translation that makes Scripture feel vivid and personal. With over **2,000 installs on Google Play**, it's built for daily spiritual growth. Stay connected to the Word anywhere with **offline access**, **Audio Bible**, **daily devotionals**, and **AI-generated reading plans**.
+**Bible TPT: Passion Translation** is a free **Passion Translation Bible app** for Android — a modern **TPT Bible app** built to help you immerse yourself in God's love through **The Passion Translation (TPT)** — a heartfelt, expressive translation that makes Scripture feel vivid and personal. With over **5,000 installs on Google Play**, it's built for daily spiritual growth. Stay connected to the Word anywhere with **offline access**, **Audio Bible**, **daily devotionals**, and **AI-generated reading plans**.
 
 ## Features
 - **TPT Bible (The Passion Translation)** — expressive language that brings Scripture to life

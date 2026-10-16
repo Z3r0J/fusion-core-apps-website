@@ -8,10 +8,10 @@ category: "Productivity"
 tags: ["rastreador de garantías", "escáner de recibos", "inventario", "recordatorio de garantía", "android"]
 locale: "es"
 price: "Free"
-version: "1.0.0"
-lastUpdated: "2026-04-17"
+version: "1.1.4"
+lastUpdated: "2026-09-09"
 screenshots: ["/images/screenshots/claimly-home.jpg", "/images/screenshots/claimly-scanner.jpg", "/images/screenshots/claimly-review.jpg", "/images/screenshots/claimly-warranties.jpg", "/images/screenshots/claimly-detail.jpg", "/images/screenshots/claimly-attachments.jpg"]
-downloads: "1K+"
+downloads: "10+"
 beta: false
 ---
 ## Descripción
