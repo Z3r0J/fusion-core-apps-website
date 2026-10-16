@@ -110,6 +110,20 @@
 	--color-gray-950: #0b1c2d; /* Deep Tech Blue Background */
 }
 
+/* Native controls (select dropdowns, date pickers, scrollbars) follow the site
+   theme instead of the OS theme. Without this, a dark page on a light OS opens
+   <select> menus with a white background and the inherited white text. */
+html {
+	color-scheme: light;
+}
+html.dark {
+	color-scheme: dark;
+}
+html.dark select option {
+	background-color: #0f172a;
+	color: #e2e8f0;
+}
+
 @theme inline {
 	/* ---------- Colors ---------- */
 	--color-brand-50: var(--color-brand-50);
