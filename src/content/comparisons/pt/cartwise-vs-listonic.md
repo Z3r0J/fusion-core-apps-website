@@ -1,11 +1,11 @@
 ---
-title: "CartWise vs Listonic: Qual app de lista de compras vence em 2026?"
-description: "CartWise vs Listonic — uma comparação honesta. Ambas têm calculadora de preços e listas com IA, então qual app gratuito de lista de compras é o certo para você? Veja a análise."
+title: "CartWise vs Listonic: qual app de lista de compras vence?"
+description: "CartWise vs Listonic — comparação honesta. Os dois têm calculadora de preços e listas com IA: qual app de lista de compras grátis é o certo para você?"
 competitorName: "Listonic"
 competitorSlug: "listonic"
 translationKey: "cartwise-vs-listonic"
 updatedAt: "2026-06"
-competitorRating: 4.7
+competitorRating: 4.6
 competitorReviewCount: "310K+"
 competitorIconEmoji: "📝"
 competitorIcon: "/images/comparisons/listonic.png"

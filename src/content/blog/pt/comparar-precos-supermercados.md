@@ -44,6 +44,8 @@ Preencha o preço de cada item em cada supermercado que você está considerando
 
 Uma lista de compras com preços deixa isso bem mais fácil. No [CartWise](/pt/cartwise), você digita o preço ao adicionar cada item e o app se encarrega de somar o total do carrinho, sempre visível no topo da lista. Monte a mesma lista para cada supermercado e você terá um total por loja pronto para comparar, sem planilha. ([Veja como funciona o total acumulado](/pt/blog/grocery-list-app-adds-up-total).)
 
+Se preferir não instalar nada, a nossa [calculadora de compras de supermercado grátis](/pt/tools/grocery-calculator) multiplica preço por quantidade e soma o carrinho no navegador: anote o total de cada supermercado e compare.
+
 ## Passo 3: compare pelo preço por quilo
 
 Quando os tamanhos são diferentes, compare o **preço por unidade de medida**: o preço por quilo, por litro, por 100 gramas ou por unidade. Muitas etiquetas de gôndola já mostram esse valor em letras pequenas; se não mostrarem, divida o preço pela quantidade.

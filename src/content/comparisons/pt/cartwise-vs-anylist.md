@@ -1,12 +1,12 @@
 ---
-title: "CartWise vs AnyList: Qual app de lista de compras vence em 2026?"
-description: "CartWise vs AnyList — uma comparação honesta de rastreamento de preços, receitas, listas compartilhadas e planos pagos. Veja qual app gratuito para supermercado se encaixa melhor no seu jeito de comprar."
+title: "CartWise vs AnyList: qual app de lista de compras vence?"
+description: "CartWise vs AnyList — comparação honesta de preços, receitas, listas compartilhadas e planos pagos. Veja qual app de lista de compras grátis combina com você."
 competitorName: "AnyList"
 competitorSlug: "anylist"
 translationKey: "cartwise-vs-anylist"
 updatedAt: "2026-06"
 competitorRating: 4.8
-competitorReviewCount: "79K+"
+competitorReviewCount: "30K+"
 competitorIconEmoji: "📋"
 competitorIcon: "/images/comparisons/anylist.png"
 heroDeck: "AnyList é uma potência em receitas e planejamento de refeições, muito amada por quem cozinha em casa. CartWise é uma lista Android sem necessidade de conta, focada em orçamento e com uma calculadora de preços gratuita. Apps diferentes para propósitos diferentes."

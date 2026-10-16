@@ -6,7 +6,7 @@ competitorSlug: "anylist"
 translationKey: "cartwise-vs-anylist"
 updatedAt: "2026-06"
 competitorRating: 4.8
-competitorReviewCount: "79K+"
+competitorReviewCount: "30K+"
 competitorIconEmoji: "📋"
 competitorIcon: "/images/comparisons/anylist.png"
 heroDeck: "AnyList is a recipe-and-meal-planning powerhouse beloved by home cooks. CartWise is a budgeting-first, no-account Android list built around a free price calculator. Different apps, different jobs."

@@ -1,6 +1,6 @@
 ---
-title: "Lost the Receipt? How to Get Proof of Purchase for a Warranty"
-description: "No receipt? You can still prove purchase for a warranty claim. Use a card statement, order email, store lookup, or product registration."
+title: "How to Get Proof of Purchase for a Warranty (No Receipt)"
+description: "No receipt? You can still get proof of purchase for a warranty claim with a card statement, order confirmation email, store lookup or product registration."
 translationKey: "proof-of-purchase-warranty"
 publishedAt: "2026-10-10"
 author: "FusionCore Apps"

@@ -1,6 +1,6 @@
 ---
-title: "Las mejores apps de lista de compras que funcionan sin internet (2026)"
-description: "Por qué importa tener una app de lista de compras que funcione sin conexión, y las mejores opciones disponibles — encabezadas por CartWise."
+title: "Las mejores apps de lista de compras sin internet (2026)"
+description: "Las mejores apps de lista de compras sin internet en 2026: comparamos CartWise, OurGroceries, AnyList y Google Keep para comprar sin señal en la tienda."
 translationKey: "grocery-list-app-offline"
 publishedAt: "2026-06-26"
 author: "FusionCore Apps"

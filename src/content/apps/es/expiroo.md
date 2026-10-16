@@ -1,7 +1,7 @@
 ---
 title: "Expiroo: Control de Caducidad de Alimentos"
 tagline: "Controla las fechas de caducidad sin conexión: sin cuenta, tu inventario se queda en tu dispositivo."
-description: "Expiroo controla las fechas de caducidad de todo lo que hay en tu heladera y alacena. Es local-first: tu inventario se guarda en tu dispositivo y funciona sin conexión, sin cuenta ni registro. Gratis (con anuncios); una mejora Pro opcional de pago único desbloquea productos ilimitados."
+description: "Expiroo controla la caducidad de lo que guardas en heladera y alacena. Sin conexión ni cuenta, datos en tu teléfono. Gratis con anuncios; Pro de pago único."
 icon: "/images/apps/expiroo/icon.png"
 playUrl: "https://play.google.com/apps/testing/com.fusioncoreapps.expiroo"
 category: "Productivity"

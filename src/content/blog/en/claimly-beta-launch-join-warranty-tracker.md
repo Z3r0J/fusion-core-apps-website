@@ -1,13 +1,16 @@
 ---
-title: "Claimly Is Here: Join the Beta and Never Lose a Warranty Again"
+title: "Claimly Beta Launch: A New Warranty Tracker for Android"
 description: "Claimly is FusionCore's new warranty and receipt tracker for Android. Learn what it does, how to join the early access beta, and why you need it."
 publishedAt: "2026-03-31"
 author: "FusionCore Apps"
 tags: ["claimly", "warranty tracker", "receipt scanner", "android", "beta", "new app"]
 image: "/images/blog/claimly-beta-launch-join-warranty-tracker.png"
 ogImage: "/images/blog/en/claimly-beta-launch-join-warranty-tracker.png"
+updatedAt: "2026-10-16"
 featured: true
 ---
+
+> **Update (October 2026):** the beta is over. Claimly is now available to everyone on Google Play. See [what Claimly does and how to use it](/blog/claimly-now-available-google-play) for the current features. The post below is the original beta announcement.
 
 ## We Just Launched Something New
 
@@ -27,9 +30,9 @@ Claimly is a **personal inventory and warranty tracker** that keeps all your pur
 
 Think of it as a warranty book for the 21st century.
 
-### Scan Any Receipt in Seconds
+### Scan Receipts in Seconds
 
-The centerpiece of Claimly is its **AI-powered receipt scanner**. Open the app, point your camera at any receipt, and Claimly automatically extracts:
+The centerpiece of Claimly is its **AI-powered receipt scanner**. Open the app, point your camera at a printed receipt, and Claimly automatically extracts:
 
 - Product name
 - Store name

@@ -1,5 +1,5 @@
 ---
-title: "Autocompletado con IA: por qué mantenemos el paso de confirmación"
+title: "Autocompletado con IA: por qué mantenemos la confirmación"
 description: "El escáner de Claimly rellena todo con IA y aun así pide confirmar. La regla que usamos para decidir cuándo una función con IA necesita revisión."
 app: Claimly
 category: Product
@@ -79,7 +79,7 @@ Eso es la regla funcionando bien. El patrón no es "confirmar siempre" ni "no co
 - Si se mantiene la barrera, hay que ganársela: mostrar la fuente, permitir edición en el sitio y lograr que confirmar sea un reflejo.
 - Si el error es inmediato y barato de arreglar, la interfaz *es* la revisión. No agregar una pantalla para eso.
 
-El escáner de [Claimly](/es/apps/claimly-receipt-tracker) hace el trabajo de escribir. La decisión sigue siendo de la persona, y para una función cuyo único trabajo es tener razón sobre una fecha dentro de seis meses, esa no es fricción que convenga eliminar. La versión para usuarios, con el escáner y el seguimiento de garantías en conjunto, está en el [anuncio de Claimly en Google Play](/es/blog/claimly-ya-disponible-google-play).
+El escáner de [Claimly](/es/apps/claimly-receipt-tracker) hace el trabajo de escribir. La decisión sigue siendo de la persona, y para una función cuyo único trabajo es tener razón sobre una fecha dentro de seis meses, esa no es fricción que convenga eliminar. Si quieres la versión para usuarios, con el escáner y el seguimiento de garantías en conjunto, mira [qué hace Claimly y cómo usarla](/es/blog/claimly-ya-disponible-google-play).
 
 ## Preguntas frecuentes
 

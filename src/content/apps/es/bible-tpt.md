@@ -2,7 +2,7 @@
 title: "Bible TPT: Passion Translation"
 seoTitle: "App Biblia TPT: The Passion Translation para Android"
 tagline: "Sumérgete en la Palabra de Dios con The Passion Translation, Audio Biblia, devocionales diarios y planes de lectura con IA."
-description: "Bible TPT trae The Passion Translation a la vida con Audio Biblia, acceso offline, devocionales diarios, planes de lectura con IA y resaltados. Más de 5.000 instalaciones."
+description: "App Biblia TPT: The Passion Translation en Android con Audio Biblia, lectura offline, devocionales diarios y planes de lectura con IA. Más de 5.000 descargas."
 icon: "/images/apps/bible-tpt/icon.png"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.bible.tpt"
 category: "Books & Reference"
@@ -12,8 +12,6 @@ price: "Free"
 version: "1.4.7"
 lastUpdated: "2026-10-06"
 screenshots: ["/images/screenshots/bible-tpt-reading.jpg", "/images/screenshots/bible-tpt-audio.jpg", "/images/screenshots/bible-tpt-verse.jpg"]
-rating: 4.474
-ratingCount: 76
 downloads: "5K+"
 ---
 ## Descripción

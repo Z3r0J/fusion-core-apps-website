@@ -3,6 +3,7 @@ title: "¿Existe la Biblia TPT (The Passion Translation) en español?"
 description: "La Biblia TPT se publica en inglés. Te explicamos qué es, cómo leerla en tu celular y qué Biblias en español tienen un estilo cercano, como la TLA."
 translationKey: "tpt-in-other-languages"
 publishedAt: "2026-10-10"
+updatedAt: "2026-10-16"
 author: "FusionCore Apps"
 tags: ["biblia", "biblia tpt", "the passion translation", "biblia tla", "español", "android"]
 ogImage: "/images/blog/es/biblia-tpt-en-espanol.png"
@@ -13,7 +14,7 @@ faq:
   - question: "¿Qué significa TPT en la Biblia?"
     answer: "TPT son las siglas de The Passion Translation, una versión moderna en inglés dirigida por Brian Simmons que busca transmitir la emoción y la pasión del texto bíblico. Es muy interpretativa, por lo que muchos la consideran más cercana a una paráfrasis."
   - question: "¿Cómo leer la Biblia TPT en el celular?"
-    answer: "En Android puedes instalar la app gratuita Bible TPT desde Google Play. Incluye lectura sin conexión, Audio Biblia, devocionales diarios y planes de lectura. El texto bíblico está en inglés."
+    answer: "En Android puedes instalar Bible TPT desde Google Play: es gratis y se sostiene con anuncios. Incluye lectura sin conexión, Audio Biblia, devocionales diarios y planes de lectura. El texto bíblico está en inglés."
   - question: "¿Qué Biblia en español se parece más a la TPT?"
     answer: "Por su lenguaje sencillo y cálido, la Traducción en Lenguaje Actual (TLA) es la opción más cercana para lectura devocional. La NTV y la DHH también usan un español natural. Para estudio detallado conviene complementarlas con una traducción más literal como la Reina-Valera 1960 o la LBLA."
 ---
@@ -24,13 +25,13 @@ faq:
 
 **TPT** son las siglas de **The Passion Translation**, una versión moderna de la Biblia en inglés dirigida por **Brian Simmons**. Su objetivo es transmitir la emoción, la poesía y la "pasión" del texto original, más que reproducir palabra por palabra. Por eso se lee de forma muy fluida y personal, y es popular para el devocional diario.
 
-Ese mismo enfoque la hace polémica: muchos especialistas la consideran **más una paráfrasis que una traducción**, porque añade frases que no están en los textos originales. En enero de 2022, Bible Gateway la retiró de su plataforma en medio de esas críticas. Lo explicamos a fondo en [¿Es precisa The Passion Translation?](/blog/is-the-passion-translation-accurate) (en inglés).
+Ese mismo enfoque la hace polémica: muchos especialistas la consideran **más una paráfrasis que una traducción**, porque añade frases que no están en los textos originales. A principios de 2022, Bible Gateway la retiró de su plataforma en medio de esas críticas. Lo explicamos a fondo en [¿Es precisa The Passion Translation?](/blog/is-the-passion-translation-accurate) (en inglés).
 
 Hoy la TPT incluye el Nuevo Testamento completo, los Salmos, Proverbios, Cantares y un número creciente de libros del Antiguo Testamento; la Biblia completa se espera para finales de esta década.
 
 ## Cómo leer la TPT en tu celular
 
-Si lees en inglés, la forma más sencilla es la app gratuita **[Bible TPT](/es/apps/bible-tpt)** para Android:
+Si lees en inglés, la forma más sencilla es **[Bible TPT](/es/apps/bible-tpt)** para Android, una app gratuita que se sostiene con anuncios:
 
 - **Lectura sin conexión**: lee en el bus, en un vuelo o donde no haya señal.
 - **Audio Biblia**: escucha mientras manejas, caminas o haces tareas.
@@ -69,7 +70,7 @@ TPT son las siglas de The Passion Translation, una versión moderna en inglés d
 
 ### ¿Cómo leer la Biblia TPT en el celular?
 
-En Android puedes instalar la app gratuita Bible TPT desde Google Play. Incluye lectura sin conexión, Audio Biblia, devocionales diarios y planes de lectura. El texto bíblico está en inglés.
+En Android puedes instalar Bible TPT desde Google Play: es gratis y se sostiene con anuncios. Incluye lectura sin conexión, Audio Biblia, devocionales diarios y planes de lectura. El texto bíblico está en inglés.
 
 ### ¿Qué Biblia en español se parece más a la TPT?
 

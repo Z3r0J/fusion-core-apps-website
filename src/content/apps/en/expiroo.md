@@ -1,7 +1,7 @@
 ---
 title: "Expiroo: Food Expiry Tracker"
 tagline: "Track expiry dates offline — no account, your inventory stays on your device."
-description: "Expiroo tracks expiration dates for everything in your fridge and pantry. It's local-first: your inventory is stored on your device and works fully offline — no account, no sign-up. Free to use (ad-supported); an optional one-time Pro upgrade unlocks unlimited products."
+description: "Expiroo is a food expiry tracker for your fridge and pantry. Works offline, no account, data stays on your phone. Free with ads, one-time Pro. Closed beta."
 icon: "/images/apps/expiroo/icon.png"
 playUrl: "https://play.google.com/apps/testing/com.fusioncoreapps.expiroo"
 category: "Productivity"

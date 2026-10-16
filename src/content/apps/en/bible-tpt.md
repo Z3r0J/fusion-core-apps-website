@@ -2,7 +2,7 @@
 title: "Bible TPT — The Passion Translation Bible App"
 seoTitle: "Passion Translation Bible App: Bible TPT, Free on Android"
 tagline: "The free TPT Bible app for Android — read The Passion Translation offline, with Audio Bible and daily devotionals."
-description: "Download the free TPT Bible app for Android. Read The Passion Translation offline, listen with Audio Bible, and follow daily devotionals and AI reading plans."
+description: "Free TPT Bible download on Google Play: The Passion Translation for Android with offline reading, Audio Bible, daily devotionals and AI reading plans."
 icon: "/images/apps/bible-tpt/icon.png"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.bible.tpt"
 category: "Books & Reference"
@@ -12,8 +12,6 @@ price: "Free"
 version: "1.4.7"
 lastUpdated: "2026-10-06"
 screenshots: ["/images/screenshots/bible-tpt-reading.jpg", "/images/screenshots/bible-tpt-audio.jpg", "/images/screenshots/bible-tpt-verse.jpg"]
-rating: 4.474
-ratingCount: 76
 downloads: "5K+"
 ---
 ## Overview

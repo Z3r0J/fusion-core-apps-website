@@ -1,7 +1,7 @@
 ---
 title: "CartWise: Lista de Compras Compartida"
 tagline: "Lista de compras con calculadora de precios en tiempo real, entrada por voz y compartir instantáneo."
-description: "CartWise es una lista de compras compartida con calculadora de precios en tiempo real, entrada por voz, listas generadas por IA y compartir por WhatsApp. Más de 100 descargas en Google Play."
+description: "CartWise: lista de compras compartida con calculadora de precios en tiempo real, voz, listas con IA y envío por WhatsApp. Más de 100 descargas en Google Play."
 icon: "/images/apps/cartwise-grocery-shopping-list/icon.png"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.cartwise"
 category: "Shopping"
@@ -25,11 +25,12 @@ downloads: "100+"
 - **Plantillas inteligentes** — listas de un toque para Picnic, Oficina en casa, Camping, Fiesta y más
 - **Listas organizadas** — categorización automática, íconos y colores personalizados
 - **Recordatorios inteligentes** — alertas para las compras para que nunca olvides ir al super
+- **Funciona sin conexión** — agrega, edita y marca productos sin internet; los cambios compartidos se sincronizan cuando vuelves a conectarte
 
 ## Ideal para
 Compras semanales, planificación de menú familiar, compradores conscientes del presupuesto y hogares que quieren saber el total antes de llegar a la caja.
 
 ## ¿Por qué CartWise?
-CartWise es la única app de lista de compras que **suma el carrito en tiempo real** mientras compras — sin sorpresas en la caja. Con entrada por voz, listas con IA, compartir por WhatsApp y análisis de gastos, es la app de compras más inteligente disponible.
+CartWise es una app de lista de compras que **suma el carrito en tiempo real** mientras compras — sin sorpresas en la caja. Con entrada por voz, listas con IA, compartir por WhatsApp y análisis de gastos, tienes todo lo que necesitas para la compra semanal en una sola app gratis.
 
 ¿Quieres el recorrido completo? Visita la [página de CartWise](/es/cartwise) o mira [cómo se compara CartWise](/es/compare-apps) con Bring!, Listonic, AnyList y OurGroceries.

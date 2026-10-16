@@ -89,7 +89,7 @@ Cupons em papel térmico apagam, às vezes em poucos meses, e a papelada vai par
 - **Guarde tudo junto com os dados do produto**: modelo, número de série e prazo de garantia no mesmo lugar.
 - **Crie um lembrete** antes de a garantia vencer, para revisar o produto enquanto ele ainda está coberto.
 
-É exatamente isso que o [Claimly: scanner de garantias e organizador de recibos](/pt/apps/claimly-receipt-tracker) faz. Você digitaliza a nota com o celular, a IA extrai o produto, a loja, a data e o preço, e o Claimly acompanha cada garantia (da loja, do fabricante e estendida) com uma contagem regressiva e um alerta antes de vencer. Quando algo der defeito, siga o nosso [passo a passo para acionar a garantia](/pt/blog/how-to-file-warranty-claim), e se quiser conhecer todos os recursos do app, veja o [post de lançamento do Claimly](/pt/blog/claimly-agora-disponivel-google-play).
+É exatamente isso que o [Claimly: scanner de garantias e organizador de recibos](/pt/apps/claimly-receipt-tracker) faz. Você digitaliza a nota com o celular, a IA extrai o produto, a loja, a data e o preço, e o Claimly acompanha cada garantia (da loja, do fabricante e estendida) com uma contagem regressiva e um alerta antes de vencer. Quando algo der defeito, siga o nosso [passo a passo para acionar a garantia](/pt/blog/how-to-file-warranty-claim), e se quiser conhecer todos os recursos do app, veja [o que o Claimly faz e como usar](/pt/blog/claimly-agora-disponivel-google-play).
 
 ## Perguntas frequentes
 

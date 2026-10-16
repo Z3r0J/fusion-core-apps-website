@@ -1,7 +1,7 @@
 ---
 title: "CartWise: Lista de Compras Compartilhada"
 tagline: "Lista de compras com calculadora de preços em tempo real, entrada por voz e compartilhamento instantâneo."
-description: "CartWise é uma lista de compras compartilhada com calculadora de preços em tempo real, entrada por voz, listas geradas por IA e compartilhamento pelo WhatsApp. Mais de 100 downloads no Google Play."
+description: "CartWise: lista de compras compartilhada com calculadora de preços ao vivo, voz, listas com IA e envio pelo WhatsApp. Mais de 100 downloads no Google Play."
 icon: "/images/apps/cartwise-grocery-shopping-list/icon.png"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.cartwise"
 category: "Shopping"
@@ -25,11 +25,12 @@ downloads: "100+"
 - **Modelos inteligentes** — listas com um toque para Piquenique, Home Office, Camping, Festa e mais
 - **Listas organizadas** — categorização automática, ícones e cores personalizados
 - **Lembretes inteligentes** — alertas para as compras para que você nunca esqueça de ir ao mercado
+- **Funciona offline** — adicione, edite e marque itens sem conexão; as alterações compartilhadas sincronizam quando você se reconecta
 
 ## Ideal para
 Compras semanais, planejamento de cardápio familiar, compradores conscientes do orçamento e lares que querem saber o total antes de chegar ao caixa.
 
 ## Por que CartWise?
-CartWise é o único app de lista de compras que **soma o carrinho em tempo real** enquanto você compra — sem surpresas no caixa. Combine isso com entrada por voz, listas com IA, compartilhamento pelo WhatsApp e análise de gastos, e você tem o app de compras mais inteligente disponível.
+CartWise é um app de lista de compras que **soma o carrinho em tempo real** enquanto você compra — sem surpresas no caixa. Combine isso com entrada por voz, listas com IA, compartilhamento pelo WhatsApp e análise de gastos, e você tem tudo o que precisa para as compras da semana em um só app grátis.
 
 Quer o tour completo? Visite a [página do CartWise](/pt/cartwise) ou veja [como o CartWise se compara](/pt/compare-apps) com Bring!, Listonic, AnyList e OurGroceries.

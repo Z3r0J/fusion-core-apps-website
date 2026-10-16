@@ -59,13 +59,13 @@ Uma recusa nem sempre é o fim da linha:
 - **Escale.** Peça um supervisor, ou passe por cima da loja e contate o fabricante se for a loja que está recusando.
 - **Acione a defesa do consumidor.** Se você acredita que a recusa está incorreta, o Procon ou o órgão de defesa do consumidor pode analisar o caso. Leve todo o histórico: datas, fotos e a recusa por escrito.
 
-É por isso que a documentação reunida no primeiro passo importa: um pedido bem organizado, com uma linha do tempo clara, é muito mais difícil de recusar do que uma reclamação vaga.
+É por isso que a documentação reunida antes de acionar importa: um pedido bem organizado, com uma linha do tempo clara, é muito mais difícil de recusar do que uma reclamação vaga.
 
 ## Como nunca perder um prazo
 
 A maioria das garantias perdidas não são batalhas perdidas, e sim prazos que venceram em silêncio. Dois hábitos resolvem isso: guardar uma cópia legível de cada nota fiscal e saber quando cada garantia vence *antes* de algo quebrar.
 
-Essa é toda a ideia por trás do [Claimly: scanner de garantias e organizador de recibos](/pt/apps/claimly-receipt-tracker). Você digitaliza uma nota com o celular, a IA extrai o produto, a loja, a data e o preço, e o app registra cada garantia com uma contagem regressiva e um alerta antes de vencer, para que a papelada esteja pronta exatamente no dia em que você precisa. Se quiser ver como o Claimly chegou ao Google Play, o [post de lançamento](/pt/blog/claimly-agora-disponivel-google-play) traz a lista completa de recursos.
+Essa é toda a ideia por trás do [Claimly: rastreador de garantias e recibos](/pt/apps/claimly-receipt-tracker). Você digitaliza uma nota com o celular, a IA extrai o produto, a loja, a data e o preço, e o app registra cada garantia (da loja, do fabricante e estendida) com uma contagem regressiva e um alerta antes de vencer, para que a papelada esteja pronta exatamente no dia em que você precisa. É gratuito no Android, com anúncios e compras opcionais dentro do app. Para ver todos os recursos, confira [o que o Claimly faz e como usar](/pt/blog/claimly-agora-disponivel-google-play).
 
 ## Perguntas frequentes
 

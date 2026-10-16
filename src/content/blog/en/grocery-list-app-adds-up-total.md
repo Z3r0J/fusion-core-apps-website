@@ -37,6 +37,8 @@ When you can see a live price total updating as you add items to your list, shop
 
 This is not about obsessing over every cent. It is about having awareness, so small daily decisions stay aligned with your actual financial reality.
 
+If you want to try a running total before installing anything, our [free grocery calculator](/tools/grocery-calculator) adds up prices and quantities right in your browser and warns you when you pass your budget.
+
 ## How CartWise Tracks Your Total in Real Time
 
 [CartWise](/cartwise) is a free Android grocery list app built around exactly this use case. Here is how the price tracking works in practice.

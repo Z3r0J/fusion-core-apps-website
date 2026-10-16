@@ -59,13 +59,13 @@ Una negativa no siempre es el final del camino:
 - **Escala.** Pide un supervisor, o pasa por encima de la tienda y contacta al fabricante si es la tienda quien se niega.
 - **Recurre a protección al consumidor.** Si crees que la negativa es incorrecta, la agencia de protección al consumidor de tu país puede revisar el caso. Lleva todo tu historial: fechas, fotos y la negativa por escrito.
 
-Por eso importa la documentación que reuniste en el primer paso: una reclamación bien ordenada, con una cronología clara, es mucho más difícil de rechazar que una queja vaga.
+Por eso importa la documentación que reuniste antes de reclamar: una reclamación bien ordenada, con una cronología clara, es mucho más difícil de rechazar que una queja vaga.
 
 ## Cómo no perder nunca una fecha de vencimiento
 
 La mayoría de las garantías que se pierden no son batallas perdidas, sino plazos que vencieron en silencio. Dos hábitos lo resuelven: guardar una copia legible de cada recibo y saber cuándo vence cada garantía *antes* de que algo se rompa.
 
-Esa es toda la idea detrás de [Claimly: escáner de garantías y rastreador de recibos](/es/apps/claimly-receipt-tracker). Escaneas un recibo con el teléfono, la IA extrae el producto, la tienda, la fecha y el precio, y la app registra cada garantía con una cuenta regresiva y una alerta antes de que venza, para que el papeleo esté listo justo el día que lo necesitas. Si quieres ver cómo llegó Claimly a Google Play, la [publicación de lanzamiento](/es/blog/claimly-ya-disponible-google-play) tiene la lista completa de funciones.
+Esa es toda la idea detrás de [Claimly: rastreador de garantías y recibos](/es/apps/claimly-receipt-tracker). Escaneas un recibo con el teléfono, la IA extrae el producto, la tienda, la fecha y el precio, y la app registra cada garantía (de la tienda, del fabricante y extendida) con una cuenta regresiva y una alerta antes de que venza, para que el papeleo esté listo justo el día que lo necesitas. Es gratis en Android, con anuncios y compras opcionales dentro de la app. Si quieres ver todas sus funciones, revisa [qué hace Claimly y cómo usarla](/es/blog/claimly-ya-disponible-google-play).
 
 ## Preguntas frecuentes
 

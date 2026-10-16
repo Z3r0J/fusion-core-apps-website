@@ -1,5 +1,5 @@
 ---
-title: "Presentamos Expiroo: control de caducidad para tu heladera y alacena (beta cerrada)"
+title: "Presentamos Expiroo: control de caducidad en beta cerrada"
 description: "Expiroo es el nuevo control de caducidad de FusionCore para Android, ahora en beta cerrada. Mira qué hace, cómo funciona offline y cómo unirte."
 translationKey: "expiroo-beta-launch"
 publishedAt: "2026-08-06"
@@ -89,7 +89,7 @@ El orden importa: el enlace de instalación recién funciona después de unirte 
 
 ## Por qué hicimos Expiroo
 
-La mayoría de la comida no se desperdicia porque a la gente no le importe — se desperdicia porque es fácil perderle el rastro. Las fechas vienen en letra chiquita, los productos se van al fondo y para cuando te acordás, ya no sirven.
+La mayoría de la comida no se desperdicia porque a la gente no le importe — se desperdicia porque es fácil perderle el rastro. Las fechas vienen en letra chiquita, los productos se van al fondo y para cuando te acordás, ya no sirven. Y si alguna vez dudaste qué fecha de la etiqueta importa de verdad, nuestra guía de [fecha de caducidad vs. consumo preferente](/es/blog/fecha-caducidad-vs-consumo-preferente) explica qué significa cada una.
 
 Queríamos algo que lleve segundos por producto y que después te recuerde en silencio en el momento justo. Eso es Expiroo: menos comida echada a perder, menos plata en la basura y una heladera que de verdad entendés.
 

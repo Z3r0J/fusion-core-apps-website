@@ -5,7 +5,7 @@ competitorName: "Bring!"
 competitorSlug: "bring"
 translationKey: "cartwise-vs-bring"
 updatedAt: "2026-06"
-competitorRating: 4.2
+competitorRating: 4.1
 competitorReviewCount: "140K+"
 competitorIconEmoji: "🛒"
 competitorIcon: "/images/comparisons/bring.png"

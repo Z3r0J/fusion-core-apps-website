@@ -1,12 +1,12 @@
 ---
-title: "CartWise vs OurGroceries: Which Grocery List App Wins in 2026?"
+title: "CartWise vs OurGroceries: Which Grocery List App Wins?"
 description: "CartWise vs OurGroceries — an honest comparison of price tracking, sharing, voice, and platforms. See which free grocery list app suits you best."
 competitorName: "OurGroceries"
 competitorSlug: "ourgroceries"
 translationKey: "cartwise-vs-ourgroceries"
 updatedAt: "2026-06"
 competitorRating: 4.7
-competitorReviewCount: "53K+"
+competitorReviewCount: "56K+"
 competitorIconEmoji: "🧺"
 competitorIcon: "/images/comparisons/ourgroceries.png"
 heroDeck: "OurGroceries is a simple, reliable cross-platform shared list with years of proven free household sync. CartWise adds a live price calculator, spending analytics, AI-generated lists, and account-free QR/WhatsApp sharing — exclusively on Android."
