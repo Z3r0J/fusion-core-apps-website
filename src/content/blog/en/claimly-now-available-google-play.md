@@ -133,14 +133,15 @@ When something breaks, open the product, check which warranty still covers it, a
 
 ## Free vs. Premium
 
-These were the plan limits at launch in April 2026. Check the Premium screen in the app for the current ones.
+These are the plan limits in the current version of the app (1.1.4). Premium is a monthly or yearly subscription. When you reach a free limit, you can also watch a short ad to get past it that one time.
 
 | Feature | Free | Premium |
 |---|---|---|
 | Products | Up to 15 | Unlimited |
 | Receipt scans | 5 per month | Unlimited |
 | Warranty alerts (30/7/1 day) | Included | Included |
-| Attachments | Included | Included |
+| Attachments per product | Up to 5 | Unlimited |
+| Custom categories | Up to 3 | Unlimited |
 | Dark mode | Included | Included |
 | Custom alert schedule | — | Included |
 | Ad-free | — | Included |

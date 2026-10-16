@@ -1,9 +1,9 @@
 ---
-title: "Warranty Scanner App: Scan Receipts and Track Every Warranty"
+title: "Free Warranty Scanner App: Scan a Receipt, Get Alerts"
 description: "Scan a receipt with your phone and track every warranty with expiry alerts. How warranty scanner apps work, what to look for, and a free Android pick."
 translationKey: "warranty-scanner-guide"
 publishedAt: "2026-07-04"
-updatedAt: "2026-10-10"
+updatedAt: "2026-10-16"
 author: "FusionCore Apps"
 tags: ["warranty scanner", "receipt scanner", "warranty claim", "android", "apps"]
 image: "/images/screenshots/claimly-scanner.jpg"
