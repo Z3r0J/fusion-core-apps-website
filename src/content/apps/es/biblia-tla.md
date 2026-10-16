@@ -1,22 +1,22 @@
 ---
 title: "Biblia TLA en Español Fácil"
 tagline: "Lee y escucha la Biblia TLA con audio, planes semanales, versículos diarios y acceso offline."
-description: "Biblia TLA en Español Fácil: audio biblia integrado, acceso 100% offline, versículos diarios y planes de lectura. Más de 1.000 descargas en Google Play."
+description: "Biblia TLA en Español Fácil: audio biblia integrado, acceso 100% offline, versículos diarios y planes de lectura. Más de 5.000 descargas en Google Play."
 icon: "/images/apps/biblia-tla/icon.webp"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.biblia.tla"
 category: "Books & Reference"
 tags: ["biblia español", "biblia tla", "audio biblia", "biblia offline", "lenguaje actual", "android"]
 locale: "es"
 price: "Free"
-version: "1.1.4"
-lastUpdated: "2026-03-09"
+version: "1.3.2"
+lastUpdated: "2026-08-28"
 screenshots: ["/images/screenshots/biblia-tla-reading.jpg", "/images/screenshots/biblia-tla-audio.jpg", "/images/screenshots/biblia-tla-books.jpg", "/images/screenshots/biblia-tla-plans.jpg", "/images/screenshots/biblia-tla-plan-detail.jpg", "/images/screenshots/biblia-tla-splash.jpg"]
-rating: 4.584
-ratingCount: 77
-downloads: "1K+"
+rating: 4.73
+ratingCount: 171
+downloads: "5K+"
 ---
 ## Descripción
-**Biblia TLA en Español Fácil** es una app de Biblia en español basada en la **Traducción en Lenguaje Actual (TLA)**, diseñada para acercarte a Dios con un lenguaje claro, moderno y accesible para todas las edades. Incluye **audio biblia integrado**, **lectura offline completa**, **versículos diarios** y **planes de lectura semanales** para acompañarte en tu crecimiento espiritual en cualquier momento y lugar. Más de **1.000 descargas** en Google Play.
+**Biblia TLA en Español Fácil** es una app de Biblia en español basada en la **Traducción en Lenguaje Actual (TLA)**, diseñada para acercarte a Dios con un lenguaje claro, moderno y accesible para todas las edades. Incluye **audio biblia integrado**, **lectura offline completa**, **versículos diarios** y **planes de lectura semanales** para acompañarte en tu crecimiento espiritual en cualquier momento y lugar. Más de **5.000 descargas** en Google Play.
 
 ## Características
 - **Biblia TLA completa** (Traducción en Lenguaje Actual) — lenguaje fácil y fiel al mensaje original

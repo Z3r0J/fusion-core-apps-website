@@ -11,6 +11,10 @@ export const apps = defineCollection({
 	type: "content",
 	schema: z.object({
 		title: z.string(),
+		// Optional <title> override for search results. The app name in `title` stays
+		// the H1 and the name shown across the site; use this to target the query
+		// people actually type (see seo/keyword-map.csv). Aim for 40–60 characters.
+		seoTitle: z.string().optional(),
 		tagline: z.string(),
 		description: z.string(),
 

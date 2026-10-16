@@ -127,3 +127,9 @@ WARP.md
 graphify-out/cache/
 graphify-out/cost.json
 graphify-out/memory/
+
+# SEO autopilot working state (local only)
+seo/
+
+# Claude Code skills (local only)
+.claude/skills/

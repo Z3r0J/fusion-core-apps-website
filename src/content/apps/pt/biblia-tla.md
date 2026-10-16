@@ -1,19 +1,19 @@
 ---
 title: "Biblia TLA — Bíblia em Espanhol"
 tagline: "Leia e ouça a Bíblia em espanhol fácil (TLA) com áudio, planos semanais, versículos diários e acesso offline."
-description: "Biblia TLA é um aplicativo de Bíblia em espanhol usando a Traducción en Lenguaje Actual — linguagem clara e moderna acessível a todas as idades. Inclui Bíblia em áudio, acesso offline, versículos diários e planos de leitura. Mais de 1.000 downloads no Google Play."
+description: "Biblia TLA é um aplicativo de Bíblia em espanhol usando a Traducción en Lenguaje Actual — linguagem clara e moderna acessível a todas as idades. Inclui Bíblia em áudio, acesso offline, versículos diários e planos de leitura. Mais de 5.000 downloads no Google Play."
 icon: "/images/apps/biblia-tla/icon.webp"
 playUrl: "https://play.google.com/store/apps/details?id=com.fusionapps.biblia.tla"
 category: "Books & Reference"
 tags: ["bíblia em espanhol", "biblia tla", "bíblia em áudio", "bíblia offline", "tradução em linguagem atual", "android"]
 locale: "pt"
 price: "Free"
-version: "1.1.4"
-lastUpdated: "2026-03-09"
+version: "1.3.2"
+lastUpdated: "2026-08-28"
 screenshots: ["/images/screenshots/biblia-tla-reading.jpg", "/images/screenshots/biblia-tla-audio.jpg", "/images/screenshots/biblia-tla-books.jpg", "/images/screenshots/biblia-tla-plans.jpg", "/images/screenshots/biblia-tla-plan-detail.jpg", "/images/screenshots/biblia-tla-splash.jpg"]
-rating: 4.584
-ratingCount: 77
-downloads: "1K+"
+rating: 4.73
+ratingCount: 171
+downloads: "5K+"
 ---
 ## Descrição
 **Biblia TLA** traz a *Traducción en Lenguaje Actual* (TLA) para Android — uma tradução moderna em espanhol claro e acessível para leitores de todas as idades. Com **Bíblia em áudio integrada**, **acesso offline completo**, **versículos diários** e **planos de leitura semanais**, é seu companheiro diário para o crescimento espiritual em espanhol.

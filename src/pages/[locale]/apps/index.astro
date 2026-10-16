@@ -32,7 +32,7 @@ const apps = entries.map(({ slug, data }) => ({
 }));
 
 const canonical = new URL(`/${locale}/apps`, Astro.site).href;
-const totalDownloads = "3.3K+";
+const totalDownloads = "10K+";
 const categories = [...new Set(apps.map((a) => a.category))];
 ---
 

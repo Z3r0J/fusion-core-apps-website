@@ -1,5 +1,5 @@
 import { Filter, Grid, List, Search, Star } from "lucide-react";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useTranslations, type Locale } from "@/i18n/utils";
 
 export type App = {
@@ -34,25 +34,6 @@ function useDebounced<T>(value: T, delay = 180) {
 		return () => clearTimeout(id);
 	}, [value, delay]);
 	return v;
-}
-
-// Skeleton Card for loading state
-function SkeletonCard() {
-	return (
-		<div className="overflow-hidden rounded-[22px] bg-white dark:bg-gray-900 animate-pulse" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
-			<div className="h-[152px] bg-gray-200 dark:bg-gray-800" />
-			<div className="px-5 pt-4 pb-3 space-y-2">
-				<div className="h-4 w-3/4 rounded-full bg-gray-200 dark:bg-gray-700" />
-				<div className="h-3 w-full rounded-full bg-gray-200 dark:bg-gray-700" />
-				<div className="h-3 w-2/3 rounded-full bg-gray-200 dark:bg-gray-700" />
-			</div>
-			<div className="px-5 pb-5 pt-2">
-				<div className="border-t border-gray-100 dark:border-gray-800 pt-3.5">
-					<div className="h-10 w-full rounded-[12px] bg-gray-200 dark:bg-gray-700" />
-				</div>
-			</div>
-		</div>
-	);
 }
 
 // Category-to-accent-stage mapping
@@ -445,14 +426,8 @@ export default function AppGrid({ apps, showFilters = true, locale = "en" }: Pro
 	const [search, setSearch] = useState("");
 	const [category, setCategory] = useState("All");
 	const [mode, setMode] = useState<"grid" | "list">("grid");
-	const [isLoading, setIsLoading] = useState(true);
 
 	const debounced = useDebounced(search, 180);
-
-	// Skeleton loading on initial mount
-	useEffect(() => {
-		setIsLoading(false);
-	}, []);
 
 	const categories = useMemo(() => {
 		const set = new Set<string>(["All"]);
@@ -552,19 +527,9 @@ export default function AppGrid({ apps, showFilters = true, locale = "en" }: Pro
 				</div>
 			)}
 
-			{/* Skeleton Loading State */}
-			{isLoading ? (
-				<ul
-					role="list"
-					className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-				>
-					{Array.from({ length: 6 }).map((_, i) => (
-						<li key={i}>
-							<SkeletonCard />
-						</li>
-					))}
-				</ul>
-			) : filtered.length ? (
+			{/* Cards render on the server too, so crawlers and no-JS readers see every
+			    app and its link. A skeleton-until-mount state hid them from the HTML. */}
+			{filtered.length ? (
 				<ul
 					role="list"
 					className={`grid gap-6 ${mode === "grid" ? "md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"}`}

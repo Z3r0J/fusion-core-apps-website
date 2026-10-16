@@ -24,13 +24,13 @@ const apps = entries.map(({ slug, data }) => ({
 }));
 
 const canonical = new URL("/apps", Astro.site).href;
-const totalDownloads = "3.3K+";
+const totalDownloads = "10K+";
 const categories = [...new Set(apps.map((a) => a.category))];
 ---
 
 <BaseLayout
 	{canonical}
-	description="Browse all FusionCore Apps: Bible TPT Passion Translation, Biblia TLA en Español Fácil, and CartWise Grocery Shopping List. Free Android apps on Google Play."
+	description="All FusionCore Android apps: Bible TPT, Biblia TLA, CartWise grocery list, Claimly warranty scanner and the Expiroo beta. Free on Google Play."
 	title="Android Apps: Bible, Grocery & Productivity — FusionCore"
 >
 	<script
