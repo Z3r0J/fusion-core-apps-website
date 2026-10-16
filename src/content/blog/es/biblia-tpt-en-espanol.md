@@ -55,7 +55,7 @@ Una buena combinación es la misma que recomendamos para la TPT: **una versión 
 
 ## Lee la Biblia TLA en tu celular
 
-Si la TLA es lo que buscas, creamos **[Biblia TLA en Español Fácil](/es/apps/biblia-tla)**, una app gratuita para Android con la Traducción en Lenguaje Actual completa, **audio Biblia integrado**, **acceso 100% sin conexión**, versículos diarios y planes de lectura semanales. Si quieres conocer mejor esta versión, lee [Biblia TLA: leer la Biblia en español fácil de entender](/es/blog/biblia-tla-espanol-facil-guia).
+Si la TLA es lo que buscas, creamos **[Biblia TLA en Español Fácil](/es/apps/biblia-tla)**, una app gratuita para Android con la Traducción en Lenguaje Actual completa, **audio Biblia integrado**, **acceso 100% sin conexión**, versículos diarios y planes de lectura semanales. Si quieres conocer mejor esta versión, lee [qué es la Biblia TLA y cómo se compara con la Reina-Valera](/es/blog/biblia-tla-espanol-facil-guia). Y si nunca has leído la Biblia, empieza con nuestra [guía y plan de 14 días](/es/blog/como-empezar-a-leer-la-biblia).
 
 ## Preguntas frecuentes
 
