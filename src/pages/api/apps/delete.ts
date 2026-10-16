@@ -6,14 +6,16 @@ import { unlink } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
 
-const API_KEY = import.meta.env.API_KEY ?? "supersecret";
+// No fallback key: if API_KEY is not configured, the admin API stays closed.
+const API_KEY: string | undefined = import.meta.env.API_KEY;
 
 const Payload = z.object({
-	slug: z.string().min(1),
+	// Same shape as update.ts: optional locale folder + kebab-case slug. Keeps the path inside src/content/apps/.
+	slug: z.string().regex(/^(?:(?:en|es|pt)\/)?[a-z0-9-]+$/),
 });
 
 export const DELETE: APIRoute = async ({ request }) => {
-	if (request.headers.get("x-api-key") !== API_KEY) {
+	if (!API_KEY || request.headers.get("x-api-key") !== API_KEY) {
 		return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
 	}
 

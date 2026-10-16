@@ -6,7 +6,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
 
-const API_KEY = import.meta.env.API_KEY ?? "supersecret";
+// No fallback key: if API_KEY is not configured, the admin API stays closed.
+const API_KEY: string | undefined = import.meta.env.API_KEY;
 
 const Payload = z.object({
 	// del form:
@@ -25,7 +26,7 @@ const Payload = z.object({
 	version: z.string().optional(),
 	// opcionales calculables:
 	locale: z.string().optional(),
-	slug: z.string().optional(), // si no viene, lo generamos
+	slug: z.string().regex(/^[a-z0-9-]+$/).optional(), // si no viene, lo generamos (kebab-case only: keeps the path inside src/content/apps/)
 });
 
 function slugify(s: string) {
@@ -51,7 +52,7 @@ function toFrontmatter(obj: Record<string, unknown>) {
 }
 
 export const POST: APIRoute = async ({ request }) => {
-	if (request.headers.get("x-api-key") !== API_KEY) {
+	if (!API_KEY || request.headers.get("x-api-key") !== API_KEY) {
 		return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
 	}
 
