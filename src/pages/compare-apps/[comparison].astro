@@ -2,6 +2,8 @@
 import ComparisonJsonLd from "@/components/ComparisonJsonLd.astro";
 import ComparisonLayout from "@/components/ComparisonLayout.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { COMPARE_APP_META, comparisonPath, comparisonSlug } from "@/lib/compareApps";
+import { withBrand } from "@/lib/seo";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -9,7 +11,7 @@ export async function getStaticPaths() {
 		slug.startsWith("en/"),
 	);
 	return entries.map((e) => ({
-		params: { comparison: `cartwise-vs-${e.data.competitorSlug}` },
+		params: { comparison: comparisonSlug(e.data.app, e.data.competitorSlug) },
 		props: { entry: e },
 	}));
 }
@@ -17,13 +19,15 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-// Resolve related items from sibling en entries
+// Resolve related items from sibling en entries of the same app
 const allEn = await getCollection("comparisons", ({ slug }) =>
 	slug.startsWith("en/"),
 );
 const relatedItems = (entry.data.relatedSlugs ?? [])
 	.map((s: string) => {
-		const match = allEn.find((e) => e.data.competitorSlug === s);
+		const match = allEn.find(
+			(e) => e.data.app === entry.data.app && e.data.competitorSlug === s,
+		);
 		return match
 			? { slug: match.data.competitorSlug, competitorName: match.data.competitorName }
 			: null;
@@ -31,17 +35,18 @@ const relatedItems = (entry.data.relatedSlugs ?? [])
 	.filter(Boolean) as { slug: string; competitorName: string }[];
 
 const canonical = new URL(
-	`/compare-apps/cartwise-vs-${entry.data.competitorSlug}`,
+	comparisonPath("en", entry.data.app, entry.data.competitorSlug),
 	Astro.site,
 ).href;
+const ogImage = COMPARE_APP_META[entry.data.app].ogImage;
 ---
 
 <BaseLayout
-	title={entry.data.title}
+	title={withBrand(entry.data.title)}
 	description={entry.data.description}
-	ogImage="/images/apps/cartwise-grocery-shopping-list/icon.png"
-	ogImageWidth={512}
-	ogImageHeight={512}
+	ogImage={ogImage.src}
+	ogImageWidth={ogImage.width}
+	ogImageHeight={ogImage.height}
 	canonical={canonical}
 	locale="en"
 	showFooterCta={false}

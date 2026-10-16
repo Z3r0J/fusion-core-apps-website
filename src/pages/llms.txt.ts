@@ -1,5 +1,7 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import { getLocalePath, locales, useTranslations } from "@/i18n/utils";
+import { comparisonPath } from "@/lib/compareApps";
 
 // Prerendered /llms.txt — a plain-text map of the site for LLM agents and AI
 // crawlers (see https://llmstxt.org). Mirrors the collection traversal in
@@ -9,6 +11,14 @@ import { getCollection } from "astro:content";
 export const prerender = true;
 
 const stripEn = (slug: string) => slug.replace(/^en\//, "");
+
+// Static pages outside the content collections that exist at the same path in
+// en, es and pt. Every locale is listed (titles/descriptions from the i18n files)
+// so crawlers find the Spanish and Portuguese versions too.
+const LOCALIZED_PAGES = {
+	about: { path: "/about", key: "about.meta" },
+	groceryCalculator: { path: "/tools/grocery-calculator", key: "tools.groceryCalculator.meta" },
+} as const;
 
 // Stable legal pages: flat collection slugs -> their static routes. Titles are
 // pulled from the collection so copy edits flow through without touching this file.
@@ -61,8 +71,14 @@ export const GET: APIRoute = async ({ site }) => {
 
 	const comparisonLines = comparisons.map(
 		(entry) =>
-			`- [${entry.data.title}](${abs(`/compare-apps/cartwise-vs-${entry.data.competitorSlug}`)}): ${entry.data.description}`,
+			`- [${entry.data.title}](${abs(comparisonPath("en", entry.data.app, entry.data.competitorSlug))}): ${entry.data.description}`,
 	);
+
+	const localizedPageLines = ({ path, key }: { path: string; key: string }) =>
+		locales.map((locale) => {
+			const t = useTranslations(locale);
+			return `- [${t(`${key}.title`)}](${abs(getLocalePath(path, locale))}): ${t(`${key}.description`)}`;
+		});
 
 	const legalLines = LEGAL_PAGES.map((page) => {
 		const title = legalBySlug.get(page.slug)?.data.title ?? page.slug;
@@ -74,8 +90,14 @@ export const GET: APIRoute = async ({ site }) => {
 
 FusionCore Apps is an independent studio building focused, privacy-friendly Android apps published on Google Play. This site is the marketing home for that family of apps — app pages, head-to-head comparisons, and a guide-style blog — published in English, Spanish, and Portuguese.
 
+## About
+${localizedPageLines(LOCALIZED_PAGES.about).join("\n")}
+
 ## Apps
 ${appLines.join("\n")}
+
+## Tools
+${localizedPageLines(LOCALIZED_PAGES.groceryCalculator).join("\n")}
 
 ## Blog
 ${blogLines.join("\n")}

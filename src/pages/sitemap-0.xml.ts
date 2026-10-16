@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import { comparisonSlug } from "@/lib/compareApps";
 
 // Prerendered replacement for @astrojs/sitemap. The integration wrote its XML
 // during astro:build:done, but the Vercel adapter's hook runs first (Astro
@@ -59,6 +60,8 @@ export const GET: APIRoute = async ({ site }) => {
 		["/apps", "weekly", [0.8, 0.7]],
 		["/blog", "weekly", [0.7, 0.6]],
 		["/compare-apps", "weekly", [0.6, 0.5]],
+		["/tools/grocery-calculator", "monthly", [0.8, 0.7]],
+		["/about", "monthly", [0.5, 0.4]],
 		["/contact", "monthly", [0.5, 0.4]],
 		["/privacy", "monthly", [0.5, 0.4]],
 		["/terms", "monthly", [0.5, 0.4]],
@@ -115,13 +118,13 @@ export const GET: APIRoute = async ({ site }) => {
 		});
 	}
 
-	// Comparison pages — same competitorSlug across locales
+	// Comparison pages — same <app>-vs-<competitorSlug> across locales
 	const comparisons = await getCollection("comparisons");
 	const comparisonSlugs = new Map<string, Locale[]>();
 	for (const entry of comparisons) {
 		const [locale] = entry.slug.split("/");
 		if (!LOCALES.includes(locale as Locale)) continue;
-		const slug = `cartwise-vs-${entry.data.competitorSlug}`;
+		const slug = comparisonSlug(entry.data.app, entry.data.competitorSlug);
 		comparisonSlugs.set(slug, [...(comparisonSlugs.get(slug) ?? []), locale as Locale]);
 	}
 	for (const [slug, locales] of comparisonSlugs) {

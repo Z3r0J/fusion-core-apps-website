@@ -59,6 +59,13 @@ export default function FaqAccordion({ faqs }: Props) {
 								</motion.div>
 							)}
 						</AnimatePresence>
+						{/* Keep closed answers in the server HTML (hidden) so crawlers see the
+						    same text as the FAQPage JSON-LD; the animated copy above shows when open. */}
+						{!isOpen && (
+							<div hidden>
+								<p className="faq-answer">{faq.answer}</p>
+							</div>
+						)}
 					</div>
 				);
 			})}

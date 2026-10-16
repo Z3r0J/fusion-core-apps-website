@@ -3,6 +3,7 @@ import BlogJsonLd from "@/components/BlogJsonLd.astro";
 import RelatedPosts from "@/components/RelatedPosts.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { useTranslations, type Locale } from "@/i18n/utils";
+import { withBrand } from "@/lib/seo";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -22,7 +23,7 @@ const t = useTranslations(locale);
 const { Content } = await post.render();
 const postSlug = post.slug.replace(`${locale}/`, "");
 
-const title = `${post.data.title} — FusionCore`;
+const title = withBrand(post.data.title);
 const description = post.data.description;
 const canonical = new URL(`/${locale}/blog/${postSlug}`, Astro.site).href;
 // See blog/[slug].astro: the generated social card wins over the in-page hero,

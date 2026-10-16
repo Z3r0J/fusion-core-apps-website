@@ -135,6 +135,7 @@ const resolvedOgImage =
 			{
 				"@context": "https://schema.org",
 				"@type": "Organization",
+				"@id": "https://www.fusioncoreapps.com/#organization",
 				"name": "FusionCore Apps",
 				"description": "Professional mobile app development studio",
 				"url": "https://www.fusioncoreapps.com",
@@ -151,8 +152,10 @@ const resolvedOgImage =
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "WebSite",
+			"@id": "https://www.fusioncoreapps.com/#website",
 			"url": "https://www.fusioncoreapps.com",
 			"name": "FusionCore Apps",
+			"publisher": { "@id": "https://www.fusioncoreapps.com/#organization" },
 			"potentialAction": {
 				"@type": "SearchAction",
 				"target": `https://www.fusioncoreapps.com/${currentLocale !== "en" ? currentLocale + "/" : ""}apps?q={search_term_string}`,
@@ -495,9 +498,11 @@ const resolvedOgImage =
 							<h3 class="footer__col-title">{t("footer.navigation")}</h3>
 							<ul class="space-y-0.5">
 								<li><a class="footer__link" href={navHome}>{t("nav.home")}</a></li>
+								<li><a class="footer__link" href={getLocalePath("/about", currentLocale as Locale)}>{t("footer.about")}</a></li>
 								<li><a class="footer__link" href={navApps}>{t("nav.apps")}</a></li>
 								<li><a class="footer__link" href={navBlog}>{t("nav.blog")}</a></li>
 								<li><a class="footer__link" href={getLocalePath("/compare-apps", currentLocale as Locale)}>{t("footer.compareApps")}</a></li>
+								<li><a class="footer__link" href={getLocalePath("/tools/grocery-calculator", currentLocale as Locale)}>{t("footer.groceryCalculator")}</a></li>
 								<li><a class="footer__link" href={navContact}>{t("nav.contact")}</a></li>
 								<li><a class="footer__link" href={navPrivacy}>{t("nav.privacy")}</a></li>
 								<li><a class="footer__link" href={navTerms}>{t("nav.terms")}</a></li>
@@ -514,7 +519,6 @@ const resolvedOgImage =
 								<li>
 									<a class="footer__link" href={getLocalePath("/apps/claimly-receipt-tracker", currentLocale as Locale)}>
 										Claimly
-										<span class="ml-1 inline-flex items-center rounded-full px-1.5 py-0.5 text-[10px] font-bold" style="background: rgba(234,88,12,0.10); color: #ea580c;">Beta</span>
 									</a>
 								</li>
 								<li>

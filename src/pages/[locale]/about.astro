@@ -1,0 +1,22 @@
+---
+import AboutContent from "@/components/AboutContent.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getLocalePath, useTranslations } from "@/i18n/utils";
+
+export function getStaticPaths() {
+	return [{ params: { locale: "es" } }, { params: { locale: "pt" } }];
+}
+
+const { locale } = Astro.params as { locale: "es" | "pt" };
+const t = useTranslations(locale);
+const canonical = new URL(getLocalePath("/about", locale), Astro.site).href;
+---
+
+<BaseLayout
+	{canonical}
+	description={t("about.meta.description")}
+	locale={locale}
+	title={t("about.meta.title")}
+>
+	<AboutContent locale={locale} />
+</BaseLayout>

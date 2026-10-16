@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { COMPARE_APPS } from "../lib/compareApps";
 
 const urlOrPath = z
 	.string()
@@ -53,6 +54,12 @@ export const apps = defineCollection({
 
 		// Absolute site paths or URLs
 		screenshots: z.array(urlOrPath).default([]),
+
+		// Q&As rendered as a visible FAQ section on the app page plus FAQPage
+		// JSON-LD (same text in both, as Google requires on-page parity).
+		faq: z
+			.array(z.object({ question: z.string(), answer: z.string() }))
+			.optional(),
 	}),
 });
 
@@ -96,15 +103,28 @@ const legal = defineCollection({
 	}),
 });
 
+// One comparison page per entry, served at /compare-apps/<app>-vs-<competitorSlug>
+// (prefixed with /es or /pt by locale folder). App name, icon, Play URL and
+// app-specific copy come from `app` via src/lib/compareApps.ts.
+//
+// The `cartwise*` fields (cartwiseRating, cartwiseReviewCount, cartwiseGood,
+// cartwiseBad, and the `cartwise` column in quickTable/featureRows) predate
+// `app` and keep their names: they always hold OUR app's values, so for
+// `app: claimly` they describe Claimly, not CartWise.
 const comparisons = defineCollection({
 	type: "content",
 	schema: z.object({
+		app: z.enum(COMPARE_APPS).default("cartwise"),
 		title: z.string(),
 		description: z.string(),
 		competitorName: z.string(),
 		competitorSlug: z.string(),
 		translationKey: z.string(),
 		updatedAt: z.string(),
+		// Subtitle under the competitor's name on its pro/con card, e.g.
+		// "Warranty Tracker · Android + iOS · Free". Falls back to the app's
+		// `<namespace>.procon.competitorSubtitle` i18n string.
+		competitorSubtitle: z.string().optional(),
 		cartwiseRating: z.number().optional(),
 		cartwiseReviewCount: z.string().optional(),
 		competitorRating: z.number().optional(),
