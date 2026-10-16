@@ -2,13 +2,14 @@
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import LegalLayout from "@/components/LegalLayout.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBrand } from "@/lib/seo";
 import { getEntry } from "astro:content";
 
 const terms = await getEntry("legal", "terms");
 if (!terms) throw new Error("Terms of service not found");
 const { Content } = await terms.render();
 
-const title = `${terms.data.title} — FusionCore Apps`;
+const title = withBrand(terms.data.title);
 const description = "Terms of service for FusionCore Apps mobile applications and website.";
 const canonical = new URL("/terms", Astro.site).href;
 ---

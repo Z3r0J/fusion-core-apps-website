@@ -30,7 +30,9 @@
     "browseAllApps": "Ver todos os Apps",
     "skipToContent": "Ir para o conteúdo principal",
     "mobileStats": "Apps Android grátis · 5 apps · 10K+ downloads",
-    "compareApps": "Comparar apps"
+    "compareApps": "Comparar apps",
+    "about": "Sobre nós",
+    "groceryCalculator": "Calculadora de compras"
   },
   "contact": {
     "title": "Fale Conosco",
@@ -131,6 +133,7 @@
     "journal": "O Blog da FusionCore",
     "title": "Blog",
     "subtitle": "Artigos, guias e histórias da equipe FusionCore.",
+    "metaDescription": "Guias e histórias da FusionCore Apps: leitura da Bíblia, listas de compras e orçamento, garantias e recibos, datas de validade e como criamos nossos apps.",
     "latestPosts": "Publicações recentes",
     "noPosts": "Sem publicações ainda",
     "noPostsBody": "Estamos preparando novo conteúdo. Volte em breve.",
@@ -148,12 +151,14 @@
     "terms": "Termos de Serviço",
     "cartwise": "CartWise",
     "cartwisePrivacy": "Política de Privacidade",
-    "cartwiseTerms": "Termos de Serviço"
+    "cartwiseTerms": "Termos de Serviço",
+    "about": "Sobre nós",
+    "groceryCalculator": "Calculadora de compras"
   },
   "cartwise": {
     "meta": {
-      "title": "CartWise – App de Lista de Compras Grátis com Calculadora de Preços (Sem Cadastro)",
-      "description": "Adicione itens por voz ou IA, veja o total atualizar enquanto compra e compartilhe listas instantaneamente via QR ou WhatsApp. Grátis, offline, sem conta. Android."
+      "title": "CartWise: lista de compras grátis com calculadora",
+      "description": "Adicione itens por voz ou IA, veja o total atualizar enquanto compra e compartilhe a lista por QR ou WhatsApp. Grátis, offline e sem cadastro. Android."
     },
     "hero": {
       "eyebrow": "FusionCore Apps · CartWise",
@@ -268,6 +273,10 @@
       "headline": "Veja como o CartWise se compara",
       "subline": "Comparativos honestos, lado a lado, com apps de lista de compras populares.",
       "seeAll": "Todos os comparativos"
+    },
+    "toolLink": {
+      "text": "Quer testar o total acumulado antes de instalar?",
+      "anchor": "Use a calculadora de compras grátis no navegador"
     }
   },
   "cartwiseCompare": {
@@ -276,9 +285,6 @@
       "compare": "Comparar apps"
     },
     "index": {
-      "metaTitle": "Comparações do CartWise — FusionCore Apps",
-      "metaDescription": "Comparações honestas do CartWise com outros apps de lista de compras. Descubra qual se adapta melhor ao seu jeito de comprar.",
-      "eyebrow": "Comparações de apps",
       "heading": "CartWise vs a concorrência",
       "deck": "Análises honestas, recurso por recurso, para você escolher o app de lista de compras que realmente combina com o seu jeito de comprar."
     },
@@ -291,7 +297,8 @@
       "byAuthor": "Por FusionCore Apps",
       "ctaDownload": "Baixar CartWise no Google Play",
       "ctaCompare": "Ver a comparação ↓",
-      "ratingLabel": "avaliações"
+      "ratingLabel": "avaliações",
+      "newOnPlay": "Novo no Google Play"
     },
     "quickTable": {
       "colCategory": "Categoria",
@@ -307,7 +314,9 @@
     },
     "procon": {
       "goodLabel": "O bom",
-      "badLabel": "O ruim"
+      "badLabel": "O ruim",
+      "appSubtitle": "Grocery List + Price Calculator · Android · Free",
+      "competitorSubtitle": "Shopping List · iOS + Android · Free"
     },
     "winnerCallout": {
       "label": "O vencedor"
@@ -334,6 +343,184 @@
       "trustNoAccount": "Sem conta",
       "trustOffline": "Funciona offline",
       "trustPlatform": "Android"
+    }
+  },
+  "claimlyCompare": {
+    "index": {
+      "heading": "Claimly vs a concorrência",
+      "deck": "Análises honestas de apps de controle de garantias, inclusive onde o outro app vence, para você escolher o que combina com você."
+    },
+    "hero": {
+      "eyebrow": "Claimly vs {{competitor}}",
+      "ctaDownload": "Baixar Claimly no Google Play",
+      "ratingLabel": "avaliações",
+      "newOnPlay": "Novo no Google Play"
+    },
+    "quickTable": {
+      "colCartwise": "Claimly",
+      "winnerBadge": "Nosso app"
+    },
+    "featureTable": {
+      "winnerBadge": "Nosso app"
+    },
+    "procon": {
+      "appSubtitle": "Controle de garantias + scanner de recibos · Android · Grátis",
+      "competitorSubtitle": "Controle de garantias"
+    },
+    "winnerCallout": {
+      "label": "Em resumo"
+    },
+    "ctaMid": {
+      "headline": "Baixe o Claimly grátis",
+      "subline": "Sem conta. Escaneie um recibo e os dados são preenchidos para você."
+    },
+    "related": {
+      "heading": "Mais comparações do Claimly",
+      "seeAllSub": "Navegue por todos os guias de comparação do Claimly"
+    },
+    "cta": {
+      "eyebrow": "Quer experimentar?",
+      "headline": "Prefere escanear recibos em vez de digitar?",
+      "subline": "Baixe o Claimly grátis. Sem conta nem configuração: escaneie seu primeiro recibo e acompanhe cada garantia.",
+      "trustFree": "Download grátis",
+      "trustOffline": "Dados no seu celular"
+    }
+  },
+  "compareHub": {
+    "metaTitle": "Comparações do CartWise e do Claimly — FusionCore Apps",
+    "metaDescription": "Comparações honestas do CartWise e do Claimly com outros apps de lista de compras e de controle de garantias, inclusive onde o outro app vence.",
+    "eyebrow": "Comparações de apps",
+    "heading": "Nossos apps vs a concorrência",
+    "deck": "Análises honestas, recurso por recurso, que mostram onde cada concorrente vence, para você escolher o app que combina com você."
+  },
+  "tools": {
+    "groceryCalculator": {
+      "meta": {
+        "title": "Calculadora de compras de supermercado grátis",
+        "description": "Calculadora de compras de supermercado grátis: anote preços, veja o total com imposto e aviso se passar do orçamento. Sem cadastro e funciona mesmo sem sinal."
+      },
+      "schemaName": "Calculadora de compras de supermercado",
+      "eyebrow": "Ferramenta grátis · Sem cadastro",
+      "title": "Calculadora de compras de supermercado",
+      "answer": "Digite o preço e a quantidade de cada item e esta calculadora de compras de supermercado soma o carrinho na hora, com imposto opcional e aviso de orçamento. É grátis, não pede cadastro e sua lista fica neste navegador.",
+      "howTo": {
+        "title": "Como usar",
+        "step1": "Digite o item, o preço e quantas unidades vai levar. O total da linha atualiza enquanto você digita.",
+        "step2": "Use + e − para mudar a quantidade, ou digite um decimal para o que é vendido por peso (1,5 para um quilo e meio).",
+        "step3": "Defina um orçamento para ver quanto ainda pode gastar e receber um aviso assim que o carrinho passar do limite.",
+        "step4": "Se a loja cobra imposto à parte no caixa, informe a taxa. Se os preços já incluem impostos, como costuma ser no Brasil, deixe em 0.",
+        "step5": "Sua lista fica salva neste navegador, então continua aí se você recarregar a página ou ficar sem sinal. “Limpar tudo” começa uma lista nova."
+      },
+      "cta": {
+        "eyebrow": "CartWise para Android",
+        "title": "O mesmo total no seu bolso, offline",
+        "body": "O CartWise é um app grátis de lista de compras que soma os preços enquanto você compra, com entrada por voz e listas compartilhadas pelo WhatsApp. Não pede conta e continua funcionando sem sinal.",
+        "download": "Baixe o CartWise no Google Play",
+        "learnMore": "Veja como o CartWise funciona"
+      },
+      "faq": {
+        "eyebrow": "Perguntas frequentes",
+        "title": "Dúvidas sobre a calculadora",
+        "q1": "A calculadora de compras é grátis?",
+        "a1": "Sim. É grátis e não tem cadastro: abra a página e comece a adicionar itens.",
+        "q2": "Minha lista fica salva?",
+        "a2": "Sua lista, o orçamento e o imposto ficam salvos no armazenamento local do navegador, neste aparelho, então não somem se você recarregar a página. Sua lista não é enviada para nenhum servidor. Se você limpar os dados do navegador ou tocar em “Limpar tudo”, a lista é apagada.",
+        "q3": "Funciona offline no supermercado?",
+        "a3": "Sim, com a página já aberta. Todas as contas são feitas no seu aparelho, então continua funcionando mesmo sem sinal no corredor. Se fechar a aba, você vai precisar de conexão para abrir de novo; já o CartWise, nosso app para Android, funciona offline.",
+        "q4": "Como somo o imposto no total da compra?",
+        "a4": "Digite a taxa de imposto em porcentagem no campo “Imposto %”. A calculadora soma ao subtotal e compara o total com o seu orçamento. Se os preços já incluem impostos, deixe em 0."
+      },
+      "ui": {
+        "listTitle": "Sua lista",
+        "summaryTitle": "Seu total",
+        "colItem": "Item",
+        "colPrice": "Preço",
+        "colQty": "Qtd.",
+        "colTotal": "Total",
+        "nameLabel": "Nome do item {n}",
+        "priceLabel": "Preço do item {n}",
+        "qtyLabel": "Quantidade do item {n}",
+        "lineTotalLabel": "Total do item {n}",
+        "decrease": "Diminuir a quantidade de {item}",
+        "increase": "Aumentar a quantidade de {item}",
+        "remove": "Remover {item}",
+        "itemFallback": "item {n}",
+        "placeholders": "Leite, Pão, Ovos, Arroz, Café, Banana",
+        "addItem": "Adicionar item",
+        "clearAll": "Limpar tudo",
+        "cleared": "Lista apagada.",
+        "undo": "Desfazer",
+        "currency": "Moeda",
+        "budget": "Orçamento",
+        "tax": "Imposto %",
+        "optional": "opcional",
+        "subtotal": "Subtotal",
+        "taxLine": "Imposto ({rate}%)",
+        "total": "Total",
+        "itemsOne": "1 item",
+        "itemsOther": "{n} itens",
+        "remaining": "Restam {amount}",
+        "overBudget": "Passou do orçamento em {amount}",
+        "onBudget": "Exatamente no orçamento",
+        "budgetUsed": "Orçamento usado",
+        "saved": "Salvo só neste navegador. Sua lista não é enviada para nenhum servidor."
+      }
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "Sobre a FusionCore Apps: estúdio de apps Android",
+      "description": "A FusionCore Apps é um estúdio independente de apps Android. Criamos Bible TPT, Biblia TLA, CartWise, Claimly e Expiroo: apps grátis, quase todos offline."
+    },
+    "eyebrow": "Sobre nós",
+    "title": "Sobre a FusionCore Apps",
+    "lead": "A FusionCore Apps é um estúdio independente de apps para Android. Criamos apps grátis para ler a Bíblia, fazer as compras do mercado, controlar garantias e acompanhar a validade dos alimentos, todos no Google Play (o Expiroo está em teste fechado).",
+    "stats": {
+      "downloads": "Downloads",
+      "apps": "Apps",
+      "free": "Grátis",
+      "freeLabel": "Para baixar"
+    },
+    "apps": {
+      "title": "Nossos apps",
+      "subtitle": "Quatro apps no Google Play e um em beta fechado.",
+      "bibleTpt": "Leia The Passion Translation (TPT) offline e ouça a Bíblia em áudio, com devocionais diários e planos de leitura.",
+      "bibliaTla": "A Bíblia em espanhol claro e atual (Traducción en Lenguaje Actual), com áudio, planos de leitura e acesso offline.",
+      "cartwise": "Uma lista de compras que soma o carrinho enquanto você compra, com entrada por voz e compartilhamento pelo WhatsApp. Sem conta.",
+      "claimly": "Escaneie recibos e acompanhe garantias da loja, do fabricante e estendidas, com alertas antes do vencimento.",
+      "expiroo": "Controle a validade do que está na geladeira e na despensa, offline e sem conta.",
+      "beta": "Beta fechado"
+    },
+    "how": {
+      "title": "Como trabalhamos",
+      "free": {
+        "title": "Grátis para baixar",
+        "body": "Todos os nossos apps são grátis no Google Play. Eles se mantêm com anúncios, e alguns oferecem um upgrade opcional com recursos extras."
+      },
+      "offline": {
+        "title": "Offline quando faz diferença",
+        "body": "Bible TPT, Biblia TLA, CartWise e Expiroo funcionam sem conexão: sua Bíblia, sua lista ou sua despensa continuam ali mesmo sem sinal."
+      },
+      "privacy": {
+        "title": "Respeito à sua privacidade",
+        "body": "O CartWise e o Expiroo não pedem cadastro, e o Expiroo guarda seu inventário no seu aparelho. Não vendemos nem alugamos seus dados.",
+        "link": "Leia nossa política de privacidade"
+      },
+      "team": {
+        "title": "Uma equipe pequena e independente",
+        "body": "Lemos cada mensagem e respondemos pessoalmente. Relatos de bugs e sugestões de quem usa os apps ajudam a decidir o que fazemos a seguir."
+      }
+    },
+    "links": {
+      "title": "Encontre a gente",
+      "play": {
+        "title": "Página de desenvolvedor no Google Play",
+        "body": "Todos os apps publicados da FusionCore Apps em um só lugar."
+      },
+      "contact": {
+        "title": "Contato",
+        "body": "Dúvidas, relatos de bugs ou ideias de parceria. Respondemos pessoalmente."
+      }
     }
   }
 }

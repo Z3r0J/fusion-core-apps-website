@@ -3,6 +3,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import LegalLayout from "@/components/LegalLayout.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { useTranslations, type Locale } from "@/i18n/utils";
+import { withBrand } from "@/lib/seo";
 import { getEntry } from "astro:content";
 
 export function getStaticPaths() {
@@ -16,7 +17,7 @@ const policy = await getEntry("legal", `privacy-${locale}` as "privacy-es" | "pr
 if (!policy) throw new Error(`Privacy policy not found for locale: ${locale}`);
 const { Content } = await policy.render();
 
-const title = `${policy.data.title} — FusionCore Apps`;
+const title = withBrand(policy.data.title);
 const description = t("legal.privacyDescription");
 const canonical = new URL(`/${locale}/privacy`, Astro.site).href;
 ---

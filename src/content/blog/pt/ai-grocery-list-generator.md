@@ -1,6 +1,6 @@
 ---
-title: "Gerador de lista de compras com IA: lista completa em segundos"
-description: "Fale com o CartWise e ele transforma o que você diz em uma lista de compras limpa e organizada — no seu próprio idioma, grátis e sem conta."
+title: "Gerador de lista de compras com IA: sua lista em segundos"
+description: "Fale com o CartWise e o gerador com IA transforma o que você diz em uma lista de compras organizada por corredor, no seu idioma. Grátis e sem conta."
 translationKey: "ai-grocery-list-generator"
 publishedAt: "2026-06-26"
 author: "FusionCore Apps"
@@ -18,7 +18,7 @@ O ponto não é a novidade. É a velocidade. Falar as compras da semana em voz a
 
 ## Monte sua lista só falando
 
-No [CartWise](/cartwise), são quatro passos rápidos:
+No [CartWise](/pt/cartwise), são quatro passos rápidos:
 
 **Passo 1 — Toque no microfone na sua lista**
 Ele fica na barra de ação da lista. Toque e comece a falar.

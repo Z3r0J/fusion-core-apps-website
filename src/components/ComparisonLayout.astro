@@ -1,6 +1,11 @@
 ---
 import { useTranslations } from "@/i18n/utils";
+import { COMPARE_APP_META, compareCopy, comparisonPath, type CompareApp } from "@/lib/compareApps";
 
+// `cartwise*` props (and the `cartwise` table column) hold OUR app's values,
+// whichever app `app` names — see the comparisons schema in content/config.ts.
+// Likewise the "CartWise rating" / "CartWise card" HTML comments below mark our
+// app's rating and card; they're left as-is so CartWise output stays identical.
 interface QuickTableRow {
   category: string;
   cartwise: string;
@@ -20,10 +25,12 @@ interface RelatedItem {
 
 interface Props {
   locale: "en" | "es" | "pt";
+  app?: CompareApp;
   title: string;
   description: string;
   competitorName: string;
   competitorSlug: string;
+  competitorSubtitle?: string;
   updatedAt: string;
   cartwiseRating?: number;
   cartwiseReviewCount?: string;
@@ -47,8 +54,11 @@ interface Props {
 
 const {
   locale,
+  app = "cartwise",
   title,
   competitorName,
+  competitorSlug,
+  competitorSubtitle,
   updatedAt,
   cartwiseRating,
   cartwiseReviewCount,
@@ -70,8 +80,11 @@ const {
 } = Astro.props;
 
 const t = useTranslations(locale);
+// App-specific copy (`<app>Compare.*`), falling back to the shared `cartwiseCompare.*`.
+const ct = compareCopy(t, app);
+const appMeta = COMPARE_APP_META[app];
 
-const PLAY_URL = "https://play.google.com/store/apps/details?id=com.fusionapps.cartwise";
+const PLAY_URL = appMeta.playUrl;
 const homeHref = locale === "en" ? "/" : `/${locale}`;
 const compareHref = locale === "en" ? "/compare-apps" : `/${locale}/compare-apps`;
 
@@ -103,7 +116,7 @@ function inlineMd(s: string): string {
 }
 
 // Structured data
-const pageUrl = new URL(`${compareHref}/cartwise-vs-${Astro.props.competitorSlug}`, Astro.site).href;
+const pageUrl = new URL(comparisonPath(locale, app, competitorSlug), Astro.site).href;
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -128,13 +141,13 @@ const structuredData = {
         {
           "@type": "ListItem",
           position: 1,
-          name: t("cartwiseCompare.breadcrumb.home"),
+          name: ct("breadcrumb.home"),
           item: new URL(homeHref, Astro.site).href,
         },
         {
           "@type": "ListItem",
           position: 2,
-          name: t("cartwiseCompare.breadcrumb.compare"),
+          name: ct("breadcrumb.compare"),
           item: new URL(compareHref, Astro.site).href,
         },
         {
@@ -147,9 +160,9 @@ const structuredData = {
     },
     {
       "@type": "SoftwareApplication",
-      name: "CartWise",
+      name: appMeta.name,
       operatingSystem: "ANDROID",
-      applicationCategory: "ShoppingApplication",
+      applicationCategory: appMeta.applicationCategory,
       offers: {
         "@type": "Offer",
         price: "0",
@@ -181,26 +194,26 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 
       <!-- 1. Breadcrumb -->
       <nav class="flex items-center gap-1.5 text-xs font-medium text-gray-400 dark:text-white/35 mb-6" aria-label="Breadcrumb">
-        <a href={homeHref} class="text-gray-500 dark:text-white/45 hover:text-brand-400 dark:hover:text-brand-400 transition-colors">{t("cartwiseCompare.breadcrumb.home")}</a>
+        <a href={homeHref} class="text-gray-500 dark:text-white/45 hover:text-brand-400 dark:hover:text-brand-400 transition-colors">{ct("breadcrumb.home")}</a>
         <span class="text-gray-300 dark:text-white/20">/</span>
-        <a href={compareHref} class="text-gray-500 dark:text-white/45 hover:text-brand-400 dark:hover:text-brand-400 transition-colors">{t("cartwiseCompare.breadcrumb.compare")}</a>
+        <a href={compareHref} class="text-gray-500 dark:text-white/45 hover:text-brand-400 dark:hover:text-brand-400 transition-colors">{ct("breadcrumb.compare")}</a>
         <span class="text-gray-300 dark:text-white/20">/</span>
-        <span class="text-gray-600 dark:text-white/60 font-semibold">CartWise vs {competitorName}</span>
+        <span class="text-gray-600 dark:text-white/60 font-semibold">{appMeta.name} vs {competitorName}</span>
       </nav>
 
       <!-- App icon pair -->
       <div class="flex items-center gap-2.5 mb-6">
         <div class="w-14 h-14 rounded-[14px] overflow-hidden flex-shrink-0 shadow-md" style="background:#0b1c2d;">
           <img
-            src="/images/apps/cartwise-grocery-shopping-list/icon.png"
-            alt="CartWise icon"
+            src={appMeta.icon}
+            alt={`${appMeta.name} icon`}
             width="56" height="56"
             class="w-full h-full object-cover rounded-[14px]"
-            onerror="this.style.display='none';this.parentNode.innerHTML='🛒';"
+            onerror={`this.style.display='none';this.parentNode.innerHTML='${appMeta.iconEmoji}';`}
           />
         </div>
         <span class="text-[11px] font-extrabold tracking-wider text-gray-400 dark:text-white/40 px-2 py-1 rounded-md bg-gray-100 dark:bg-white/8">
-          {t("cartwiseCompare.hero.vsLabel")}
+          {ct("hero.vsLabel")}
         </span>
         <div class="w-14 h-14 rounded-[14px] overflow-hidden flex items-center justify-center flex-shrink-0 shadow-md text-3xl" style="background:#e8f4fd;">
           {competitorIcon ? (
@@ -220,7 +233,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
       <!-- Eyebrow -->
       <div class="inline-flex items-center gap-2 mb-5">
                 <span class="text-[12px] font-medium text-gray-500 dark:text-gray-400">
-          {t("cartwiseCompare.hero.eyebrow").replace("{{competitor}}", competitorName)}
+          {ct("hero.eyebrow").replace("{{competitor}}", competitorName)}
         </span>
       </div>
 
@@ -241,12 +254,12 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
           <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-[10px] text-xs font-semibold border"
             style="background:#fff8eb;border-color:#ffd5a3;color:#b84a0d;">
             <span class="text-accent-500 text-[13px] tracking-tight">{starRow(cartwiseRating)}</span>
-            <span>CartWise · {cartwiseRating} ({cartwiseReviewCount} {t("cartwiseCompare.hero.ratingLabel")})</span>
+            <span>{appMeta.name} · {cartwiseRating} ({cartwiseReviewCount} {ct("hero.ratingLabel")})</span>
           </div>
         ) : (
           <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-[10px] text-xs font-semibold border"
             style="background:#f0fdf4;border-color:#bbf7d0;color:#166534;">
-            <span>CartWise · New on Google Play</span>
+            <span>{appMeta.name} · {ct("hero.newOnPlay")}</span>
           </div>
         )}
         <!-- Competitor rating (only if provided) -->
@@ -254,7 +267,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
           <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-[10px] text-xs font-semibold border"
             style="background:#f8fafc;border-color:#e2e8f0;color:#64748b;">
             <span class="text-[13px] tracking-tight" style="color:#94a3b8;">{starRow(competitorRating)}</span>
-            <span style="color:#64748b;">{competitorName} · {competitorRating}{competitorReviewCount ? ` (${competitorReviewCount} ${t("cartwiseCompare.hero.ratingLabel")})` : ""}</span>
+            <span style="color:#64748b;">{competitorName} · {competitorRating}{competitorReviewCount ? ` (${competitorReviewCount} ${ct("hero.ratingLabel")})` : ""}</span>
           </div>
         )}
       </div>
@@ -274,20 +287,20 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
             <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"/>
             <path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"/>
           </svg>
-          {t("cartwiseCompare.hero.ctaDownload")}
+          {ct("hero.ctaDownload")}
         </a>
         <a href="#comparison" class="inline-flex items-center gap-1.5 px-[22px] py-3 rounded-[14px] text-sm font-semibold border transition-all text-gray-500 dark:text-white/75 bg-white dark:bg-white/8 border-gray-300 dark:border-white/14 hover:bg-gray-100 dark:hover:bg-white/14">
-          {t("cartwiseCompare.hero.ctaCompare")}
+          {ct("hero.ctaCompare")}
         </a>
       </div>
 
       <!-- Byline -->
       <div class="flex flex-wrap items-center gap-4 pt-5 border-t border-gray-200/80 dark:border-white/7 text-[13px] text-gray-500 dark:text-white/45">
-        <span class="font-semibold text-gray-700 dark:text-white/70">{t("cartwiseCompare.hero.byAuthor")}</span>
+        <span class="font-semibold text-gray-700 dark:text-white/70">{ct("hero.byAuthor")}</span>
         <span class="text-gray-300 dark:text-white/15">·</span>
-        <span>{t("cartwiseCompare.hero.updatedLabel")} <strong>{updatedAt}</strong></span>
+        <span>{ct("hero.updatedLabel")} <strong>{updatedAt}</strong></span>
         <span class="text-gray-300 dark:text-white/15">·</span>
-        <span>{t("cartwiseCompare.hero.readTime")}</span>
+        <span>{ct("hero.readTime")}</span>
       </div>
     </div>
   </div>
@@ -315,12 +328,12 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
         <thead>
           <tr>
             <th class="text-left px-4 py-3.5 text-[13px] font-bold font-display text-gray-500 dark:text-white/40 bg-gray-50 dark:bg-white/3 border border-gray-200/90 dark:border-white/7 border-r-0 rounded-tl-xl" style="border-bottom:none;">
-              {t("cartwiseCompare.quickTable.colCategory")}
+              {ct("quickTable.colCategory")}
             </th>
             <th class="text-center px-4 py-3.5 text-[13px] font-bold font-display text-white border-t-2 border-brand-400" style="background: var(--color-tech-blue);">
-              <div>{t("cartwiseCompare.quickTable.colCartwise")}</div>
+              <div>{ct("quickTable.colCartwise")}</div>
               <div class="mt-1 inline-flex items-center gap-1 text-[11px] font-bold tracking-wider text-brand-400 bg-brand-400/12 border border-brand-400/25 rounded-full px-2.5 py-0.5">
-                {t("cartwiseCompare.quickTable.winnerBadge")}
+                {ct("quickTable.winnerBadge")}
               </div>
             </th>
             <th class="text-center px-4 py-3.5 text-[13px] font-bold font-display text-gray-700 dark:text-white/60 bg-gray-50 dark:bg-white/3 border border-gray-200/90 dark:border-white/7 border-l-0 rounded-tr-xl" style="border-bottom:none;">
@@ -354,16 +367,16 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
       <div class="flex items-center gap-3.5 mb-5 pb-4 border-b border-gray-200/80 dark:border-white/7">
         <div class="w-12 h-12 rounded-[12px] flex-shrink-0 overflow-hidden shadow-md" style="background:#0b1c2d;">
           <img
-            src="/images/apps/cartwise-grocery-shopping-list/icon.png"
-            alt="CartWise"
+            src={appMeta.icon}
+            alt={appMeta.name}
             width="48" height="48"
             class="w-full h-full object-cover rounded-[12px]"
-            onerror="this.style.display='none';this.parentNode.innerHTML='🛒';"
+            onerror={`this.style.display='none';this.parentNode.innerHTML='${appMeta.iconEmoji}';`}
           />
         </div>
         <div class="min-w-0">
-          <div class="text-xl font-black font-display tracking-tight text-gray-900 dark:text-gray-100">CartWise</div>
-          <div class="text-xs text-gray-500 dark:text-white/40 mt-0.5">Grocery List + Price Calculator · Android · Free</div>
+          <div class="text-xl font-black font-display tracking-tight text-gray-900 dark:text-gray-100">{appMeta.name}</div>
+          <div class="text-xs text-gray-500 dark:text-white/40 mt-0.5">{ct("procon.appSubtitle")}</div>
         </div>
         {cartwiseRating !== undefined && (
           <div class="ml-auto flex-shrink-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-[10px] text-xs font-semibold border"
@@ -376,7 +389,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 
       <div class="mb-4">
         <div class="text-[11px] font-bold tracking-[0.1em] uppercase text-emerald-600 dark:text-emerald-400 mb-3">
-          {t("cartwiseCompare.procon.goodLabel")}
+          {ct("procon.goodLabel")}
         </div>
         <ul class="space-y-2.5">
           {cartwiseGood.map((item) => (
@@ -393,7 +406,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 
       <div>
         <div class="text-[11px] font-bold tracking-[0.1em] uppercase text-gray-400 dark:text-white/30 mb-3">
-          {t("cartwiseCompare.procon.badLabel")}
+          {ct("procon.badLabel")}
         </div>
         <ul class="space-y-2.5">
           {cartwiseBad.map((item) => (
@@ -427,7 +440,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
         </div>
         <div class="min-w-0">
           <div class="text-xl font-black font-display tracking-tight text-gray-900 dark:text-gray-100">{competitorName}</div>
-          <div class="text-xs text-gray-500 dark:text-white/40 mt-0.5">Shopping List · iOS + Android · Free</div>
+          <div class="text-xs text-gray-500 dark:text-white/40 mt-0.5">{competitorSubtitle ?? ct("procon.competitorSubtitle")}</div>
         </div>
         {competitorRating !== undefined && (
           <div class="ml-auto flex-shrink-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-[10px] text-xs font-semibold border"
@@ -440,7 +453,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 
       <div class="mb-4">
         <div class="text-[11px] font-bold tracking-[0.1em] uppercase text-emerald-600 dark:text-emerald-400 mb-3">
-          {t("cartwiseCompare.procon.goodLabel")}
+          {ct("procon.goodLabel")}
         </div>
         <ul class="space-y-2.5">
           {competitorGood.map((item) => (
@@ -457,7 +470,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 
       <div>
         <div class="text-[11px] font-bold tracking-[0.1em] uppercase text-gray-400 dark:text-white/30 mb-3">
-          {t("cartwiseCompare.procon.badLabel")}
+          {ct("procon.badLabel")}
         </div>
         <ul class="space-y-2.5">
           {competitorBad.map((item) => (
@@ -478,11 +491,11 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
   <section>
     <div class="inline-flex items-center gap-2 mb-4">
             <span class="text-[12px] font-medium text-gray-500 dark:text-gray-400">
-        {t("cartwiseCompare.featureTable.eyebrow")}
+        {ct("featureTable.eyebrow")}
       </span>
     </div>
     <p class="text-sm text-gray-500 dark:text-white/40 mb-6 leading-relaxed">
-      {t("cartwiseCompare.featureTable.subhead")}
+      {ct("featureTable.subhead")}
     </p>
 
     <div class="overflow-x-auto rounded-2xl border border-gray-200/90 dark:border-white/7">
@@ -490,12 +503,12 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
         <thead>
           <tr>
             <th class="text-left px-[18px] py-3.5 text-sm font-bold font-display text-gray-500 dark:text-white/40 border-b border-gray-200/90 dark:border-white/7" style="width:45%;">
-              {t("cartwiseCompare.featureTable.colFeature")}
+              {ct("featureTable.colFeature")}
             </th>
             <th class="text-center px-[18px] py-3.5 text-sm font-bold font-display text-white border-t-2 border-brand-400 rounded-tl-xl" style="background: var(--color-tech-blue);width:27.5%;">
-              <div>CartWise</div>
+              <div>{appMeta.name}</div>
               <div class="mt-1 inline-flex items-center gap-1 text-[10px] font-bold tracking-wider text-brand-400 bg-brand-400/12 border border-brand-400/22 rounded-full px-2 py-0.5">
-                {t("cartwiseCompare.featureTable.winnerBadge")}
+                {ct("featureTable.winnerBadge")}
               </div>
             </th>
             <th class="text-center px-[18px] py-3.5 text-sm font-bold font-display text-gray-600 dark:text-white/60 bg-gray-50 dark:bg-white/3 border border-gray-200/90 dark:border-white/7 border-l-0 rounded-tr-xl" style="width:27.5%;border-bottom:none;">
@@ -542,7 +555,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
       </table>
     </div>
     <p class="text-xs text-gray-400 dark:text-white/30 mt-3 leading-relaxed">
-      {t("cartwiseCompare.featureTable.footnote")}
+      {ct("featureTable.footnote")}
     </p>
   </section>
 
@@ -552,7 +565,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
       <div class="relative z-[1]">
         <div class="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.12em] uppercase text-brand-400 mb-3">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          {t("cartwiseCompare.winnerCallout.label")}
+          {ct("winnerCallout.label")}
         </div>
         <p class="text-white/65 text-sm leading-[1.65]" style="max-width:540px;">
           {midVerdict}
@@ -587,9 +600,9 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
       <div class="relative z-[1] flex flex-wrap items-center justify-between gap-6">
         <div>
           <h3 class="subsection-title text-white mb-1">
-            {t("cartwiseCompare.ctaMid.headline")}
+            {ct("ctaMid.headline")}
           </h3>
-          <p class="text-white/60 text-sm">{t("cartwiseCompare.ctaMid.subline")}</p>
+          <p class="text-white/60 text-sm">{ct("ctaMid.subline")}</p>
         </div>
         <a
           href={PLAY_URL}
@@ -598,7 +611,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
           class="inline-flex items-center gap-2 px-6 py-3 rounded-[14px] text-[15px] font-bold text-gray-950 flex-shrink-0 transition-transform hover:-translate-y-0.5"
           style="background: var(--color-accent-500);"
         >
-          {t("cartwiseCompare.ctaMid.button")}
+          {ct("ctaMid.button")}
         </a>
       </div>
     </div>
@@ -609,30 +622,28 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
     <section>
       <div class="inline-flex items-center gap-2 mb-2">
                 <span class="text-[12px] font-medium text-gray-500 dark:text-gray-400">
-          {t("cartwiseCompare.related.label")}
+          {ct("related.label")}
         </span>
       </div>
       <h2 class="subsection-title mb-6">
-        {t("cartwiseCompare.related.heading")}
+        {ct("related.heading")}
       </h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {relatedItems.map((item) => {
-          const href = locale === "en"
-            ? `/compare-apps/cartwise-vs-${item.slug}`
-            : `/${locale}/compare-apps/cartwise-vs-${item.slug}`;
+          const href = comparisonPath(locale, app, item.slug);
           return (
             <a
               href={href}
               class="block rounded-[14px] p-5 bg-white dark:bg-white/3 border border-gray-200/90 dark:border-white/7 no-underline transition-all hover:-translate-y-0.5 hover:border-gray-300 dark:hover:border-white/15 hover:shadow-md"
             >
               <div class="text-[10px] font-bold tracking-[0.1em] uppercase text-brand-700 dark:text-brand-400 mb-1.5">
-                {t("cartwiseCompare.related.cardTag")}
+                {ct("related.cardTag")}
               </div>
               <div class="font-display font-bold text-[15px] text-gray-900 dark:text-gray-50 leading-snug mb-1">
-                CartWise vs {item.competitorName}
+                {appMeta.name} vs {item.competitorName}
               </div>
               <div class="text-xs text-gray-400 dark:text-white/35">
-                CartWise vs {item.competitorName}
+                {appMeta.name} vs {item.competitorName}
               </div>
             </a>
           );
@@ -644,13 +655,13 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
           class="block rounded-[14px] p-5 bg-white dark:bg-white/3 border border-dashed border-gray-300 dark:border-white/12 no-underline transition-all hover:-translate-y-0.5 hover:border-brand-400/30"
         >
           <div class="text-[10px] font-bold tracking-[0.1em] uppercase text-gray-400 dark:text-white/35 mb-1.5">
-            {t("cartwiseCompare.related.seeAllLabel")}
+            {ct("related.seeAllLabel")}
           </div>
           <div class="font-display font-bold text-[15px] text-gray-900 dark:text-gray-50 leading-snug mb-1">
-            {t("cartwiseCompare.related.seeAllTitle")}
+            {ct("related.seeAllTitle")}
           </div>
           <div class="text-xs text-gray-400 dark:text-white/35">
-            {t("cartwiseCompare.related.seeAllSub")}
+            {ct("related.seeAllSub")}
           </div>
         </a>
       </div>
@@ -665,15 +676,15 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
   <div class="relative z-[1] mx-auto px-6 py-16 lg:py-20 text-center" style="max-width:640px;">
     <div class="inline-flex items-center gap-2 mb-4">
       <span class="text-[12px] font-medium text-white/55">
-        {t("cartwiseCompare.cta.eyebrow")}
+        {ct("cta.eyebrow")}
       </span>
     </div>
 
     <h2 class="section-title text-white mb-4">
-      {t("cartwiseCompare.cta.headline").replace("{{competitor}}", competitorName)}
+      {ct("cta.headline").replace("{{competitor}}", competitorName)}
     </h2>
     <p class="text-white/55 text-base mb-8 leading-relaxed">
-      {t("cartwiseCompare.cta.subline")}
+      {ct("cta.subline")}
     </p>
 
     <a
@@ -689,26 +700,26 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
         <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"/>
         <path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"/>
       </svg>
-      {t("cartwiseCompare.cta.ctaButton")}
+      {ct("cta.ctaButton")}
     </a>
 
     <!-- Trust badges -->
     <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-white/45">
       <span class="inline-flex items-center gap-1.5">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        {t("cartwiseCompare.cta.trustFree")}
+        {ct("cta.trustFree")}
       </span>
       <span class="inline-flex items-center gap-1.5">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        {t("cartwiseCompare.cta.trustNoAccount")}
+        {ct("cta.trustNoAccount")}
       </span>
       <span class="inline-flex items-center gap-1.5">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        {t("cartwiseCompare.cta.trustOffline")}
+        {ct("cta.trustOffline")}
       </span>
       <span class="inline-flex items-center gap-1.5">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        {t("cartwiseCompare.cta.trustPlatform")}
+        {ct("cta.trustPlatform")}
       </span>
     </div>
   </div>

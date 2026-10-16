@@ -1,5 +1,5 @@
 ---
-title: "Apresentamos o Expiroo: controle de validade para a geladeira e a despensa (beta fechada)"
+title: "Conheça o Expiroo: controle de validade em beta fechada"
 description: "Expiroo é o novo controle de validade da FusionCore para Android, agora em beta fechada. Veja o que faz, como funciona offline e como participar."
 translationKey: "expiroo-beta-launch"
 publishedAt: "2026-08-06"
@@ -89,7 +89,7 @@ A ordem importa: o link de instalação só funciona depois de entrar no grupo e
 
 ## Por que criamos o Expiroo
 
-A maior parte da comida não é desperdiçada porque as pessoas não se importam — é desperdiçada porque é fácil perder o controle. As datas vêm em letra miúda, os itens vão para o fundo e, quando você lembra, já estragaram.
+A maior parte da comida não é desperdiçada porque as pessoas não se importam — é desperdiçada porque é fácil perder o controle. As datas vêm em letra miúda, os itens vão para o fundo e, quando você lembra, já estragaram. E se você nunca sabe qual data do rótulo realmente importa, o nosso guia de [data de validade vs. prazo de consumo](/pt/blog/data-validade-vs-prazo-consumo) explica o que cada uma significa.
 
 Queríamos algo que leve segundos por produto e depois lembre você em silêncio no momento certo. Isso é o Expiroo: menos comida estragada, menos dinheiro no lixo e uma geladeira que você realmente entende.
 

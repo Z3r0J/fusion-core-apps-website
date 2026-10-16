@@ -1,0 +1,23 @@
+---
+import GroceryCalculatorContent from "@/components/GroceryCalculatorContent.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getLocalePath, useTranslations } from "@/i18n/utils";
+
+export function getStaticPaths() {
+	return [{ params: { locale: "es" } }, { params: { locale: "pt" } }];
+}
+
+const { locale } = Astro.params as { locale: "es" | "pt" };
+const t = useTranslations(locale);
+const canonical = new URL(getLocalePath("/tools/grocery-calculator", locale), Astro.site).href;
+---
+
+<BaseLayout
+	{canonical}
+	description={t("tools.groceryCalculator.meta.description")}
+	locale={locale}
+	showFooterCta={false}
+	title={t("tools.groceryCalculator.meta.title")}
+>
+	<GroceryCalculatorContent locale={locale} />
+</BaseLayout>

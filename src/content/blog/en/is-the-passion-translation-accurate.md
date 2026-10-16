@@ -3,6 +3,7 @@ title: "Is The Passion Translation (TPT) Accurate? An Honest Guide"
 description: "Is TPT a translation or a paraphrase? What scholars criticize, what we know about Bible Gateway's removal, and how to read TPT well."
 translationKey: "is-the-passion-translation-accurate"
 publishedAt: "2026-10-10"
+updatedAt: "2026-10-16"
 author: "FusionCore Apps"
 tags: ["the passion translation", "tpt bible app", "bible translations", "bible study", "android"]
 ogImage: "/images/blog/en/is-the-passion-translation-accurate.png"
@@ -13,11 +14,11 @@ faq:
   - question: "Is TPT a translation or a paraphrase?"
     answer: "The publisher calls it a translation. Critics argue it behaves more like a paraphrase because it adds words and phrases not found in the source texts. In practice, it sits at the most interpretive end of the translation spectrum, near paraphrases like The Message."
   - question: "Why did Bible Gateway remove The Passion Translation?"
-    answer: "Bible Gateway removed TPT from its site in January 2022 amid ongoing criticism of its accuracy. It did not publish a detailed explanation. TPT remains available in other apps and through its publisher, BroadStreet Publishing."
+    answer: "Bible Gateway removed TPT from its site in early 2022 amid ongoing criticism of its accuracy. It did not publish a detailed explanation. TPT remains available in other apps and through its publisher, BroadStreet Publishing."
   - question: "Is the whole Bible available in TPT?"
     answer: "Not yet. The New Testament, Psalms, Proverbs, Song of Songs, and a growing number of Old Testament books are available, with the full Bible projected for completion later this decade."
   - question: "Is there a free TPT Bible app?"
-    answer: "Yes. Bible TPT is a free Android app for reading The Passion Translation offline, with Audio Bible, daily devotionals, and reading plans."
+    answer: "Yes. Bible TPT is a free, ad-supported Android app for reading The Passion Translation offline, with Audio Bible, daily devotionals, and reading plans."
 ---
 
 **Short answer:** The Passion Translation (TPT) is accurate to its *goal* — expressive, heart-level devotional reading — but it is **not** a precise, word-for-word translation. Many Bible scholars describe it as an interpretive paraphrase because it frequently adds words and ideas to bring out what the translator sees as the passage's emotional meaning. The healthiest way to read TPT is **alongside a more literal translation** (such as the ESV, NASB, or NKJV) when you study, and on its own for devotional reading.
@@ -51,7 +52,7 @@ The main criticisms come from biblical scholars and pastors:
 - **A single primary translator.** Most major translations are produced by large committees of scholars who check each other's work. TPT is primarily the work of one translator; it says a small group of scholars reviews his work, but there is no translation committee comparable to those behind the NIV, ESV, or CSB.
 - **Reliance on Aramaic sources.** TPT's New Testament draws on Aramaic texts in addition to the Greek; most New Testament scholars treat the Greek manuscripts as primary.
 
-In January 2022, **Bible Gateway removed TPT** from its platform amid this criticism. TPT's translator and publisher have defended the work, and it remains available elsewhere, including in dedicated apps.
+In early 2022, **Bible Gateway removed TPT** from its platform amid this criticism. TPT's translator and publisher have defended the work, and it remains available elsewhere, including in dedicated apps.
 
 In 2026, TPT came under new scrutiny. Critics alleged that parts of the text and footnotes were copied from earlier translations without attribution and questioned the translator's stated credentials; the coverage we found reported no public response from the translator or publisher to those specific allegations. Several ministries and Bible apps have distanced themselves from TPT, and YouVersion now lists it as "In Review" while it undergoes an expanded review process.
 
@@ -74,7 +75,7 @@ If you enjoy TPT, a few habits keep you grounded:
 
 ## Reading TPT on Your Phone
 
-If you want TPT for daily devotional reading, [Bible TPT](/apps/bible-tpt) is a free Android app with **offline reading**, **Audio Bible**, daily devotionals, and AI reading plans. Our [guide to the TPT Bible app](/blog/tpt-bible-app-free-download-android) walks through setup, and if you are comparing apps for study, see the [best Bible apps for Android in 2026](/blog/best-bible-apps-android-2026).
+If you want TPT for daily devotional reading, [Bible TPT](/apps/bible-tpt) is a free, ad-supported Android app with **offline reading**, **Audio Bible**, daily devotionals, and AI reading plans. Our [guide to the TPT Bible app](/blog/tpt-bible-app-free-download-android) walks through setup, and if you are comparing apps for study, see the [best Bible apps for Android in 2026](/blog/best-bible-apps-android-2026).
 
 ## Frequently Asked Questions
 
@@ -88,7 +89,7 @@ The publisher calls it a translation. Critics argue it behaves more like a parap
 
 ### Why did Bible Gateway remove The Passion Translation?
 
-Bible Gateway removed TPT from its site in January 2022 amid ongoing criticism of its accuracy. It did not publish a detailed explanation. TPT remains available in other apps and through its publisher, BroadStreet Publishing.
+Bible Gateway removed TPT from its site in early 2022 amid ongoing criticism of its accuracy. It did not publish a detailed explanation. TPT remains available in other apps and through its publisher, BroadStreet Publishing.
 
 ### Is the whole Bible available in TPT?
 
@@ -96,7 +97,7 @@ Not yet. The New Testament, Psalms, Proverbs, Song of Songs, and a growing numbe
 
 ### Is there a free TPT Bible app?
 
-Yes. Bible TPT is a free Android app for reading The Passion Translation offline, with Audio Bible, daily devotionals, and reading plans.
+Yes. Bible TPT is a free, ad-supported Android app for reading The Passion Translation offline, with Audio Bible, daily devotionals, and reading plans.
 
 ## Sources
 

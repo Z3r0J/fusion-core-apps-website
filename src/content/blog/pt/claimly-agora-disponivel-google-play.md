@@ -1,179 +1,196 @@
 ---
-title: "Claimly agora está no Google Play: rastreador de garantias com OCR"
-description: "Claimly é um rastreador de garantias e scanner de recibos para Android. Escaneie com OCR, rastreie várias garantias por produto e receba alertas."
+title: "Claimly: o que o app faz, recursos e como usar"
+description: "Claimly é um app gratuito para Android que lê recibos e acompanha garantias da loja, do fabricante e estendidas com alertas. Recursos, preço e como usar."
 translationKey: "claimly-google-play-launch"
 publishedAt: "2026-04-17"
+updatedAt: "2026-10-16"
 author: "FusionCore Apps"
-tags: ["claimly", "rastreador de garantias", "scanner de recibos", "android", "lançamento", "fusioncore apps"]
+tags: ["claimly", "rastreador de garantias", "scanner de recibos", "android", "como usar", "fusioncore apps"]
 image: "/images/blog/claimly-agora-disponivel-google-play.png"
 ogImage: "/images/blog/pt/claimly-agora-disponivel-google-play.png"
 featured: true
+faq:
+  - question: "O Claimly é gratuito?"
+    answer: "Sim. O Claimly é gratuito para baixar no Google Play. A versão gratuita mostra anúncios, e o Premium é uma compra opcional dentro do app que remove os anúncios e libera os limites da versão gratuita."
+  - question: "O Claimly funciona offline?"
+    answer: "Sim, menos a leitura de recibos. Você consegue ver o inventário, gerenciar garantias e abrir anexos sem conexão; para escanear um recibo, precisa de internet."
+  - question: "Preciso de uma conta para usar o Claimly?"
+    answer: "Não. Você abre o app e começa a adicionar produtos. O backup é um arquivo .zip que você mesmo exporta e restaura, então trocar de celular também não exige conta."
+  - question: "O Claimly está disponível para iPhone?"
+    answer: "Não. O Claimly é um app para Android, disponível no Google Play para Android 7.0 ou superior."
+  - question: "É o mesmo Claimly dos apps de sinistros de seguro?"
+    answer: "Não. Outros apps sem relação também usam o nome Claimly. Este é o Claimly: Warranty & Receipts, da FusionCore Apps, publicado no Google Play como com.fusioncoreapps.claimly, e serve para guardar recibos e garantias de produtos."
 ---
 
-## O Problema que Ninguém Resolve
+O Claimly é um app gratuito para Android que guarda seus recibos e garantias em um só lugar: você escaneia um recibo, a IA preenche o produto, a loja, a data e o preço, e o Claimly faz a contagem regressiva de cada garantia e avisa antes de ela vencer. Ele não pede conta, guarda o inventário no seu celular e está no Google Play desde abril de 2026.
 
-Você compra um notebook. Ele vem com um ano de garantia do fabricante, 90 dias de devolução na loja e um plano de proteção estendida que você pagou separado. Você guarda o recibo em uma gaveta prometendo organizar depois.
+Veja o que ele faz, todos os recursos, como configurar e o que as versões gratuita e Premium incluem.
 
-Dezoito meses se passam. O notebook para de carregar. Você vasculha essa gaveta e não encontra nada.
+[Baixar o Claimly no Google Play →](https://play.google.com/store/apps/details?id=com.fusioncoreapps.claimly)
 
-Isso acontece o tempo todo — e custa dinheiro de verdade para as pessoas. A garantia era válida. O produto tinha um defeito. Mas sem comprovante de compra nem registro das datas de cobertura, não há nada a fazer.
+**Neste guia:**
 
-Os apps de rastreamento de garantias existentes no Google Play não resolveram bem esse problema. A maioria exige entrada manual de dados, limita a uma única garantia por produto e não tem atualizações relevantes há anos. A reclamação #1 nas avaliações da concorrência é sempre a mesma: não é possível rastrear múltiplas garantias em um único produto.
+- [Claimly em resumo](#claimly-em-resumo)
+- [O que o Claimly faz](#o-que-o-claimly-faz)
+- [Principais recursos](#principais-recursos)
+- [Como usar o Claimly](#como-usar-o-claimly)
+- [Gratuito vs. Premium](#gratuito-vs-premium)
+- [Perguntas frequentes](#perguntas-frequentes)
 
-Essa é exatamente a lacuna que o Claimly preenche.
+## Claimly em resumo
 
----
+| Item | Claimly |
+| --- | --- |
+| O que é | Leitor de recibos, rastreador de garantias e inventário pessoal |
+| Plataforma | Android 7.0 ou superior, no Google Play |
+| Preço | Gratuito para baixar, com anúncios e compras opcionais dentro do app |
+| Conta | Não precisa |
+| Offline | Tudo, menos a leitura de recibos |
+| Versão atual | 1.1.4, publicada em 9 de setembro de 2026 |
+| Desenvolvedor | FusionCore Apps |
 
-## Apresentando Claimly: Rastreador de Recibos
+## O que o Claimly faz
 
-**Claimly: Rastreador de Recibos** é um novo app Android da FusionCore Apps que oferece um inventário pessoal de tudo que você possui — com escaneamento automático de recibos por OCR, múltiplas garantias por produto, alertas inteligentes de vencimento e suporte completo offline.
+Você compra um notebook. Ele vem com um ano de garantia do fabricante, 90 dias para troca na loja e um plano de proteção estendida que você pagou à parte. Você guarda o recibo em uma gaveta e promete organizar depois.
 
-[Baixar Claimly no Google Play →](https://play.google.com/store/apps/details?id=com.fusioncoreapps.claimly)
+Dezoito meses se passam. O notebook para de carregar. Você revira a gaveta e não encontra nada.
 
-Funciona sem conta. Funciona sem internet. E leva menos de 30 segundos para adicionar seu primeiro produto.
+O plano estendido ainda cobria. O produto tinha defeito. Mas sem comprovante de compra nem registro das datas de cobertura, não há o que fazer. O Claimly foi feito para esse momento: cada recibo, garantia e documento fica no produto a que pertence, e o app avisa antes de uma garantia vencer, enquanto ainda dá para acionar.
 
----
+## Principais recursos
 
-## Funcionalidades Principais
+### Leitura de recibos
 
-### Escaneamento de Recibos com OCR
-
-Aponte a câmera para qualquer recibo impresso e o Claimly faz o resto. A IA no dispositivo lê o recibo e extrai automaticamente:
+Aponte a câmera para um recibo impresso e o Claimly lê com IA para preencher:
 
 - Nome do produto
 - Nome da loja
 - Data da compra
 - Valor total
 
-O formulário é preenchido instantaneamente. Você revisa, corrige o que precisar e salva. Sem necessidade de digitar nada. O escaneamento OCR requer conexão com a internet.
+Você revisa o formulário, corrige o que for preciso e salva. A leitura precisa de conexão com a internet; você também pode adicionar um produto à mão.
 
-O plano inicial inclui 5 escaneamentos OCR por mês. O Premium desbloqueia escaneamentos ilimitados.
+### Várias garantias por produto
 
-### Múltiplas Garantias por Produto
+A maioria dos produtos vem com coberturas em camadas que é fácil perder de vista:
 
-Essa é a funcionalidade que diferencia o Claimly de todos os outros apps de rastreamento de garantias no Google Play.
-
-A maioria dos produtos vem com coberturas em camadas que são fáceis de perder de vista:
-
-| Tipo de Garantia | O que Cobre |
+| Tipo de garantia | O que cobre |
 |---|---|
-| **Garantia do fabricante** | Defeitos da marca, tipicamente 1–2 anos |
-| **Garantia da loja** | Período de devolução ou troca do varejista |
-| **Cobertura estendida** | Qualquer plano de proteção que você comprou separado |
+| **Garantia do fabricante** | Defeitos da marca, normalmente de 1 a 2 anos |
+| **Garantia da loja** | Prazo de troca ou devolução do varejista |
+| **Cobertura estendida** | Qualquer plano de proteção que você comprou à parte |
 
-Outros apps te obrigam a escolher uma. O Claimly rastreia as três em um único registro de produto, cada uma com sua data de início, data de vencimento e temporizador de contagem regressiva.
+O Claimly registra as três no mesmo produto, cada uma com data de início, data de vencimento e contagem regressiva. O app foi construído em torno desse recurso.
 
-Os badges de status usam cores para mostrar o que está acontecendo de relance — verde para cobertura ativa com bastante tempo, âmbar para garantias vencendo em breve, e vermelho para as que já expiraram.
+Os selos de status usam cores para mostrar de relance o que está acontecendo: verde para cobertura ativa com tempo de sobra, âmbar para garantias perto de vencer e vermelho para as que já venceram.
 
-### Alertas Inteligentes de Vencimento
+### Alertas de vencimento
 
-O Claimly monitora suas garantias em segundo plano e envia notificações automaticamente:
+O Claimly envia notificações antes de uma garantia acabar:
 
-- **30 dias antes do vencimento** — tempo suficiente para decidir se renova ou faz uma reclamação
-- **7 dias antes do vencimento** — um lembrete claro para agir
-- **1 dia antes do vencimento** — aviso final antes do fim da cobertura
+- **30 dias antes** — tempo suficiente para decidir se renova ou aciona a garantia
+- **7 dias antes** — um lembrete claro para agir
+- **1 dia antes** — o último aviso antes do fim da cobertura
 
-O **Painel de Prioridades** na tela inicial mostra seus produtos mais urgentes no topo com um botão de ação direta. Você nunca precisa lembrar de verificar — o Claimly avisa quando algo precisa de atenção.
+O **Painel de prioridades** da tela inicial mostra no topo os produtos mais urgentes, com um botão de ação direta. No Premium, você personaliza o calendário de avisos. Desde a versão 1.1.4, os alertas de garantia e os lembretes gerais do app usam canais de notificação separados, então você pode silenciar os lembretes e manter os alertas.
 
-Os usuários Premium podem personalizar o calendário de notificações de acordo com quanto tempo de antecedência preferem ser lembrados.
+### Inventário com anexos
 
-### Inventário de Produtos com Anexos
-
-Cada registro de produto é um arquivo completo. Anexe:
+Cada produto é uma pasta completa. Anexe:
 
 - Fotos do produto
-- Recibos escaneados ou faturas PDF carregadas
-- Fotos do cartão de garantia
+- Recibos escaneados ou notas fiscais em PDF
+- Fotos do certificado de garantia
 - Manuais em PDF ou contratos de serviço
 
-Tudo que você precisaria para registrar uma reclamação fica em um só lugar, acessível com um toque. Os produtos são organizados por categorias — Eletrônicos, Casa, Eletrodomésticos, Roupas, Veículos e mais — e o inventário completo é pesquisável e filtrável.
+Tudo o que você precisa para acionar a garantia fica em um só lugar. Os produtos são organizados por categorias (Eletrônicos, Casa, Eletrodomésticos, Roupas, Veículos e mais), e o inventário inteiro pode ser pesquisado e filtrado.
 
-### Privacidade em Primeiro Lugar
+### Backup e restauração
 
-O Claimly não requer conta. Seus dados ficam no seu dispositivo — sem sincronização na nuvem, sem login, sem informações pessoais coletadas além do que você mesmo insere. O escaneamento OCR requer conexão com a internet; todas as outras funcionalidades (navegar pelo inventário, gerenciar garantias, visualizar anexos) funcionam completamente offline.
+Chegou na versão 1.1.4: exporte seus produtos, garantias, recibos e fotos para um único arquivo .zip e restaure tudo em um celular novo. Funciona sem conta, então trocar de celular não significa mais começar do zero.
 
-A única permissão adicional que o Claimly precisa é acesso à câmera — e apenas quando você escolhe escanear um recibo.
+### Sem conta, e o que sai do seu celular
 
-### Modo Escuro como Padrão
+O Claimly não pede conta nem login, e o inventário fica salvo no seu aparelho. Ver o inventário, gerenciar garantias e abrir anexos funciona offline. A leitura de recibos precisa de internet porque a imagem pode passar por um serviço de reconhecimento de imagem para ler o texto; nossa política de privacidade diz que as imagens dos recibos não ficam salvas nos nossos servidores e que só os dados extraídos são guardados, no seu aparelho. A câmera só é usada quando você escolhe escanear.
 
-O Claimly vem com uma interface moderna em modo escuro como experiência padrão, com badges de status codificados por cores que são fáceis de ler em qualquer condição de iluminação.
+A versão gratuita mostra anúncios, então alguns dados saem do celular, sim. A seção Segurança dos dados do Claimly no Google Play lista fotos, histórico de compras, interações com o app, registros de falhas e diagnósticos, e IDs do dispositivo entre os dados que podem ser coletados ou compartilhados, para fins como funcionamento do app, análises e publicidade, com criptografia em trânsito, e a página diz que não há como pedir a exclusão dos dados (verificado em 16 de outubro de 2026). Leia essa seção e a nossa [política de privacidade](/pt/privacy) antes de instalar.
 
----
+### Modo escuro como padrão
 
-## Plano Inicial vs. Premium
+O Claimly vem com interface escura por padrão, com selos de status coloridos fáceis de ler em qualquer luz.
 
-| Funcionalidade | Plano Inicial (sem custo) | Premium |
+## Como usar o Claimly
+
+1. [Baixe o Claimly no Google Play](https://play.google.com/store/apps/details?id=com.fusioncoreapps.claimly).
+2. Abra o app: sem conta e sem configuração.
+3. Toque em **Adicionar produto** e escaneie um recibo ou digite os dados à mão.
+4. Adicione as datas de cada garantia (loja, fabricante, estendida) e deixe o Claimly calcular as contagens regressivas.
+5. Anexe fotos do recibo, PDFs ou imagens do certificado de garantia.
+6. Ative as notificações para receber os alertas de vencimento.
+7. Exporte um backup de vez em quando, principalmente antes de trocar de celular.
+
+Quando algo der defeito, abra o produto, veja qual garantia ainda cobre e siga o nosso [passo a passo para acionar a garantia de um produto](/pt/blog/how-to-file-warranty-claim). Tudo o que pedirem já vai estar anexado.
+
+## Gratuito vs. Premium
+
+Estes eram os limites de cada plano no lançamento, em abril de 2026. Confira a tela do Premium no app para ver os atuais. No Google Play do Brasil, as compras no app aparecem de R$ 15,99 a R$ 129,99 por item (verificado em 16 de outubro de 2026).
+
+| Recurso | Gratuito | Premium |
 |---|---|---|
 | Produtos | Até 15 | Ilimitados |
-| Escaneamentos OCR | 5 por mês | Ilimitados |
+| Leituras de recibos | 5 por mês | Ilimitadas |
 | Alertas de garantia (30/7/1 dia) | Incluído | Incluído |
 | Anexos | Incluído | Incluído |
 | Modo escuro | Incluído | Incluído |
 | Calendário de alertas personalizado | — | Incluído |
 | Sem anúncios | — | Incluído |
 
-O plano inicial cobre tudo que você precisa para se organizar. O Premium é para usuários que querem escaneamento ilimitado e sem interrupções.
+## Para quem é
 
----
+**Quem compra eletrônicos**: celulares, notebooks, TVs e fones de ouvido costumam ter garantias do fabricante e da loja que se sobrepõem. Saiba exatamente o que está coberto e até quando.
 
-## Como o Claimly Se Compara
+**Quem tem casa, própria ou alugada**: eletrodomésticos, móveis e ar-condicionado vêm com garantias fáceis de esquecer.
 
-Sem citar nomes: todos os outros apps de rastreamento de garantias atualmente no Google Play têm pelo menos uma dessas limitações — entrada de dados somente manual, uma única vaga de garantia por produto, cadastro obrigatório de conta, ou uma interface que não é atualizada desde 2019.
+**Famílias**: todos os produtos da casa em um só inventário organizado por categorias.
 
-O Claimly foi construído especificamente para resolver as quatro:
+**Pequenos negócios**: garantias de equipamentos, ferramentas e aparelhos, sem planilhas nem papelada.
 
-- **Preenchimento automático com OCR** em vez de entrada manual
-- **Múltiplas garantias por produto** — a funcionalidade mais solicitada que a concorrência ainda não tem
-- **Sem conta necessária** — abra o app e comece imediatamente
-- **Interface moderna** com modo escuro e status codificado por cores desde o primeiro dia
+**Qualquer pessoa que já pagou por um conserto que a garantia deveria cobrir.**
 
----
+## Notas do lançamento: Claimly no Google Play
 
-## Para Quem É o Claimly?
+O Claimly começou como beta fechado em março de 2026 e chegou à produção no Google Play em abril de 2026; contamos [como o requisito de 12 testadores definiu esse calendário](/pt/blog/google-play-12-testers-requirement). Ele saiu com leitura de recibos, várias garantias por produto, alertas de vencimento e anexos. A primeira grande novidade, o backup e a restauração, chegou na versão 1.1.4, em setembro de 2026.
 
-**Compradores de eletrônicos** — telefones, notebooks, TVs e fones de ouvido frequentemente têm garantias sobrepostas do fabricante e da loja. Saiba exatamente o que está coberto e até quando.
+Ainda na lista desde o lançamento: sincronização entre aparelhos e exportação do inventário para CSV ou PDF, além do que os usuários mais pedirem. Se quiser sugerir um recurso, escreva para a gente pela nossa [página de contato](/pt/contact).
 
-**Proprietários e inquilinos** — eletrodomésticos, móveis e equipamentos de climatização vêm com garantias fáceis de esquecer. O Claimly mantém tudo organizado sem nenhum sistema de arquivo necessário.
+Perdeu a nota fiscal de algo que quebrou? Veja [onde achar o comprovante de compra sem nota fiscal](/pt/blog/comprovante-de-compra-garantia-sem-nota-fiscal). Na [página do Claimly](/pt/apps/claimly-receipt-tracker) você encontra capturas de tela do app.
 
-**Famílias** — gerencie as garantias de todos os produtos domésticos em um inventário único organizado por categoria.
+## Perguntas frequentes
 
-**Pequenos empresários** — rastreie garantias de equipamentos, ferramentas e dispositivos sem planilhas ou papéis.
+### O Claimly é gratuito?
 
-**Qualquer um que já pagou por um reparo que deveria ter sido coberto** — se isso aconteceu com você uma vez, o Claimly é como você garante que não aconteça de novo.
+Sim. O Claimly é gratuito para baixar no Google Play. A versão gratuita mostra anúncios, e o Premium é uma compra opcional dentro do app que remove os anúncios e libera os limites da versão gratuita.
 
----
+### O Claimly funciona offline?
 
-## Como Começar
+Sim, menos a leitura de recibos. Você consegue ver o inventário, gerenciar garantias e abrir anexos sem conexão; para escanear um recibo, precisa de internet.
 
-1. [Baixe o Claimly no Google Play](https://play.google.com/store/apps/details?id=com.fusioncoreapps.claimly)
-2. Abra o app — sem conta nem configuração necessária
-3. Toque em **Adicionar Produto**, depois escaneie um recibo ou insira os detalhes manualmente
-4. Adicione as datas de garantia e deixe o Claimly calcular a contagem regressiva
-5. Anexe fotos de recibos, PDFs ou imagens de cartões de garantia
-6. Ative as notificações e deixe o Claimly cuidar do resto
+### Preciso de uma conta para usar o Claimly?
 
-O primeiro produto leva menos de dois minutos. Depois, escanear um novo recibo vira um hábito de 30 segundos.
+Não. Você abre o app e começa a adicionar produtos. O backup é um arquivo .zip que você mesmo exporta e restaura, então trocar de celular também não exige conta.
 
----
+### O Claimly está disponível para iPhone?
 
-## O que Vem a Seguir
+Não. O Claimly é um app para Android, disponível no Google Play para Android 7.0 ou superior.
 
-O Claimly lançou com o conjunto de funcionalidades principais bem definido. O roteiro inclui:
+### É o mesmo Claimly dos apps de sinistros de seguro?
 
-- **Backup na nuvem e sincronização entre dispositivos** — faça backup do seu inventário sem perder dados ao trocar de celular
-- **Exportação para CSV e PDF** — exporte seu inventário completo de garantias para seguros ou registros
-- Mais funcionalidades impulsionadas diretamente pelo feedback dos usuários
-
-A FusionCore Apps desenvolve e mantém ativamente todos os seus apps. Se você tem uma sugestão de funcionalidade, o contato de suporte está em [fusioncoreapps.com](https://www.fusioncoreapps.com).
-
----
+Não. Outros apps sem relação também usam o nome Claimly. Este é o Claimly: Warranty & Receipts, da FusionCore Apps, publicado no Google Play como com.fusioncoreapps.claimly, e serve para guardar recibos e garantias de produtos.
 
 ## Baixe o Claimly
 
-O Claimly está disponível agora no Google Play — sem grupos de teste, sem lista de espera, sem conta.
+O Claimly é gratuito no Google Play: sem grupo de teste, sem lista de espera e sem conta.
 
-[Obtenha o Claimly no Google Play →](https://play.google.com/store/apps/details?id=com.fusioncoreapps.claimly)
+[Baixe o Claimly no Google Play →](https://play.google.com/store/apps/details?id=com.fusioncoreapps.claimly)
 
-[Ver Claimly na nossa página de apps →](/pt/apps/claimly-receipt-tracker)
-
-Também da FusionCore Apps: [CartWise](/pt/apps/cartwise-grocery-shopping-list) para listas de compras, [Bible TPT](/pt/apps/bible-tpt) para The Passion Translation, e [Biblia TLA](/pt/apps/biblia-tla) em espanhol.
+Também da FusionCore Apps: [CartWise](/pt/apps/cartwise-grocery-shopping-list) para listas de compras, [Bible TPT](/pt/apps/bible-tpt) para The Passion Translation e [Biblia TLA](/pt/apps/biblia-tla) em espanhol.

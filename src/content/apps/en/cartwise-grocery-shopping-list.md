@@ -25,11 +25,12 @@ downloads: "100+"
 - **Smart templates** — one-tap lists for Picnic, Home Office, Camping, Party, and more
 - **Organized lists** — auto-categorization, custom icons and colors
 - **Smart reminders** — alerts for grocery runs so you never forget
+- **Works offline** — add, edit and check off items without a connection; shared changes sync when you reconnect
 
 ## Perfect for
 Weekly grocery shopping, family meal planning, budget-conscious shoppers, and households that want to know their total before they reach the checkout.
 
 ## Why CartWise?
-CartWise is the only grocery list app that **adds up your cart in real time** while you shop — so no more surprise totals at the register. Combine that with voice input, AI lists, WhatsApp sharing, and spending analytics, and you have the smartest grocery app available.
+CartWise is a grocery list app that **adds up your cart in real time** while you shop — so no more surprise totals at the register. Combine that with voice input, AI lists, WhatsApp sharing, and spending analytics, and you have everything you need for the weekly shop in one free app.
 
 Want the full tour? Visit the [CartWise landing page](/cartwise), or see [how CartWise compares](/compare-apps) with Bring!, Listonic, AnyList, and OurGroceries.

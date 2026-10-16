@@ -3,6 +3,7 @@ import AppGrid from "@/components/AppGrid.tsx";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { useTranslations, type Locale } from "@/i18n/utils";
+import { withBrand } from "@/lib/seo";
 import { getCollection } from "astro:content";
 
 export function getStaticPaths() {
@@ -39,7 +40,7 @@ const categories = [...new Set(apps.map((a) => a.category))];
 <BaseLayout
 	{canonical}
 	description={t("apps.metaDescription")}
-	title={`${t("apps.title")} — FusionCore`}
+	title={withBrand(t("apps.title"))}
 	locale={locale}
 >
 	<Breadcrumbs items={[

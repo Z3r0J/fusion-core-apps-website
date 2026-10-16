@@ -3,6 +3,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import LegalLayout from "@/components/LegalLayout.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { useTranslations, type Locale } from "@/i18n/utils";
+import { withBrand } from "@/lib/seo";
 import { getEntry } from "astro:content";
 
 export function getStaticPaths() {
@@ -16,7 +17,7 @@ const terms = await getEntry("legal", `terms-${locale}` as "terms-es" | "terms-p
 if (!terms) throw new Error(`Terms not found for locale: ${locale}`);
 const { Content } = await terms.render();
 
-const title = `${terms.data.title} — FusionCore Apps`;
+const title = withBrand(terms.data.title);
 const description = t("legal.termsDescription");
 const canonical = new URL(`/${locale}/terms`, Astro.site).href;
 ---

@@ -4,6 +4,7 @@ import RelatedPosts from "@/components/RelatedPosts.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { useTranslations, type Locale } from "@/i18n/utils";
+import { withBrand } from "@/lib/seo";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog", ({ slug }) => slug.startsWith("en/"));
@@ -17,7 +18,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const postSlug = post.slug.replace("en/", "");
 
-const title = `${post.data.title} | FusionCore`;
+const title = withBrand(post.data.title);
 const description = post.data.description;
 const canonical = new URL(`/blog/${postSlug}`, Astro.site).href;
 // Prefer the generated 1200x630 social card; fall back to the in-page hero, then

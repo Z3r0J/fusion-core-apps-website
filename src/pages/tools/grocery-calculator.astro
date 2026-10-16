@@ -1,0 +1,18 @@
+---
+import GroceryCalculatorContent from "@/components/GroceryCalculatorContent.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations } from "@/i18n/utils";
+
+const t = useTranslations("en");
+const canonical = new URL("/tools/grocery-calculator", Astro.site).href;
+---
+
+<BaseLayout
+	{canonical}
+	description={t("tools.groceryCalculator.meta.description")}
+	locale="en"
+	showFooterCta={false}
+	title={t("tools.groceryCalculator.meta.title")}
+>
+	<GroceryCalculatorContent locale="en" />
+</BaseLayout>

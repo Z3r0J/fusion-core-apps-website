@@ -1,7 +1,7 @@
 ---
 title: "Expiroo: Controle de Validade de Alimentos"
 tagline: "Controle as datas de validade offline — sem conta, seu inventário fica no seu aparelho."
-description: "O Expiroo controla as datas de validade de tudo o que está na sua geladeira e despensa. É local-first: seu inventário fica salvo no seu aparelho e funciona totalmente offline — sem conta, sem cadastro. Grátis (com anúncios); um upgrade Pro opcional de compra única libera produtos ilimitados."
+description: "Expiroo controla a validade do que está na geladeira e despensa. Offline e sem conta: seus dados ficam no aparelho. Grátis com anúncios; Pro de compra única."
 icon: "/images/apps/expiroo/icon.png"
 playUrl: "https://play.google.com/apps/testing/com.fusioncoreapps.expiroo"
 category: "Productivity"

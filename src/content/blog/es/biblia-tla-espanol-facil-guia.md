@@ -69,6 +69,8 @@ Las dos dicen lo mismo. La diferencia es que la TLA **explica las palabras que h
 
 En nuestra [guía para empezar a leer la Biblia](/es/blog/como-empezar-a-leer-la-biblia) comparamos también Juan 3:16, donde la TLA evita la palabra «unigénito».
 
+Y si quieres más ejemplos, en nuestros [versículos para la ansiedad](/es/blog/versiculos-para-la-ansiedad) tienes 12 pasajes en la TLA y la Reina-Valera 1960, lado a lado.
+
 ## TLA, NTV, DHH, NVI, RVR1960 o NBLA: cuál elegir
 
 Ninguna versión es «la correcta» para todo. La diferencia está en cuánto se acercan a la palabra exacta del original y cuánto priorizan que se entienda el sentido.
@@ -107,7 +109,7 @@ Creamos [Biblia TLA en Español Fácil](/es/apps/biblia-tla) pensando en la lect
 
 - **La TLA completa, sin internet.** Todo el texto se guarda en tu teléfono: puedes leer en el metro, en un avión o donde no haya señal.
 - **Audio Biblia** con control de velocidad, para escuchar mientras manejas, caminas o descansas.
-- **Planes de lectura de 14 días** que descargas y sigues día por día.
+- **Planes de lectura de 14 días.** Descargas el plan una vez (en la versión gratis se desbloquea viendo un anuncio corto) y lo sigues día por día.
 - **Versículo del día** como punto de partida para tu lectura.
 - **Resaltados y favoritos** para guardar los versículos que más te impactan.
 - **Modo oscuro, tamaño y tipo de letra** para leer cómodo de día o de noche.

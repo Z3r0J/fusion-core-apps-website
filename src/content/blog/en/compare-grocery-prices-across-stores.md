@@ -42,6 +42,8 @@ Fill in the price of every item at each store you are considering. You can do it
 
 A list app with prices makes this painless. In [CartWise](/cartwise), you enter the price as you add each item and the app keeps a **running total** at the top of the list. Build the same list for each store and you get one total per store, side by side — no spreadsheet needed. ([Here's how the running total works](/blog/grocery-list-app-adds-up-total).)
 
+Prefer not to install anything? Our [free grocery calculator](/tools/grocery-calculator) multiplies price by quantity and adds up the cart in your browser, so you can note each store's total and compare them.
+
 ## Step 3: Normalize With Unit Prices
 
 When sizes differ, compare the **unit price** — per kilogram, liter, 100 grams, or per item. Most shelf labels print it in small type; otherwise divide the price by the quantity.

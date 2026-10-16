@@ -5,7 +5,7 @@ competitorName: "Listonic"
 competitorSlug: "listonic"
 translationKey: "cartwise-vs-listonic"
 updatedAt: "2026-06"
-competitorRating: 4.7
+competitorRating: 4.6
 competitorReviewCount: "310K+"
 competitorIconEmoji: "📝"
 competitorIcon: "/images/comparisons/listonic.png"

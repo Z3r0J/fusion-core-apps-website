@@ -1,0 +1,354 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { getLocalePath, useTranslations, type Locale } from "@/i18n/utils";
+import { getCollection } from "astro:content";
+
+/* eslint-disable astro/no-set-html-directive -- only the JSON-LD <script> below uses set:html; its data is ours and "<" is escaped */
+// Body of /about, shared by both route trees (src/pages/about.astro for en,
+// src/pages/[locale]/about.astro for es + pt). Facts come from the app content
+// collection and copy already public on the site; keep it that way.
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const PLAY_DEV_URL = "https://play.google.com/store/apps/dev?id=5173536626513659112";
+const ORG_ID = "https://www.fusioncoreapps.com/#organization";
+const SITE_ID = "https://www.fusioncoreapps.com/#website";
+const HREFLANG: Record<Locale, string> = { en: "en", es: "es-419", pt: "pt-BR" };
+// Site-wide total shown on the homepage and footer; keep in sync with them.
+const TOTAL_DOWNLOADS = "10K+";
+
+const pagePath = getLocalePath("/about", locale);
+const pageUrl = new URL(pagePath, Astro.site).href;
+
+const entries = await getCollection("apps", ({ slug }) => slug.startsWith(`${locale}/`));
+const bySlug = new Map(entries.map((entry) => [entry.slug.replace(`${locale}/`, ""), entry]));
+
+// Display order matches the footer. CartWise links to its flagship landing.
+const APPS: Array<{ slug: string; name: string; key: string; path: string }> = [
+	{ slug: "bible-tpt", name: "Bible TPT", key: "bibleTpt", path: "/apps/bible-tpt" },
+	{ slug: "biblia-tla", name: "Biblia TLA", key: "bibliaTla", path: "/apps/biblia-tla" },
+	{ slug: "cartwise-grocery-shopping-list", name: "CartWise", key: "cartwise", path: "/cartwise" },
+	{ slug: "claimly-receipt-tracker", name: "Claimly", key: "claimly", path: "/apps/claimly-receipt-tracker" },
+	{ slug: "expiroo", name: "Expiroo", key: "expiroo", path: "/apps/expiroo" },
+];
+
+const apps = APPS.map((app) => {
+	const data = bySlug.get(app.slug)?.data;
+	return {
+		...app,
+		href: getLocalePath(app.path, locale),
+		icon: data?.icon,
+		beta: data?.beta ?? false,
+		line: t(`about.apps.${app.key}`),
+	};
+});
+
+const stats = [
+	{ value: TOTAL_DOWNLOADS, label: t("about.stats.downloads") },
+	{ value: String(entries.length), label: t("about.stats.apps") },
+	{ value: t("about.stats.free"), label: t("about.stats.freeLabel") },
+];
+
+const principles = ["free", "offline", "privacy", "team"].map((key) => ({
+	key,
+	title: t(`about.how.${key}.title`),
+	body: t(`about.how.${key}.body`),
+}));
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "AboutPage",
+	"@id": `${pageUrl}#webpage`,
+	"url": pageUrl,
+	"name": t("about.meta.title"),
+	"description": t("about.meta.description"),
+	"inLanguage": HREFLANG[locale as Locale],
+	"isPartOf": { "@id": SITE_ID },
+	"about": { "@id": ORG_ID },
+	"mainEntity": { "@id": ORG_ID },
+};
+---
+
+<script
+	is:inline
+	set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
+	type="application/ld+json"
+></script>
+
+<Breadcrumbs
+	items={[
+		{ label: t("breadcrumbs.home"), href: getLocalePath("/", locale) },
+		{ label: t("breadcrumbs.about"), href: pagePath },
+	]}
+/>
+
+<!-- Hero -->
+<header class="about-hero">
+	<div class="section-label mb-3">
+		<span class="section-label__dot"></span>
+		<span>{t("about.eyebrow")}</span>
+	</div>
+	<h1 class="page-title mb-5">{t("about.title")}</h1>
+	<p class="about-lead">{t("about.lead")}</p>
+
+	<dl class="about-stats">
+		{
+			stats.map((stat) => (
+				<div class="about-stat">
+					<dt class="about-stat__label">{stat.label}</dt>
+					<dd class="editorial-num text-gray-900 dark:text-white">{stat.value}</dd>
+				</div>
+			))
+		}
+	</dl>
+</header>
+
+<!-- Apps -->
+<section aria-labelledby="about-apps" class="mt-16 sm:mt-20">
+	<h2 class="section-title mb-2" id="about-apps">{t("about.apps.title")}</h2>
+	<p class="mb-8 text-[15px] text-gray-500 dark:text-white/55">{t("about.apps.subtitle")}</p>
+	<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		{
+			apps.map((app) => (
+				<li>
+					<a class="about-app" href={app.href}>
+						{app.icon && (
+							<img
+								alt=""
+								class="h-14 w-14 flex-shrink-0 rounded-[14px] shadow-sm ring-1 ring-black/5 dark:ring-white/10"
+								decoding="async"
+								height="56"
+								loading="lazy"
+								src={app.icon}
+								width="56"
+							/>
+						)}
+						<span class="min-w-0">
+							<span class="flex flex-wrap items-center gap-2">
+								<span class="about-app__name">{app.name}</span>
+								{app.beta && <span class="about-chip about-chip--beta">{t("about.apps.beta")}</span>}
+							</span>
+							<span class="about-app__line">{app.line}</span>
+						</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</section>
+
+<!-- How we work -->
+<section aria-labelledby="about-how" class="mt-16 sm:mt-20">
+	<h2 class="section-title mb-8" id="about-how">{t("about.how.title")}</h2>
+	<div class="grid gap-x-10 gap-y-2 md:grid-cols-2">
+		{
+			principles.map((item) => (
+				<div class="about-principle">
+					<h3 class="subsection-title mb-2">{item.title}</h3>
+					<p class="about-principle__body">{item.body}</p>
+					{item.key === "privacy" && (
+						<a class="about-link mt-3" href={getLocalePath("/privacy", locale)}>
+							{t("about.how.privacy.link")}
+						</a>
+					)}
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<!-- Links -->
+<section aria-labelledby="about-links" class="mt-16 mb-4 sm:mt-20">
+	<h2 class="section-title mb-8" id="about-links">{t("about.links.title")}</h2>
+	<div class="grid gap-4 md:grid-cols-2">
+		<a class="contact-method" href={PLAY_DEV_URL} rel="noopener noreferrer" target="_blank">
+			<span
+				class="contact-method__icon"
+				style="background:rgba(46,207,255,0.09);border:1px solid rgba(46,207,255,0.16);"
+			>
+				<svg aria-hidden="true" fill="none" height="17" viewBox="0 0 24 24" width="17">
+					<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#2ecfff" opacity="0.9"></path>
+					<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#ffc107" opacity="0.9"></path>
+					<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="#ff3e00"></path>
+					<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="#00e081" opacity="0.9"></path>
+				</svg>
+			</span>
+			<span class="contact-method__title min-w-0">
+				{t("about.links.play.title")}
+				<span class="contact-method__body mt-0.5 block font-sans font-normal tracking-normal dark:text-white/60">
+					{t("about.links.play.body")}
+				</span>
+			</span>
+		</a>
+		<a class="contact-method" href={getLocalePath("/contact", locale)}>
+			<span
+				class="contact-method__icon"
+				style="background:rgba(255,138,42,0.09);border:1px solid rgba(255,138,42,0.16);"
+			>
+				<svg aria-hidden="true" fill="none" height="17" stroke="rgba(255,138,42,0.85)" stroke-width="1.7" viewBox="0 0 24 24" width="17">
+					<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</span>
+			<span class="contact-method__title min-w-0">
+				{t("about.links.contact.title")}
+				<span class="contact-method__body mt-0.5 block font-sans font-normal tracking-normal dark:text-white/60">
+					{t("about.links.contact.body")}
+				</span>
+			</span>
+		</a>
+	</div>
+</section>
+
+<style>
+	.about-hero {
+		padding: 1.5rem 0 2.5rem;
+		border-bottom: 1px solid var(--color-gray-200);
+	}
+	:global(.dark) .about-hero {
+		border-bottom-color: rgba(255, 255, 255, 0.08);
+	}
+
+	.about-lead {
+		max-width: 62ch;
+		font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+		line-height: 1.65;
+		color: var(--color-gray-600);
+	}
+	:global(.dark) .about-lead {
+		color: rgba(255, 255, 255, 0.65);
+	}
+
+	.about-stats {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.25rem 2.5rem;
+		margin-top: 2rem;
+	}
+
+	.about-stat {
+		display: flex;
+		flex-direction: column-reverse;
+		gap: 0.375rem;
+	}
+
+	.about-stat__label {
+		font-size: 12px;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--color-gray-500);
+	}
+	:global(.dark) .about-stat__label {
+		color: rgba(255, 255, 255, 0.45);
+	}
+
+	.about-app {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		height: 100%;
+		padding: 1.125rem;
+		border-radius: 18px;
+		border: 1px solid rgba(226, 232, 240, 0.95);
+		background: #fff;
+		transition:
+			border-color 0.2s ease,
+			transform 0.2s ease;
+	}
+	.about-app:hover {
+		border-color: rgba(46, 207, 255, 0.45);
+		transform: translateY(-2px);
+	}
+	.about-app:focus-visible {
+		outline: 2px solid var(--color-brand-500);
+		outline-offset: 2px;
+	}
+	:global(.dark) .about-app {
+		background: rgba(255, 255, 255, 0.025);
+		border-color: rgba(255, 255, 255, 0.07);
+	}
+	:global(.dark) .about-app:hover {
+		border-color: rgba(46, 207, 255, 0.35);
+	}
+
+	.about-app__name {
+		font-family: var(--font-display);
+		font-size: 1.0625rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		color: var(--color-gray-900);
+	}
+	:global(.dark) .about-app__name {
+		color: #fff;
+	}
+
+	.about-app__line {
+		display: block;
+		margin-top: 0.3rem;
+		font-size: 14px;
+		line-height: 1.6;
+		color: var(--color-gray-600);
+	}
+	:global(.dark) .about-app__line {
+		color: rgba(255, 255, 255, 0.6);
+	}
+
+	.about-chip {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.125rem 0.5rem;
+		border-radius: 9999px;
+		font-size: 11px;
+		font-weight: 700;
+		background: var(--color-gray-100);
+		color: var(--color-gray-600);
+	}
+	:global(.dark) .about-chip {
+		background: rgba(255, 255, 255, 0.08);
+		color: rgba(255, 255, 255, 0.65);
+	}
+	.about-chip--beta {
+		background: rgba(234, 88, 12, 0.1);
+		color: #c2410c;
+	}
+	:global(.dark) .about-chip--beta {
+		background: rgba(255, 138, 42, 0.15);
+		color: var(--color-accent-400);
+	}
+
+	.about-principle {
+		padding: 1.25rem 0;
+		border-top: 1px solid var(--color-gray-200);
+	}
+	:global(.dark) .about-principle {
+		border-top-color: rgba(255, 255, 255, 0.08);
+	}
+
+	.about-principle__body {
+		max-width: 52ch;
+		font-size: 15px;
+		line-height: 1.7;
+		color: var(--color-gray-600);
+	}
+	:global(.dark) .about-principle__body {
+		color: rgba(255, 255, 255, 0.62);
+	}
+
+	.about-link {
+		display: inline-flex;
+		font-size: 14px;
+		font-weight: 600;
+		color: var(--color-brand-700);
+		text-underline-offset: 3px;
+	}
+	.about-link:hover {
+		text-decoration: underline;
+	}
+	:global(.dark) .about-link {
+		color: var(--color-brand-400);
+	}
+</style>

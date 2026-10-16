@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { useTranslations } from "@/i18n/utils";
+import { COMPARE_APP_META, compareCopy, comparisonPath, groupByApp } from "@/lib/compareApps";
 import { getCollection } from "astro:content";
 
 const entries = await getCollection("comparisons", ({ slug }) =>
@@ -9,14 +10,21 @@ const entries = await getCollection("comparisons", ({ slug }) =>
 
 const t = useTranslations("en");
 
+// One section per app (CartWise, Claimly…), each with its own heading and cards.
+const groups = groupByApp(entries).map((group) => ({
+	...group,
+	name: COMPARE_APP_META[group.app].name,
+	ct: compareCopy(t, group.app),
+}));
+
 const hubUrl = new URL("/compare-apps", Astro.site).href;
 const structuredData = {
 	"@context": "https://schema.org",
 	"@graph": [
 		{
 			"@type": "CollectionPage",
-			name: t("cartwiseCompare.index.metaTitle"),
-			description: t("cartwiseCompare.index.metaDescription"),
+			name: t("compareHub.metaTitle"),
+			description: t("compareHub.metaDescription"),
 			url: hubUrl,
 		},
 		{
@@ -38,12 +46,14 @@ const structuredData = {
 		},
 		{
 			"@type": "ItemList",
-			itemListElement: entries.map((entry, i) => ({
-				"@type": "ListItem",
-				position: i + 1,
-				name: `CartWise vs ${entry.data.competitorName}`,
-				url: new URL(`/compare-apps/cartwise-vs-${entry.data.competitorSlug}`, Astro.site).href,
-			})),
+			itemListElement: groups
+				.flatMap((group) => group.entries.map((entry) => ({ group, entry })))
+				.map(({ group, entry }, i) => ({
+					"@type": "ListItem",
+					position: i + 1,
+					name: `${group.name} vs ${entry.data.competitorName}`,
+					url: new URL(comparisonPath("en", group.app, entry.data.competitorSlug), Astro.site).href,
+				})),
 		},
 	],
 };
@@ -53,8 +63,8 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 ---
 
 <BaseLayout
-	title={t("cartwiseCompare.index.metaTitle")}
-	description={t("cartwiseCompare.index.metaDescription")}
+	title={t("compareHub.metaTitle")}
+	description={t("compareHub.metaDescription")}
 	locale="en"
 	showFooterCta={false}
 >
@@ -71,34 +81,44 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 		<div class="mb-3">
 			<div class="inline-flex items-center gap-2 mb-4">
 				<span class="inline-block w-1.5 h-1.5 rounded-full bg-brand-500"></span>
-				<span class="text-[11px] font-bold tracking-widest uppercase text-brand-600">{t("cartwiseCompare.index.eyebrow")}</span>
+				<span class="text-[11px] font-bold tracking-widest uppercase text-brand-600">{t("compareHub.eyebrow")}</span>
 			</div>
 			<h1 class="font-display font-black text-gray-900 dark:text-gray-50 mb-3" style="font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em;">
-				{t("cartwiseCompare.index.heading")}
+				{t("compareHub.heading")}
 			</h1>
 			<p class="text-base text-gray-500 dark:text-white/55 leading-relaxed" style="max-width:640px;">
-				{t("cartwiseCompare.index.deck")}
+				{t("compareHub.deck")}
 			</p>
 		</div>
 
-		<!-- Card grid -->
-		<div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-			{entries.map((entry) => (
-				<a
-					href={`/compare-apps/cartwise-vs-${entry.data.competitorSlug}`}
-					class="block rounded-[16px] p-6 bg-white dark:bg-white/3 border border-gray-200/90 dark:border-white/7 no-underline transition-all hover:-translate-y-0.5 hover:border-brand-400/30 hover:shadow-[0_8px_24px_rgba(46,207,255,0.08)]"
-				>
-					<div class="text-[10px] font-bold tracking-[0.1em] uppercase text-brand-600 dark:text-brand-400 mb-2">
-						CartWise vs
-					</div>
-					<div class="font-display font-bold text-lg text-gray-900 dark:text-gray-50 leading-snug mb-1">
-						{entry.data.competitorName}
-					</div>
-					<div class="text-sm text-gray-400 dark:text-white/35 leading-snug">
-						{entry.data.description}
-					</div>
-				</a>
-			))}
-		</div>
+		<!-- One card grid per app -->
+		{groups.map((group) => (
+			<section class="mt-12">
+				<h2 class="font-display font-bold text-xl text-gray-900 dark:text-gray-50 mb-1">
+					{group.ct("index.heading")}
+				</h2>
+				<p class="text-sm text-gray-500 dark:text-white/55 leading-relaxed" style="max-width:640px;">
+					{group.ct("index.deck")}
+				</p>
+				<div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+					{group.entries.map((entry) => (
+						<a
+							href={comparisonPath("en", group.app, entry.data.competitorSlug)}
+							class="block rounded-[16px] p-6 bg-white dark:bg-white/3 border border-gray-200/90 dark:border-white/7 no-underline transition-all hover:-translate-y-0.5 hover:border-brand-400/30 hover:shadow-[0_8px_24px_rgba(46,207,255,0.08)]"
+						>
+							<div class="text-[10px] font-bold tracking-[0.1em] uppercase text-brand-600 dark:text-brand-400 mb-2">
+								{group.name} vs
+							</div>
+							<div class="font-display font-bold text-lg text-gray-900 dark:text-gray-50 leading-snug mb-1">
+								{entry.data.competitorName}
+							</div>
+							<div class="text-sm text-gray-400 dark:text-white/35 leading-snug">
+								{entry.data.description}
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
+		))}
 	</div>
 </BaseLayout>

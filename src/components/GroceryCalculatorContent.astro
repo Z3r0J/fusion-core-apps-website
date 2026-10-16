@@ -1,0 +1,257 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import FaqAccordion from "@/components/FaqAccordion.tsx";
+import FaqJsonLd from "@/components/FaqJsonLd.astro";
+import GroceryCalculator, { type GroceryCalculatorLabels } from "@/components/GroceryCalculator.tsx";
+import { getLocalePath, useTranslations, type Locale } from "@/i18n/utils";
+
+/* eslint-disable astro/no-set-html-directive -- only the JSON-LD <script> below uses set:html; its data is ours and "<" is escaped */
+// Body of /tools/grocery-calculator, shared by both route trees
+// (src/pages/tools/ for en, src/pages/[locale]/tools/ for es + pt).
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const k = (key: string) => t(`tools.groceryCalculator.${key}`);
+
+const PLAY_URL = "https://play.google.com/store/apps/details?id=com.fusionapps.cartwise";
+const ORG_ID = "https://www.fusioncoreapps.com/#organization";
+const HREFLANG: Record<Locale, string> = { en: "en", es: "es-419", pt: "pt-BR" };
+
+const pagePath = getLocalePath("/tools/grocery-calculator", locale);
+const pageUrl = new URL(pagePath, Astro.site).href;
+
+// `satisfies` makes TypeScript fail if a label the island expects is missing here.
+const uiKeys = {
+	listTitle: 1,
+	summaryTitle: 1,
+	colItem: 1,
+	colPrice: 1,
+	colQty: 1,
+	colTotal: 1,
+	nameLabel: 1,
+	priceLabel: 1,
+	qtyLabel: 1,
+	lineTotalLabel: 1,
+	decrease: 1,
+	increase: 1,
+	remove: 1,
+	itemFallback: 1,
+	placeholders: 1,
+	addItem: 1,
+	clearAll: 1,
+	cleared: 1,
+	undo: 1,
+	currency: 1,
+	budget: 1,
+	tax: 1,
+	optional: 1,
+	subtotal: 1,
+	taxLine: 1,
+	total: 1,
+	itemsOne: 1,
+	itemsOther: 1,
+	remaining: 1,
+	overBudget: 1,
+	onBudget: 1,
+	budgetUsed: 1,
+	saved: 1,
+} satisfies Record<keyof GroceryCalculatorLabels, 1>;
+const labels = Object.fromEntries(
+	Object.keys(uiKeys).map((key) => [key, k(`ui.${key}`)]),
+) as unknown as GroceryCalculatorLabels;
+
+const steps = [1, 2, 3, 4, 5].map((n) => k(`howTo.step${n}`));
+
+const faqs = [1, 2, 3, 4].map((n) => ({
+	question: k(`faq.q${n}`),
+	answer: k(`faq.a${n}`),
+}));
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "WebApplication",
+	"@id": `${pageUrl}#app`,
+	"name": k("schemaName"),
+	"url": pageUrl,
+	"description": k("meta.description"),
+	"applicationCategory": "FinanceApplication",
+	"operatingSystem": "Any",
+	"browserRequirements": "Requires JavaScript",
+	"inLanguage": HREFLANG[locale as Locale],
+	"isAccessibleForFree": true,
+	"offers": {
+		"@type": "Offer",
+		"price": "0",
+		"priceCurrency": "USD",
+	},
+	"publisher": { "@id": ORG_ID },
+};
+---
+
+<script
+	is:inline
+	set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
+	type="application/ld+json"
+></script>
+<FaqJsonLd faqs={faqs} />
+
+<Breadcrumbs
+	items={[
+		{ label: t("breadcrumbs.home"), href: getLocalePath("/", locale) },
+		{ label: t("breadcrumbs.groceryCalculator"), href: pagePath },
+	]}
+/>
+
+<!-- Hero: H1 + direct answer -->
+<header class="mb-8 max-w-3xl sm:mb-10">
+	<div class="section-label mb-3">
+		<span class="section-label__dot"></span>
+		<span>{k("eyebrow")}</span>
+	</div>
+	<h1 class="page-title mb-4">{k("title")}</h1>
+	<p class="gc-answer">{k("answer")}</p>
+</header>
+
+<!-- The tool (above the fold, interactive immediately) -->
+<GroceryCalculator client:load labels={labels} locale={locale} />
+
+<!-- How to use it -->
+<section aria-labelledby="gc-how-to" class="mt-16 sm:mt-20">
+	<h2 class="section-title mb-6" id="gc-how-to">{k("howTo.title")}</h2>
+	<ol class="gc-steps">
+		{
+			steps.map((step, i) => (
+				<li class="gc-step">
+					<span aria-hidden="true" class="gc-step__num">
+						{(i + 1).toString().padStart(2, "0")}
+					</span>
+					<p class="gc-step__text">{step}</p>
+				</li>
+			))
+		}
+	</ol>
+</section>
+
+<!-- CartWise CTA -->
+<section aria-labelledby="gc-cta" class="mt-16 sm:mt-20">
+	<div class="cta-panel relative overflow-hidden rounded-3xl px-6 py-8 sm:px-10 sm:py-10">
+		<div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+			<div class="flex items-start gap-4 sm:gap-5">
+				<img
+					alt=""
+					class="h-14 w-14 flex-shrink-0 rounded-[16px] shadow-[0_10px_36px_rgba(0,0,0,0.45)] ring-1 ring-white/15 sm:h-16 sm:w-16"
+					decoding="async"
+					height="64"
+					loading="lazy"
+					src="/images/apps/cartwise-grocery-shopping-list/icon.png"
+					width="64"
+				/>
+				<div class="min-w-0">
+					<p class="text-[13px] font-semibold text-brand-300">{k("cta.eyebrow")}</p>
+					<h2 class="gc-cta__title mt-1 text-white" id="gc-cta">{k("cta.title")}</h2>
+					<p class="mt-2 max-w-xl text-[15px] leading-relaxed text-white/70">{k("cta.body")}</p>
+				</div>
+			</div>
+			<div class="flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-shrink-0">
+				<a
+					class="button button--download min-h-[44px] w-full gap-2 font-bold focus:ring-white/70 focus:ring-offset-transparent sm:w-auto"
+					href={PLAY_URL}
+					rel="noopener"
+					target="_blank"
+				>
+					<svg aria-hidden="true" class="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24">
+						<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.9"></path>
+						<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"></path>
+						<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"></path>
+						<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"></path>
+					</svg>
+					{k("cta.download")}
+				</a>
+				<a
+					class="button min-h-[44px] w-full border border-white/25 text-white hover:bg-white/10 focus:ring-white/70 focus:ring-offset-transparent sm:w-auto"
+					href={getLocalePath("/cartwise", locale)}
+				>
+					{k("cta.learnMore")}
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- FAQ -->
+<section
+	aria-labelledby="gc-faq"
+	class="mt-16 border-t border-gray-200 pt-14 sm:mt-20 dark:border-white/[0.06]"
+>
+	<div class="mb-10 text-center">
+		<div class="section-label mb-3 justify-center">
+			<span class="section-label__dot"></span>
+			<span>{k("faq.eyebrow")}</span>
+		</div>
+		<h2 class="section-title" id="gc-faq">{k("faq.title")}</h2>
+	</div>
+	<FaqAccordion client:visible faqs={faqs} />
+</section>
+
+<style>
+	.gc-answer {
+		max-width: 62ch;
+		font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+		line-height: 1.6;
+		color: var(--color-gray-600);
+	}
+	:global(.dark) .gc-answer {
+		color: rgba(255, 255, 255, 0.65);
+	}
+
+	.gc-steps {
+		max-width: 56rem;
+		border-top: 1px solid var(--color-gray-200);
+	}
+	:global(.dark) .gc-steps {
+		border-top-color: rgba(255, 255, 255, 0.1);
+	}
+
+	.gc-step {
+		display: flex;
+		align-items: baseline;
+		gap: 1rem;
+		padding: 1rem 0.25rem;
+		border-bottom: 1px solid var(--color-gray-200);
+	}
+	:global(.dark) .gc-step {
+		border-bottom-color: rgba(255, 255, 255, 0.08);
+	}
+
+	.gc-step__num {
+		flex-shrink: 0;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		font-weight: 600;
+		font-variant-numeric: tabular-nums;
+		color: var(--color-brand-700);
+	}
+	:global(.dark) .gc-step__num {
+		color: var(--color-brand-400);
+	}
+
+	.gc-step__text {
+		font-size: 15.5px;
+		line-height: 1.65;
+		color: var(--color-gray-700);
+	}
+	:global(.dark) .gc-step__text {
+		color: rgba(255, 255, 255, 0.72);
+	}
+
+	.gc-cta__title {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: clamp(1.375rem, 1.1rem + 1.2vw, 1.875rem);
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+	}
+</style>

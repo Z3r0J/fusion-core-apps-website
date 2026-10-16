@@ -57,9 +57,9 @@ Not every receipt app tracks warranties, and not every warranty app scans receip
 
 ## How Claimly Scans Receipts and Tracks Warranties
 
-[Claimly: Warranty Scanner & Receipt Tracker](/apps/claimly-receipt-tracker) is a free Android app built around exactly this workflow: scan any receipt with your camera, let AI auto-extract the details, and track store, manufacturer, and extended warranties with countdown timers and expiry alerts. You can attach PDFs and photos to each product and see everything expiring soon on a high-priority dashboard.
+Claimly is a free [warranty tracker app for Android](/apps/claimly-receipt-tracker) built around exactly this workflow: scan a printed receipt with your camera, let AI fill in the details for you to review, and track store, manufacturer, and extended warranties with countdown timers and expiry alerts. You can attach PDFs and photos to each product and see everything expiring soon on a high-priority dashboard.
 
-It launched on Google Play earlier this year — you can read the [launch announcement](/blog/claimly-now-available-google-play) for the full feature rundown.
+It launched on Google Play in April 2026. For every feature and how to set it up, see [what Claimly does and how to use it](/blog/claimly-now-available-google-play).
 
 ## How to File a Warranty Claim Before the Deadline
 
@@ -89,4 +89,4 @@ Claimly is a free warranty scanner for Android that scans receipts with AI, trac
 
 ## Stop Losing Warranties to a Junk Drawer
 
-Every warranty you forget is money you already paid for and never used. [Download Claimly free on Google Play →](/apps/claimly-receipt-tracker)
+Every warranty you forget is money you already paid for and never used. [Get Claimly, the free warranty tracker app →](/apps/claimly-receipt-tracker)

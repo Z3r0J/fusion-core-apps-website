@@ -82,7 +82,7 @@ Los tickets de papel térmico se borran, a veces en pocos meses, y los papeles t
 - **Guárdala junto con los datos del producto**: modelo, número de serie y duración de la garantía en un solo lugar.
 - **Programa un recordatorio** antes de que venza la garantía, para revisar el producto mientras todavía está cubierto.
 
-Eso es justo lo que hace [Claimly: escáner de garantías y rastreador de recibos](/es/apps/claimly-receipt-tracker). Escaneas la factura con el teléfono y la IA extrae el producto, la tienda, la fecha y el precio; después Claimly lleva la cuenta regresiva de cada garantía (de la tienda, del fabricante y extendida) y te avisa antes de que venza. Si algo falla, sigue nuestra [guía paso a paso para reclamar la garantía](/es/blog/how-to-file-warranty-claim), y si quieres conocer todas las funciones de la app, revisa la [publicación de lanzamiento de Claimly](/es/blog/claimly-ya-disponible-google-play).
+Eso es justo lo que hace [Claimly: escáner de garantías y rastreador de recibos](/es/apps/claimly-receipt-tracker). Escaneas la factura con el teléfono y la IA extrae el producto, la tienda, la fecha y el precio; después Claimly lleva la cuenta regresiva de cada garantía (de la tienda, del fabricante y extendida) y te avisa antes de que venza. Si algo falla, sigue nuestra [guía paso a paso para reclamar la garantía](/es/blog/how-to-file-warranty-claim), y si quieres conocer todas las funciones de la app, revisa [qué hace Claimly y cómo usarla](/es/blog/claimly-ya-disponible-google-play).
 
 ## Preguntas frecuentes
 

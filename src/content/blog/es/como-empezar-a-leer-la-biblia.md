@@ -122,7 +122,7 @@ Si prefieres leer en el teléfono, creamos [Biblia TLA en Español Fácil](/es/a
 
 ![Pantallas de la app Biblia TLA: lista de planes de lectura de 14 días, con Aliento de Profetas y Evangelios descargado, y el detalle del plan día por día](/images/blog/es/como-empezar-a-leer-la-biblia/planes-de-lectura.webp)
 
-- **Planes de lectura de 14 días** para seguir después de este, como *Aliento de Profetas y Evangelios* o *Almas y Versículos*. Los descargas una vez y los lees día por día.
+- **Planes de lectura de 14 días** para seguir después de este, como *Aliento de Profetas y Evangelios* o *Almas y Versículos*. Descargas el plan una vez (en la versión gratis se desbloquea viendo un anuncio corto) y lo lees día por día.
 - **Audio Biblia** con control de velocidad, para escuchar cuando vas en el bus o haces otra cosa.
 - **Sin internet:** el texto vive en tu teléfono.
 - **Letra ajustable, modo oscuro, búsqueda y favoritos** para guardar los versículos de cada día.

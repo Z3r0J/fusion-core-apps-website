@@ -79,7 +79,7 @@ Isso é a regra funcionando bem. O padrão não é "sempre confirmar" nem "nunca
 - Se a barreira ficar, ela precisa ser merecida: mostrar a fonte, permitir edição no lugar e fazer da confirmação um reflexo.
 - Se o erro é imediato e barato de corrigir, a interface *é* a revisão. Não adicione uma tela para isso.
 
-O scanner do [Claimly](/pt/apps/claimly-receipt-tracker) faz o trabalho de digitar. A decisão continua sendo da pessoa e, para uma função cujo único trabalho é estar certa sobre uma data daqui a seis meses, esse não é um atrito que valha a pena remover. A versão para usuários, com o scanner e o acompanhamento de garantias em conjunto, está no [anúncio do Claimly no Google Play](/pt/blog/claimly-agora-disponivel-google-play).
+O scanner do [Claimly](/pt/apps/claimly-receipt-tracker) faz o trabalho de digitar. A decisão continua sendo da pessoa e, para uma função cujo único trabalho é estar certa sobre uma data daqui a seis meses, esse não é um atrito que valha a pena remover. Se quiser a versão para usuários, com o scanner e o acompanhamento de garantias em conjunto, veja [o que o Claimly faz e como usar](/pt/blog/claimly-agora-disponivel-google-play).
 
 ## Perguntas frequentes
 

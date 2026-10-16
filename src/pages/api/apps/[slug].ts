@@ -5,7 +5,8 @@ import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-const API_KEY = import.meta.env.API_KEY ?? "supersecret";
+// No fallback key: if API_KEY is not configured, the admin API stays closed.
+const API_KEY: string | undefined = import.meta.env.API_KEY;
 
 function parseFrontmatter(content: string) {
 	const regex = /^---\n([\s\S]*?)\n---/;
@@ -37,13 +38,17 @@ function parseFrontmatter(content: string) {
 }
 
 export const GET: APIRoute = async ({ url, request }) => {
-	if (request.headers.get("x-api-key") !== API_KEY) {
+	if (!API_KEY || request.headers.get("x-api-key") !== API_KEY) {
 		return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
 	}
 
 	const slug = url.searchParams.get("slug");
 	if (!slug) {
 		return new Response(JSON.stringify({ error: "Missing slug parameter" }), { status: 400 });
+	}
+	// Optional locale folder + kebab-case slug only, so the path can't leave src/content/apps/.
+	if (!/^(?:(?:en|es|pt)\/)?[a-z0-9-]+$/.test(slug)) {
+		return new Response(JSON.stringify({ error: "Invalid slug" }), { status: 400 });
 	}
 
 	const filepath = path.join(process.cwd(), "src", "content", "apps", `${slug}.md`);

@@ -37,6 +37,8 @@ Cuando puedes ver un total de precios en tiempo real actualizándose mientras ag
 
 Esto no se trata de obsesionarse con cada centavo. Se trata de tener conciencia, para que las pequeñas decisiones diarias sigan alineadas con tu realidad financiera actual.
 
+Si quieres probar un total acumulado antes de instalar nada, nuestra [calculadora de supermercado gratis](/es/tools/grocery-calculator) suma precios y cantidades en tu navegador y te avisa cuando te pasas del presupuesto.
+
 ## Cómo CartWise Registra tu Total en Tiempo Real
 
 [CartWise](/es/cartwise) es una app gratuita de lista del supermercado para Android diseñada exactamente para este caso de uso. Así es como funciona el seguimiento de precios en la práctica.

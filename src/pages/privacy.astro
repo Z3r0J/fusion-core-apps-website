@@ -2,13 +2,14 @@
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import LegalLayout from "@/components/LegalLayout.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBrand } from "@/lib/seo";
 import { getEntry } from "astro:content";
 
 const policy = await getEntry("legal", "privacy");
 if (!policy) throw new Error("Privacy policy not found");
 const { Content } = await policy.render();
 
-const title = `${policy.data.title} — FusionCore Apps`;
+const title = withBrand(policy.data.title);
 const description = "Privacy policy for FusionCore Apps mobile applications and website.";
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---

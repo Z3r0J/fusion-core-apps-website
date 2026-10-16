@@ -1,6 +1,6 @@
 ---
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
-import { useTranslations } from "@/i18n/utils";
+import { getLocalePath, useTranslations } from "@/i18n/utils";
 
 interface Props {
   locale: "en" | "es" | "pt";
@@ -310,6 +310,15 @@ const structuredData = {
       </div>
     ))}
   </div>
+
+  <!-- Free web tool: same running total, no install -->
+  <p class="mx-auto mt-8 max-w-[56rem] text-center text-sm text-gray-500 dark:text-white/55">
+    {t("cartwise.toolLink.text")}{" "}
+    <a
+      href={getLocalePath("/tools/grocery-calculator", locale)}
+      class="font-semibold text-brand-700 underline-offset-2 hover:underline dark:text-brand-400"
+    >{t("cartwise.toolLink.anchor")}</a>
+  </p>
 </section>
 
 

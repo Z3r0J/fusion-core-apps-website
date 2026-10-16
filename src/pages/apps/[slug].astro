@@ -3,7 +3,10 @@ import GetInGooglePlayBadge from "@/assets/google-play-badge.svg";
 import PlaceholderApp from "@/assets/placeholder-app.svg";
 import AppJsonLd from "@/components/AppJsonLd.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import FaqJsonLd from "@/components/FaqJsonLd.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations } from "@/i18n/utils";
+import { withBrand } from "@/lib/seo";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
@@ -18,9 +21,11 @@ export async function getStaticPaths() {
 const { app } = Astro.props;
 const { Content } = await app.render();
 const appSlug = app.slug.replace("en/", "");
-const title = app.data.seoTitle ?? `${app.data.title} — FusionCore Apps`;
+const title = app.data.seoTitle ?? withBrand(app.data.title);
 const description = app.data.description;
 const canonical = new URL(`/apps/${appSlug}`, Astro.site).href;
+const t = useTranslations("en");
+const faq = app.data.faq ?? [];
 const ogImage = app.data.icon || "/og-default.png";
 const allApps = await getCollection("apps", ({ slug }) => slug.startsWith("en/"));
 const otherApps = allApps.filter((a) => a.slug !== app.slug);
@@ -34,6 +39,7 @@ const isBeta = app.data.beta ?? false;
 
 <BaseLayout {canonical} {description} {ogImage} ogImageWidth={app.data.icon ? 512 : 1536} ogImageHeight={app.data.icon ? 512 : 1024} {title} locale={app.data.locale || "en"} showFooterCta={false}>
 	{!app.data.beta && <AppJsonLd app={app} />}
+	{faq.length > 0 && <FaqJsonLd faqs={faq} />}
 
 	<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
 	<div class="-mx-4 sm:-mx-6 lg:-mx-8 mb-12">
@@ -112,12 +118,12 @@ const isBeta = app.data.beta ?? false;
 
 							{app.data.downloads && (
 								<>
-									<span class="text-gray-300 dark:text-white/20">·</span>
+									{rating !== null && <span class="text-gray-300 dark:text-white/20">·</span>}
 									<span class="text-sm text-gray-500 dark:text-white/65 font-medium">{app.data.downloads} downloads</span>
 								</>
 							)}
 
-							<span class="text-gray-300 dark:text-white/20">·</span>
+							{(rating !== null || app.data.downloads) && <span class="text-gray-300 dark:text-white/20">·</span>}
 							<span class={`text-sm font-semibold ${price === "Free" ? "text-green-600 dark:text-green-400" : "text-gray-800 dark:text-white"}`}>
 								{price}
 							</span>
@@ -321,6 +327,28 @@ const isBeta = app.data.beta ?? false;
 			</div>
 		</div>
 	</div>
+
+	<!-- ─── FAQ ───────────────────────────────────────────────────────────────── -->
+	<!-- Server-rendered so every answer is in the HTML; the text must match the FAQPage JSON-LD above. -->
+	{faq.length > 0 && (
+		<section aria-labelledby="app-faq-heading" class="mt-16 max-w-3xl">
+			<h2 class="section-title mb-6" id="app-faq-heading">{t("contact.faqTitle")}</h2>
+			<div class="space-y-3">
+				{faq.map((item) => (
+					<details class="faq-item group">
+						<summary class="faq-btn list-none [&::-webkit-details-marker]:hidden">
+							<span class="faq-question">{item.question}</span>
+							<svg aria-hidden="true" class="h-5 w-5 shrink-0 text-gray-400 transition-transform duration-200 group-open:rotate-180 dark:text-white/25" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</summary>
+						<div class="faq-divider"></div>
+						<p class="faq-answer">{item.answer}</p>
+					</details>
+				))}
+			</div>
+		</section>
+	)}
 
 	<!-- ─── MORE APPS ─────────────────────────────────────────────────────────── -->
 	{otherApps.length > 0 && (

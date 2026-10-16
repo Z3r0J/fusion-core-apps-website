@@ -30,7 +30,9 @@
     "browseAllApps": "Browse All Apps",
     "skipToContent": "Skip to main content",
     "mobileStats": "Free Android apps · 5 apps · 10K+ downloads",
-    "compareApps": "Compare apps"
+    "compareApps": "Compare apps",
+    "about": "About",
+    "groceryCalculator": "Grocery calculator"
   },
   "contact": {
     "title": "Contact Us",
@@ -131,6 +133,7 @@
     "journal": "The FusionCore Journal",
     "title": "Blog",
     "subtitle": "Insights, guides & stories from the FusionCore team.",
+    "metaDescription": "Guides and stories from FusionCore Apps: Bible reading, grocery lists and budgets, warranties and receipts, food expiry dates, and how we build our apps.",
     "latestPosts": "Latest Posts",
     "noPosts": "No posts yet",
     "noPostsBody": "Working on new content. Check back soon.",
@@ -148,11 +151,13 @@
     "terms": "Terms of Service",
     "cartwise": "CartWise",
     "cartwisePrivacy": "Privacy Policy",
-    "cartwiseTerms": "Terms of Service"
+    "cartwiseTerms": "Terms of Service",
+    "about": "About",
+    "groceryCalculator": "Grocery calculator"
   },
   "cartwise": {
     "meta": {
-      "title": "CartWise – Free Grocery List App with Live Price Calculator (No Sign-Up)",
+      "title": "CartWise: Free Grocery List App with a Price Calculator",
       "description": "Add items by voice or AI, watch your cart total update as you shop, and share lists instantly via QR or WhatsApp. Free, offline, no account needed. Android."
     },
     "hero": {
@@ -268,6 +273,10 @@
       "headline": "See how CartWise compares",
       "subline": "Honest, side-by-side comparisons with popular grocery list apps.",
       "seeAll": "All comparisons"
+    },
+    "toolLink": {
+      "text": "Want to try a running total before you install?",
+      "anchor": "Use the free grocery calculator in your browser"
     }
   },
   "cartwiseCompare": {
@@ -276,9 +285,6 @@
       "compare": "Compare apps"
     },
     "index": {
-      "metaTitle": "CartWise App Comparisons — FusionCore Apps",
-      "metaDescription": "Honest, side-by-side comparisons of CartWise vs other grocery list apps. Find out which shopping list app fits your needs.",
-      "eyebrow": "App comparisons",
       "heading": "CartWise vs the competition",
       "deck": "Honest, feature-by-feature breakdowns so you can pick the grocery list app that actually fits the way you shop."
     },
@@ -291,7 +297,8 @@
       "byAuthor": "By FusionCore Apps",
       "ctaDownload": "Get CartWise on Google Play",
       "ctaCompare": "See the comparison ↓",
-      "ratingLabel": "reviews"
+      "ratingLabel": "ratings",
+      "newOnPlay": "New on Google Play"
     },
     "quickTable": {
       "colCategory": "Category",
@@ -307,7 +314,9 @@
     },
     "procon": {
       "goodLabel": "The good",
-      "badLabel": "The bad"
+      "badLabel": "The bad",
+      "appSubtitle": "Grocery List + Price Calculator · Android · Free",
+      "competitorSubtitle": "Shopping List · iOS + Android · Free"
     },
     "winnerCallout": {
       "label": "The winner"
@@ -334,6 +343,184 @@
       "trustNoAccount": "No account",
       "trustOffline": "Works offline",
       "trustPlatform": "Android"
+    }
+  },
+  "claimlyCompare": {
+    "index": {
+      "heading": "Claimly vs the competition",
+      "deck": "Honest breakdowns of warranty tracker apps, including where the other app wins, so you can pick the one that fits."
+    },
+    "hero": {
+      "eyebrow": "Claimly vs {{competitor}}",
+      "ctaDownload": "Get Claimly on Google Play",
+      "ratingLabel": "ratings",
+      "newOnPlay": "New on Google Play"
+    },
+    "quickTable": {
+      "colCartwise": "Claimly",
+      "winnerBadge": "Our app"
+    },
+    "featureTable": {
+      "winnerBadge": "Our app"
+    },
+    "procon": {
+      "appSubtitle": "Warranty Tracker + Receipt Scanner · Android · Free",
+      "competitorSubtitle": "Warranty Tracker"
+    },
+    "winnerCallout": {
+      "label": "The short answer"
+    },
+    "ctaMid": {
+      "headline": "Download Claimly free",
+      "subline": "No account needed. Scan a receipt and the details fill in for you."
+    },
+    "related": {
+      "heading": "More Claimly comparisons",
+      "seeAllSub": "Browse every Claimly comparison guide"
+    },
+    "cta": {
+      "eyebrow": "Want to try it?",
+      "headline": "Prefer scanning receipts to typing them?",
+      "subline": "Download Claimly free. No account, no setup: scan your first receipt and track every warranty.",
+      "trustFree": "Free download",
+      "trustOffline": "Data stays on your phone"
+    }
+  },
+  "compareHub": {
+    "metaTitle": "CartWise & Claimly Comparisons — FusionCore Apps",
+    "metaDescription": "Honest, side-by-side comparisons of CartWise and Claimly with other grocery list and warranty tracker apps, including where the other app wins.",
+    "eyebrow": "App comparisons",
+    "heading": "Our apps vs the competition",
+    "deck": "Honest, feature-by-feature breakdowns that say where each rival app wins, so you can pick the one that fits how you work."
+  },
+  "tools": {
+    "groceryCalculator": {
+      "meta": {
+        "title": "Free Grocery Calculator: Add Up Your Shopping List",
+        "description": "Free grocery calculator: add prices, see a running total with tax, and get a warning the moment you go over budget. No signup, keeps working if you lose signal."
+      },
+      "schemaName": "Grocery Calculator",
+      "eyebrow": "Free tool · No signup",
+      "title": "Grocery calculator",
+      "answer": "Enter each item's price and quantity and this grocery calculator adds up your cart as you go, with optional tax and a budget warning. It's free, there's nothing to sign up for, and your list stays in this browser.",
+      "howTo": {
+        "title": "How to use it",
+        "step1": "Type an item, its price and how many you're buying. The line total updates as you type.",
+        "step2": "Use + and − to change the quantity, or type a decimal for things sold by weight (1.5 for 1.5 lb).",
+        "step3": "Set a budget to see how much you have left, and get a warning the moment your cart goes over.",
+        "step4": "If your store adds sales tax at the register, enter the rate. If prices already include tax, leave it at 0.",
+        "step5": "Your list is saved in this browser, so a refresh or a dropped signal won't erase it. Clear all starts a new list."
+      },
+      "cta": {
+        "eyebrow": "CartWise for Android",
+        "title": "The same running total in your pocket, offline",
+        "body": "CartWise is a free grocery list app that adds up prices while you shop, with voice input and list sharing over WhatsApp. No account needed, and it keeps working without signal.",
+        "download": "Get CartWise on Google Play",
+        "learnMore": "See how CartWise works"
+      },
+      "faq": {
+        "eyebrow": "FAQ",
+        "title": "Grocery calculator questions",
+        "q1": "Is this grocery calculator free?",
+        "a1": "Yes. It's free and there's nothing to sign up for: open the page and start adding items.",
+        "q2": "Does it save my list?",
+        "a2": "Your list, budget and tax rate are saved in your browser's local storage on this device, so refreshing the page doesn't erase them. Your list is never sent to a server. Clearing your browser data, or tapping Clear all, deletes the list.",
+        "q3": "Can I use it offline at the store?",
+        "a3": "Yes, once the page is open. All the math runs on your device, so it keeps working if you lose signal in the aisle. If you close the tab you'll need a connection to open it again; CartWise, our Android app, works offline.",
+        "q4": "How do I add sales tax to my grocery total?",
+        "a4": "Type your tax rate as a percentage in the Tax % field. The calculator adds it to the subtotal and checks the total against your budget. If shelf prices already include tax, leave it at 0."
+      },
+      "ui": {
+        "listTitle": "Your list",
+        "summaryTitle": "Your total",
+        "colItem": "Item",
+        "colPrice": "Price",
+        "colQty": "Qty",
+        "colTotal": "Total",
+        "nameLabel": "Item {n} name",
+        "priceLabel": "Item {n} price",
+        "qtyLabel": "Item {n} quantity",
+        "lineTotalLabel": "Item {n} total",
+        "decrease": "Decrease quantity of {item}",
+        "increase": "Increase quantity of {item}",
+        "remove": "Remove {item}",
+        "itemFallback": "item {n}",
+        "placeholders": "Milk, Bread, Eggs, Apples, Rice, Coffee",
+        "addItem": "Add item",
+        "clearAll": "Clear all",
+        "cleared": "List cleared.",
+        "undo": "Undo",
+        "currency": "Currency",
+        "budget": "Budget",
+        "tax": "Tax %",
+        "optional": "optional",
+        "subtotal": "Subtotal",
+        "taxLine": "Tax ({rate}%)",
+        "total": "Total",
+        "itemsOne": "1 item",
+        "itemsOther": "{n} items",
+        "remaining": "{amount} left",
+        "overBudget": "Over budget by {amount}",
+        "onBudget": "Right on budget",
+        "budgetUsed": "Budget used",
+        "saved": "Saved in this browser only. Your list is never sent to a server."
+      }
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About FusionCore Apps: Independent Android Studio",
+      "description": "FusionCore Apps is an independent Android app studio. We make Bible TPT, Biblia TLA, CartWise, Claimly and Expiroo: free apps, most of them work offline."
+    },
+    "eyebrow": "About us",
+    "title": "About FusionCore Apps",
+    "lead": "FusionCore Apps is an independent Android app studio. We make free apps for reading the Bible, grocery shopping, tracking warranties and keeping an eye on food expiry dates, all on Google Play (Expiroo is in closed testing).",
+    "stats": {
+      "downloads": "Downloads",
+      "apps": "Apps",
+      "free": "Free",
+      "freeLabel": "To download"
+    },
+    "apps": {
+      "title": "Our apps",
+      "subtitle": "Four apps on Google Play and one in closed beta.",
+      "bibleTpt": "Read The Passion Translation (TPT) offline and listen to the Audio Bible, with daily devotionals and reading plans.",
+      "bibliaTla": "The Bible in clear, modern Spanish (Traducción en Lenguaje Actual), with audio, reading plans and offline access.",
+      "cartwise": "A grocery list that adds up your cart as you shop, with voice input and WhatsApp sharing. No account needed.",
+      "claimly": "Scan receipts and track store, manufacturer and extended warranties, with alerts before they expire.",
+      "expiroo": "Track the expiry dates of the food in your fridge and pantry, offline and without an account.",
+      "beta": "Closed beta"
+    },
+    "how": {
+      "title": "How we work",
+      "free": {
+        "title": "Free to download",
+        "body": "Every app is free on Google Play. They're supported by ads, and some offer an optional upgrade with extra features."
+      },
+      "offline": {
+        "title": "Offline where it counts",
+        "body": "Bible TPT, Biblia TLA, CartWise and Expiroo work without a connection, so your Bible, your list or your pantry is there even without signal."
+      },
+      "privacy": {
+        "title": "Respectful of your privacy",
+        "body": "CartWise and Expiroo don't ask you to sign up, and Expiroo keeps your inventory on your device. We don't sell or rent your data.",
+        "link": "Read our privacy policy"
+      },
+      "team": {
+        "title": "A small, independent team",
+        "body": "We read every message and reply personally. Bug reports and ideas from people who use the apps help decide what we build next."
+      }
+    },
+    "links": {
+      "title": "Find FusionCore Apps",
+      "play": {
+        "title": "Google Play developer page",
+        "body": "Every published FusionCore Apps listing in one place."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "Questions, bug reports or partnership ideas. We reply personally."
+      }
     }
   }
 }

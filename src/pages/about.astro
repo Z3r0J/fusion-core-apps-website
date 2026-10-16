@@ -1,0 +1,17 @@
+---
+import AboutContent from "@/components/AboutContent.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations } from "@/i18n/utils";
+
+const t = useTranslations("en");
+const canonical = new URL("/about", Astro.site).href;
+---
+
+<BaseLayout
+	{canonical}
+	description={t("about.meta.description")}
+	locale="en"
+	title={t("about.meta.title")}
+>
+	<AboutContent locale="en" />
+</BaseLayout>
