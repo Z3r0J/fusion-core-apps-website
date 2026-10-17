@@ -36,6 +36,8 @@ betaGroupUrl: "https://groups.google.com/g/expiroo-testers"
 
 **Expiroo: Controle de Validade de Alimentos** controla as datas de validade de tudo o que está na sua geladeira e despensa. É local-first: seu inventário fica salvo no seu aparelho e funciona totalmente offline — sem conta, sem cadastro. Grátis (com anúncios); um upgrade Pro opcional de compra única libera produtos ilimitados.
 
+Guias sobre datas de validade e o passo a passo do beta (em inglês e espanhol) ficam no site do Expiroo: [expiroo.app](https://expiroo.app/en).
+
 ## Recursos
 
 - **Controle de validade** — adicione produtos com a data de validade e veja num relance o que está para vencer

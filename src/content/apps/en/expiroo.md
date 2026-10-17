@@ -36,6 +36,8 @@ betaGroupUrl: "https://groups.google.com/g/expiroo-testers"
 
 **Expiroo: Food Expiry Tracker** tracks expiration dates for everything in your fridge and pantry. It's local-first: your inventory is stored on your device and works fully offline — no account, no sign-up. Free to use (ad-supported); an optional one-time Pro upgrade unlocks unlimited products.
 
+Guides on food dates, storage times and the beta walkthrough live on Expiroo's own site: [expiroo.app](https://expiroo.app/en).
+
 ## Features
 
 - **Expiry tracking** — add products with their expiry date and see what's running out at a glance
