@@ -85,6 +85,6 @@ Claimly no necesita cuenta. Tus registros se quedan en el teléfono y, en lugar 
 
 Warranty Keeper gana esta parte con claridad. Su ficha dice que es 100 % gratis con artículos ilimitados, y Google Play no muestra anuncios ni compras dentro de la app. Además, según su web oficial, está disponible para iPhone, así que sirve en una casa donde se mezclan Android y iPhone.
 
-Claimly se descarga gratis, pero muestra anuncios y vende compras dentro de la app (de 2,99 a 24,99 US$ por artículo en Google Play), y es solo para Android. También es muy nueva, con más de 10 instalaciones y sin valoración pública, frente a las más de 10.000 instalaciones y las 4,3 estrellas en 334 valoraciones de Warranty Keeper.
+Claimly se descarga gratis, pero muestra anuncios y vende compras dentro de la app (de 2,99 a 24,99 US$ por artículo en Google Play), y es solo para Android. Su plan gratis llega hasta 15 productos y 5 escaneos con IA al mes; Premium, una suscripción mensual o anual, quita los límites y los anuncios. También es muy nueva, con más de 10 instalaciones y sin valoración pública, frente a las más de 10.000 instalaciones y las 4,3 estrellas en 334 valoraciones de Warranty Keeper.
 
 En resumen: Warranty Keeper te da nube gratis en las dos plataformas y sin anuncios; Claimly te da escaneo con IA, varias garantías por producto y cero cuentas. Para ver todo el panorama, revisa nuestra guía de las [mejores apps para controlar garantías en Android](/es/blog/mejores-apps-control-garantias-android).

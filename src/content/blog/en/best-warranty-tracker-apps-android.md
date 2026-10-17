@@ -61,7 +61,7 @@ For a feature-by-feature look at the two, see [Claimly vs Warranty Keeper](/comp
 [Claimly](/apps/claimly-receipt-tracker) is our app, launched on Google Play in April 2026. You scan a receipt and AI fills in the store, purchase date, product and amount, so you review the details instead of typing them. Each product can hold more than one warranty: manufacturer, store and an extended protection plan, each with its own status (active, expiring soon or expired) and expiry reminders.
 
 - **Why pick it:** no account is needed and your data stays on your phone; you can back everything up to a single .zip file and restore it on a new phone. Most of the app works offline. You can attach receipts, warranty documents, PDFs and photos to each item, and a dashboard shows what is expiring first.
-- **Watch out for:** it is new, with 10+ installs and no public rating yet. It shows ads and sells in-app purchases ($2.99–$24.99 per item). It is Android-only, the AI scan needs an internet connection, and it offers backup and restore rather than automatic sync between devices.
+- **Watch out for:** it is new, with 10+ installs and no public rating yet. It shows ads and sells in-app purchases ($2.99–$24.99 per item), and the free plan stops at 15 products and 5 AI scans a month; Premium, a subscription, lifts the limits and removes the ads. It is Android-only, the AI scan needs an internet connection, and it offers backup and restore rather than automatic sync between devices.
 
 For a closer look at how scanning works, see our [warranty scanner app guide](/blog/warranty-scanner-app-guide).
 

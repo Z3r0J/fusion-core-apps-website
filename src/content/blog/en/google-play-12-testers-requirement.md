@@ -50,7 +50,7 @@ That split is the useful lesson, and it is not the one we expected going in. The
 
 **The 14-day counter never reset on us, and we were granted production access on the first application.** Fourteen opted-in testers, fourteen continuous days, never dropping below the threshold. The two-tester buffer above the minimum is a large part of why that sentence exists.
 
-Claimly's beta announcement went out on **March 31, 2026**. The app reached production on Google Play on **April 17, 2026** — about seventeen days later, roughly the theoretical floor of fourteen days plus review. That timeline only works if your testers are lined up on day one. If you are curious about the app itself, here is [what Claimly does and how to use it](/blog/claimly-now-available-google-play).
+Claimly's beta announcement went out on **March 31, 2026**. The app reached production on Google Play on **April 16, 2026** — about sixteen days later, roughly the theoretical floor of fourteen days plus review. That timeline only works if your testers are lined up on day one. If you are curious about the app itself, here is [what Claimly does and how to use it](/blog/claimly-now-available-google-play).
 
 Compare all of that to paying a service: you spend money, you get twelve accounts, and at the end you own nothing — no thread, no post, no testers who actually cared.
 
