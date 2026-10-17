@@ -89,7 +89,7 @@ The order matters: the install link only works after you have joined the group a
 
 ## Why We Built Expiroo
 
-Most food does not get wasted because people do not care — it gets wasted because it is easy to lose track of. Dates are printed in tiny type, items get pushed to the back, and by the time you remember them they are gone. If you are never sure which date on the label actually matters, our guide to [best before vs. use by dates](/blog/best-before-vs-use-by-dates) explains what each one means.
+Most food does not get wasted because people do not care — it gets wasted because it is easy to lose track of. Dates are printed in tiny type, items get pushed to the back, and by the time you remember them they are gone. If you are never sure which date on the label actually matters, our guide to [best before vs. use by dates](https://expiroo.app/en/blog/best-before-vs-use-by) explains what each one means.
 
 We wanted something that takes seconds per product and then quietly reminds you at the right moment. That is Expiroo: less spoiled food, less money in the bin, and a fridge you actually understand.
 
