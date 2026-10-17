@@ -24,6 +24,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/best-before-vs-use-by-dates",
+      "destination": "https://expiroo.app/en/blog/best-before-vs-use-by",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
