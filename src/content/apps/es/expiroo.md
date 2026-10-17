@@ -36,6 +36,8 @@ betaGroupUrl: "https://groups.google.com/g/expiroo-testers"
 
 **Expiroo: Control de Caducidad de Alimentos** controla las fechas de caducidad de todo lo que hay en tu heladera y alacena. Es local-first: tu inventario se guarda en tu dispositivo y funciona sin conexión, sin cuenta ni registro. Gratis (con anuncios); una mejora Pro opcional de pago único desbloquea productos ilimitados.
 
+Las guías sobre fechas de vencimiento, cuánto dura cada alimento y el paso a paso de la beta están en el sitio de Expiroo: [expiroo.app](https://expiroo.app/es).
+
 ## Funciones
 
 - **Control de caducidad** — agrega productos con su fecha de caducidad y ve de un vistazo qué está por vencer
