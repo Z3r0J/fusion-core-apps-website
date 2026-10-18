@@ -133,14 +133,15 @@ Quando algo der defeito, abra o produto, veja qual garantia ainda cobre e siga o
 
 ## Gratuito vs. Premium
 
-Estes eram os limites de cada plano no lançamento, em abril de 2026. Confira a tela do Premium no app para ver os atuais. No Google Play do Brasil, as compras no app aparecem de R$ 15,99 a R$ 129,99 por item (verificado em 16 de outubro de 2026).
+Estes são os limites de cada plano na versão atual do app (1.1.4). O Premium é uma assinatura mensal ou anual. Quando você chega a um limite do plano gratuito, também pode assistir a um anúncio curto para passar dele daquela vez. No Google Play do Brasil, as compras no app aparecem de R$ 15,99 a R$ 129,99 por item (verificado em 16 de outubro de 2026).
 
 | Recurso | Gratuito | Premium |
 |---|---|---|
 | Produtos | Até 15 | Ilimitados |
 | Leituras de recibos | 5 por mês | Ilimitadas |
 | Alertas de garantia (30/7/1 dia) | Incluído | Incluído |
-| Anexos | Incluído | Incluído |
+| Anexos por produto | Até 5 | Ilimitados |
+| Categorias personalizadas | Até 3 | Ilimitadas |
 | Modo escuro | Incluído | Incluído |
 | Calendário de alertas personalizado | — | Incluído |
 | Sem anúncios | — | Incluído |

@@ -50,7 +50,7 @@ Essa divisão é a lição útil, e não é a que esperávamos. O post do blog e
 
 **O contador de 14 dias nunca reiniciou e conseguimos o acesso à produção logo na primeira solicitação.** Catorze testadores ativos, catorze dias contínuos, sem nunca cair abaixo do mínimo. A margem de dois testadores acima do limite explica boa parte dessa frase.
 
-O anúncio do beta do Claimly saiu em **31 de março de 2026**. O app chegou à produção no Google Play em **17 de abril de 2026**: cerca de dezessete dias depois, mais ou menos o piso teórico de catorze dias somado à revisão. Esse calendário só fecha se os testadores já estiverem prontos no dia um. Se tiver curiosidade sobre o app em si, veja [o que o Claimly faz e como usar](/pt/blog/claimly-agora-disponivel-google-play).
+O anúncio do beta do Claimly saiu em **31 de março de 2026**. O app chegou à produção no Google Play em **16 de abril de 2026**: cerca de dezesseis dias depois, mais ou menos o piso teórico de catorze dias somado à revisão. Esse calendário só fecha se os testadores já estiverem prontos no dia um. Se tiver curiosidade sobre o app em si, veja [o que o Claimly faz e como usar](/pt/blog/claimly-agora-disponivel-google-play).
 
 Compare tudo isso com pagar um serviço: você gasta dinheiro, recebe doze contas e, no fim, não é dono de nada. Nem thread, nem post, nem testadores que se importavam com o app.
 

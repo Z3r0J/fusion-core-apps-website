@@ -85,6 +85,6 @@ Claimly needs no account. Your records stay on your phone, and instead of syncin
 
 Warranty Keeper wins this section clearly. Its listing says it is 100% free with an unlimited number of items, and Google Play shows no ads and no in-app purchases. It is also available on iPhone, according to its official site, so a mixed Android and iPhone household can use it.
 
-Claimly is free to download, but it shows ads and sells in-app purchases ($2.99–$24.99 per item on Google Play), and it is Android-only. It is also brand new, with 10+ installs and no public rating yet, against Warranty Keeper's 10,000+ installs and 4.3 stars from 334 ratings.
+Claimly is free to download, but it shows ads and sells in-app purchases ($2.99–$24.99 per item on Google Play), and it is Android-only. Its free plan stops at 15 products and 5 AI scans a month; Premium, a monthly or yearly subscription, removes the limits and the ads. It is also brand new, with 10+ installs and no public rating yet, against Warranty Keeper's 10,000+ installs and 4.3 stars from 334 ratings.
 
 The trade-off comes down to this: Warranty Keeper gives you free cloud storage on both platforms with no ads; Claimly gives you AI scanning, layered warranties and no account. For a wider look at the category, see our guide to the [best warranty tracker apps for Android](/blog/best-warranty-tracker-apps-android).

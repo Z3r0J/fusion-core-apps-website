@@ -61,7 +61,7 @@ Para verlas función por función, lee [Claimly vs Warranty Keeper](/es/compare-
 [Claimly](/es/apps/claimly-receipt-tracker) es nuestra app y salió en Google Play en abril de 2026. Escaneas el recibo y la IA completa la tienda, la fecha de compra, el producto y el monto, así que solo revisas en lugar de escribir. Cada producto puede tener más de una garantía: la del fabricante, la de la tienda y una extendida, cada una con su estado (vigente, por vencer o vencida) y sus avisos de vencimiento.
 
 - **Por qué elegirla:** no necesitas cuenta y tus datos se quedan en el teléfono; puedes guardar una copia de todo en un solo archivo .zip y restaurarla en un teléfono nuevo. Casi toda la app funciona sin conexión. Puedes adjuntar recibos, documentos de garantía, PDF y fotos a cada artículo, y un panel te muestra primero lo que está por vencer.
-- **Ten en cuenta:** es nueva, con más de 10 instalaciones y sin valoración pública todavía. Muestra anuncios y vende compras dentro de la app (de 2,99 a 24,99 US$ por artículo). Es solo para Android, el escaneo con IA necesita internet y ofrece copia y restauración, no sincronización automática entre dispositivos.
+- **Ten en cuenta:** es nueva, con más de 10 instalaciones y sin valoración pública todavía. Muestra anuncios y vende compras dentro de la app (de 2,99 a 24,99 US$ por artículo), y el plan gratis llega hasta 15 productos y 5 escaneos con IA al mes; Premium, una suscripción, quita los límites y los anuncios. Es solo para Android, el escaneo con IA necesita internet y ofrece copia y restauración, no sincronización automática entre dispositivos.
 
 ## 3. Warranty Book: la mejor para contactar al soporte de cada marca
 

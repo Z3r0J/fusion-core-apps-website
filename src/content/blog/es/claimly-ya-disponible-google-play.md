@@ -133,14 +133,15 @@ Cuando algo se dañe, abre el producto, revisa qué garantía lo sigue cubriendo
 
 ## Gratis vs. Premium
 
-Estos eran los límites de cada plan en el lanzamiento, en abril de 2026. Revisa la pantalla de Premium en la app para ver los actuales; el precio en tu moneda aparece en la ficha de Google Play.
+Estos son los límites de cada plan en la versión actual de la app (1.1.4). Premium es una suscripción mensual o anual. Cuando llegas a un límite del plan gratis, también puedes ver un anuncio corto para saltarlo esa vez; el precio en tu moneda aparece en la ficha de Google Play.
 
 | Función | Gratis | Premium |
 |---|---|---|
 | Productos | Hasta 15 | Ilimitados |
 | Escaneos de recibos | 5 por mes | Ilimitados |
 | Alertas de garantía (30/7/1 día) | Incluido | Incluido |
-| Adjuntos | Incluido | Incluido |
+| Adjuntos por producto | Hasta 5 | Ilimitados |
+| Categorías personalizadas | Hasta 3 | Ilimitadas |
 | Modo oscuro | Incluido | Incluido |
 | Calendario de alertas personalizado | — | Incluido |
 | Sin anuncios | — | Incluido |
