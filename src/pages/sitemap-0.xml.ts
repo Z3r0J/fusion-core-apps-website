@@ -71,6 +71,11 @@ export const GET: APIRoute = async ({ site }) => {
 	for (const [path, changefreq, priority] of STATIC_PAGES) {
 		addLocalized(allLocalePaths(path), { changefreq, priority });
 	}
+	// Buena Tierra privacy exists only in en + es (no pt translation)
+	addLocalized(
+		{ en: "/buena-tierra/privacy", es: "/es/buena-tierra/privacy" },
+		{ changefreq: "monthly", priority: [0.5, 0.4] },
+	);
 
 	// App detail pages — same slug across locales
 	const apps = await getCollection("apps");
@@ -90,7 +95,11 @@ export const GET: APIRoute = async ({ site }) => {
 	for (const [slug, locales] of appSlugs) {
 		const paths: Partial<Record<Locale, string>> = {};
 		for (const l of locales) paths[l] = localePath(l, `/apps/${slug}`);
-		addLocalized(paths, { changefreq: "monthly", priority: [0.9, 0.8], lastmod: appLastmod.get(slug) });
+		addLocalized(paths, {
+			changefreq: "monthly",
+			priority: [0.9, 0.8],
+			lastmod: appLastmod.get(slug),
+		});
 	}
 
 	// Blog posts — per-locale slugs, siblings resolved via translationKey
@@ -139,7 +148,10 @@ ${entries
 	.map((e) => {
 		const alternates = e.alternates
 			? Object.entries(e.alternates)
-					.map(([hreflang, href]) => `<xhtml:link rel="alternate" hreflang="${hreflang}" href="${href}"/>`)
+					.map(
+						([hreflang, href]) =>
+							`<xhtml:link rel="alternate" hreflang="${hreflang}" href="${href}"/>`,
+					)
 					.join("")
 			: "";
 		const lastmod = e.lastmod ? `<lastmod>${e.lastmod}</lastmod>` : "";

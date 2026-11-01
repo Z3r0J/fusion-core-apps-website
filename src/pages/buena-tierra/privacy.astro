@@ -1,0 +1,40 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import LegalLayout from "@/components/LegalLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getEntry } from "astro:content";
+
+const policy = await getEntry("legal", "buena-tierra-privacy");
+if (!policy) throw new Error("Buena Tierra privacy policy not found");
+const { Content } = await policy.render();
+
+const title = "Buena Tierra Privacy Policy — FusionCore Apps";
+const description =
+	"Privacy policy for Buena Tierra — how the sermon recording and AI summary app collects, uses, and protects your information.";
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// Only en + es exist: no pt hreflang, and the language picker sends pt to English.
+---
+
+<BaseLayout
+	availableLocales={["en", "es"]}
+	{canonical}
+	{description}
+	localeLinks={{ pt: "/buena-tierra/privacy" }}
+	{title}
+>
+	<Breadcrumbs
+		items={[
+			{ label: "Home", href: "/" },
+			{ label: "Buena Tierra Privacy Policy", href: "/buena-tierra/privacy" },
+		]}
+	/>
+
+	<LegalLayout
+		eyebrow="Legal"
+		icon="shield"
+		title="Buena Tierra Privacy Policy"
+		updatedAt={policy.data.updatedAt}
+	>
+		<Content />
+	</LegalLayout>
+</BaseLayout>

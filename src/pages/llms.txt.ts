@@ -27,6 +27,7 @@ const LEGAL_PAGES: Array<{ slug: string; path: string }> = [
 	{ slug: "terms", path: "/terms" },
 	{ slug: "cartwise-privacy", path: "/cartwise/privacy" },
 	{ slug: "cartwise-terms", path: "/cartwise/terms" },
+	{ slug: "buena-tierra-privacy", path: "/buena-tierra/privacy" },
 ];
 
 export const GET: APIRoute = async ({ site }) => {
@@ -60,7 +61,8 @@ export const GET: APIRoute = async ({ site }) => {
 	);
 
 	const blogLines = posts.map(
-		(post) => `- [${post.data.title}](${abs(`/blog/${stripEn(post.slug)}`)}): ${post.data.description}`,
+		(post) =>
+			`- [${post.data.title}](${abs(`/blog/${stripEn(post.slug)}`)}): ${post.data.description}`,
 	);
 
 	const localizedLines = (entries: typeof esPosts, locale: "es" | "pt") =>

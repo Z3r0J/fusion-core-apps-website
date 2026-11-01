@@ -1,0 +1,49 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import LegalLayout from "@/components/LegalLayout.astro";
+import { useTranslations, type Locale } from "@/i18n/utils";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBrand } from "@/lib/seo";
+import { getEntry } from "astro:content";
+
+// Only a Spanish translation exists; pt is not generated (the language picker
+// sends pt visitors to the English page instead).
+export function getStaticPaths() {
+	return [{ params: { locale: "es" } }];
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const t = useTranslations(locale);
+
+const policy = await getEntry("legal", "buena-tierra-privacy-es");
+if (!policy) throw new Error(`Buena Tierra privacy policy not found for locale: ${locale}`);
+const { Content } = await policy.render();
+
+const title = withBrand(policy.data.title);
+const description = t("legal.buenaTierraPrivacyDescription");
+const canonical = new URL(`/${locale}/buena-tierra/privacy`, Astro.site).href;
+---
+
+<BaseLayout
+	availableLocales={["en", "es"]}
+	{canonical}
+	{description}
+	locale={locale}
+	localeLinks={{ pt: "/buena-tierra/privacy" }}
+	{title}
+>
+	<Breadcrumbs
+		items={[
+			{ label: t("breadcrumbs.home"), href: `/${locale}` },
+			{ label: policy.data.title, href: `/${locale}/buena-tierra/privacy` },
+		]}
+	/>
+	<LegalLayout
+		eyebrow="Legal"
+		icon="shield"
+		title={policy.data.title}
+		updatedAt={policy.data.updatedAt}
+	>
+		<Content />
+	</LegalLayout>
+</BaseLayout>
