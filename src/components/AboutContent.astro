@@ -32,7 +32,12 @@ const APPS: Array<{ slug: string; name: string; key: string; path: string }> = [
 	{ slug: "bible-tpt", name: "Bible TPT", key: "bibleTpt", path: "/apps/bible-tpt" },
 	{ slug: "biblia-tla", name: "Biblia TLA", key: "bibliaTla", path: "/apps/biblia-tla" },
 	{ slug: "cartwise-grocery-shopping-list", name: "CartWise", key: "cartwise", path: "/cartwise" },
-	{ slug: "claimly-receipt-tracker", name: "Claimly", key: "claimly", path: "/apps/claimly-receipt-tracker" },
+	{
+		slug: "claimly-receipt-tracker",
+		name: "Claimly",
+		key: "claimly",
+		path: "/apps/claimly-receipt-tracker",
+	},
 	{ slug: "expiroo", name: "Expiroo", key: "expiroo", path: "/apps/expiroo" },
 ];
 
@@ -77,7 +82,7 @@ const structuredData = {
 	is:inline
 	set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
 	type="application/ld+json"
-></script>
+/>
 
 <Breadcrumbs
 	items={[
@@ -130,7 +135,9 @@ const structuredData = {
 						<span class="min-w-0">
 							<span class="flex flex-wrap items-center gap-2">
 								<span class="about-app__name">{app.name}</span>
-								{app.beta && <span class="about-chip about-chip--beta">{t("about.apps.beta")}</span>}
+								{app.beta && (
+									<span class="about-chip about-chip--beta">{t("about.apps.beta")}</span>
+								)}
 							</span>
 							<span class="about-app__line">{app.line}</span>
 						</span>
@@ -171,15 +178,24 @@ const structuredData = {
 				style="background:rgba(46,207,255,0.09);border:1px solid rgba(46,207,255,0.16);"
 			>
 				<svg aria-hidden="true" fill="none" height="17" viewBox="0 0 24 24" width="17">
-					<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#2ecfff" opacity="0.9"></path>
-					<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#ffc107" opacity="0.9"></path>
-					<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="#ff3e00"></path>
-					<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="#00e081" opacity="0.9"></path>
+					<path
+						d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z"
+						fill="#2ecfff"
+						opacity="0.9"></path>
+					<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#ffc107" opacity="0.9"
+					></path>
+					<path
+						d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z"
+						fill="#ff3e00"></path>
+					<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="#00e081" opacity="0.9"
+					></path>
 				</svg>
 			</span>
 			<span class="contact-method__title min-w-0">
 				{t("about.links.play.title")}
-				<span class="contact-method__body mt-0.5 block font-sans font-normal tracking-normal dark:text-white/60">
+				<span
+					class="contact-method__body mt-0.5 block font-sans font-normal tracking-normal dark:text-white/60"
+				>
 					{t("about.links.play.body")}
 				</span>
 			</span>
@@ -189,13 +205,26 @@ const structuredData = {
 				class="contact-method__icon"
 				style="background:rgba(255,138,42,0.09);border:1px solid rgba(255,138,42,0.16);"
 			>
-				<svg aria-hidden="true" fill="none" height="17" stroke="rgba(255,138,42,0.85)" stroke-width="1.7" viewBox="0 0 24 24" width="17">
-					<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+				<svg
+					aria-hidden="true"
+					fill="none"
+					height="17"
+					stroke="rgba(255,138,42,0.85)"
+					stroke-width="1.7"
+					viewBox="0 0 24 24"
+					width="17"
+				>
+					<path
+						d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
 				</svg>
 			</span>
 			<span class="contact-method__title min-w-0">
 				{t("about.links.contact.title")}
-				<span class="contact-method__body mt-0.5 block font-sans font-normal tracking-normal dark:text-white/60">
+				<span
+					class="contact-method__body mt-0.5 block font-sans font-normal tracking-normal dark:text-white/60"
+				>
 					{t("about.links.contact.body")}
 				</span>
 			</span>

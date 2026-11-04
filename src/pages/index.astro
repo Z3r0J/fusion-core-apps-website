@@ -17,31 +17,53 @@ const latestPosts = blogPosts
 const canonical = new URL("/", Astro.site).href;
 
 const features = [
-	{ num: "01", title: "Security first", desc: "Built with industry-leading practices. Your data never leaves your device unnecessarily." },
-	{ num: "02", title: "User experience", desc: "Intuitive interfaces designed around real usage patterns, not feature checklists." },
-	{ num: "03", title: "High performance", desc: "Optimized from the ground up. Fast load times, smooth animations, no lag." },
-	{ num: "04", title: "Android-native", desc: "Built specifically for Android. Follows Material Design, feels at home on your device." },
-	{ num: "05", title: "Regular updates", desc: "Continuously improved based on user feedback. Always getting better." },
-	{ num: "06", title: "Dedicated support", desc: "Real people behind the apps. We respond, we fix, we listen." },
+	{
+		num: "01",
+		title: "Security first",
+		desc: "Built with industry-leading practices. Your data never leaves your device unnecessarily.",
+	},
+	{
+		num: "02",
+		title: "User experience",
+		desc: "Intuitive interfaces designed around real usage patterns, not feature checklists.",
+	},
+	{
+		num: "03",
+		title: "High performance",
+		desc: "Optimized from the ground up. Fast load times, smooth animations, no lag.",
+	},
+	{
+		num: "04",
+		title: "Android-native",
+		desc: "Built specifically for Android. Follows Material Design, feels at home on your device.",
+	},
+	{
+		num: "05",
+		title: "Regular updates",
+		desc: "Continuously improved based on user feedback. Always getting better.",
+	},
+	{
+		num: "06",
+		title: "Dedicated support",
+		desc: "Real people behind the apps. We respond, we fix, we listen.",
+	},
 ];
 ---
 
 <BaseLayout
 	{canonical}
 	description="FusionCore Apps builds free Android apps for Bible reading and grocery shopping. Download Bible TPT, Biblia TLA, and CartWise on Google Play."
-	showHero={true}
 	showFooterCta={false}
+	showHero={true}
 	title="FusionCore Apps — Premium Mobile Applications"
 >
 	<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
 	<div slot="hero">
-		<div class="relative min-h-[88vh] flex items-center py-20 sm:py-28">
-
+		<div class="relative flex min-h-[88vh] items-center py-20 sm:py-28">
 			<!-- Two-column layout -->
 			<div class="relative z-10 grid w-full items-center gap-16 lg:grid-cols-[1fr_auto]">
-
 				<!-- Left: Text Content -->
-				<div class="space-y-8 max-w-2xl">
+				<div class="max-w-2xl space-y-8">
 					<!-- Overline label -->
 					<div class="section-label">
 						<span class="section-label__dot"></span>
@@ -50,53 +72,82 @@ const features = [
 
 					<!-- Headline -->
 					<h1 class="display-title">
-						Apps built for<br/>
+						Apps built for<br />
 						<span class="text-brand-700 dark:text-brand-400">real people.</span>
 					</h1>
 
 					<!-- Subtitle -->
 					<p class="section-deck">
-						Bible reading, grocery lists, and everyday tools, crafted with care and free to download on Google Play.
+						Bible reading, grocery lists, and everyday tools, crafted with care and free to download
+						on Google Play.
 					</p>
 
 					<!-- Inline editorial stats -->
-					<div class="flex items-center gap-6 sm:gap-8 py-5 border-y border-gray-200 dark:border-gray-800">
+					<div
+						class="flex items-center gap-6 border-y border-gray-200 py-5 sm:gap-8 dark:border-gray-800"
+					>
 						<div>
 							<div class="editorial-num text-gray-900 dark:text-white">10K+</div>
-							<div class="text-xs text-gray-500 dark:text-gray-500 mt-1 font-medium tracking-wide uppercase">Downloads</div>
+							<div
+								class="mt-1 text-xs font-medium tracking-wide text-gray-500 uppercase dark:text-gray-500"
+							>
+								Downloads
+							</div>
 						</div>
-						<div class="w-px h-10 bg-gray-200 dark:bg-gray-800 flex-shrink-0"></div>
+						<div class="h-10 w-px flex-shrink-0 bg-gray-200 dark:bg-gray-800"></div>
 						<div>
 							<div class="editorial-num text-gray-900 dark:text-white">4.5★</div>
-							<div class="text-xs text-gray-500 dark:text-gray-500 mt-1 font-medium tracking-wide uppercase">Avg. Rating</div>
+							<div
+								class="mt-1 text-xs font-medium tracking-wide text-gray-500 uppercase dark:text-gray-500"
+							>
+								Avg. Rating
+							</div>
 						</div>
-						<div class="w-px h-10 bg-gray-200 dark:bg-gray-800 flex-shrink-0"></div>
+						<div class="h-10 w-px flex-shrink-0 bg-gray-200 dark:bg-gray-800"></div>
 						<div>
 							<div class="editorial-num text-gray-900 dark:text-white">100%</div>
-							<div class="text-xs text-gray-500 dark:text-gray-500 mt-1 font-medium tracking-wide uppercase">Free</div>
+							<div
+								class="mt-1 text-xs font-medium tracking-wide text-gray-500 uppercase dark:text-gray-500"
+							>
+								Free
+							</div>
 						</div>
 					</div>
 
 					<!-- CTAs -->
-					<div class="flex flex-col sm:flex-row items-start gap-4 pt-2">
+					<div class="flex flex-col items-start gap-4 pt-2 sm:flex-row">
 						<a class="button button--primary group gap-2 px-7 py-3.5 text-base" href="/apps">
-							<svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-								<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="currentColor" opacity="0.85"></path>
-								<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="currentColor" opacity="0.7"></path>
-								<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="currentColor"></path>
-								<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="currentColor" opacity="0.7"></path>
+							<svg aria-hidden="true" class="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24">
+								<path
+									d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z"
+									fill="currentColor"
+									opacity="0.85"></path>
+								<path
+									d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z"
+									fill="currentColor"
+									opacity="0.7"></path>
+								<path
+									d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z"
+									fill="currentColor"></path>
+								<path
+									d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"
+									fill="currentColor"
+									opacity="0.7"></path>
 							</svg>
 							<span>Browse Apps</span>
 							<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
 						</a>
-						<a class="button button--ghost border border-gray-300 dark:border-gray-700 px-7 py-3.5 text-base" href="#features">
+						<a
+							class="button button--ghost border border-gray-300 px-7 py-3.5 text-base dark:border-gray-700"
+							href="#features"
+						>
 							Why FusionCore?
 						</a>
 					</div>
 				</div>
 
 				<!-- Right: App Showcase (hidden on mobile) -->
-				<div class="hidden lg:flex items-center" style="animation: float 7s ease-in-out infinite;">
+				<div class="hidden items-center lg:flex" style="animation: float 7s ease-in-out infinite;">
 					<AppShowcase client:media="(min-width: 1024px)" />
 				</div>
 			</div>
@@ -112,13 +163,14 @@ const features = [
 						<span class="section-label__dot"></span>
 						<span>Our Apps</span>
 					</div>
-					<h2 class="section-title">
-						Crafted for everyday life
-					</h2>
+					<h2 class="section-title">Crafted for everyday life</h2>
 				</div>
 				{
 					featuredApps.length > 0 && (
-						<a class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-400 dark:hover:text-brand-300 transition-colors" href="/apps">
+						<a
+							class="text-brand-700 hover:text-brand-800 dark:text-brand-400 dark:hover:text-brand-300 hidden items-center gap-1.5 text-sm font-semibold transition-colors sm:inline-flex"
+							href="/apps"
+						>
 							View all <span>({apps.length})</span>
 							<ArrowRight className="h-3.5 w-3.5" />
 						</a>
@@ -157,30 +209,70 @@ const features = [
 
 	<!-- ─── EXPIROO LAUNCH BAND ─── -->
 	<AnimatedSection client:visible delay={0.05}>
-		<section class="mb-24" aria-labelledby="expiroo-heading">
+		<section aria-labelledby="expiroo-heading" class="mb-24">
 			<div class="cta-panel relative overflow-hidden rounded-3xl px-6 py-8 sm:px-10 sm:py-10">
 				<div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
 					<div class="flex items-start gap-4 sm:gap-5">
-						<img src="/images/apps/expiroo/icon.png" alt="" width="64" height="64" loading="lazy" decoding="async" class="h-14 w-14 flex-shrink-0 rounded-[16px] shadow-[0_10px_36px_rgba(0,0,0,0.45)] ring-1 ring-white/15 sm:h-16 sm:w-16" />
+						<img
+							alt=""
+							class="h-14 w-14 flex-shrink-0 rounded-[16px] shadow-[0_10px_36px_rgba(0,0,0,0.45)] ring-1 ring-white/15 sm:h-16 sm:w-16"
+							decoding="async"
+							height="64"
+							loading="lazy"
+							src="/images/apps/expiroo/icon.png"
+							width="64"
+						/>
 						<div class="min-w-0">
-							<span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold tracking-wide uppercase" style="background: rgba(255,138,42,0.15); color: var(--color-accent-400);">
-								<span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-accent-400);" aria-hidden="true"></span>
+							<span
+								class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold tracking-wide uppercase"
+								style="background: rgba(255,138,42,0.15); color: var(--color-accent-400);"
+							>
+								<span
+									aria-hidden="true"
+									class="h-1.5 w-1.5 rounded-full"
+									style="background: var(--color-accent-400);"></span>
 								New · Closed beta
 							</span>
-							<h2 id="expiroo-heading" class="mt-2 text-white" style="font-family: var(--font-display); font-weight: 800; font-size: clamp(1.375rem, 1.1rem + 1.2vw, 1.875rem); letter-spacing: -0.03em; line-height: 1.1;">
+							<h2
+								class="mt-2 text-white"
+								id="expiroo-heading"
+								style="font-family: var(--font-display); font-weight: 800; font-size: clamp(1.375rem, 1.1rem + 1.2vw, 1.875rem); letter-spacing: -0.03em; line-height: 1.1;"
+							>
 								Meet Expiroo
 							</h2>
 							<p class="mt-1.5 max-w-md text-[15px] leading-relaxed text-white/70">
-								Track expiry dates and your home inventory — works offline, no account needed. Be one of the first testers.
+								Track expiry dates and your home inventory — works offline, no account needed. Be
+								one of the first testers.
 							</p>
 						</div>
 					</div>
 					<div class="flex flex-col gap-3 sm:flex-shrink-0 sm:flex-row sm:items-center">
-						<a href="https://groups.google.com/g/expiroo-testers" target="_blank" rel="noopener noreferrer" class="button button--beta w-full min-h-[44px] gap-2 font-semibold focus:ring-white/70 focus:ring-offset-transparent sm:w-auto" aria-label="Join the Expiroo closed beta — opens in a new tab">
-							<svg class="h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+						<a
+							aria-label="Join the Expiroo closed beta — opens in a new tab"
+							class="button button--beta min-h-[44px] w-full gap-2 font-semibold focus:ring-white/70 focus:ring-offset-transparent sm:w-auto"
+							href="https://groups.google.com/g/expiroo-testers"
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							<svg
+								aria-hidden="true"
+								class="h-4 w-4 flex-shrink-0"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2.5"
+								viewBox="0 0 24 24"
+								><path
+									d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+									stroke-linecap="round"
+									stroke-linejoin="round"></path></svg
+							>
 							<span>Join the free beta</span>
 						</a>
-						<a href="/apps/expiroo" class="button w-full min-h-[44px] border border-white/25 text-white hover:bg-white/10 focus:ring-white/70 focus:ring-offset-transparent sm:w-auto" aria-label="Learn more about Expiroo">
+						<a
+							aria-label="Learn more about Expiroo"
+							class="button min-h-[44px] w-full border border-white/25 text-white hover:bg-white/10 focus:ring-white/70 focus:ring-offset-transparent sm:w-auto"
+							href="/apps/expiroo"
+						>
 							Learn more about Expiroo
 						</a>
 					</div>
@@ -190,13 +282,12 @@ const features = [
 	</AnimatedSection>
 
 	<!-- ─── SOCIAL PROOF / STATS ─────────────────────────────────────────────── -->
-	<section class="-mx-4 sm:-mx-6 lg:-mx-8 mb-0">
+	<section class="-mx-4 mb-0 sm:-mx-6 lg:-mx-8">
 		<div class="social-proof-section relative overflow-hidden">
-			<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-
+			<div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
 				<!-- Stats row -->
 				<AnimatedSection client:visible>
-					<div class="grid grid-cols-2 gap-8 sm:grid-cols-4 mb-20">
+					<div class="mb-20 grid grid-cols-2 gap-8 sm:grid-cols-4">
 						<div class="text-center">
 							<div class="social-proof-stat-num">10K+</div>
 							<div class="social-proof-stat-label">Downloads</div>
@@ -223,25 +314,30 @@ const features = [
 							<span class="section-label__dot"></span>
 							<span>What users say</span>
 						</div>
-						<h2 class="social-proof-heading">
-							Trusted by thousands of users
-						</h2>
+						<h2 class="social-proof-heading">Trusted by thousands of users</h2>
 					</div>
 
 					<div class="grid gap-5 sm:grid-cols-3">
 						<!-- Testimonial 1 -->
 						<div class="testimonial-card">
 							<div class="mb-3 flex gap-0.5">
-								{Array.from({ length: 5 }).map(() => (
-									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
-								))}
+								{
+									Array.from({ length: 5 }).map(() => (
+										<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
+									))
+								}
 							</div>
 							<p class="testimonial-text">
-								"Best Bible app I've found. The TPT translation reads beautifully and the interface is clean and easy to navigate. Use it every day."
+								"Best Bible app I've found. The TPT translation reads beautifully and the interface
+								is clean and easy to navigate. Use it every day."
 							</p>
 							<div class="testimonial-divider"></div>
 							<div class="flex items-center gap-3 pt-4">
-								<div class="h-8 w-8 rounded-full bg-brand-700 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">JD</div>
+								<div
+									class="bg-brand-700 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+								>
+									JD
+								</div>
 								<div>
 									<div class="testimonial-name">John D.</div>
 									<div class="testimonial-app">Bible TPT</div>
@@ -252,16 +348,23 @@ const features = [
 						<!-- Testimonial 2 -->
 						<div class="testimonial-card">
 							<div class="mb-3 flex gap-0.5">
-								{Array.from({ length: 5 }).map(() => (
-									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
-								))}
+								{
+									Array.from({ length: 5 }).map(() => (
+										<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
+									))
+								}
 							</div>
 							<p class="testimonial-text">
-								"Finally a grocery list app that just works. No bloat, no complexity. I share my list with my wife and it works perfectly every time."
+								"Finally a grocery list app that just works. No bloat, no complexity. I share my
+								list with my wife and it works perfectly every time."
 							</p>
 							<div class="testimonial-divider"></div>
 							<div class="flex items-center gap-3 pt-4">
-								<div class="h-8 w-8 rounded-full bg-accent-700 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">MS</div>
+								<div
+									class="bg-accent-700 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+								>
+									MS
+								</div>
 								<div>
 									<div class="testimonial-name">Mario S.</div>
 									<div class="testimonial-app">CartWise Grocery List</div>
@@ -272,16 +375,23 @@ const features = [
 						<!-- Testimonial 3 -->
 						<div class="testimonial-card">
 							<div class="mb-3 flex gap-0.5">
-								{Array.from({ length: 5 }).map(() => (
-									<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
-								))}
+								{
+									Array.from({ length: 5 }).map(() => (
+										<Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
+									))
+								}
 							</div>
 							<p class="testimonial-text">
-								"Me encanta esta app de la Biblia TLA. Muy fácil de usar y la traducción es clara. La uso todos los días con mi familia."
+								"Me encanta esta app de la Biblia TLA. Muy fácil de usar y la traducción es clara.
+								La uso todos los días con mi familia."
 							</p>
 							<div class="testimonial-divider"></div>
 							<div class="flex items-center gap-3 pt-4">
-								<div class="h-8 w-8 rounded-full bg-gray-700 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">CR</div>
+								<div
+									class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gray-700 text-xs font-bold text-white"
+								>
+									CR
+								</div>
 								<div>
 									<div class="testimonial-name">Carlos R.</div>
 									<div class="testimonial-app">Biblia TLA en Español</div>
@@ -296,125 +406,172 @@ const features = [
 
 	<!-- ─── FEATURES ─────────────────────────────────────────────────────────── -->
 	<AnimatedSection client:visible delay={0.1}>
-		<section id="features" class="-mx-4 sm:-mx-6 lg:-mx-8 bg-gray-50 dark:bg-transparent py-24">
+		<section class="-mx-4 bg-gray-50 py-24 sm:-mx-6 lg:-mx-8 dark:bg-transparent" id="features">
 			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-			<div class="mb-14">
-				<div class="section-label mb-3">
-					<span class="section-label__dot"></span>
-					<span>Why FusionCore</span>
-				</div>
-				<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-					<h2 class="section-title max-w-md">
-						Built different,<br/>on purpose.
-					</h2>
-					<p class="text-gray-500 dark:text-gray-400 max-w-xs text-sm leading-relaxed">
-						Every decision — from architecture to animation — is made with the end user in mind.
-					</p>
-				</div>
-			</div>
-
-			<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-				{features.map((f) => (
-					<div class="feature-item">
-						<span class="feature-num">{f.num}</span>
-						<div>
-							<h3 class="font-bold text-gray-900 dark:text-white mb-1.5 text-base">{f.title}</h3>
-							<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{f.desc}</p>
-						</div>
+				<div class="mb-14">
+					<div class="section-label mb-3">
+						<span class="section-label__dot"></span>
+						<span>Why FusionCore</span>
 					</div>
-				))}
-			</div>
+					<div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+						<h2 class="section-title max-w-md">
+							Built different,<br />on purpose.
+						</h2>
+						<p class="max-w-xs text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+							Every decision — from architecture to animation — is made with the end user in mind.
+						</p>
+					</div>
+				</div>
+
+				<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{
+						features.map((f) => (
+							<div class="feature-item">
+								<span class="feature-num">{f.num}</span>
+								<div>
+									<h3 class="mb-1.5 text-base font-bold text-gray-900 dark:text-white">
+										{f.title}
+									</h3>
+									<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{f.desc}</p>
+								</div>
+							</div>
+						))
+					}
+				</div>
 			</div>
 		</section>
 	</AnimatedSection>
 
 	<!-- ─── BLOG TEASER ────────────────────────────────────────────────────── -->
-	{latestPosts.length > 0 && (
-		<AnimatedSection client:visible delay={0.1}>
-			<section class="pt-8 pb-24">
-				<div class="mb-12 flex items-end justify-between">
-					<div>
-						<div class="section-label mb-3">
-							<span class="section-label__dot"></span>
-							<span>From the blog</span>
+	{
+		latestPosts.length > 0 && (
+			<AnimatedSection client:visible delay={0.1}>
+				<section class="pt-8 pb-24">
+					<div class="mb-12 flex items-end justify-between">
+						<div>
+							<div class="section-label mb-3">
+								<span class="section-label__dot" />
+								<span>From the blog</span>
+							</div>
+							<h2 class="section-title">Guides & insights</h2>
 						</div>
-						<h2 class="section-title">
-							Guides & insights
-						</h2>
-					</div>
-					<a class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-400 dark:hover:text-brand-300 transition-colors" href="/blog">
-						All posts
-						<ArrowRight className="h-3.5 w-3.5" />
-					</a>
-				</div>
-
-				<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-					{latestPosts.map((post, i) => (
-						<a href={`/blog/${post.slug.replace("en/", "")}`} class="blog-teaser-card no-underline" style={`animation-delay: ${i * 80}ms`}>
-							<div class="flex-1 space-y-3">
-								{post.data.tags && post.data.tags.length > 0 && (
-									<span class="inline-block rounded-full bg-brand-50 dark:bg-brand-950/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-400">
-										{post.data.tags[0]}
-									</span>
-								)}
-								<h3 class="font-bold text-gray-900 dark:text-white text-base leading-snug group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-									{post.data.title}
-								</h3>
-								<p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">
-									{post.data.description}
-								</p>
-							</div>
-							<div class="flex items-center justify-between mt-5 pt-4 border-t border-gray-100 dark:border-gray-700">
-								<time class="text-xs text-gray-400 dark:text-gray-500 font-medium">
-									{post.data.publishedAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-								</time>
-								<span class="inline-flex items-center gap-1 text-xs font-semibold text-brand-700 dark:text-brand-400">
-									Read
-									<ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
-								</span>
-							</div>
+						<a
+							class="text-brand-700 hover:text-brand-800 dark:text-brand-400 dark:hover:text-brand-300 hidden items-center gap-1.5 text-sm font-semibold transition-colors sm:inline-flex"
+							href="/blog"
+						>
+							All posts
+							<ArrowRight className="h-3.5 w-3.5" />
 						</a>
-					))}
-				</div>
+					</div>
 
-				<div class="mt-8 text-center sm:hidden">
-					<a class="button button--secondary" href="/blog">All posts</a>
-				</div>
-			</section>
-		</AnimatedSection>
-	)}
+					<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+						{latestPosts.map((post, i) => (
+							<a
+								class="blog-teaser-card no-underline"
+								href={`/blog/${post.slug.replace("en/", "")}`}
+								style={`animation-delay: ${i * 80}ms`}
+							>
+								<div class="flex-1 space-y-3">
+									{post.data.tags && post.data.tags.length > 0 && (
+										<span class="bg-brand-50 dark:bg-brand-950/50 text-brand-700 dark:text-brand-400 inline-block rounded-full px-3 py-1 text-[11px] font-semibold tracking-wider uppercase">
+											{post.data.tags[0]}
+										</span>
+									)}
+									<h3 class="group-hover:text-brand-600 dark:group-hover:text-brand-400 text-base leading-snug font-bold text-gray-900 transition-colors dark:text-white">
+										{post.data.title}
+									</h3>
+									<p class="line-clamp-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+										{post.data.description}
+									</p>
+								</div>
+								<div class="mt-5 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-gray-700">
+									<time class="text-xs font-medium text-gray-400 dark:text-gray-500">
+										{post.data.publishedAt.toLocaleDateString("en-US", {
+											month: "short",
+											day: "numeric",
+											year: "numeric",
+										})}
+									</time>
+									<span class="text-brand-700 dark:text-brand-400 inline-flex items-center gap-1 text-xs font-semibold">
+										Read
+										<ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+									</span>
+								</div>
+							</a>
+						))}
+					</div>
+
+					<div class="mt-8 text-center sm:hidden">
+						<a class="button button--secondary" href="/blog">
+							All posts
+						</a>
+					</div>
+				</section>
+			</AnimatedSection>
+		)
+	}
 
 	<!-- ─── CTA ──────────────────────────────────────────────────────────────── -->
 	<AnimatedSection client:visible delay={0.1}>
-		<section class="-mx-4 sm:-mx-6 lg:-mx-8 mb-0">
-			<div class="relative overflow-hidden cta-band">
+		<section class="-mx-4 mb-0 sm:-mx-6 lg:-mx-8">
+			<div class="cta-band relative overflow-hidden">
 				<!-- Decorative large text in background -->
-				<div aria-hidden="true" class="absolute inset-0 flex items-center justify-end overflow-hidden select-none pointer-events-none">
-					<span class="text-white/5 font-extrabold pr-8" style="font-size: clamp(6rem, 18vw, 14rem); line-height: 1; letter-spacing: -0.05em; font-family: var(--font-display);">FREE</span>
+				<div
+					aria-hidden="true"
+					class="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden select-none"
+				>
+					<span
+						class="pr-8 font-extrabold text-white/5"
+						style="font-size: clamp(6rem, 18vw, 14rem); line-height: 1; letter-spacing: -0.05em; font-family: var(--font-display);"
+						>FREE</span
+					>
 				</div>
 
-				<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+				<div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
 					<div class="max-w-xl">
-						<div class="section-label text-white/60 mb-5">
+						<div class="section-label mb-5 text-white/60">
 							<span>Ready to download?</span>
 						</div>
-						<h2 class="section-title text-white mb-5">
-							Premium apps.<br/>Free to start.
+						<h2 class="section-title mb-5 text-white">
+							Premium apps.<br />Free to start.
 						</h2>
-						<p class="text-lg text-white/75 mb-8 max-w-md leading-relaxed">
-							Every app is free to download on Google Play. Some unlock additional features through an optional subscription — but the core experience is always free.
+						<p class="mb-8 max-w-md text-lg leading-relaxed text-white/75">
+							Every app is free to download on Google Play. Some unlock additional features through
+							an optional subscription — but the core experience is always free.
 						</p>
-						<div class="flex flex-col sm:flex-row items-start gap-4">
-							<a class="button bg-white text-gray-900 hover:bg-gray-100 shadow-xl hover:shadow-2xl gap-2 px-7 py-3.5 text-base font-bold" href="/apps">
-								<svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-									<path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#2ecfff" opacity="0.9"></path>
-									<path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#ffc107" opacity="0.9"></path>
-									<path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="#ff3e00"></path>
-									<path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="#00e081" opacity="0.9"></path>
+						<div class="flex flex-col items-start gap-4 sm:flex-row">
+							<a
+								class="button gap-2 bg-white px-7 py-3.5 text-base font-bold text-gray-900 shadow-xl hover:bg-gray-100 hover:shadow-2xl"
+								href="/apps"
+							>
+								<svg
+									aria-hidden="true"
+									class="h-4 w-4 flex-shrink-0"
+									fill="none"
+									viewBox="0 0 24 24"
+								>
+									<path
+										d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z"
+										fill="#2ecfff"
+										opacity="0.9"></path>
+									<path
+										d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z"
+										fill="#ffc107"
+										opacity="0.9"></path>
+									<path
+										d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z"
+										fill="#ff3e00"></path>
+									<path
+										d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"
+										fill="#00e081"
+										opacity="0.9"></path>
 								</svg>
 								Browse All Apps
 							</a>
-							<a class="button border-2 border-white/30 text-white hover:bg-white/10 px-7 py-3.5 text-base" href="/contact">
+							<a
+								class="button border-2 border-white/30 px-7 py-3.5 text-base text-white hover:bg-white/10"
+								href="/contact"
+							>
 								Contact us
 							</a>
 						</div>
