@@ -92,7 +92,7 @@
   "apps": {
     "overline": "Google Play · Desenvolvedor Verificado",
     "title": "Todos os Aplicativos",
-    "metaDescription": "Apps Android da FusionCore: Bible TPT, Biblia TLA, a lista de compras CartWise, o scanner de garantias Claimly e o Expiroo (beta). Grátis no Google Play.",
+    "metaDescription": "Apps Android da FusionCore: Bible TPT, Biblia TLA, CartWise, o scanner de garantias Claimly, e Expiroo e Buena Tierra (beta). Grátis no Google Play.",
     "apps": "Apps",
     "downloads": "Downloads",
     "free": "Grátis",
@@ -475,7 +475,7 @@
     },
     "eyebrow": "Sobre nós",
     "title": "Sobre a FusionCore Apps",
-    "lead": "A FusionCore Apps é um estúdio independente de apps para Android. Criamos apps grátis para ler a Bíblia, fazer as compras do mercado, controlar garantias e acompanhar a validade dos alimentos, todos no Google Play (o Expiroo está em teste fechado).",
+    "lead": "A FusionCore Apps é um estúdio independente de apps para Android. Criamos apps grátis para ler a Bíblia, fazer as compras do mercado, controlar garantias, acompanhar a validade dos alimentos e tomar notas de sermões, todos no Google Play (o Expiroo e o Buena Tierra estão em teste fechado).",
     "stats": {
       "downloads": "Downloads",
       "apps": "Apps",
@@ -484,12 +484,13 @@
     },
     "apps": {
       "title": "Nossos apps",
-      "subtitle": "Quatro apps no Google Play e um em beta fechado.",
+      "subtitle": "Quatro apps no Google Play e dois em teste fechado.",
       "bibleTpt": "Leia The Passion Translation (TPT) offline e ouça a Bíblia em áudio, com devocionais diários e planos de leitura.",
       "bibliaTla": "A Bíblia em espanhol claro e atual (Traducción en Lenguaje Actual), com áudio, planos de leitura e acesso offline.",
       "cartwise": "Uma lista de compras que soma o carrinho enquanto você compra, com entrada por voz e compartilhamento pelo WhatsApp. Sem conta.",
       "claimly": "Escaneie recibos e acompanhe garantias da loja, do fabricante e estendidas, com alertas antes do vencimento.",
       "expiroo": "Controle a validade do que está na geladeira e na despensa, offline e sem conta.",
+      "buenaTierra": "Grave a pregação e receba um resumo com IA, com as passagens bíblicas e os pontos principais. Em espanhol, sem conta.",
       "beta": "Beta fechado"
     },
     "how": {
