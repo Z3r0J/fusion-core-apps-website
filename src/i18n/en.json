@@ -92,7 +92,7 @@
   "apps": {
     "overline": "Google Play · Verified Developer",
     "title": "All Applications",
-    "metaDescription": "All FusionCore Android apps: Bible TPT, Biblia TLA, CartWise grocery list, Claimly warranty scanner and the Expiroo beta. Free on Google Play.",
+    "metaDescription": "All FusionCore Android apps: Bible TPT, Biblia TLA, CartWise, Claimly warranty scanner, plus Expiroo and Buena Tierra in beta. Free on Google Play.",
     "apps": "Apps",
     "downloads": "Downloads",
     "free": "Free",
@@ -475,7 +475,7 @@
     },
     "eyebrow": "About us",
     "title": "About FusionCore Apps",
-    "lead": "FusionCore Apps is an independent Android app studio. We make free apps for reading the Bible, grocery shopping, tracking warranties and keeping an eye on food expiry dates, all on Google Play (Expiroo is in closed testing).",
+    "lead": "FusionCore Apps is an independent Android app studio. We make free apps for reading the Bible, grocery shopping, tracking warranties, keeping an eye on food expiry dates and taking sermon notes, all on Google Play (Expiroo and Buena Tierra are in closed testing).",
     "stats": {
       "downloads": "Downloads",
       "apps": "Apps",
@@ -484,12 +484,13 @@
     },
     "apps": {
       "title": "Our apps",
-      "subtitle": "Four apps on Google Play and one in closed beta.",
+      "subtitle": "Four apps on Google Play and two in closed testing.",
       "bibleTpt": "Read The Passion Translation (TPT) offline and listen to the Audio Bible, with daily devotionals and reading plans.",
       "bibliaTla": "The Bible in clear, modern Spanish (Traducción en Lenguaje Actual), with audio, reading plans and offline access.",
       "cartwise": "A grocery list that adds up your cart as you shop, with voice input and WhatsApp sharing. No account needed.",
       "claimly": "Scan receipts and track store, manufacturer and extended warranties, with alerts before they expire.",
       "expiroo": "Track the expiry dates of the food in your fridge and pantry, offline and without an account.",
+      "buenaTierra": "Record the sermon and get an AI summary with the Bible passages and key points. In Spanish, no account needed.",
       "beta": "Closed beta"
     },
     "how": {

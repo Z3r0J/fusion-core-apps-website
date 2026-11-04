@@ -1,0 +1,31 @@
+---
+// Rendered by BaseLayout only when PUBLIC_FIREBASE_MEASUREMENT_ID is set. Kept in its own
+// component so the module script is top-level: inside a JSX expression Prettier reads it as
+// text and rewrites the JavaScript.
+---
+
+<script
+	define:vars={{
+		apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
+		authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
+		projectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID,
+		storageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET,
+		messagingSenderId: import.meta.env.PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+		appId: import.meta.env.PUBLIC_FIREBASE_APP_ID,
+		measurementId: import.meta.env.PUBLIC_FIREBASE_MEASUREMENT_ID,
+	}}
+	type="module"
+>
+	import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+	const app = initializeApp({
+		apiKey,
+		authDomain,
+		projectId,
+		storageBucket,
+		messagingSenderId,
+		appId,
+		measurementId,
+	});
+	getAnalytics(app);
+</script>

@@ -92,7 +92,7 @@
   "apps": {
     "overline": "Google Play · Desarrollador Verificado",
     "title": "Todas las Aplicaciones",
-    "metaDescription": "Apps Android de FusionCore: Bible TPT, Biblia TLA, la lista de compras CartWise, el escáner de garantías Claimly y Expiroo (beta). Gratis en Google Play.",
+    "metaDescription": "Apps Android de FusionCore: Bible TPT, Biblia TLA, CartWise, el escáner de garantías Claimly, y Expiroo y Buena Tierra (beta). Gratis en Google Play.",
     "apps": "Apps",
     "downloads": "Descargas",
     "free": "Gratis",
@@ -475,7 +475,7 @@
     },
     "eyebrow": "Sobre nosotros",
     "title": "Sobre FusionCore Apps",
-    "lead": "FusionCore Apps es un estudio independiente de apps para Android. Creamos apps gratis para leer la Biblia, hacer las compras del supermercado, controlar garantías y vigilar las fechas de caducidad de los alimentos, todas en Google Play (Expiroo está en prueba cerrada).",
+    "lead": "FusionCore Apps es un estudio independiente de apps para Android. Creamos apps gratis para leer la Biblia, hacer las compras del supermercado, controlar garantías, vigilar las fechas de caducidad de los alimentos y tomar notas de la prédica, todas en Google Play (Expiroo y Buena Tierra están en prueba cerrada).",
     "stats": {
       "downloads": "Descargas",
       "apps": "Apps",
@@ -484,12 +484,13 @@
     },
     "apps": {
       "title": "Nuestras apps",
-      "subtitle": "Cuatro apps en Google Play y una en beta cerrada.",
+      "subtitle": "Cuatro apps en Google Play y dos en prueba cerrada.",
       "bibleTpt": "Lee The Passion Translation (TPT) sin internet y escucha la Biblia en audio, con devocionales diarios y planes de lectura.",
       "bibliaTla": "La Biblia en español claro y actual (Traducción en Lenguaje Actual), con audio, planes de lectura y acceso sin internet.",
       "cartwise": "Una lista de compras que suma tu carrito mientras compras, con entrada por voz y para compartir por WhatsApp. Sin cuenta.",
       "claimly": "Escanea recibos y controla garantías de tienda, del fabricante y extendidas, con alertas antes de que venzan.",
       "expiroo": "Controla las fechas de caducidad de tus alimentos, sin internet y sin cuenta.",
+      "buenaTierra": "Graba la prédica y recibe un resumen con IA, con los pasajes bíblicos y los puntos clave. Sin cuenta.",
       "beta": "Beta cerrada"
     },
     "how": {
