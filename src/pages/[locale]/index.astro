@@ -15,7 +15,9 @@ const { locale } = Astro.params as { locale: Locale };
 const t = useTranslations(locale);
 
 const apps = await getCollection("apps", ({ slug }) => slug.startsWith(`${locale}/`));
-const featuredApps = apps.slice(0, 4);
+// Closed-test apps get their own band or page, not a featured card: a new beta
+// slug would otherwise push a live app out of the first four.
+const featuredApps = apps.filter((app) => !app.data.beta).slice(0, 4);
 
 const blogPosts = await getCollection("blog", ({ slug }) => slug.startsWith(`${locale}/`));
 const latestPosts = blogPosts
