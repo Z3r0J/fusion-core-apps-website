@@ -104,7 +104,8 @@
     "termsDescription": "Terms of service for FusionCore Apps — usage conditions for our Android applications and website.",
     "cartwisePrivacyDescription": "Privacy policy for CartWise — how the grocery-list app collects, uses, and protects your information.",
     "cartwiseTermsDescription": "Terms of service for CartWise — usage conditions for the grocery-list app.",
-    "buenaTierraPrivacyDescription": "Privacy policy for Buena Tierra — how the sermon recording and AI summary app collects, uses, and protects your information."
+    "buenaTierraPrivacyDescription": "Privacy policy for Buena Tierra — how the sermon recording and AI summary app collects, uses, and protects your information.",
+    "claimlyPrivacyDescription": "Privacy policy for Claimly — how the warranty and receipt tracker app collects, uses, and protects your information."
   },
   "app": {
     "screenshots": "Screenshots",

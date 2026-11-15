@@ -1,0 +1,35 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import LegalLayout from "@/components/LegalLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getEntry } from "astro:content";
+
+const policy = await getEntry("legal", "claimly-privacy");
+if (!policy) throw new Error("Claimly privacy policy not found");
+const { Content } = await policy.render();
+
+const title = "Claimly Privacy Policy — FusionCore Apps";
+const description =
+	"Privacy policy for Claimly — how the warranty and receipt tracker app collects, uses, and protects your information.";
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// Claimly has no dedicated landing page; the breadcrumb points at its app page.
+---
+
+<BaseLayout {canonical} {description} {title}>
+	<Breadcrumbs
+		items={[
+			{ label: "Home", href: "/" },
+			{ label: "Claimly", href: "/apps/claimly-receipt-tracker" },
+			{ label: "Privacy Policy", href: "/claimly/privacy" },
+		]}
+	/>
+
+	<LegalLayout
+		eyebrow="Legal"
+		icon="shield"
+		title="Claimly Privacy Policy"
+		updatedAt={policy.data.updatedAt}
+	>
+		<Content />
+	</LegalLayout>
+</BaseLayout>

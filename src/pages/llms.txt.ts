@@ -27,6 +27,7 @@ const LEGAL_PAGES: Array<{ slug: string; path: string }> = [
 	{ slug: "terms", path: "/terms" },
 	{ slug: "cartwise-privacy", path: "/cartwise/privacy" },
 	{ slug: "cartwise-terms", path: "/cartwise/terms" },
+	{ slug: "claimly-privacy", path: "/claimly/privacy" },
 	{ slug: "buena-tierra-privacy", path: "/buena-tierra/privacy" },
 ];
 

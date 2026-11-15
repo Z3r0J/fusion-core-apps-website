@@ -1,11 +1,11 @@
 ---
 title: "Política de Privacidad"
-updatedAt: "2026-04-04"
+updatedAt: "2026-11-14"
 ---
 
 ## Política de Privacidad de FusionCore Apps
 
-**Última actualización:** 4 de abril de 2026
+**Última actualización:** 14 de noviembre de 2026
 
 Gracias por usar las apps desarrolladas por **FusionCore Apps** ("nosotros", "nuestro", "nos").  
 Esta Política de Privacidad explica cómo manejamos tu información cuando usas nuestras apps de Biblia y este sitio web. Nos comprometemos a proteger tu privacidad y a ser transparentes sobre los datos que recopilamos.
@@ -16,7 +16,7 @@ Esta Política de Privacidad explica cómo manejamos tu información cuando usas
   Si **activas las notificaciones**, la app solicita tu permiso. Cuando lo otorgas, generamos un **token push de Expo** para tu dispositivo/instancia de app. Este token se usa **únicamente** para enviar notificaciones push a tu dispositivo. El token se **elimina automáticamente de nuestro sistema** en cuanto falla un intento de entrega de notificación — lo que generalmente indica que la app fue desinstalada del dispositivo.
 
 - **Cámara e imágenes de recibos (solo Claimly)**  
-  La app Claimly solicita **permiso de cámara** para escanear recibos. Cuando escaneas un recibo, la imagen se procesa para extraer automáticamente el nombre del producto, la tienda, la fecha y el precio. Las imágenes **no se almacenan en nuestros servidores** — se procesan localmente en tu dispositivo o a través de un servicio seguro de reconocimiento de imágenes, únicamente para extraer los datos de texto. Solo los campos de texto extraídos se guardan, dentro de la app en tu dispositivo.
+  La app Claimly solicita **permiso de cámara** para escanear recibos. El escaneo es opcional. Cuando escaneas un recibo, una copia reducida de la foto y los nombres de tus categorías se envían por una conexión cifrada (HTTPS) a nuestro servidor, que los reenvía a **OpenAI** para extraer la tienda, la fecha, el producto y el precio. Nuestro servidor **no almacena la imagen**. OpenAI no usa estos datos para entrenar sus modelos y puede conservarlos hasta 30 días para monitorear abusos; después se eliminan. Los datos extraídos y las fotos de tus recibos se guardan solo dentro de la app en tu dispositivo. Claimly también usa servicios de análisis, reportes de fallos, anuncios y compras — consulta la [Política de Privacidad de Claimly](/es/claimly/privacy) para ver todos los detalles.
 
 > **No** recopilamos tu nombre, correo electrónico, ubicación precisa, contactos ni otra información personal o sensible.
 
@@ -41,7 +41,7 @@ Si una app muestra anuncios, las redes publicitarias de terceros (por ejemplo, *
 
 - **Proporcionar contenido en tu idioma** y recordar tus **preferencias de apariencia**.
 - **Enviar notificaciones push** a las que te suscribiste (versículos diarios, actualizaciones, avisos importantes) usando el token push de Expo.
-- **Procesar imágenes de recibos** para extraer automáticamente los datos del producto (solo Claimly) — las imágenes no se conservan después de la extracción.
+- **Procesar imágenes de recibos** para extraer automáticamente los datos del producto (solo Claimly) — nuestro servidor no almacena las imágenes; OpenAI puede conservarlas hasta 30 días antes de eliminarlas (consulta la [Política de Privacidad de Claimly](/es/claimly/privacy)).
 - **Mostrar anuncios no intrusivos** en apps gratuitas a través de redes publicitarias de terceros (cuando aplique).
 - **Métricas agregadas básicas** (por ejemplo, impresiones/clics de anuncios reportados por la red publicitaria) para mejorar el rendimiento de la app.
 

@@ -1,11 +1,11 @@
 ---
 title: "Privacy Policy"
-updatedAt: "2026-04-04"
+updatedAt: "2026-11-14"
 ---
 
 ## Privacy Policy for FusionCore Apps
 
-**Last Updated:** April 4, 2026
+**Last Updated:** November 14, 2026
 
 Thank you for using apps developed by **FusionCore Apps** (“we”, “our”, “us”).  
 This Privacy Policy explains how we handle your information when you use our Bible-focused apps and this website. We are committed to protecting your privacy and being transparent about the data we collect.
@@ -16,7 +16,7 @@ This Privacy Policy explains how we handle your information when you use our Bib
   If you **enable notifications**, the app requests permission. When granted, we generate an **Expo push token** for your device/app instance. This token is used **only** to route push notifications to your device. The token is **automatically removed from our system** as soon as a notification delivery attempt fails — which typically means the app has been uninstalled from the device.
 
 - **Camera and Receipt Images (Claimly only)**  
-  The Claimly app requests **camera permission** to scan receipts. When you scan a receipt, the image is processed to automatically extract product name, store, date, and price. Images are **not stored on our servers** — they are processed locally on your device or via a secure image recognition service solely to extract the text data. Only the extracted text fields are saved, within the app on your device.
+  The Claimly app requests **camera permission** to scan receipts. Scanning is optional. When you scan a receipt, a resized copy of the photo and your category names are sent over an encrypted connection (HTTPS) to our server, which forwards them to **OpenAI** to extract the store, date, product, and price. Our server does **not store the image**. OpenAI does not use this data to train its models and may retain it for up to 30 days for abuse monitoring, after which it is deleted. The extracted details and your receipt photos are saved only within the app on your device. Claimly also uses analytics, crash reporting, ads, and purchase services — see the dedicated [Claimly Privacy Policy](/claimly/privacy) for full details.
 
 > We **do not** collect your name, email, precise location, contacts, or other personal/sensitive information.
 
@@ -41,7 +41,7 @@ We do **not** control what those networks collect directly; please review their 
 
 - **Provide language-specific content** and remember your **appearance preferences**.
 - **Send push notifications** that you opt into (daily verses, updates, important notices) using the Expo push token.
-- **Process receipt images** to automatically extract product details (Claimly only) — images are not retained after extraction.
+- **Process receipt images** to automatically extract product details (Claimly only) — our server does not store the images; OpenAI may retain them for up to 30 days before deleting them (see the [Claimly Privacy Policy](/claimly/privacy)).
 - **Show non-intrusive ads** in free apps via third-party ad networks (where applicable).
 - **Basic aggregated metrics** (e.g., ad impressions/clicks reported by the ad network) to improve app performance.
 

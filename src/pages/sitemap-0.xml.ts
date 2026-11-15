@@ -67,6 +67,7 @@ export const GET: APIRoute = async ({ site }) => {
 		["/terms", "monthly", [0.5, 0.4]],
 		["/cartwise/privacy", "monthly", [0.5, 0.4]],
 		["/cartwise/terms", "monthly", [0.5, 0.4]],
+		["/claimly/privacy", "monthly", [0.5, 0.4]],
 	];
 	for (const [path, changefreq, priority] of STATIC_PAGES) {
 		addLocalized(allLocalePaths(path), { changefreq, priority });

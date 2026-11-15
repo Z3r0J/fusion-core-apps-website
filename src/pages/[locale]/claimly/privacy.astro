@@ -1,0 +1,45 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import LegalLayout from "@/components/LegalLayout.astro";
+import { useTranslations, type Locale } from "@/i18n/utils";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBrand } from "@/lib/seo";
+import { getEntry } from "astro:content";
+
+export function getStaticPaths() {
+	return [{ params: { locale: "es" } }, { params: { locale: "pt" } }];
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const t = useTranslations(locale);
+
+const policy = await getEntry(
+	"legal",
+	`claimly-privacy-${locale}` as "claimly-privacy-es" | "claimly-privacy-pt",
+);
+if (!policy) throw new Error(`Claimly privacy policy not found for locale: ${locale}`);
+const { Content } = await policy.render();
+
+const title = withBrand(policy.data.title);
+const description = t("legal.claimlyPrivacyDescription");
+const canonical = new URL(`/${locale}/claimly/privacy`, Astro.site).href;
+// Claimly has no dedicated landing page; the breadcrumb points at its app page.
+---
+
+<BaseLayout {canonical} {description} locale={locale} {title}>
+	<Breadcrumbs
+		items={[
+			{ label: t("breadcrumbs.home"), href: `/${locale}` },
+			{ label: "Claimly", href: `/${locale}/apps/claimly-receipt-tracker` },
+			{ label: t("breadcrumbs.privacy"), href: `/${locale}/claimly/privacy` },
+		]}
+	/>
+	<LegalLayout
+		eyebrow="Legal"
+		icon="shield"
+		title={policy.data.title}
+		updatedAt={policy.data.updatedAt}
+	>
+		<Content />
+	</LegalLayout>
+</BaseLayout>

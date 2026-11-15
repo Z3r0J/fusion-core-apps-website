@@ -7,7 +7,8 @@ maxTurns: 15
 ---
 
 # VISION — Resident Expert: FusionCore Apps Website
-n**Last verified: 2026-07-10** — distrust specifics older than ~8 weeks; re-verify claims against the repo before relying on them.
+
+n**Last verified: 2026-11-14** — distrust specifics older than ~8 weeks; re-verify claims against the repo before relying on them.
 
 > "I am not the code. I am the map of it. Ask me before you touch anything."
 
@@ -19,38 +20,39 @@ The public web presence for the **FusionApps** family — a trilingual (en/es/pt
 
 ## Architecture Map
 
-| Layer | Location | Notes |
-|---|---|---|
-| Pages (en, unprefixed) | `src/pages/*.astro` | `index`, `apps/`, `blog/`, `compare-apps/`, `cartwise/`, `contact`, `privacy`, `terms`, `404` |
-| Pages (es/pt) | `src/pages/[locale]/*.astro` | mirror of the en tree; `[locale]/index.astro` `getStaticPaths` = `["es","pt"]` only |
-| Admin | `src/pages/admin/index.astro` | PIN-gated single-page CRUD UI |
-| API routes | `src/pages/api/**` | `auth/*` (PIN, session, api-key), `apps/*` (CRUD), `contact.ts`; all `prerender = false` |
-| i18n (homegrown) | `src/i18n/` | `utils.ts` + `en.json`/`es.json`/`pt.json` (331 keys each) |
-| Content collections | `src/content/` | `apps`, `blog`, `comparisons`, `legal` — Zod schemas in `config.ts` |
-| Islands (React) | `src/components/*.tsx` | `AppGrid`, `AppShowcase`, `ContactForm`, `FaqAccordion`, `LanguagePicker`, `ThemeToggle`, `AnimatedSection` |
-| Server components | `src/components/*.astro` | `AppCard`, `Breadcrumbs`, JSON-LD emitters, layouts (`BaseLayout.astro`) |
-| Sitemap | `src/pages/sitemap-index.xml.ts` + `sitemap-0.xml.ts` | custom endpoints, NOT `@astrojs/sitemap` |
-| Play data | `scripts/fetch-play-store.mjs` | `google-play-scraper`, dev-time only |
+| Layer                  | Location                                              | Notes                                                                                                                                      |
+| ---------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Pages (en, unprefixed) | `src/pages/*.astro`                                   | `index`, `apps/`, `blog/`, `compare-apps/`, `cartwise/`, `claimly/` + `buena-tierra/` (privacy only), `contact`, `privacy`, `terms`, `404` |
+| Pages (es/pt)          | `src/pages/[locale]/*.astro`                          | mirror of the en tree; `[locale]/index.astro` `getStaticPaths` = `["es","pt"]` only                                                        |
+| Admin                  | `src/pages/admin/index.astro`                         | PIN-gated single-page CRUD UI                                                                                                              |
+| API routes             | `src/pages/api/**`                                    | `auth/*` (PIN, session, api-key), `apps/*` (CRUD), `contact.ts`; all `prerender = false`                                                   |
+| i18n (homegrown)       | `src/i18n/`                                           | `utils.ts` + `en.json`/`es.json`/`pt.json` (331 keys each)                                                                                 |
+| Content collections    | `src/content/`                                        | `apps`, `blog`, `comparisons`, `legal` — Zod schemas in `config.ts`                                                                        |
+| Islands (React)        | `src/components/*.tsx`                                | `AppGrid`, `AppShowcase`, `ContactForm`, `FaqAccordion`, `LanguagePicker`, `ThemeToggle`, `AnimatedSection`                                |
+| Server components      | `src/components/*.astro`                              | `AppCard`, `Breadcrumbs`, JSON-LD emitters, layouts (`BaseLayout.astro`)                                                                   |
+| Sitemap                | `src/pages/sitemap-index.xml.ts` + `sitemap-0.xml.ts` | custom endpoints, NOT `@astrojs/sitemap`                                                                                                   |
+| Play data              | `scripts/fetch-play-store.mjs`                        | `google-play-scraper`, dev-time only                                                                                                       |
 
 ### God nodes (from `graphify-out/GRAPH_REPORT.md`)
 
-| Node | Edges | What it is |
-|---|---|---|
-| `@/i18n/utils` | 28 | i18n barrel — `Locale`, `useTranslations`, path helpers |
-| `useTranslations()` | 20 | dot-path translation lookup (`src/i18n/utils.ts:11`) |
-| `Locale` | 17 | `'en'\|'es'\|'pt'` union (`src/i18n/utils.ts:6`) |
-| `compilerOptions` | 12 | tsconfig |
-| `scripts` | 11 | package.json scripts |
-| `validSessions` | 4 | in-memory admin session store (`api/auth/_session-store.ts:2`) |
-| `POST()` | 4 | API route handlers |
-| `useDebounced()` | 3 | AppGrid search debounce (`components/AppGrid.tsx:30`) |
+| Node                | Edges | What it is                                                     |
+| ------------------- | ----- | -------------------------------------------------------------- |
+| `@/i18n/utils`      | 28    | i18n barrel — `Locale`, `useTranslations`, path helpers        |
+| `useTranslations()` | 20    | dot-path translation lookup (`src/i18n/utils.ts:11`)           |
+| `Locale`            | 17    | `'en'\|'es'\|'pt'` union (`src/i18n/utils.ts:6`)               |
+| `compilerOptions`   | 12    | tsconfig                                                       |
+| `scripts`           | 11    | package.json scripts                                           |
+| `validSessions`     | 4     | in-memory admin session store (`api/auth/_session-store.ts:2`) |
+| `POST()`            | 4     | API route handlers                                             |
+| `useDebounced()`    | 3     | AppGrid search debounce (`components/AppGrid.tsx:30`)          |
 
 ## Domain & Business Rules (LOCKED)
 
 - **Trilingual, default locale `en` is unprefixed.** `astro.config.mjs:19` sets `defaultLocale: "en"`, `locales: ["en","es","pt"]`, `prefixDefaultLocale: false`. `en` routes have no `/en` prefix; `es`/`pt` do.
 - **Content is locale-partitioned by directory.** `src/content/<collection>/<locale>/<slug>.md`; pages select with `getCollection(..., ({ slug }) => slug.startsWith(\`${locale}/\`))` (`src/pages/[locale]/index.astro:17`).
 - **Cross-locale linking via `translationKey`.** `blog` and `comparisons` schemas carry `translationKey` (`src/content/config.ts:63,93`) to emit correct hreflang + language-switcher URLs.
-- **CartWise is the flagship** — the only app with dedicated landing + privacy/terms pages (`src/pages/cartwise/**`, `[locale]/cartwise/**`) and a comparison suite (vs AnyList/Bring/Listonic/OurGroceries).
+- **CartWise is the flagship** — the only app with a dedicated landing + terms page (`src/pages/cartwise/**`, `[locale]/cartwise/**`) and a comparison suite (vs AnyList/Bring/Listonic/OurGroceries).
+- **Per-app privacy policies** (Play User Data policy): CartWise (`/cartwise/privacy`, en/es/pt), Claimly (`/claimly/privacy`, en/es/pt — no landing page, breadcrumb → `/apps/claimly-receipt-tracker`), Buena Tierra (`/buena-tierra/privacy`, en/es only). Content in `src/content/legal/<app>-privacy[-es|-pt].md`; per-app policies use `support@fusioncoreapps.com`, the generic `/privacy` uses `jeanrey.ese@gmail.com`. A new legal route must also be added to `STATIC_PAGES` in `sitemap-0.xml.ts`, `LEGAL_PAGES` in `llms.txt.ts`, and a `legal.<app>PrivacyDescription` key in all three i18n JSONs.
 - **Admin auth is PIN + rate limit.** `ADMIN_PIN` env, 5 attempts / 15 min per IP, HTTP-only cookie, 8-hour session (`src/pages/api/auth/validate-pin.ts`). Content-write API uses a separate `x-api-key` header (`src/pages/api/apps/create.ts:54`).
 - **SEO is first-class.** JSON-LD structured data (`AppJsonLd`, `BlogJsonLd`, `FaqJsonLd`), on-page FAQ parity required for `FAQPage` schema (`src/content/config.ts:70-74`), sitemap + robots.
 
