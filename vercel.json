@@ -29,6 +29,16 @@
       "permanent": true
     },
     {
+      "source": "/es/blog/fecha-caducidad-vs-consumo-preferente",
+      "destination": "https://expiroo.app/es/blog/fecha-de-caducidad-vs-consumo-preferente",
+      "permanent": true
+    },
+    {
+      "source": "/es/blog/producto-vencido-se-puede-consumir",
+      "destination": "https://expiroo.app/es/blog/producto-vencido-se-puede-consumir",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
