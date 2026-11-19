@@ -1,10 +1,11 @@
 ---
 title: "Expiroo: Food Expiry Tracker"
-tagline: "Track expiry dates offline — no account, your inventory stays on your device."
-description: "Expiroo is a food expiry tracker for your fridge and pantry. Works offline, no account, data stays on your phone. Free with ads, one-time Pro. Closed beta."
+tagline: "Track expiry dates for your fridge and pantry offline — no account, your inventory stays on your device."
+description: "Expiroo is a free Android app that tracks food expiry dates, with barcode scan and reminders before food goes bad. Offline, no account. One-time Premium."
 icon: "/images/apps/expiroo/icon.png"
-playUrl: "https://play.google.com/apps/testing/com.fusioncoreapps.expiroo"
-category: "Productivity"
+playUrl: "https://play.google.com/store/apps/details?id=com.fusioncoreapps.expiroo"
+officialSite: "https://expiroo.app"
+category: "Food & Drink"
 tags:
   [
     "expiry tracker",
@@ -16,8 +17,8 @@ tags:
   ]
 locale: "en"
 price: "Free"
-version: "1.0.0"
-lastUpdated: "2026-08-06"
+version: "1.3.0"
+lastUpdated: "2026-11-19"
 screenshots:
   [
     "/images/screenshots/expiroo-home.jpg",
@@ -28,33 +29,34 @@ screenshots:
     "/images/screenshots/expiroo-settings.jpg",
   ]
 downloads: ""
-beta: true
-betaGroupUrl: "https://groups.google.com/g/expiroo-testers"
+beta: false
 ---
 
 ## Overview
 
-**Expiroo: Food Expiry Tracker** tracks expiration dates for everything in your fridge and pantry. It's local-first: your inventory is stored on your device and works fully offline — no account, no sign-up. Free to use (ad-supported); an optional one-time Pro upgrade unlocks unlimited products.
+**Expiroo: Food Expiry Tracker** is a free Android app that tracks the expiration dates of everything in your fridge, freezer and pantry, and reminds you before it goes bad. It's local-first: your inventory is stored on your device and works fully offline — no account, no sign-up. Expiroo has been available on Google Play since November 18, 2026.
 
-Guides on food dates, storage times and the beta walkthrough live on Expiroo's own site: [expiroo.app](https://expiroo.app/en).
+**Official site:** setup help, food-date explainers and storage guides live on [Expiroo's official site, expiroo.app](https://expiroo.app/en). Two good places to start: [best before vs. use by: what each date means](https://expiroo.app/en/blog/best-before-vs-use-by) and [how long food lasts in the fridge](https://expiroo.app/en/blog/how-long-does-food-last-in-the-fridge).
 
 ## Features
 
-- **Expiry tracking** — add products with their expiry date and see what's running out at a glance
-- **Barcode scanner** — scan a product's barcode to add it in seconds
-- **Expiry notifications** — get reminded before food goes bad so you can use it in time
-- **Storage locations** — organize items by fridge, freezer, pantry, and more
-- **Waste tracking** — see what you used versus what you had to throw away
-- **Offline-first** — works without a connection; your inventory stays on your device
+- **Expiry reminders** — get notified 7, 3 and 1 days before an item expires and again on the day, on your own schedule or as one daily summary
+- **Barcode scanner** — scan a product's barcode and Expiroo fills in the name for you
+- **Traffic-light home** — everything sorted by urgency: expired first, expiring soon next, fresh last
+- **Your own locations and categories** — fridge, freezer, pantry, medicine cabinet; track food, medicine, cosmetics or pet supplies
+- **Waste report** — see what you used versus what you threw out, month by month
+- **Offline and private** — no account, no cloud; your inventory stays on your device
+- **Light and dark theme**
 
 ## Perfect for
 
 Anyone who wants to stop throwing away forgotten food, keep track of what's in the fridge and pantry, and get a heads-up before things expire.
 
-## How to join the beta
+## How to get it
 
-Expiroo is currently in closed beta. To install it, follow these steps in order:
+Expiroo is free on Google Play for Android 7.0 and later — [get Expiroo on Google Play](https://play.google.com/store/apps/details?id=com.fusioncoreapps.expiroo).
 
-1. **Join the testers group** — become a tester [in the Google Group](https://groups.google.com/g/expiroo-testers).
-2. **Open the opt-in link** — accept the invite on the [Google Play testing page](https://play.google.com/apps/testing/com.fusioncoreapps.expiroo).
-3. **Install from Google Play** — once you're a tester, download Expiroo from Google Play.
+- **Free** — the full app with ads, tracking up to 10 items at a time.
+- **Expiroo Premium** — a one-time purchase, not a subscription. It removes ads, unlocks unlimited items and opens the full statistics dashboard.
+
+What Expiroo does, feature by feature: [Expiroo is now on Google Play](/blog/expiroo-now-available-google-play).

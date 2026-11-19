@@ -1,6 +1,6 @@
 # FusionCore Apps Website
 
-Web presence / Google Play landing site for the FusionApps family (Biblia TLA, Bible TPT, CartWise, Claimly, Expiroo — closed beta) — marketing pages, SEO blog, app comparisons, and a PIN-gated admin panel. Astro-rendered static site with React islands, trilingual (en/es/pt).
+Web presence / Google Play landing site for the FusionApps family (Biblia TLA, Bible TPT, CartWise, Claimly, Expiroo — public on Google Play since 2026-11-18, Buena Tierra — closed testing) — marketing pages, SEO blog, app comparisons, and a PIN-gated admin panel. Astro-rendered static site with React islands, trilingual (en/es/pt).
 
 ## Stack
 
@@ -42,7 +42,7 @@ Never run `pnpm build` after a change unless explicitly asked.
 - **`src/pages/`** — dual route tree. `src/pages/*.astro` serve the default `en` locale **unprefixed** (`prefixDefaultLocale: false`); `src/pages/[locale]/*.astro` serve `es` + `pt`. `[locale]/index.astro` `getStaticPaths()` hardcodes `["es","pt"]` — `en` is deliberately excluded because it lives in the unprefixed tree. Section subtrees: `apps/`, `blog/`, `compare-apps/`, `cartwise/` (flagship landing + privacy/terms), plus `contact`, `privacy`, `terms`, `404`.
 - **`src/pages/admin/index.astro` + `src/pages/api/`** — admin panel. `api/auth/*` = PIN login (`validate-pin.ts`), rate limiting, HTTP-only cookie session, `get-api-key.ts`, `logout.ts`, `check-session.ts`. `api/apps/*` = CRUD (`create`/`update`/`delete`/`[slug]`) that reads/writes Markdown files. `api/contact.ts` = contact form handler. All API routes set `export const prerender = false`.
 - **`src/i18n/`** — homegrown i18n (NOT a library). `utils.ts` (god node, 28 edges) exports `Locale` (`'en'|'es'|'pt'`), `useTranslations()` (dot-path lookup over `en.json`/`es.json`/`pt.json`, 331 keys each; missing key → returns the key), and path helpers `getLocalePath` / `stripLocalePath` / `getLocaleFromPath`.
-- **`src/content/`** — Zod-typed collections defined in `content/config.ts`: `apps`, `blog`, `comparisons`, `legal`. Entries organized by locale subdirectory (`apps/en/…`, `apps/es/…`, `apps/pt/…`); pages resolve content via `getCollection(..., ({ slug }) => slug.startsWith(\`${locale}/\`))`. `blog`/`comparisons` use `translationKey` to link cross-locale siblings for hreflang.
+- **`src/content/`** — Zod-typed collections defined in `content/config.ts`: `apps`, `blog`, `comparisons`, `legal`. Entries organized by locale subdirectory (`apps/en/…`, `apps/es/…`, `apps/pt/…`); pages resolve content via `getCollection(..., ({ slug }) => slug.startsWith(\`${locale}/\`))`. `blog`/`comparisons`use`translationKey` to link cross-locale siblings for hreflang.
 - **`src/components/`** — `.astro` server components (`AppCard`, `Breadcrumbs`, JSON-LD emitters `AppJsonLd`/`BlogJsonLd`/`FaqJsonLd`) + `.tsx` React islands (`AppGrid`, `AppShowcase`, `ContactForm`, `FaqAccordion`, `LanguagePicker`, `ThemeToggle`, `AnimatedSection`). `src/layouts/BaseLayout.astro` is the shared shell.
 
 God nodes (from `graphify-out/GRAPH_REPORT.md`): `@/i18n/utils` (28), `useTranslations()` (20), `Locale` (17), `compilerOptions` (12), `scripts` (11), `validSessions` (4), `POST()` (4), `useDebounced()` (3).
@@ -85,6 +85,7 @@ God nodes (from `graphify-out/GRAPH_REPORT.md`): `@/i18n/utils` (28), `useTransl
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
 
 Rules:
+
 - For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
 - If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.

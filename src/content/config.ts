@@ -3,10 +3,9 @@ import { COMPARE_APPS } from "../lib/compareApps";
 
 const urlOrPath = z
 	.string()
-	.refine(
-		(v) => v.startsWith("/") || /^https?:\/\//i.test(v) || v === "",
-		{ message: "Must be an absolute site path (/img.png) or http(s) URL. Or leave empty." },
-	);
+	.refine((v) => v.startsWith("/") || /^https?:\/\//i.test(v) || v === "", {
+		message: "Must be an absolute site path (/img.png) or http(s) URL. Or leave empty.",
+	});
 
 export const apps = defineCollection({
 	type: "content",
@@ -25,6 +24,10 @@ export const apps = defineCollection({
 		// Stores
 		playUrl: z.string().url(),
 		appStoreUrl: z.string().url().optional(),
+
+		// The app's own website, if it has one. Emitted as `sameAs` in the
+		// MobileApplication JSON-LD; never used as a canonical.
+		officialSite: z.string().url().optional(),
 
 		category: z.string().default("Tools"),
 		tags: z.array(z.string()).default([]),
@@ -57,9 +60,7 @@ export const apps = defineCollection({
 
 		// Q&As rendered as a visible FAQ section on the app page plus FAQPage
 		// JSON-LD (same text in both, as Google requires on-page parity).
-		faq: z
-			.array(z.object({ question: z.string(), answer: z.string() }))
-			.optional(),
+		faq: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
 	}),
 });
 
@@ -89,9 +90,7 @@ const blog = defineCollection({
 		featured: z.boolean().default(false),
 		// Q&As mirrored by a visible FAQ section in the post body (Google requires
 		// on-page parity); rendered as FAQPage JSON-LD by BlogJsonLd.astro.
-		faq: z
-			.array(z.object({ question: z.string(), answer: z.string() }))
-			.optional(),
+		faq: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
 	}),
 });
 
@@ -133,8 +132,12 @@ const comparisons = defineCollection({
 		competitorIcon: urlOrPath.optional(),
 		heroDeck: z.string(),
 		introParagraphs: z.array(z.string()),
-		quickTable: z.array(z.object({ category: z.string(), cartwise: z.string(), competitor: z.string() })),
-		featureRows: z.array(z.object({ feature: z.string(), cartwise: z.string(), competitor: z.string() })),
+		quickTable: z.array(
+			z.object({ category: z.string(), cartwise: z.string(), competitor: z.string() }),
+		),
+		featureRows: z.array(
+			z.object({ feature: z.string(), cartwise: z.string(), competitor: z.string() }),
+		),
 		cartwiseGood: z.array(z.string()),
 		cartwiseBad: z.array(z.string()),
 		competitorGood: z.array(z.string()),

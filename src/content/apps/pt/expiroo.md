@@ -1,10 +1,11 @@
 ---
 title: "Expiroo: Controle de Validade de Alimentos"
-tagline: "Controle as datas de validade offline — sem conta, seu inventário fica no seu aparelho."
-description: "Expiroo controla a validade do que está na geladeira e despensa. Offline e sem conta: seus dados ficam no aparelho. Grátis com anúncios; Pro de compra única."
+tagline: "Controle as datas de validade da geladeira e da despensa offline — sem conta, seu inventário fica no seu aparelho."
+description: "Expiroo é um app gratuito para Android que controla a validade dos alimentos e avisa antes de vencerem. Offline e sem conta. Premium de compra única."
 icon: "/images/apps/expiroo/icon.png"
-playUrl: "https://play.google.com/apps/testing/com.fusioncoreapps.expiroo"
-category: "Productivity"
+playUrl: "https://play.google.com/store/apps/details?id=com.fusioncoreapps.expiroo"
+officialSite: "https://expiroo.app"
+category: "Food & Drink"
 tags:
   [
     "controle de validade",
@@ -16,8 +17,8 @@ tags:
   ]
 locale: "pt"
 price: "Free"
-version: "1.0.0"
-lastUpdated: "2026-08-06"
+version: "1.3.0"
+lastUpdated: "2026-11-19"
 screenshots:
   [
     "/images/screenshots/expiroo-home.jpg",
@@ -28,33 +29,34 @@ screenshots:
     "/images/screenshots/expiroo-settings.jpg",
   ]
 downloads: ""
-beta: true
-betaGroupUrl: "https://groups.google.com/g/expiroo-testers"
+beta: false
 ---
 
 ## Visão geral
 
-**Expiroo: Controle de Validade de Alimentos** controla as datas de validade de tudo o que está na sua geladeira e despensa. É local-first: seu inventário fica salvo no seu aparelho e funciona totalmente offline — sem conta, sem cadastro. Grátis (com anúncios); um upgrade Pro opcional de compra única libera produtos ilimitados.
+**Expiroo: Controle de Validade de Alimentos** é um app gratuito para Android que controla as datas de validade de tudo o que está na sua geladeira, no freezer e na despensa, e avisa antes de algo estragar. É local-first: seu inventário fica salvo no seu aparelho e funciona totalmente offline — sem conta, sem cadastro. O Expiroo está disponível no Google Play desde 18 de novembro de 2026.
 
-Guias sobre datas de validade e o passo a passo do beta (em inglês e espanhol) ficam no site do Expiroo: [expiroo.app](https://expiroo.app/en).
+**Site oficial:** ajuda para começar e guias sobre datas de validade ficam no [site oficial do Expiroo, expiroo.app](https://expiroo.app/en) (em inglês e espanhol). Dois bons guias para começar: [best before vs. use by, o que cada data significa (em inglês)](https://expiroo.app/en/blog/best-before-vs-use-by) e [fecha de caducidad vs. consumo preferente (em espanhol)](https://expiroo.app/es/blog/fecha-de-caducidad-vs-consumo-preferente).
 
 ## Recursos
 
-- **Controle de validade** — adicione produtos com a data de validade e veja num relance o que está para vencer
-- **Leitor de código de barras** — escaneie o código de barras de um produto para adicioná-lo em segundos
-- **Notificações de vencimento** — receba um aviso antes de a comida estragar para usá-la a tempo
-- **Locais de armazenamento** — organize os itens por geladeira, freezer, despensa e mais
-- **Registro de desperdício** — veja o que você usou frente ao que precisou jogar fora
-- **Funciona offline** — não precisa de conexão; seu inventário fica no seu aparelho
+- **Lembretes de validade** — receba uma notificação 7, 3 e 1 dia antes de um item vencer e de novo no próprio dia, com os seus intervalos ou como um único resumo diário
+- **Leitor de código de barras** — escaneie o código de barras e o Expiroo preenche o nome do produto para você
+- **Tela inicial tipo semáforo** — tudo ordenado por urgência: primeiro o que venceu, depois o que está perto de vencer e por fim o que está fresco
+- **Seus próprios locais e categorias** — geladeira, freezer, despensa, armário de remédios; controle alimentos, medicamentos, cosméticos ou itens para pets
+- **Relatório de desperdício** — veja o que você consumiu frente ao que jogou fora, mês a mês
+- **Offline e privado** — sem conta e sem nuvem; seu inventário fica no seu aparelho
+- **Tema claro e escuro**
 
 ## Ideal para
 
 Qualquer pessoa que queira parar de jogar fora comida esquecida, acompanhar o que tem na geladeira e na despensa e receber um aviso antes de as coisas vencerem.
 
-## Como entrar no beta
+## Como baixar
 
-O Expiroo está atualmente em beta fechado. Para instalar, siga estes passos em ordem:
+O Expiroo é gratuito no Google Play para Android 7.0 ou superior: [baixe o Expiroo no Google Play](https://play.google.com/store/apps/details?id=com.fusioncoreapps.expiroo).
 
-1. **Entre no grupo de testadores** — torne-se testador [no grupo do Google](https://groups.google.com/g/expiroo-testers).
-2. **Abra o link de opt-in** — aceite o convite na [página de testes do Google Play](https://play.google.com/apps/testing/com.fusioncoreapps.expiroo).
-3. **Instale pelo Google Play** — depois de virar testador, baixe o Expiroo pelo Google Play.
+- **Grátis** — o app completo com anúncios, controlando até 10 itens por vez.
+- **Expiroo Premium** — uma compra única, não uma assinatura. Remove os anúncios, libera itens ilimitados e abre o painel completo de estatísticas.
+
+O que o Expiroo faz, recurso por recurso: [o Expiroo já está no Google Play](/pt/blog/expiroo-agora-disponivel-google-play).

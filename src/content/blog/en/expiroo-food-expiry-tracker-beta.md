@@ -1,8 +1,9 @@
 ---
 title: "Meet Expiroo: A Food Expiry Tracker in Closed Beta"
-description: "Expiroo is FusionCore's new food expiry tracker for Android, now in closed beta. See what it does, how it keeps your inventory offline, and how to join."
+description: "Expiroo, FusionCore's food expiry tracker for Android, started in closed beta in August 2026. The beta has ended: Expiroo is now free on Google Play."
 translationKey: "expiroo-beta-launch"
 publishedAt: "2026-08-06"
+updatedAt: "2026-11-19"
 author: "FusionCore Apps"
 tags: ["expiroo", "food expiry tracker", "beta", "android app", "food waste"]
 image: "/images/blog/en/expiroo-food-expiry-tracker-beta.png"
@@ -10,18 +11,20 @@ ogImage: "/images/blog/en/expiroo-food-expiry-tracker-beta.png"
 featured: false
 faq:
   - question: "Is Expiroo free?"
-    answer: "Yes. Expiroo is free to download and use, supported by ads. There is also an optional one-time Pro upgrade (a single USD 1.99 payment, not a subscription) that unlocks unlimited products."
-  - question: "How do I join the beta?"
-    answer: "Expiroo is in closed beta with limited spots. Join the testers group at groups.google.com/g/expiroo-testers, open the opt-in link on Google Play, then install Expiroo. Follow the three steps in that order."
+    answer: "Yes. Expiroo is free to download and use, supported by ads, and tracks up to 10 items at a time. Expiroo Premium is an optional one-time purchase, not a subscription, that removes ads, unlocks unlimited items and opens the full statistics dashboard."
+  - question: "Is the Expiroo beta still open?"
+    answer: "No. The closed beta ended when Expiroo launched publicly on Google Play on November 18, 2026. Anyone can now install it from Google Play, with no testers group or opt-in link."
   - question: "Does Expiroo need an account?"
     answer: "No. There is no sign-up and no account. You open the app and start adding products right away, and your inventory is stored on your device."
   - question: "Does it work offline?"
     answer: "Yes. Expiroo is local-first and works fully offline. Your inventory stays on your device, so you can add products and check dates without a connection."
 ---
 
+> **Update, November 19, 2026:** the closed beta has ended. Expiroo is now available to everyone on Google Play: no testers group, no opt-in link. [Get Expiroo on Google Play](https://play.google.com/store/apps/details?id=com.fusioncoreapps.expiroo), or read [what's in the public release](/blog/expiroo-now-available-google-play).
+
 ## Say Hello to Expiroo
 
-We are excited to introduce **Expiroo: Food Expiry Tracker** — our fifth Android app, now in **closed beta** on Google Play.
+We are excited to introduce **Expiroo: Food Expiry Tracker** — our fifth Android app, which opened as a **closed beta** on Google Play in August 2026.
 
 If you have ever found a forgotten yogurt three weeks past its date, thrown out vegetables you did not know you had, or bought a second jar of something already sitting in the pantry — Expiroo was built for you.
 
@@ -69,21 +72,15 @@ Expiroo is built to be simple and to respect your time. There is no sign-up wall
 
 Like most free apps, Expiroo shows ads and uses analytics/crash reporting (standard advertising and diagnostic identifiers). What stays local is your inventory.
 
-Expiroo is **free with ads**, and there is an **optional one-time Pro upgrade** (a single USD 1.99 payment, not a subscription) that unlocks unlimited products for people who want to track a larger kitchen.
+Expiroo is **free with ads** and tracks up to 10 items at a time. **Expiroo Premium** is an optional one-time purchase, not a subscription, that removes ads and unlocks unlimited items for people who want to track a larger kitchen.
 
 ---
 
-## How to Join the Closed Beta
+## How to Get Expiroo Now
 
-Expiroo is currently in **closed beta on Google Play with limited spots**. To get in, follow these three steps **in order**:
+The closed beta is over. Expiroo is free on Google Play for Android 7.0 and later, so you can install it directly: no testers group and no opt-in link.
 
-1. **Join the testers group** — go to [groups.google.com/g/expiroo-testers](https://groups.google.com/g/expiroo-testers) and join the group with the Google account you use on your phone.
-2. **Open the opt-in link** — accept the invite on the [Google Play testing page](https://play.google.com/apps/testing/com.fusioncoreapps.expiroo).
-3. **Install Expiroo** — once you are approved as a tester, download Expiroo from Google Play.
-
-The order matters: the install link only works after you have joined the group and opted in. If the store shows "item not found", it usually means step 1 or step 2 has not finished processing yet — give it a few minutes and try again.
-
-[Join the Expiroo beta →](https://groups.google.com/g/expiroo-testers)
+[Get Expiroo on Google Play →](https://play.google.com/store/apps/details?id=com.fusioncoreapps.expiroo)
 
 ---
 
@@ -99,11 +96,11 @@ We wanted something that takes seconds per product and then quietly reminds you 
 
 ### Is Expiroo free?
 
-Yes. Expiroo is free to download and use, supported by ads. There is also an optional one-time Pro upgrade (a single USD 1.99 payment, not a subscription) that unlocks unlimited products.
+Yes. Expiroo is free to download and use, supported by ads, and tracks up to 10 items at a time. Expiroo Premium is an optional one-time purchase, not a subscription, that removes ads, unlocks unlimited items and opens the full statistics dashboard.
 
-### How do I join the beta?
+### Is the Expiroo beta still open?
 
-Expiroo is in closed beta with limited spots. Join the testers group at [groups.google.com/g/expiroo-testers](https://groups.google.com/g/expiroo-testers), open the [opt-in link](https://play.google.com/apps/testing/com.fusioncoreapps.expiroo) on Google Play, then install Expiroo. Follow the three steps in that order.
+No. The closed beta ended when Expiroo launched publicly on Google Play on November 18, 2026. Anyone can now [install it from Google Play](https://play.google.com/store/apps/details?id=com.fusioncoreapps.expiroo), with no testers group or opt-in link.
 
 ### Does Expiroo need an account?
 
@@ -115,10 +112,10 @@ Yes. Expiroo is local-first and works fully offline. Your inventory stays on you
 
 ---
 
-## Be an Early Tester
+## Get Expiroo
 
-Closed beta spots are limited. Join the testers group, opt in, and install Expiroo — then help us shape the app before it goes fully public.
+Thanks to everyone who tested the beta. Expiroo is now free on Google Play — install it and stop losing food at the back of the fridge.
 
-[Join the beta at groups.google.com/g/expiroo-testers](https://groups.google.com/g/expiroo-testers)
+[Get Expiroo on Google Play →](https://play.google.com/store/apps/details?id=com.fusioncoreapps.expiroo)
 
 [Browse all FusionCore apps →](/apps)
