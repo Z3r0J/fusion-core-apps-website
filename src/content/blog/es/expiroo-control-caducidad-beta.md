@@ -86,7 +86,7 @@ La beta cerrada terminó. Expiroo es gratis en Google Play para Android 7.0 o su
 
 ## Por qué hicimos Expiroo
 
-La mayoría de la comida no se desperdicia porque a la gente no le importe — se desperdicia porque es fácil perderle el rastro. Las fechas vienen en letra chiquita, los productos se van al fondo y para cuando te acordás, ya no sirven. Y si alguna vez dudaste qué fecha de la etiqueta importa de verdad, nuestra guía de [fecha de caducidad vs. consumo preferente](/es/blog/fecha-caducidad-vs-consumo-preferente) explica qué significa cada una.
+La mayoría de la comida no se desperdicia porque a la gente no le importe — se desperdicia porque es fácil perderle el rastro. Las fechas vienen en letra chiquita, los productos se van al fondo y para cuando te acordás, ya no sirven. Y si alguna vez dudaste qué fecha de la etiqueta importa de verdad, nuestra guía de [fecha de caducidad vs. consumo preferente](https://expiroo.app/es/blog/fecha-de-caducidad-vs-consumo-preferente) explica qué significa cada una.
 
 Queríamos algo que lleve segundos por producto y que después te recuerde en silencio en el momento justo. Eso es Expiroo: menos comida echada a perder, menos plata en la basura y una heladera que de verdad entendés.
 
