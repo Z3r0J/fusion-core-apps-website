@@ -1,5 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
+
+/* eslint-disable astro/no-set-html-directive -- only the JSON-LD <script> below uses set:html; its data is ours and "<" is escaped */
 const { app, canonical } = Astro.props as { app: CollectionEntry<"apps">; canonical?: string };
 
 const screenshots =
@@ -8,7 +10,9 @@ const screenshots =
 		: undefined;
 
 const localeToLanguage: Record<string, string> = { en: "en", es: "es-419", pt: "pt-BR" };
-const inLanguage = app.data.locale ? (localeToLanguage[app.data.locale] ?? app.data.locale) : undefined;
+const inLanguage = app.data.locale
+	? (localeToLanguage[app.data.locale] ?? app.data.locale)
+	: undefined;
 
 const isFree = !app.data.price || ["Free", "Gratis", "Grátis", "0"].includes(app.data.price);
 const pageUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
@@ -22,11 +26,12 @@ const structuredData = {
 	"description": app.data.description,
 	"url": pageUrl,
 	"downloadUrl": app.data.playUrl,
+	...(app.data.officialSite ? { sameAs: [app.data.officialSite] } : {}),
 	"image": app.data.icon ? new URL(app.data.icon, Astro.site).href : undefined,
-	...(app.data.version ? { "softwareVersion": app.data.version } : {}),
-	...(screenshots ? { "screenshot": screenshots } : {}),
-	...(app.data.lastUpdated ? { "dateModified": app.data.lastUpdated } : {}),
-	...(inLanguage ? { "inLanguage": inLanguage } : {}),
+	...(app.data.version ? { softwareVersion: app.data.version } : {}),
+	...(screenshots ? { screenshot: screenshots } : {}),
+	...(app.data.lastUpdated ? { dateModified: app.data.lastUpdated } : {}),
+	...(inLanguage ? { inLanguage: inLanguage } : {}),
 	"applicationSubCategory": app.data.category,
 	"contentRating": "Everyone",
 	"author": {
@@ -37,19 +42,21 @@ const structuredData = {
 	"offers": {
 		"@type": "Offer",
 		"price": isFree ? "0" : app.data.price,
-		...(isFree ? {} : { "priceCurrency": "USD" }),
+		...(isFree ? {} : { priceCurrency: "USD" }),
 		"availability": "https://schema.org/InStock",
 	},
 	"publisher": { "@type": "Organization", "name": "FusionCore Apps" },
-	...(app.data.rating && app.data.ratingCount ? {
-		"aggregateRating": {
-			"@type": "AggregateRating",
-			"ratingValue": app.data.rating,
-			"ratingCount": app.data.ratingCount,
-			"bestRating": 5,
-			"worstRating": 1,
-		}
-	} : {}),
+	...(app.data.rating && app.data.ratingCount
+		? {
+				aggregateRating: {
+					"@type": "AggregateRating",
+					"ratingValue": app.data.rating,
+					"ratingCount": app.data.ratingCount,
+					"bestRating": 5,
+					"worstRating": 1,
+				},
+			}
+		: {}),
 };
 ---
 
@@ -58,4 +65,4 @@ const structuredData = {
 	is:inline
 	set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
 	type="application/ld+json"
-></script>
+/>

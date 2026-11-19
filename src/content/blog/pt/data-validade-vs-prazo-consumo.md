@@ -98,7 +98,7 @@ Esse último hábito — acompanhar — é exatamente para o que o nosso app **E
 
 Ele é local-first — o seu inventário fica no seu dispositivo — e funciona offline e sem conta. Como a maioria dos apps gratuitos, o Expiroo exibe anúncios e usa analytics/relatórios de erros (identificadores de publicidade e de diagnóstico padrão). O que fica local é o seu inventário.
 
-O Expiroo está agora em **beta fechada no Google Play com vagas limitadas**. Para testar, siga estes passos em ordem: entre no [grupo de testers](https://groups.google.com/g/expiroo-testers), abra o [link de opt-in](https://play.google.com/apps/testing/com.fusioncoreapps.expiroo) e instale pelo Google Play. Você também pode [ler mais sobre o Expiroo](/pt/apps/expiroo) primeiro.
+O Expiroo é **gratuito no Google Play** desde 18 de novembro de 2026: [baixe no Google Play](https://play.google.com/store/apps/details?id=com.fusioncoreapps.expiroo) ou [leia mais sobre o Expiroo](/pt/apps/expiroo) primeiro.
 
 ## Perguntas frequentes
 
@@ -134,4 +134,4 @@ Consultadas em 16 de outubro de 2026. Este guia é informação geral sobre segu
 
 Aprenda os dois conceitos, aplique as duas regras e você vai jogar fora muito menos comida sem sair do lado seguro da linha que realmente importa.
 
-[Participe da beta do Expiroo →](https://groups.google.com/g/expiroo-testers)
+[Baixe o Expiroo no Google Play →](https://play.google.com/store/apps/details?id=com.fusioncoreapps.expiroo)
